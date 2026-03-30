@@ -1,10 +1,13 @@
-# Stage 1: Dependencies and Build
-FROM node:20-alpine AS builder
-
-WORKDIR /app
+# Stage 1: Base
+FROM node:20-alpine AS base
 
 # Install native dependencies for Prisma / SQLite
 RUN apk add --no-cache libc6-compat openssl
+
+# Stage 2: Dependencies and Build
+FROM base AS builder
+
+WORKDIR /app
 
 COPY package.json package-lock.json* ./
 COPY prisma ./prisma/
@@ -20,16 +23,13 @@ RUN npx prisma generate
 # Build Next.js in Standalone Mode
 RUN npm run build
 
-# Stage 2: Production Runtime Env
-FROM node:20-alpine AS runner
+# Stage 3: Production Runtime Env
+FROM base AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
-
-# Need OpenSSL in runner for Prisma runtime
-RUN apk add --no-cache openssl
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
