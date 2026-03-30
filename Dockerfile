@@ -20,6 +20,11 @@ COPY . .
 # Generate Prisma Client explicitly for Alpine Linux architecture
 RUN npx prisma generate
 
+# Provide dummy build-time env vars to prevent SSG failures
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXTAUTH_SECRET="dummy-build-secret"
+ENV NEXTAUTH_URL="http://localhost:3000"
+
 # Build Next.js in Standalone Mode
 RUN npm run build
 
