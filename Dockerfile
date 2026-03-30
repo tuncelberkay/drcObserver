@@ -1,8 +1,8 @@
 # Stage 1: Base
 FROM node:20-alpine AS base
 
-# Install native dependencies for Prisma / SQLite
-RUN apk add --no-cache libc6-compat openssl
+# Install native dependencies for Prisma / SQLite and native module builds
+RUN apk add --no-cache libc6-compat openssl python3 make g++
 
 # Stage 2: Dependencies and Build
 FROM base AS builder
@@ -12,8 +12,8 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 COPY prisma ./prisma/
 
-# Install dependencies (since it's an airgap target, this MUST run on a connected CI runner to build the artifact image)
-RUN npm ci
+# Install dependencies with npm install (more robust for cross-os builds than npm ci if package-lock is missing musl deps)
+RUN npm install
 
 COPY . .
 
