@@ -1,0 +1,170 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NextAuth standard models adapted for local auth
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?   // For local auth (LDAP users might not have this)
+  image         String?
+  role          String    @default("USER") // USER, ADMIN, NOC_OPERATOR
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Observability Mock Tables
+model HostMetric {
+  id          String   @id @default(cuid())
+  hostname    String   @unique
+  os          String
+  agentStatus String   // "Running", "Offline", "Warning"
+  appOwner    String
+  techStack   String
+  syncProgress Int     // 0-100
+  updatedAt   DateTime @updatedAt
+}
+
+// ----- CMS ENGINE MODELS -----
+
+model AppPage {
+  id          String      @id @default(cuid())
+  slug        String      @unique // e.g. "dashboard" or "network"
+  title       String      // Stores translation map: {"en": "Dashboard", "tr": "Panel"}
+  layoutType  String      @default("GRID") // "GRID", "LIST", "FULL"
+  widgets     AppWidget[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  Navigation  AppNavigation[]
+}
+
+model AppWidget {
+  id            String   @id @default(cuid())
+  pageId        String
+  page          AppPage  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  componentKey  String   // e.g. "MASTER_DETAIL_TABLE", "OBSERVABILITY_GRID"
+  configJson    String   // Stores specific properties & translated titles {"en": "...", "tr": "..."}
+  // Grid coordinates
+  x             Int      @default(0)
+  y             Int      @default(0)
+  w             Int      @default(6)
+  h             Int      @default(4)
+
+  // External Payload Bindings
+  dataSources   AppDataSource[]
+  dataQuery     String?  // Config map to execute natively within the DataSource
+  
+  endpointURI   String?  // (Legacy fallback)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AppNavigation {
+  id          String   @id @default(cuid())
+  pageId      String?  
+  page        AppPage? @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  label       String   // Stores translation map: {"en": "Dashboard", "tr": "Panel"}
+  iconName    String   // e.g. "LayoutDashboard", "Server"
+  path        String   // Manual override URL, or defaults to `/p/${page.slug}` 
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Global System Configuration
+model AppDataSource {
+  id              String   @id @default(cuid())
+  name            String   @unique  // E.g. "Production Prometheus", "Primary Node API"
+  type            String   // Enum "REST_API", "POSTGRES", "HTTP_JSON"
+  endpointURI     String   // The URL mapping location to proxy
+  credentialsJson String   // Stores secure auth tokens `{"headers": {"Authorization": "Bearer XYZ"}}` natively
+  queryPayload    String   @default("") // E.g. SQL Query explicitly bound
+
+  refreshInterval Int      @default(10) // Polling frequency
+  mappingJson     String   @default("{}") // Presentation Conditions Map: {"statusColumn": "column_a", "downValue": "0"}
+
+  widgets         AppWidget[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Global System Configuration (Singleton Model)
+model LdapConfig {
+  id              String   @id @default("singleton")
+  serverUrl       String   @default("")
+  baseDn          String   @default("")
+  bindDn          String   @default("")
+  bindPassword    String   @default("")
+  userFilter      String   @default("(&(objectCategory=person)(sAMAccountName={{username}}))")
+  isActive        Boolean  @default(false)
+
+  updatedAt       DateTime @updatedAt
+}
+
+// Enterprise Role-Based Access Control Structure
+model AppRole {
+  id              String   @id @default(cuid())
+  name            String   // E.g. "Network Operator"
+  description     String?
+  // Stores standard array logic for permissions cleanly: '["page_a", "page_b"]' or '["*"]'
+  permissionsJson String   @default("[]") 
+  bindings        AppRoleBinding[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model AppRoleBinding {
+  id              String   @id @default(cuid())
+  bindType        String   // "GROUP" or "USER"
+  identifier      String   // e.g. "CN=DevOps,OU=Groups..." or "jsmith"
+
+  roleId          String
+  role            AppRole  @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

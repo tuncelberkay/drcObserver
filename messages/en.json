@@ -1,0 +1,51 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "infrastructure": "Infrastructure",
+    "action": "Action"
+  },
+  "Auth": {
+    "secure_access": "Secure Access",
+    "subtitle": "NOC Observability Platform",
+    "local_db": "Local DB",
+    "username": "Corporate Username",
+    "email": "Email Address",
+    "password": "Password",
+    "login_btn": "Login to Platform",
+    "authenticating": "Authenticating..."
+  },
+  "Dashboard": {
+    "title": "Summary Dashboard",
+    "settings": "Customize",
+    "live_sync": "Live Sync Active",
+    "oracle_status": "Oracle Transition Status",
+    "network": "Network Latency (DRC Tunnel)",
+    "server_load": "Replication Engine Load"
+  },
+  "CommandCenter": {
+    "title": "Command Center",
+    "desc": "Production-to-DRC Transition Observability Platform"
+  },
+  "Infrastructure": {
+    "title": "Infrastructure Details",
+    "subtitle": "Real-time Production-to-DRC Synchronization Status",
+    "fetching": "Fetching Infrastructure Data...",
+    "col_hostname": "Hostname",
+    "col_status": "Status",
+    "col_sync": "Sync Progress",
+    "col_owner": "Owner",
+    "col_stack": "Stack",
+    "host_details": "Host Details",
+    "os": "OS:",
+    "last_heartbeat": "Last heartbeat:",
+    "target_drc": "Target DRC Node:",
+    "live_logs": "Live Sync Logs",
+    "log_connected": "[OK] Sync stream connected",
+    "log_replicating": "Replicating blocks 0x4f... 0x8a...",
+    "log_tailing": "Tailing real-time stream..."
+  },
+  "Footer": {
+    "global_sync": "GLOBAL DRC SYNC"
+  }
+}

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  drc-observer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drc_next_app
+    ports:
+      - "3000:3000"
+    volumes:
+      # Data persistence: Mount SQLite database out of the container so configuration spans restarts natively!
+      - ./prisma/dev.db:/app/prisma/dev.db
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      # Note: For SQLite, DATABASE_URL requires the file path.
+      - DATABASE_URL=file:./dev.db
+    restart: unless-stopped

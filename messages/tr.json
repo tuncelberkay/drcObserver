@@ -1,0 +1,51 @@
+{
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "dashboard": "Panel",
+    "infrastructure": "Altyapı",
+    "action": "Eylem"
+  },
+  "Auth": {
+    "secure_access": "Güvenli Giriş",
+    "subtitle": "NOC Gözlemleme Platformu",
+    "local_db": "Yerel DB",
+    "username": "Kurumsal Kullanıcı Adı",
+    "email": "E-posta Adresi",
+    "password": "Şifre",
+    "login_btn": "Platforma Giriş Yap",
+    "authenticating": "Doğrulanıyor..."
+  },
+  "Dashboard": {
+    "title": "Özet Paneli",
+    "settings": "Kişiselleştir",
+    "live_sync": "Canlı Senkron",
+    "oracle_status": "Oracle Geçiş Durumu",
+    "network": "Ağ Gecikmesi (DRC Tüneli)",
+    "server_load": "Replikasyon Motoru Yükü"
+  },
+  "CommandCenter": {
+    "title": "Komuta Merkezi",
+    "desc": "Üretimden DRC'ye Geçiş Gözlem Platformu"
+  },
+  "Infrastructure": {
+    "title": "Altyapı Detayları",
+    "subtitle": "Gerçek Zamanlı Üretimden DRC'ye Senkronizasyon Durumu",
+    "fetching": "Altyapı Verileri Alınıyor...",
+    "col_hostname": "Sunucu Adı",
+    "col_status": "Durum",
+    "col_sync": "Senkron İlerlemesi",
+    "col_owner": "Sahibi",
+    "col_stack": "Ajan",
+    "host_details": "Sunucu Detayları",
+    "os": "İS:",
+    "last_heartbeat": "Son sinyal:",
+    "target_drc": "Hedef DRC Düğümü:",
+    "live_logs": "Canlı Senkron Günlükleri",
+    "log_connected": "[OK] Senkron akışı bağlandı",
+    "log_replicating": "Bloklar kopyalanıyor 0x4f... 0x8a...",
+    "log_tailing": "Gerçek zamanlı akış izleniyor..."
+  },
+  "Footer": {
+    "global_sync": "KÜRESEL DRC SENKRONİZASYONU"
+  }
+}
