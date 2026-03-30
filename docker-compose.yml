@@ -10,10 +10,17 @@ services:
       - "3000:3000"
     volumes:
       # Data persistence: Mount SQLite database out of the container so configuration spans restarts natively!
-      - ./prisma/dev.db:/app/prisma/dev.db
+      # Using a named volume instead of a bind mount prevents "read only database" errors since Mac UID 501 != Container UID 1001
+      - prisma_data:/app/prisma
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
       # Note: For SQLite, DATABASE_URL requires the file path.
       - DATABASE_URL=file:./dev.db
+      # NextAuth requires these at runtime to prevent "This page could not be loaded" errors
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=my-super-secret-production-key
     restart: unless-stopped
+
+volumes:
+  prisma_data:

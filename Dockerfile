@@ -41,8 +41,8 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy static assets
 COPY --from=builder /app/public ./public
-# Copy Prisma mapping for standalone runtime
-COPY --from=builder /app/prisma ./prisma
+# Copy Prisma mapping for standalone runtime and give permissions to nextjs user
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
