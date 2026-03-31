@@ -64,35 +64,35 @@ export function NavigationOrderModal({ items }: { items: NavItem[] }) {
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition-colors border border-slate-700 shadow-lg"
+        className="flex items-center gap-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition-colors border border-slate-200 dark:border-slate-700 shadow-sm"
       >
         <ListOrdered className="w-4 h-4" /> Edit Order
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between p-5 border-b border-slate-800 bg-slate-900/50">
-              <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                <ListOrdered className="w-5 h-5 text-emerald-400" /> Navigation Order
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+            <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                <ListOrdered className="w-5 h-5 text-emerald-600 dark:text-emerald-400" /> Navigation Order
               </h2>
-              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-200 transition-colors">
+              <button onClick={() => setIsOpen(false)} className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="p-5 space-y-3 max-h-[60vh] overflow-y-auto">
               {navs.map((nav, idx) => (
-                <div key={nav.id} className="flex items-center justify-between bg-slate-950/50 border border-slate-800 p-3 rounded-xl hover:border-slate-700 transition-colors">
+                <div key={nav.id} className="flex items-center justify-between bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 p-3 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                   <div>
-                    <div className="font-semibold text-slate-200 text-sm">{parseLabel(nav.label)}</div>
+                    <div className="font-semibold text-slate-800 dark:text-slate-200 text-sm">{parseLabel(nav.label)}</div>
                     <div className="text-xs text-slate-500 font-mono mt-0.5">{nav.path}</div>
                   </div>
                   <div className="flex items-center gap-1">
                     <button 
                       onClick={() => handleMoveUp(idx)}
                       disabled={idx === 0}
-                      className="p-1.5 bg-slate-800 rounded bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 disabled:opacity-30 disabled:hover:bg-indigo-500/10 transition-colors"
+                      className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 disabled:opacity-30 disabled:hover:bg-indigo-50 dark:disabled:hover:bg-indigo-500/10 transition-colors"
                       title="Move Up"
                     >
                       <ArrowUp className="w-4 h-4" />
@@ -100,7 +100,7 @@ export function NavigationOrderModal({ items }: { items: NavItem[] }) {
                     <button 
                       onClick={() => handleMoveDown(idx)}
                       disabled={idx === navs.length - 1}
-                      className="p-1.5 bg-slate-800 rounded bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 disabled:opacity-30 disabled:hover:bg-indigo-500/10 transition-colors"
+                      className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 disabled:opacity-30 disabled:hover:bg-indigo-50 dark:disabled:hover:bg-indigo-500/10 transition-colors"
                       title="Move Down"
                     >
                       <ArrowDown className="w-4 h-4" />
@@ -114,8 +114,8 @@ export function NavigationOrderModal({ items }: { items: NavItem[] }) {
               )}
             </div>
 
-            <div className="flex justify-end gap-3 p-5 border-t border-slate-800 bg-slate-900/30">
-              <button disabled={isSubmitting} onClick={() => setIsOpen(false)} className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+            <div className="flex justify-end gap-3 p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
+              <button disabled={isSubmitting} onClick={() => setIsOpen(false)} className="px-4 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">
                 Cancel
               </button>
               <button 

@@ -32,9 +32,17 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   // Fetch navigation payload asynchronously without blocking first byte rendering excessively via Promise parallel resolving
-  const navItems = await prisma.appNavigation.findMany({
+  const navItemsRaw = await prisma.appNavigation.findMany({
     orderBy: { sortOrder: 'asc' }
   });
+
+  const navItems = navItemsRaw.map(n => ({
+    id: n.id,
+    label: n.label,
+    path: n.path,
+    iconName: n.iconName,
+    sortOrder: n.sortOrder
+  }));
 
   return (
     <html

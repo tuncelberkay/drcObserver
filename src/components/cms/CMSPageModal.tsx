@@ -71,14 +71,6 @@ export function CMSPageModal() {
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="layoutType" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Grid Paradigm</label>
-                  <select name="layoutType" id="layoutType" className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500">
-                    <option value="GRID">Masonry Grid Layout</option>
-                    <option value="LIST">Vertical Flow Sequence</option>
-                  </select>
-                </div>
-
                 <div className="flex items-center pt-2">
                   <input defaultChecked id="addToNav" name="addToNav" type="checkbox" className="h-4 w-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-indigo-600 dark:text-indigo-500 focus:ring-indigo-500" />
                   <label htmlFor="addToNav" className="ml-2 block text-sm text-slate-700 dark:text-slate-300">

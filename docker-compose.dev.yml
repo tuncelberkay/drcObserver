@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  drc-observer-dev:
+    image: node:20-alpine
+    container_name: drc_next_app_dev
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount the entire local directory to the container for live code-reloading
+      - ./:/app
+      # Create anonymous volumes for node_modules and .next to prevent Mac/Linux conflicts
+      # This forces the container to use its own Linux-native dependencies, ignoring your local Mac node_modules!
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      # Local Dev database connection
+      - DATABASE_URL=file:./prisma/dev.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=my-super-secret-local-dev-key
+    # On start: install linux-native dependencies, sync sqlite schema, generate Prisma, and run the Next.js dev server
+    command: sh -c "apk add --no-cache libc6-compat openssl python3 make g++ && npm install && npx prisma db push && npx prisma generate && npm run dev"
+    restart: unless-stopped

@@ -17,11 +17,11 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       case "LINE_GRAPH":
         return { groupBy: "", aggType: "SUM", dataQuery: "ds.flat().map(r => ({ time: new Date(r.updatedAt || Date.now()).toLocaleTimeString(), progress: r.syncProgress }))", title: "Live Sync Timeline", xAxisKey: "time", dataKey: "progress", metricLabel: "Progress %", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 0, gridY: 3, gridW: 10, gridH: 4 }
       case "STAT_CARD":
-        return { groupBy: "agentStatus", aggType: "COUNT", dataQuery: "ds.flat().filter(d => d.agentStatus === 'Offline')", title: "Offline Agents", xAxisKey: "name", dataKey: "value", metricLabel: "Count", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 10, gridY: 0, gridW: 2, gridH: 1 }
+        return { groupBy: "agentStatus", aggType: "COUNT", dataQuery: "ds.flat().filter(d => d.agentStatus === 'Offline')", title: "Offline Agents", xAxisKey: "name", dataKey: "value", metricLabel: "Count", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 10, gridY: 0, gridW: 2, gridH: 3 }
       case "MASTER_DETAIL_TABLE":
         return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: "Telemetry Datatable", xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "hostname, os, agentStatus", childCols: "appOwner, techStack, syncProgress, updatedAt", gridX: 0, gridY: 7, gridW: 12, gridH: 5 }
       default:
-        return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: `${defaultName} Visual`, xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 0, gridY: 0, gridW: 6, gridH: 4 }
+        return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: `${defaultName} Visual`, xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 0, gridY: 0, gridW: 6, gridH: 3 }
     }
   }
 
@@ -34,6 +34,9 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   const [groupBy, setGroupBy] = useState(preset.groupBy)
   const [aggType, setAggType] = useState(preset.aggType)
   const [configTitle, setConfigTitle] = useState(preset.title)
+  const [showTitle, setShowTitle] = useState((preset as any).showTitle ?? true)
+  const [showSubText, setShowSubText] = useState((preset as any).showSubText ?? true)
+  const [subText, setSubText] = useState((preset as any).subText ?? "")
   
   const [xAxisKey, setXAxisKey] = useState(preset.xAxisKey)
   const [dataKey, setDataKey] = useState(preset.dataKey)
@@ -43,12 +46,11 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   const [parentCols, setParentCols] = useState(preset.parentCols)
   const [childCols, setChildCols] = useState(preset.childCols)
   
-  // Matrix Coordinates
-  const [gridX, setGridX] = useState(preset.gridX)
-  const [gridY, setGridY] = useState(preset.gridY)
   const [gridW, setGridW] = useState(preset.gridW)
   const [gridH, setGridH] = useState(preset.gridH)
 
+  const [customColors, setCustomColors] = useState<string[]>([])
+  
   const [previewRawJson, setPreviewRawJson] = useState<string | null>(null)
   const [previewDataArray, setPreviewDataArray] = useState<any[] | null>(null)
   const [isPreviewing, setIsPreviewing] = useState(false)
@@ -58,18 +60,33 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     setIsInjecting(true)
 
     try {
-      const res = await addWidgetToPage(pageId, widget.key, gridX, gridY, gridW, gridH)
+      const res = await addWidgetToPage(pageId, widget.key, 0, 999, gridW, gridH)
       if (res.widgetId) {
         await bindWidgetDataSource(
           res.widgetId, 
           selectedSources,
           dataQuery,
-          JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols })
+          JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined })
         )
       }
       setIsOpen(false)
       setSelectedSources([])
-      setDataQuery("")
+      setDataQuery(preset.dataQuery)
+      setGroupBy(preset.groupBy)
+      setAggType(preset.aggType)
+      setConfigTitle(preset.title)
+      setXAxisKey(preset.xAxisKey)
+      setDataKey(preset.dataKey)
+      setMetricLabel(preset.metricLabel)
+      setTablePrimaryKey(preset.tablePrimaryKey)
+      setParentCols(preset.parentCols)
+      setChildCols(preset.childCols)
+      setGridW(preset.gridW)
+      setGridH(preset.gridH)
+      setShowTitle(true)
+      setShowSubText(false)
+      setSubText("")
+      setCustomColors([])
     } finally {
       setIsInjecting(false)
     }
@@ -82,7 +99,6 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   }
 
   const handlePreview = async () => {
-    if (selectedSources.length === 0) return;
     setIsPreviewing(true)
     setPreviewRawJson(null)
     setPreviewDataArray(null)
@@ -117,12 +133,9 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     }
   }
 
-  // Reactive Debounced Preview
   useEffect(() => {
     if (selectedSources.length === 0) {
-       setPreviewDataArray(null);
-       setPreviewRawJson(null);
-       return;
+       // Intentionally trigger preview to harness fallback mock servers logic
     }
     const tid = setTimeout(() => {
       handlePreview()
@@ -141,6 +154,9 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
 
   const transientConfig = useMemo(() => ({
     title: configTitle,
+    showTitle,
+    showSubText,
+    subText,
     groupBy,
     aggType,
     xAxisKey,
@@ -148,8 +164,9 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     metricLabel,
     tablePrimaryKey,
     parentCols,
-    childCols
-  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols])
+    childCols,
+    colors: customColors.length > 0 ? customColors : undefined
+  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors])
 
   return (
     <>
@@ -311,13 +328,50 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                             <Icons.Paintbrush className="w-4 h-4 text-sky-600 dark:text-sky-400" /> UI Configurations
                          </label>
                          <div>
-                            <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Display Title</label>
+                            <div className="flex items-center justify-between mb-2">
+                               <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Display Title</label>
+                               <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                                  <input 
+                                     type="checkbox" 
+                                     checked={showTitle} 
+                                     onChange={e => setShowTitle(e.target.checked)}
+                                     className="rounded text-sky-500 focus:ring-sky-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                                  />
+                                  <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Show Title</span>
+                               </label>
+                            </div>
                             <input 
                               type="text" 
                               value={configTitle}
-                              onChange={e => setConfigTitle(e.target.value)}
-                              className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none" 
+                              disabled={!showTitle}
+                              onChange={e => {
+                                setConfigTitle(e.target.value)
+                              }}
+                              className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900" 
                             />
+                         </div>
+                         <div>
+                            <div className="flex items-center justify-between mb-2">
+                               <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Summary Template</label>
+                               <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                                  <input 
+                                     type="checkbox" 
+                                     checked={showSubText} 
+                                     onChange={e => setShowSubText(e.target.checked)}
+                                     className="rounded text-sky-500 focus:ring-sky-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                                  />
+                                  <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Show Summary</span>
+                               </label>
+                            </div>
+                            <input 
+                              type="text" 
+                              value={subText}
+                              disabled={!showSubText}
+                              onChange={e => setSubText(e.target.value)}
+                              placeholder="{name} / Total: {value} / {total}"
+                              className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900 font-mono text-xs" 
+                            />
+                            <p className="mt-1.5 text-[10px] text-slate-500">Variables automatically map dynamic math: <code className="text-sky-500 font-bold">&#123;name&#125;</code>, <code className="text-sky-500 font-bold">&#123;value&#125;</code>, <code className="text-sky-500 font-bold">&#123;total&#125;</code>.</p>
                          </div>
                          <div className="grid grid-cols-2 gap-4">
                            {widget.key === "MASTER_DETAIL_TABLE" ? (
@@ -376,7 +430,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                   />
                                </div>
                                <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Tooltip Metric Name</label>
+                                   <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Tooltip Metric Name</label>
                                   <input 
                                     type="text" 
                                     value={metricLabel}
@@ -387,35 +441,73 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                </div>
                              </>
                            )}
+
+                           {widget.key !== "MASTER_DETAIL_TABLE" && widget.key !== "STAT_CARD" && previewDataArray && previewDataArray.length > 0 && (
+                             <div className="col-span-2 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-4 animate-in slide-in-from-bottom-2">
+                                 <label className="block text-[10px] font-bold text-pink-600 dark:text-pink-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                                   <Icons.Palette className="w-3.5 h-3.5" /> Initial Series Color Mapping
+                                 </label>
+                                 <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 gap-3">
+                                   {previewDataArray.map((row, index) => {
+                                      const label = row[xAxisKey] || row[configTitle ? "name" : "metric"] || `D-${index}`;
+                                      const fallbackColors = ['#3b82f6', '#e5e7eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+                                      const colorVal = customColors[index] || fallbackColors[index % fallbackColors.length];
+                                      
+                                      return (
+                                        <div key={index} className="flex flex-col items-center gap-1">
+                                           <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase truncate w-full text-center tracking-tighter" title={String(label)}>
+                                             {String(label).substring(0, 4)}
+                                           </label>
+                                           <input 
+                                             type="color"
+                                             value={colorVal}
+                                             onChange={e => {
+                                                const updated = [...customColors]
+                                                updated[index] = e.target.value
+                                                for (let i = 0; i < index; i++) {
+                                                  if (!updated[i]) updated[i] = fallbackColors[i % fallbackColors.length]
+                                                }
+                                                setCustomColors(updated)
+                                             }}
+                                             className="w-8 h-8 rounded shrink-0 cursor-pointer overflow-hidden outline-none bg-transparent border-none p-0"
+                                             style={{ WebkitAppearance: 'none' }}
+                                           />
+                                        </div>
+                                      )
+                                   })}
+                                 </div>
+                             </div>
+                           )}
                            
                            {/* Explicit Grid Sizing Parameters */}
-                           <div className="col-span-2 grid grid-cols-4 gap-4 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
-                              <div className="col-span-4 mb-1">
-                                 <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2">
-                                    <Icons.LayoutGrid className="w-3.5 h-3.5" /> Initial Grid Coordinate Bindings
-                                 </label>
-                              </div>
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">X Pos (0-11)</label>
-                                 <input type="number" min={0} max={11} value={gridX} onChange={e => setGridX(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                              </div>
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Y Pos (Row)</label>
-                                 <input type="number" min={0} value={gridY} onChange={e => setGridY(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                              </div>
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (1-12)</label>
-                                 <input type="number" min={1} max={12} value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                              </div>
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Height (Rows)</label>
-                                 <input type="number" min={1} max={15} value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                              </div>
-                           </div>
-                         </div>
-                      </div>
+                           <div className="col-span-2 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
+                              <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2 mb-2">
+                                <Icons.LayoutGrid className="w-3.5 h-3.5" /> Widget Canvas Allocation Width
+                              </label>
+                              <select value={gridW} onChange={(e) => setGridW(Number(e.target.value))} className="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm mb-4 outline-none focus:ring-1 focus:ring-sky-500 transition-shadow">
+                                <option value={12}>Full Span (100%)</option>
+                                <option value={8}>Two-Thirds (66%)</option>
+                                <option value={6}>Half Span (50%)</option>
+                                <option value={4}>One-Third (33%)</option>
+                                <option value={3}>Quarter (25%)</option>
+                                <option value={2}>Compact (16%)</option>
+                              </select>
 
-                    </div>
+                              <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2 mb-2">
+                                <Icons.LayoutGrid className="w-3.5 h-3.5" /> Widget Canvas Allocation Height
+                              </label>
+                              <select value={gridH} onChange={(e) => setGridH(Number(e.target.value))} className="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm outline-none focus:ring-1 focus:ring-sky-500 transition-shadow">
+                                <option value={1}>Compact (1 Unit)</option>
+                                <option value={2}>Standard (2 Units)</option>
+                                <option value={3}>Tall (3 Units - matches charts)</option>
+                                <option value={4}>Extra Tall (4 Units)</option>
+                                <option value={5}>Massive (5 Units)</option>
+                              </select>
+                           </div>
+                          </div>
+                       </div>
+
+                     </div>
                   )}
                 </form>
                 
@@ -424,7 +516,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                   <button type="button" onClick={() => setIsOpen(false)} className="px-4 py-2.5 flex-1 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                     Cancel
                   </button>
-                  <button form="inject-form" disabled={isInjecting || selectedSources.length === 0 || !dataQuery} type="submit" className="px-4 flex-[2] py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(99,102,241,0.2)] dark:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 border border-transparent dark:border-indigo-400/30">
+                  <button form="inject-form" disabled={isInjecting || !dataQuery} type="submit" className="px-4 flex-[2] py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(99,102,241,0.2)] dark:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 border border-transparent dark:border-indigo-400/30">
                     {isInjecting ? <Icons.Loader2 className="w-4 h-4 animate-spin" /> : <Icons.PlusSquare className="w-4 h-4" />}
                     {isInjecting ? "Binding..." : "Save Config & Inject"}
                   </button>
@@ -445,7 +537,12 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
 
                 {previewDataArray && ChartComponent && (
                    <div className="flex-1 flex items-center justify-center p-8 lg:p-16 relative z-10 animate-in zoom-in-[0.98] duration-500">
-                     <div className="w-full max-w-4xl ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120]">
+                     <div className={`w-full ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                           gridW === 12 ? 'max-w-4xl' :
+                           gridW === 6 ? 'max-w-2xl' :
+                           gridW === 4 ? 'max-w-md' :
+                           'max-w-[320px]'
+                     }`}>
                         {/* Fake Browser TopBar */}
                         <div className="bg-slate-50 dark:bg-slate-950 flex items-center px-4 py-2 border-b border-slate-200 dark:border-slate-800 gap-2">
                            <div className="flex gap-1.5">
@@ -456,7 +553,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                            <div className="flex-1 text-center font-mono text-[10px] text-slate-500 dark:text-slate-600 font-bold uppercase tracking-widest">Live Execution Sandbox</div>
                         </div>
                         {/* Actual Component Mount */}
-                        <div className="p-6">
+                        <div className="p-6 w-full h-[400px] flex flex-col">
                            <ChartComponent widget={transientWidget} config={transientConfig} previewData={previewDataArray} />
                         </div>
                      </div>

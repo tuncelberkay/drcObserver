@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 import { notFound } from "next/navigation"
-import { Server, Table, ChevronLeft, ShieldAlert } from "lucide-react"
+import { Server, Table, ChevronLeft, ShieldAlert, Lock, Unlock } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { WidgetStoreItem } from "@/components/cms/WidgetStoreItem"
 import { ActiveWidgetCard } from "@/components/cms/ActiveWidgetCard"
@@ -33,7 +33,6 @@ export default async function CMSLayoutEditor({
   }
 
   const AVAILABLE_WIDGETS = [
-    { key: "OBSERVABILITY_GRID", name: "Responsive Drag Grid", iconName: "Layout", desc: "A customizable matrix of charts." },
     { key: "MASTER_DETAIL_TABLE", name: "Telemetry Datatable", iconName: "Table", desc: "A deep-dive data table with live logs." },
     { key: "STAT_CARD", name: "KPI Stat Card", iconName: "Hash", desc: "A singular crucial metric indicator." },
     { key: "BAR_CHART", name: "Vertical Bar Matrix", iconName: "BarChart3", desc: "Comparative scale dataset charts." },
@@ -60,12 +59,24 @@ export default async function CMSLayoutEditor({
             </div>
             <div>
               <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Layout Editor: /p/{page.slug}</h1>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Bind widgets to the `{page.layoutType}` engine.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Bind widgets to the Universal Grid engine.</p>
             </div>
           </div>
-          <Link href={`/p/${page.slug}`} className="px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-sm font-semibold rounded-lg transition-colors">
-            Preview Live Router
-          </Link>
+          <div className="flex items-center gap-3">
+            <form action={async () => {
+              "use server"
+              const { togglePageLock } = await import('@/app/actions/cms')
+              await togglePageLock(page.id, !page.isLocked)
+            }}>
+              <button type="submit" className={`px-4 py-2 border text-sm font-semibold rounded-lg transition-colors flex items-center gap-2 ${page.isLocked ? 'bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-500 border-amber-500/20' : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'}`}>
+                {page.isLocked ? <Lock className="w-4 h-4" /> : <Unlock className="w-4 h-4" />}
+                {page.isLocked ? "Layout is Locked" : "Layout is Unlocked"}
+              </button>
+            </form>
+            <Link href={`/p/${page.slug}`} className="px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20 text-sm font-semibold rounded-lg transition-colors">
+              Preview Live Router
+            </Link>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

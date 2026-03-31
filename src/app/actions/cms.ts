@@ -7,7 +7,6 @@ const prisma = new PrismaClient()
 
 export async function createAppPage(formData: FormData) {
   const slug = formData.get("slug") as string
-  const layoutType = formData.get("layoutType") as string
   const titleEn = formData.get("titleEn") as string
   const titleTr = formData.get("titleTr") as string
   const addToNav = formData.get("addToNav") === "on"
@@ -22,7 +21,7 @@ export async function createAppPage(formData: FormData) {
     data: {
       slug,
       title: titleJson,
-      layoutType,
+      layoutType: "GRID",
     }
   })
 
@@ -166,5 +165,16 @@ export async function updateNavigationOrder(updates: Array<{ id: string, sortOrd
   revalidatePath("/[locale]/admin/pages", "page")
   revalidatePath("/[locale]/layout", "layout")
   revalidatePath("/[locale]", "page")
+  return { success: true }
+}
+
+export async function togglePageLock(pageId: string, isLocked: boolean) {
+  await prisma.appPage.update({
+    where: { id: pageId },
+    data: { isLocked }
+  })
+  
+  revalidatePath("/[locale]/admin/editor/[id]", "page")
+  revalidatePath("/[locale]/p/[slug]", "page")
   return { success: true }
 }

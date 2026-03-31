@@ -23,12 +23,14 @@ export async function POST(request: Request) {
     }
 
     if (!widget.dataSources || widget.dataSources.length === 0) {
-      // Return synthetic fallback payload if no remote DB is linked
+      // Return synthetic fallback array payload if no remote DB is linked so local development tables don't render empty
       return NextResponse.json({
-        data: {
-          message: "No Remote Data Source Assigned",
-          fallback: true
-        }
+        data: [
+          { id: "mock-01", hostname: "prod-core-web-01", os: "Ubuntu 22.04", agentStatus: "Running", appOwner: "Payments", techStack: "Node.js / Next", syncProgress: 100, updatedAt: new Date().toISOString() },
+          { id: "mock-02", hostname: "prod-core-db-main", os: "RHEL 9", agentStatus: "Warning", appOwner: "Data Platform", techStack: "PostgreSQL 15", syncProgress: 45, updatedAt: new Date().toISOString() },
+          { id: "mock-03", hostname: "drc-core-web-01", os: "Ubuntu 22.04", agentStatus: "Offline", appOwner: "Payments", techStack: "Node.js / Next", syncProgress: 0, updatedAt: new Date().toISOString() },
+          { id: "mock-04", hostname: "prod-auth-redis", os: "Alpine Linux", agentStatus: "Running", appOwner: "Identity", techStack: "Redis 7", syncProgress: 100, updatedAt: new Date().toISOString() },
+        ]
       })
     }
 

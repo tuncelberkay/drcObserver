@@ -40,11 +40,11 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   const [tablePrimaryKey, setTablePrimaryKey] = useState(existingConfig.tablePrimaryKey || "id")
   const [parentCols, setParentCols] = useState(existingConfig.parentCols || "")
   const [childCols, setChildCols] = useState(existingConfig.childCols || "")
+  const [customColors, setCustomColors] = useState<string[]>(existingConfig.colors || [])
 
-  const [gridX, setGridX] = useState<number>(widget.x ?? 0)
-  const [gridY, setGridY] = useState<number>(widget.y ?? 0)
+
   const [gridW, setGridW] = useState<number>(widget.w ?? 6)
-  const [gridH, setGridH] = useState<number>(widget.h ?? 4)
+  const [gridH, setGridH] = useState<number>(widget.h ?? 3)
 
   const [previewRawJson, setPreviewRawJson] = useState<string | null>(null)
   const [previewDataArray, setPreviewDataArray] = useState<any[] | null>(null)
@@ -59,9 +59,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
         widget.id, 
         selectedSources,
         dataQuery,
-        JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols }),
-        gridX,
-        gridY,
+        JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors }),
+        widget.x ?? 0,
+        widget.y ?? 999,
         gridW,
         gridH
       )
@@ -110,8 +110,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     metricLabel,
     tablePrimaryKey,
     parentCols,
-    childCols
-  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols])
+    childCols,
+    colors: customColors.length > 0 ? customColors : undefined
+  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors])
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10 bg-slate-900/60 dark:bg-slate-950/90 backdrop-blur-md">
@@ -218,27 +219,32 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                             </div>
                             
                             {/* Explicit Grid Sizing Parameters */}
-                            <div className="col-span-2 grid grid-cols-4 gap-4 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
-                               <div className="col-span-4 mb-1">
+                            <div className="col-span-2 grid grid-cols-2 gap-4 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
+                               <div className="col-span-2 mb-1">
                                   <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2">
-                                     <Icons.LayoutGrid className="w-3.5 h-3.5" /> Matrix Coordinate Bindings
+                                     <Icons.LayoutGrid className="w-3.5 h-3.5" /> Canvas Allocation Size
                                   </label>
                                </div>
                                <div>
-                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">X Pos (0-11)</label>
-                                  <input type="number" min={0} max={11} value={gridX} onChange={e => setGridX(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                               </div>
-                               <div>
-                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Y Pos (Row)</label>
-                                  <input type="number" min={0} value={gridY} onChange={e => setGridY(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
-                               </div>
-                               <div>
-                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (1-12)</label>
-                                  <input type="number" min={1} max={12} value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (Span)</label>
+                                  <select value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
+                                    <option value={12}>Full Span (100%)</option>
+                                    <option value={8}>Two-Thirds (66%)</option>
+                                    <option value={6}>Half Span (50%)</option>
+                                    <option value={4}>One-Third (33%)</option>
+                                    <option value={3}>Quarter (25%)</option>
+                                    <option value={2}>Compact (16%)</option>
+                                  </select>
                                </div>
                                <div>
                                   <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Height (Rows)</label>
-                                  <input type="number" min={1} max={15} value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                  <select value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
+                                    <option value={1}>Compact (1 Row)</option>
+                                    <option value={2}>Standard (2 Rows)</option>
+                                    <option value={3}>Tall (3 Rows)</option>
+                                    <option value={4}>Extra Tall (4 Rows)</option>
+                                    <option value={5}>Massive (5 Rows)</option>
+                                  </select>
                                </div>
                             </div>
                           </div>
@@ -359,6 +365,46 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                         )}
                       </div>
                   </div>
+
+                  {widget.componentKey !== "MASTER_DETAIL_TABLE" && widget.componentKey !== "STAT_CARD" && previewDataArray && previewDataArray.length > 0 && (
+                    <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-4 animate-in slide-in-from-bottom-2">
+                        <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                          <Icons.Palette className="w-4 h-4 text-pink-500 dark:text-pink-400" /> Series Color Mapping
+                        </label>
+                        <p className="text-[11px] text-slate-500 leading-relaxed mb-3">Custom explicit colors assigned sequentially by dimension indices.</p>
+                        
+                        <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 gap-3">
+                          {previewDataArray.map((row, index) => {
+                             const label = row[xAxisKey] || row[configTitle ? "name" : "metric"] || `D-${index}`
+                             const fallbackColors = ['#3b82f6', '#e5e7eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
+                             const colorVal = customColors[index] || fallbackColors[index % fallbackColors.length]
+                             
+                             return (
+                               <div key={index} className="flex flex-col items-center gap-1">
+                                  <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase truncate w-full text-center tracking-tighter" title={String(label)}>
+                                    {String(label).substring(0, 4)}
+                                  </label>
+                                  <input 
+                                    type="color"
+                                    value={colorVal}
+                                    onChange={e => {
+                                       const updated = [...customColors]
+                                       updated[index] = e.target.value
+                                       // Pad undefined preceding array slots safely with fallback palette
+                                       for (let i = 0; i < index; i++) {
+                                         if (!updated[i]) updated[i] = fallbackColors[i % fallbackColors.length]
+                                       }
+                                       setCustomColors(updated)
+                                    }}
+                                    className="w-8 h-8 rounded shrink-0 cursor-pointer overflow-hidden outline-none bg-transparent border-none p-0"
+                                    style={{ WebkitAppearance: 'none' }}
+                                  />
+                               </div>
+                             )
+                          })}
+                        </div>
+                    </div>
+                  )}
 
                 </div>
               )}

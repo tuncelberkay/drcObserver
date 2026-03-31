@@ -74,7 +74,8 @@ model AppPage {
   id          String      @id @default(cuid())
   slug        String      @unique // e.g. "dashboard" or "network"
   title       String      // Stores translation map: {"en": "Dashboard", "tr": "Panel"}
-  layoutType  String      @default("GRID") // "GRID", "LIST", "FULL"
+  layoutType  String      @default("GRID") // "GRID" (Legacy/Ignore), "LIST", "FULL"
+  isLocked    Boolean     @default(false) // Admin Layout Editor Lock
   widgets     AppWidget[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt

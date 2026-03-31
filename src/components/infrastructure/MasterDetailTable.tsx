@@ -80,10 +80,12 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
     <div className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col overflow-hidden max-h-[800px] transition-colors">
       {/* Title block */}
       <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50">
-         <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-            {config?.title || "Dynamic Master-Detail Table"}
-         </h3>
+         {config?.showTitle !== false ? (
+           <h3 className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+              {config?.title || "Dynamic Master-Detail Table"}
+           </h3>
+         ) : <div />}
          <div className="px-3 py-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-400 font-mono tracking-widest uppercase flex items-center gap-2">
             <Search className="w-3 h-3 text-slate-500" />
             {metrics.length} Rows Synced
