@@ -11,7 +11,7 @@ const DynamicDraggableGrid = dynamic(
 )
 
 export const WidgetRegistry: Record<string, React.FC<{ config: any, widget: any, previewData?: any }>> = {
-  MASTER_DETAIL_TABLE: ({ config, widget }) => <MasterDetailTable widget={widget} />,
+  MASTER_DETAIL_TABLE: ({ config, widget, previewData }) => <MasterDetailTable widget={widget} config={config} previewData={previewData} />,
   STAT_CARD: ({ config, widget, previewData }) => <CMSStatCard config={config} widget={widget} previewData={previewData} />,
   BAR_CHART: ({ config, widget, previewData }) => <CMSBarChart config={config} widget={widget} previewData={previewData} />,
   PIE_CHART: ({ config, widget, previewData }) => <CMSPieChart config={config} widget={widget} previewData={previewData} />,

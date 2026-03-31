@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { applyDataReduction } from '@/utils/dataProcessor'
+import { executeRawDbQuery } from '@/utils/dbConnectors'
 
 const prisma = new PrismaClient()
 
@@ -58,13 +59,23 @@ export async function POST(request: Request) {
         }
       }
 
-      // POSTGRES / ORACLE Mock Resolver Block
-      if (type === "POSTGRESQL" || type === "ORACLE") {
-         return [
-           { id: `db-${source.id}-1`, hostname: "db-primary", os: "RHEL 9", agentStatus: "Running", appOwner: "CoreDB", techStack: type, syncProgress: 100, updatedAt: new Date().toISOString() },
-           { id: `db-${source.id}-2`, hostname: "db-standby", os: "RHEL 9", agentStatus: "Running", appOwner: "CoreDB", techStack: type, syncProgress: 98, updatedAt: new Date().toISOString() },
-           { id: `db-${source.id}-3`, hostname: "db-archive", os: "RHEL 8", agentStatus: "Offline", appOwner: "Analytics", techStack: type, syncProgress: 0, updatedAt: new Date().toISOString() }
-         ]
+      // POSTGRES / MYSQL / ORACLE Real DB Query
+      if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
+         try {
+           let parsedCreds: any = {}
+           try { parsedCreds = JSON.parse(credentialsJson) } catch (e) {}
+   
+           const host = parsedCreds.host || (endpointURI ? endpointURI.split(':')[0] : "localhost")
+           const port = Number(parsedCreds.port) || (type === "POSTGRESQL" ? 5432 : (type === "ORACLE" ? 1521 : 3306))
+           const database = parsedCreds.database || ""
+           const user = parsedCreds.user || ""
+           const password = parsedCreds.password || ""
+           
+           const qp = queryPayload?.trim() || "SELECT 1 as connected;"
+           return await executeRawDbQuery(type, host, port, user, password, database, qp)
+         } catch(e: any) {
+           return { error: e.message, __source: source.name }
+         }
       }
 
       return { error: "Architecture not supported", __source: source.name }
