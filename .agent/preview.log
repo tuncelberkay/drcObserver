@@ -12,3 +12,13 @@
 ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 
+ GET /en/admin 200 in 3.0s (next.js: 2.1s, proxy.ts: 156ms, application-code: 811ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 1258ms (next.js: 1221ms, application-code: 37ms)
+ GET /en/admin 200 in 159ms (next.js: 33ms, proxy.ts: 10ms, application-code: 116ms)
+ GET /api/auth/session 200 in 32ms (next.js: 19ms, application-code: 13ms)
+ GET /en/admin/sources 200 in 1058ms (next.js: 996ms, proxy.ts: 6ms, application-code: 56ms)
+ POST /api/cms/test-source 200 in 2.6s (next.js: 287ms, application-code: 2.3s)
