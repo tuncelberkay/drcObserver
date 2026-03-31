@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client"
 import { ShieldAlert, Plus, Layout, Layers, Link as LinkIcon } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { CMSPageModal } from "@/components/cms/CMSPageModal"
+import { NavigationOrderModal } from "@/components/cms/NavigationOrderModal"
 
 const prisma = new PrismaClient()
 
@@ -12,6 +13,17 @@ export default async function CMSAdminPages() {
       Navigation: true
     }
   })
+
+  const navItemsRaw = await prisma.appNavigation.findMany({
+    orderBy: { sortOrder: 'asc' }
+  })
+  
+  const navItems = navItemsRaw.map(n => ({
+    id: n.id,
+    label: n.label,
+    path: n.path,
+    sortOrder: n.sortOrder
+  }))
 
   return (
     <div className="min-h-screen bg-slate-950 p-6 md:p-12">
@@ -30,6 +42,7 @@ export default async function CMSAdminPages() {
             <Link href="/admin" className="px-4 py-2 border border-slate-700 bg-slate-900 hover:bg-slate-800 rounded-lg text-sm text-slate-300 font-medium transition-colors">
               Back to Admin
             </Link>
+            <NavigationOrderModal items={navItems} />
             <CMSPageModal />
           </div>
         </header>

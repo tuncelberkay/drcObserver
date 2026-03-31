@@ -9,6 +9,8 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
   const [isOpen, setIsOpen] = useState(!!editSource)
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [testResult, setTestResult] = useState<string | null>(null)
+  const [isTesting, setIsTesting] = useState(false)
   const router = useRouter()
 
   // Form State
@@ -31,10 +33,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
     dbUser: editSource ? parseCreds(editSource.credentialsJson, "user") : "",
     dbPassword: editSource ? parseCreds(editSource.credentialsJson, "password") : "",
     queryPayload: editSource?.queryPayload || "",
-    refreshInterval: editSource?.refreshInterval || 10,
-    statusColumn: editSource ? parseMapping(editSource.mappingJson, "targetColumn", "status") : "status",
-    downValue: editSource ? parseMapping(editSource.mappingJson, "downValue", "0") : "0",
-    upValue: editSource ? parseMapping(editSource.mappingJson, "upValue", "1") : "1"
+    refreshInterval: editSource?.refreshInterval || 10
   })
 
   const isDb = ["POSTGRESQL", "MYSQL", "MARIADB", "ORACLE"].includes(formData.type)
@@ -49,16 +48,9 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (step !== 5) return handleNext()
+    if (step !== 4) return handleNext()
 
     setIsSubmitting(true)
-    
-    // Construct the Presentation Configuration JSON mapped out of the form fields
-    const mappingJson = JSON.stringify({
-      targetColumn: formData.statusColumn,
-      downValue: formData.downValue,
-      upValue: formData.upValue
-    })
 
     let finalURI = formData.endpointURI
     let finalCreds = formData.credentialsJson
@@ -83,8 +75,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
           finalURI,
           finalCreds,
           formData.queryPayload,
-          Number(formData.refreshInterval),
-          mappingJson
+          Number(formData.refreshInterval)
         )
       } else {
         await createAppDataSource(
@@ -93,8 +84,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
           finalURI,
           finalCreds,
           formData.queryPayload,
-          Number(formData.refreshInterval),
-          mappingJson
+          Number(formData.refreshInterval)
         )
       }
       setIsOpen(false)
@@ -141,7 +131,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
 
             {/* Stepper Progress Bar */}
             <div className="flex h-1 bg-slate-800 w-full flex-shrink-0">
-              <div className="bg-indigo-500 h-full transition-all duration-300" style={{ width: `${(step / 5) * 100}%` }} />
+              <div className="bg-indigo-500 h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }} />
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 flex-1 overflow-y-auto space-y-6">
@@ -258,17 +248,15 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                 </div>
               )}
 
-              {/* STEP 4: EXECUTION TIMER */}
+              {/* STEP 4: EXECUTION TIMER & TEST OUTPUT */}
               {step === 4 && (
                 <div className="space-y-6 animate-in slide-in-from-right-4 duration-300">
                   <div className="flex items-center gap-3 border-b border-slate-800 pb-2">
                     <TimerReset className="w-5 h-5 text-slate-400" />
-                    <h3 className="text-lg font-bold text-slate-200">Execution Timers</h3>
+                    <h3 className="text-lg font-bold text-slate-200">Execution Config & Test</h3>
                   </div>
 
-                  <p className="text-sm text-slate-400">Determine how frequently the Next.js Node Proxy invokes the dataset execution mapped out natively into the Client browsers.</p>
-
-                  <div className="bg-slate-950 p-6 rounded-xl border border-slate-800 shadow-inner max-w-sm">
+                  <div className="bg-slate-950 p-6 rounded-xl border border-slate-800 shadow-inner max-w-sm mb-6">
                     <label className="block text-sm font-medium text-slate-400 mb-4 text-center">Data Polling Frequency (Seconds)</label>
                     <div className="flex items-center gap-4">
                       <input type="range" min="1" max="60" step="1" value={formData.refreshInterval} onChange={e => handleFieldChange("refreshInterval", Number(e.target.value))} className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" />
@@ -277,42 +265,66 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
 
-              {/* STEP 5: PRESENTATION LOGIC */}
-              {step === 5 && (
-                <div className="space-y-6 animate-in slide-in-from-right-4 duration-300">
-                  <div className="flex items-center gap-3 border-b border-slate-800 pb-2">
-                    <Palette className="w-5 h-5 text-slate-400" />
-                    <h3 className="text-lg font-bold text-slate-200">Presentation Condition Map</h3>
-                  </div>
+                  <div className="pt-4 border-t border-slate-800">
+                    <button 
+                      type="button" 
+                      disabled={isTesting || (!isDb && !formData.endpointURI) || (isDb && (!formData.dbHost || !formData.dbUser || !formData.dbPassword || !formData.dbName))}
+                      onClick={async () => {
+                        setIsTesting(true);
+                        setTestResult(null);
+                        try {
+                          let finalURI = formData.endpointURI
+                          let finalCreds = formData.credentialsJson
 
-                  <p className="text-sm text-slate-400">Establish logical UI visual coloring states mapped against JSON columns directly natively parsing backend outputs.</p>
+                          if (isDb) {
+                            finalURI = `${formData.dbHost}:${formData.dbPort}/${formData.dbName}`
+                            finalCreds = JSON.stringify({
+                              host: formData.dbHost,
+                              port: formData.dbPort,
+                              database: formData.dbName,
+                              user: formData.dbUser,
+                              password: formData.dbPassword
+                            })
+                          }
 
-                  <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 shadow-inner">
+                          const res = await fetch("/api/cms/test-source", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              type: formData.type,
+                              endpointURI: finalURI,
+                              credentialsJson: finalCreds,
+                              queryPayload: formData.queryPayload
+                            })
+                          })
+                          const json = await res.json()
+                          setTestResult(JSON.stringify(json.data, null, 2))
+                        } catch (err: any) {
+                          setTestResult(`Error: ${err.message}`)
+                        } finally {
+                          setIsTesting(false)
+                        }
+                      }}
+                      className="w-full py-3 bg-indigo-500/10 hover:bg-indigo-500/20 disabled:opacity-50 text-indigo-400 font-bold rounded-xl flex items-center justify-center gap-2 transition-all border border-indigo-500/30 hover:border-indigo-500/50"
+                    >
+                      {isTesting ? "Testing Connection..." : "Preview Connection Payload"}
+                    </button>
                     
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Target Status Object Key</label>
-                      <input required type="text" value={formData.statusColumn} onChange={e => handleFieldChange("statusColumn", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="e.g. column_a or link_status" />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-rose-500/5 p-3 rounded-lg border border-rose-500/20">
-                        <label className="block text-[11px] font-bold text-rose-500 uppercase tracking-widest mb-1.5 flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" /> DOWN Value Map
-                        </label>
-                        <input required type="text" value={formData.downValue} onChange={e => handleFieldChange("downValue", e.target.value)} className="block w-full px-3 py-1.5 rounded bg-slate-950 border border-slate-700 text-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-500 font-mono text-xs" placeholder="e.g. 0 or DISCONNECTED" />
+                    {testResult && (
+                      <div className="mt-4 border border-slate-800 bg-black/90 backdrop-blur-sm rounded-xl overflow-hidden animate-in fade-in slide-in-from-top-4 duration-300">
+                        <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 flex items-center gap-2 text-xs font-bold text-slate-400">
+                          Data Processor Result Payload (JSON)
+                        </div>
+                        <div className="h-64 overflow-auto p-4 custom-scrollbar">
+                          <pre className="text-[12px] font-mono leading-relaxed text-indigo-300">
+                            {testResult}
+                          </pre>
+                        </div>
                       </div>
-                      <div className="bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/20">
-                        <label className="block text-[11px] font-bold text-emerald-500 uppercase tracking-widest mb-1.5 flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500" /> HEALTHY Value Map
-                        </label>
-                        <input required type="text" value={formData.upValue} onChange={e => handleFieldChange("upValue", e.target.value)} className="block w-full px-3 py-1.5 rounded bg-slate-950 border border-slate-700 text-emerald-300 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs" placeholder="e.g. 1 or UP" />
-                      </div>
-                    </div>
-
+                    )}
                   </div>
+
                 </div>
               )}
 
@@ -327,7 +339,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                   disabled={isSubmitting || (step === 1 && !formData.name) || (step === 2 && !isDb && !formData.endpointURI) || (step === 2 && isDb && (!formData.dbHost || !formData.dbUser || !formData.dbPassword || !formData.dbName))}
                   className="px-5 py-2 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white rounded-lg text-sm font-bold transition-colors flex items-center gap-1 shadow-md shadow-indigo-500/20"
                 >
-                  {isSubmitting ? "Finalizing Mappings..." : step === 5 ? "Build Data Source" : <>Next Step <ChevronRight className="w-4 h-4" /></>}
+                  {isSubmitting ? "Finalizing Mappings..." : step === 4 ? "Build Data Source" : <>Next Step <ChevronRight className="w-4 h-4" /></>}
                 </button>
               </div>
 

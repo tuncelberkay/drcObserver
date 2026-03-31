@@ -131,6 +131,8 @@ def status_server():
     print("===================\n")
 
 def main():
+    if sys.platform == "win32":
+        sys.stdout.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser()
     parser.add_argument("action", choices=["start", "stop", "status"])
     parser.add_argument("port", nargs="?", default="3000")

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import * as Icons from "lucide-react"
 import { addWidgetToPage, bindWidgetDataSource } from "@/app/actions/cms"
 import { WidgetRegistry } from "./WidgetRegistry"
@@ -49,23 +49,8 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   const [gridW, setGridW] = useState(preset.gridW)
   const [gridH, setGridH] = useState(preset.gridH)
 
-  const getMockPreviewData = (key: string) => {
-    switch(key) {
-      case "PIE_CHART": return [{ name: "Running", value: 45 }, { name: "Offline", value: 12 }, { name: "Pending", value: 5 }]
-      case "BAR_CHART": return [{ name: "RHEL 9", value: 25 }, { name: "Ubuntu 22", value: 14 }, { name: "Windows", value: 8 }]
-      case "LINE_GRAPH": return [{ time: "10:00", progress: 40 }, { time: "10:05", progress: 75 }, { time: "10:10", progress: 95 }]
-      case "STAT_CARD": return [{ name: "Offline Agents", value: 12 }]
-      case "MASTER_DETAIL_TABLE": return [
-        { id: "mock-1", hostname: "db-prod-01", os: "RHEL 9", agentStatus: "Running", appOwner: "CoreDB", techStack: "PostgreSQL", syncProgress: 100, updatedAt: new Date().toISOString() },
-        { id: "mock-2", hostname: "app-prod-01", os: "Ubuntu", agentStatus: "Running", appOwner: "Frontend", techStack: "Node.js", syncProgress: 55, updatedAt: new Date().toISOString() },
-        { id: "mock-3", hostname: "db-archive", os: "RHEL 8", agentStatus: "Offline", appOwner: "Analytics", techStack: "Oracle", syncProgress: 4, updatedAt: new Date().toISOString() },
-      ]
-      default: return [{ name: "Metric 1", value: 10 }]
-    }
-  }
-
   const [previewRawJson, setPreviewRawJson] = useState<string | null>(null)
-  const [previewDataArray, setPreviewDataArray] = useState<any[] | null>(() => getMockPreviewData(widget.key))
+  const [previewDataArray, setPreviewDataArray] = useState<any[] | null>(null)
   const [isPreviewing, setIsPreviewing] = useState(false)
 
   const handleInject = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -97,6 +82,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   }
 
   const handlePreview = async () => {
+    if (selectedSources.length === 0) return;
     setIsPreviewing(true)
     setPreviewRawJson(null)
     setPreviewDataArray(null)
@@ -109,7 +95,20 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       const json = await res.json()
       setPreviewRawJson(JSON.stringify(json, null, 2))
       if (json.data && !json.error) {
-         setPreviewDataArray(Array.isArray(json.data) ? json.data : [json.data])
+         const arr = Array.isArray(json.data) ? json.data : [json.data];
+         setPreviewDataArray(arr)
+         
+         // Smart inference of columns if baseline is untouched
+         if (arr.length > 0) {
+           const keys = Object.keys(arr[0])
+           if (keys.length > 0) {
+             if (xAxisKey === "name") setXAxisKey(keys[0])
+             if (dataKey === "value" && keys.length > 1) setDataKey(keys[1])
+             if (tablePrimaryKey === "id") setTablePrimaryKey(keys[0])
+             if (parentCols === "hostname, os, agentStatus") setParentCols(keys.slice(0, 3).join(", "))
+             if (childCols === "appOwner, techStack, syncProgress, updatedAt") setChildCols(keys.slice(3, 7).join(", "))
+           }
+         }
       }
     } catch (err: any) {
       setPreviewRawJson(JSON.stringify({ error: err.message }, null, 2))
@@ -117,6 +116,19 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       setIsPreviewing(false)
     }
   }
+
+  // Reactive Debounced Preview
+  useEffect(() => {
+    if (selectedSources.length === 0) {
+       setPreviewDataArray(null);
+       setPreviewRawJson(null);
+       return;
+    }
+    const tid = setTimeout(() => {
+      handlePreview()
+    }, 600)
+    return () => clearTimeout(tid)
+  }, [selectedSources, dataQuery, groupBy, aggType])
 
   const ChartComponent = WidgetRegistry[widget.key]
   
@@ -430,8 +442,8 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                 */}
                 {(!previewDataArray || previewDataArray.length === 0) && !previewRawJson && (
                    <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
-                      <Icons.Workflow className="w-16 h-16 text-slate-800" strokeWidth={1} />
-                      <p className="text-slate-500 font-medium">Render Canvas to update visualization</p>
+                      <Icons.Database className="w-16 h-16 text-slate-800" strokeWidth={1} />
+                      <p className="text-slate-500 font-medium">Select a Data Source to Auto-Preview Live Components natively.</p>
                    </div>
                 )}
 

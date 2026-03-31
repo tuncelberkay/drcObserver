@@ -124,7 +124,6 @@ model AppDataSource {
   queryPayload    String   @default("") // E.g. SQL Query explicitly bound
 
   refreshInterval Int      @default(10) // Polling frequency
-  mappingJson     String   @default("{}") // Presentation Conditions Map: {"statusColumn": "column_a", "downValue": "0"}
 
   widgets         AppWidget[]
   createdAt       DateTime @default(now())

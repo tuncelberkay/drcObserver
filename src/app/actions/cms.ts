@@ -82,7 +82,7 @@ export async function removeWidget(widgetId: string) {
   return { success: true }
 }
 
-export async function createAppDataSource(name: string, type: string, endpointURI: string, credentialsJson: string, queryPayload: string, refreshInterval: number, mappingJson: string) {
+export async function createAppDataSource(name: string, type: string, endpointURI: string, credentialsJson: string, queryPayload: string, refreshInterval: number) {
   await prisma.appDataSource.create({
     data: {
       name,
@@ -90,8 +90,7 @@ export async function createAppDataSource(name: string, type: string, endpointUR
       endpointURI,
       credentialsJson,
       queryPayload,
-      refreshInterval,
-      mappingJson
+      refreshInterval
     }
   })
   revalidatePath("/[locale]/admin/sources", "page")
@@ -104,12 +103,11 @@ export async function updateAppDataSource(
   endpointURI: string, 
   credentialsJson: string,
   queryPayload: string,
-  refreshInterval: number,
-  mappingJson: string
+  refreshInterval: number
 ) {
   const result = await prisma.appDataSource.update({
     where: { id },
-    data: { name, type, endpointURI, credentialsJson, queryPayload, refreshInterval, mappingJson }
+    data: { name, type, endpointURI, credentialsJson, queryPayload, refreshInterval }
   })
   revalidatePath("/[locale]/admin/sources", "page")
   return result
@@ -153,5 +151,20 @@ export async function updateWidgetGridPosition(layouts: Array<{id: string, x: nu
     )
   )
   revalidatePath("/[locale]/p/[slug]", "page")
+  return { success: true }
+}
+
+export async function updateNavigationOrder(updates: Array<{ id: string, sortOrder: number }>) {
+  await Promise.all(
+    updates.map(update => 
+      prisma.appNavigation.update({
+        where: { id: update.id },
+        data: { sortOrder: update.sortOrder }
+      })
+    )
+  )
+  revalidatePath("/[locale]/admin/pages", "page")
+  revalidatePath("/[locale]/layout", "layout")
+  revalidatePath("/[locale]", "page")
   return { success: true }
 }
