@@ -153,51 +153,51 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
 
   return (
     <>
-      <div className="flex items-center gap-4 p-4 rounded-xl border border-slate-800 bg-slate-950 hover:border-indigo-500/30 transition-all cursor-pointer group">
-        <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
-          <Icon className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" />
+      <div className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-indigo-300 dark:hover:border-indigo-500/30 transition-all cursor-pointer group shadow-sm">
+        <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+          <Icon className="w-5 h-5 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform" />
         </div>
         <div className="flex-1">
-          <h4 className="text-sm font-bold text-slate-200">{widget.name}</h4>
-          <p className="text-xs text-slate-500">{widget.desc}</p>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">{widget.name}</h4>
+          <p className="text-xs text-slate-500 dark:text-slate-500">{widget.desc}</p>
         </div>
         <button 
           onClick={() => setIsOpen(true)}
-          className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-500 text-slate-300 hover:text-white flex flex-shrink-0 items-center justify-center transition-colors"
+          className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-500 text-slate-500 dark:text-slate-300 hover:text-white flex flex-shrink-0 items-center justify-center transition-colors"
         >
           <Icons.Plus className="w-4 h-4" />
         </button>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10 bg-slate-950/90 backdrop-blur-md">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full h-full lg:w-[95vw] lg:h-[95vh] shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10 bg-slate-900/60 dark:bg-slate-950/90 backdrop-blur-md">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full h-full lg:w-[95vw] lg:h-[95vh] shadow-2xl dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
             {/* Top Navigation Bar */}
-            <div className="flex flex-shrink-0 items-center justify-between p-4 px-6 border-b border-slate-800 bg-slate-950/50">
+            <div className="flex flex-shrink-0 items-center justify-between p-4 px-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                <div className="w-8 h-8 rounded-lg bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(99,102,241,0.3)] dark:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-slate-100 leading-tight">Grafana-Style Configuration</h2>
-                  <p className="text-[11px] text-slate-400 font-medium">Configuring visual matrix for {widget.name}</p>
+                  <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 leading-tight">Grafana-Style Configuration</h2>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Configuring visual matrix for {widget.name}</p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-red-500/20 hover:text-red-400 transition-colors">
+              <button onClick={() => setIsOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-white hover:bg-rose-500 dark:hover:bg-red-500/20 dark:hover:text-red-400 transition-colors">
                 <Icons.X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="flex flex-1 overflow-hidden flex-col lg:flex-row">
               {/* Left Control Panel */}
-              <div className="w-full lg:w-[420px] bg-slate-900 border-r border-slate-800 flex flex-col flex-shrink-0 z-10 shadow-[5px_0_20px_rgba(0,0,0,0.2)]">
-                <form onSubmit={handleInject} id="inject-form" className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
+              <div className="w-full lg:w-[420px] bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col flex-shrink-0 z-10 shadow-[5px_0_20px_rgba(0,0,0,0.05)] dark:shadow-[5px_0_20px_rgba(0,0,0,0.2)]">
+                <form onSubmit={handleInject} id="inject-form" className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6 bg-slate-50/30 dark:bg-transparent">
                   
                   {/* Step 1: Stateful Data selection */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-3 flex items-center gap-2">
-                       <Icons.Database className="w-4 h-4 text-indigo-400" /> Database Mappings
-                       <span className="ml-auto text-[9px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-500/30">M-to-N Enabled</span>
+                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
+                       <Icons.Database className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Database Mappings
+                       <span className="ml-auto text-[9px] bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-200 dark:border-indigo-500/30">M-to-N Enabled</span>
                     </label>
                     <div className="space-y-2 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
                       {sources.map((s, index) => {
@@ -206,36 +206,36 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                           <div 
                             key={s.id} 
                             onClick={() => toggleSource(s.id)}
-                            className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-all ${isActive ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[inset_0_0_10px_rgba(99,102,241,0.1)]' : 'bg-slate-950 border-slate-800 hover:border-slate-600'}`}
+                            className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-all ${isActive ? 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-500 dark:border-indigo-500/50 shadow-[inset_0_0_10px_rgba(99,102,241,0.05)] dark:shadow-[inset_0_0_10px_rgba(99,102,241,0.1)]' : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600'}`}
                           >
                             <div>
-                              <span className={`block font-bold text-sm ${isActive ? 'text-indigo-300' : 'text-slate-300'}`}>{s.name}</span>
-                              <span className="text-[10px] font-mono text-slate-500 bg-slate-900 px-1.5 py-0.5 rounded uppercase mt-1 inline-block border border-slate-800">{s.type} (ds[{index}])</span>
+                              <span className={`block font-bold text-sm ${isActive ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-700 dark:text-slate-300'}`}>{s.name}</span>
+                              <span className="text-[10px] font-mono text-slate-500 bg-slate-50 dark:bg-slate-900 px-1.5 py-0.5 rounded uppercase mt-1 inline-block border border-slate-100 dark:border-slate-800">{s.type} (ds[{index}])</span>
                             </div>
-                            <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${isActive ? 'bg-indigo-500 border-indigo-400 text-slate-950' : 'border-slate-700 bg-slate-900'}`}>
+                            <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${isActive ? 'bg-indigo-600 dark:bg-indigo-500 border-indigo-500 dark:border-indigo-400 text-white dark:text-slate-950' : 'border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900'}`}>
                               {isActive && <Icons.Check className="w-3.5 h-3.5 font-bold" />}
                             </div>
                           </div>
                         )
                       })}
-                      {sources.length === 0 && <p className="text-sm text-slate-500 italic p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">No Data Sources Available</p>}
+                      {sources.length === 0 && <p className="text-sm text-slate-500 italic p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-center">No Data Sources Available</p>}
                     </div>
                   </div>
 
                   {selectedSources.length > 0 && (
                     <div className="animate-in slide-in-from-bottom-2 duration-300 space-y-8">
                       {/* Step 2: Post Processing Block */}
-                      <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4 shadow-[inset_0_2px_10px_rgba(0,0,0,0.2)]">
+                      <div className="p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm dark:shadow-[inset_0_2px_10px_rgba(0,0,0,0.2)]">
                          <div>
-                           <label className="block text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                              <Icons.Filter className="w-4 h-4 text-orange-400" /> Auto-Aggregator
+                           <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                              <Icons.Filter className="w-4 h-4 text-orange-500 dark:text-orange-400" /> Auto-Aggregator
                            </label>
-                           <p className="text-[11px] text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively instead of writing Javascript arrays.</p>
+                           <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively instead of writing Javascript arrays.</p>
                          </div>
                          
                          <div className="space-y-4">
                            <div>
-                              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Group By Identifier</label>
+                              <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Group By Identifier</label>
                               <div className="relative">
                                 <input 
                                   type="text" 
@@ -245,14 +245,14 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                     setPreviewRawJson(null)
                                     setPreviewDataArray(null)
                                   }}
-                                  className="block w-full pl-9 pr-3 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:ring-1 focus:ring-orange-500 transition-shadow outline-none" 
+                                  className="block w-full pl-9 pr-3 py-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-orange-500 transition-shadow outline-none" 
                                   placeholder="e.g. syncProgress or status" 
                                 />
-                                <Icons.Table className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                                <Icons.Table className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-3" />
                               </div>
                            </div>
                            <div>
-                              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Operation Math</label>
+                              <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Operation Math</label>
                               <div className="relative">
                                 <select 
                                   value={aggType}
@@ -261,14 +261,14 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                     setPreviewRawJson(null)
                                     setPreviewDataArray(null)
                                   }}
-                                  className="block w-full pl-9 pr-3 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:ring-1 focus:ring-orange-500 transition-shadow outline-none appearance-none" 
+                                  className="block w-full pl-9 pr-3 py-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-orange-500 transition-shadow outline-none appearance-none" 
                                 >
                                   <option value="COUNT">Count Items</option>
                                   <option value="SUM">Sum Array Columns</option>
                                   <option value="AVG">Average Target</option>
                                 </select>
-                                <Icons.PieChart className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+                                <Icons.PieChart className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-3" />
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 dark:text-slate-500">
                                    <Icons.ChevronDown className="w-4 h-4" />
                                 </div>
                               </div>
@@ -278,10 +278,10 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
 
                       {/* Step 3: Math Matrix Block */}
                       <div>
-                        <label htmlFor="dataQuery" className="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
-                          <Icons.Code className="w-4 h-4 text-emerald-400" /> Matrix Reducer Algorithm
+                        <label htmlFor="dataQuery" className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
+                          <Icons.Code className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Matrix Reducer Algorithm
                         </label>
-                        <p className="text-[11px] text-slate-500 mb-3 leading-relaxed">The ultimate Node sandbox engine. Fuse Multi-Source arrays utilizing Javascript natively: <code className="bg-slate-900 px-1 py-0.5 rounded border border-slate-800 text-emerald-400">ds.flat()</code>.</p>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-500 mb-3 leading-relaxed">The ultimate Node sandbox engine. Fuse Multi-Source arrays utilizing Javascript natively: <code className="bg-slate-100 dark:bg-slate-900 px-1 py-0.5 rounded border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400">ds.flat()</code>.</p>
                         <textarea 
                           required 
                           rows={3}
@@ -293,12 +293,12 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                             setPreviewRawJson(null)
                             setPreviewDataArray(null)
                           }}
-                          className="block w-full px-4 py-3 rounded-xl bg-black border border-slate-800 text-emerald-300 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-sm shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)] resize-none" 
+                          className="block w-full px-4 py-3 rounded-xl bg-slate-800 dark:bg-black border border-slate-700 dark:border-slate-800 text-emerald-400 dark:text-emerald-300 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-sm shadow-inner dark:shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)] resize-none" 
                           placeholder="ds.flat()" 
                         />
                         
                         <div className="mt-4">
-                           <button type="button" onClick={handlePreview} disabled={isPreviewing || !dataQuery} className="w-full py-3 bg-emerald-500/10 hover:bg-emerald-500/20 disabled:opacity-50 text-emerald-400 font-bold rounded-xl flex items-center justify-center gap-2 transition-all border border-emerald-500/30 hover:border-emerald-500/50">
+                           <button type="button" onClick={handlePreview} disabled={isPreviewing || !dataQuery} className="w-full py-3 bg-emerald-50 dark:bg-emerald-500/10 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 disabled:opacity-50 text-emerald-700 dark:text-emerald-400 font-bold rounded-xl flex items-center justify-center gap-2 transition-all border border-emerald-200 dark:border-emerald-500/30 hover:border-emerald-300 dark:hover:border-emerald-500/50 shadow-sm custom-shadow-transition">
                              {isPreviewing ? <Icons.Loader2 className="w-4 h-4 animate-spin" /> : <Icons.Play className="w-4 h-4" />}
                              {isPreviewing ? "Evaluating Sandbox..." : "Render Live Canvas"}
                            </button>
@@ -306,49 +306,49 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                       </div>
 
                       {/* Step 4: Visual Adjustments */}
-                      <div className="pt-6 border-t border-slate-800 space-y-4">
-                         <label className="block text-sm font-bold text-slate-200 mb-1 flex items-center gap-2">
-                            <Icons.Paintbrush className="w-4 h-4 text-sky-400" /> UI Configurations
+                      <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
+                         <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
+                            <Icons.Paintbrush className="w-4 h-4 text-sky-600 dark:text-sky-400" /> UI Configurations
                          </label>
                          <div>
-                            <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Display Title</label>
+                            <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Display Title</label>
                             <input 
                               type="text" 
                               value={configTitle}
                               onChange={e => setConfigTitle(e.target.value)}
-                              className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none" 
+                              className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none" 
                             />
                          </div>
                          <div className="grid grid-cols-2 gap-4">
                            {widget.key === "MASTER_DETAIL_TABLE" ? (
                              <>
                                <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Primary ID Key</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Primary ID Key</label>
                                   <input 
                                     type="text" 
                                     value={tablePrimaryKey}
                                     onChange={e => setTablePrimaryKey(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="id"
                                   />
                                </div>
                                <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Parent Row Columns (Comma separated)</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Parent Row Columns (Comma separated)</label>
                                   <input 
                                     type="text" 
                                     value={parentCols}
                                     onChange={e => setParentCols(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="hostname, status"
                                   />
                                </div>
                                <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Child Detals Columns (Comma separated)</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Child Detals Columns (Comma separated)</label>
                                   <input 
                                     type="text" 
                                     value={childCols}
                                     onChange={e => setChildCols(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="owner, version"
                                   />
                                </div>
@@ -356,32 +356,32 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                            ) : (
                              <>
                                <div>
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">X-Axis Label Key</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">X-Axis Label Key</label>
                                   <input 
                                     type="text" 
                                     value={xAxisKey}
                                     onChange={e => setXAxisKey(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="name"
                                   />
                                </div>
                                <div>
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Y-Axis Value Key</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Y-Axis Value Key</label>
                                   <input 
                                     type="text" 
                                     value={dataKey}
                                     onChange={e => setDataKey(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="value"
                                   />
                                </div>
                                <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Tooltip Metric Name</label>
+                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Tooltip Metric Name</label>
                                   <input 
                                     type="text" 
                                     value={metricLabel}
                                     onChange={e => setMetricLabel(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                     placeholder="e.g. Total Errors"
                                   />
                                </div>
@@ -389,27 +389,27 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                            )}
                            
                            {/* Explicit Grid Sizing Parameters */}
-                           <div className="col-span-2 grid grid-cols-4 gap-4 mt-2 bg-slate-900/50 border border-slate-800 p-4 rounded-xl">
+                           <div className="col-span-2 grid grid-cols-4 gap-4 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
                               <div className="col-span-4 mb-1">
-                                 <label className="block text-[10px] font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
+                                 <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2">
                                     <Icons.LayoutGrid className="w-3.5 h-3.5" /> Initial Grid Coordinate Bindings
                                  </label>
                               </div>
                               <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-400 transition-colors">X Pos (0-11)</label>
-                                 <input type="number" min={0} max={11} value={gridX} onChange={e => setGridX(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-slate-950 border border-slate-700 text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">X Pos (0-11)</label>
+                                 <input type="number" min={0} max={11} value={gridX} onChange={e => setGridX(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
                               </div>
                               <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-400 transition-colors">Y Pos (Row)</label>
-                                 <input type="number" min={0} value={gridY} onChange={e => setGridY(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-slate-950 border border-slate-700 text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Y Pos (Row)</label>
+                                 <input type="number" min={0} value={gridY} onChange={e => setGridY(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
                               </div>
                               <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-400 transition-colors">Width (1-12)</label>
-                                 <input type="number" min={1} max={12} value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-slate-950 border border-slate-700 text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (1-12)</label>
+                                 <input type="number" min={1} max={12} value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
                               </div>
                               <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-400 transition-colors">Height (Rows)</label>
-                                 <input type="number" min={1} max={15} value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-slate-950 border border-slate-700 text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
+                                 <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Height (Rows)</label>
+                                 <input type="number" min={1} max={15} value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono" />
                               </div>
                            </div>
                          </div>
@@ -420,11 +420,11 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                 </form>
                 
                 {/* Left Panel Footer */}
-                <div className="p-6 bg-slate-950/80 border-t border-slate-800 backdrop-blur-md z-10 flex gap-3">
-                  <button type="button" onClick={() => setIsOpen(false)} className="px-4 py-2.5 flex-1 rounded-lg text-sm font-bold text-slate-300 bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:text-white transition-all">
+                <div className="p-6 bg-slate-50/80 dark:bg-slate-950/80 border-t border-slate-200 dark:border-slate-800 backdrop-blur-md z-10 flex gap-3">
+                  <button type="button" onClick={() => setIsOpen(false)} className="px-4 py-2.5 flex-1 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                     Cancel
                   </button>
-                  <button form="inject-form" disabled={isInjecting || selectedSources.length === 0 || !dataQuery} type="submit" className="px-4 flex-[2] py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 border border-indigo-400/30">
+                  <button form="inject-form" disabled={isInjecting || selectedSources.length === 0 || !dataQuery} type="submit" className="px-4 flex-[2] py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(99,102,241,0.2)] dark:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 border border-transparent dark:border-indigo-400/30">
                     {isInjecting ? <Icons.Loader2 className="w-4 h-4 animate-spin" /> : <Icons.PlusSquare className="w-4 h-4" />}
                     {isInjecting ? "Binding..." : "Save Config & Inject"}
                   </button>
@@ -432,35 +432,31 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
               </div>
 
               {/* Right Canvas Panel */}
-              <div className="flex-1 bg-black relative flex flex-col overflow-hidden">
+              <div className="flex-1 bg-slate-100 dark:bg-black relative flex flex-col overflow-hidden">
                 {/* Canvas Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
+                <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
                 
-                {/* 
-                   Fallback states handled by explicit data existence.
-                   The Mock Arrays now bypass this block, rendering standard visuals natively.
-                */}
                 {(!previewDataArray || previewDataArray.length === 0) && !previewRawJson && (
                    <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
-                      <Icons.Database className="w-16 h-16 text-slate-800" strokeWidth={1} />
+                      <Icons.Database className="w-16 h-16 text-slate-300 dark:text-slate-800" strokeWidth={1} />
                       <p className="text-slate-500 font-medium">Select a Data Source to Auto-Preview Live Components natively.</p>
                    </div>
                 )}
 
                 {previewDataArray && ChartComponent && (
                    <div className="flex-1 flex items-center justify-center p-8 lg:p-16 relative z-10 animate-in zoom-in-[0.98] duration-500">
-                     <div className="w-full max-w-4xl ring-1 ring-slate-800/50 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
+                     <div className="w-full max-w-4xl ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120]">
                         {/* Fake Browser TopBar */}
-                        <div className="bg-slate-950 flex items-center px-4 py-2 border-b border-slate-800 gap-2">
+                        <div className="bg-slate-50 dark:bg-slate-950 flex items-center px-4 py-2 border-b border-slate-200 dark:border-slate-800 gap-2">
                            <div className="flex gap-1.5">
-                             <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                             <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                             <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                             <div className="w-3 h-3 rounded-full bg-red-400/80 dark:bg-red-500/80"></div>
+                             <div className="w-3 h-3 rounded-full bg-amber-400/80 dark:bg-amber-500/80"></div>
+                             <div className="w-3 h-3 rounded-full bg-emerald-400/80 dark:bg-emerald-500/80"></div>
                            </div>
-                           <div className="flex-1 text-center font-mono text-[10px] text-slate-600 font-bold uppercase tracking-widest">Live Execution Sandbox</div>
+                           <div className="flex-1 text-center font-mono text-[10px] text-slate-500 dark:text-slate-600 font-bold uppercase tracking-widest">Live Execution Sandbox</div>
                         </div>
                         {/* Actual Component Mount */}
-                        <div className="bg-[#0b1120] p-6">
+                        <div className="p-6">
                            <ChartComponent widget={transientWidget} config={transientConfig} previewData={previewDataArray} />
                         </div>
                      </div>
@@ -468,13 +464,13 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                 )}
 
                 {previewRawJson && (
-                  <div className="h-64 border-t border-slate-800 bg-black/90 backdrop-blur-sm relative z-20 flex flex-col animate-in slide-in-from-bottom-5">
-                    <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 flex items-center gap-2 text-xs font-bold text-slate-400">
-                      <Icons.TerminalSquare className="w-4 h-4 text-indigo-400" /> Data Processor Result Payload (JSON)
-                      <span className="ml-auto text-[10px] font-mono bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-full">{previewDataArray?.length || 0} Nodes Calculated</span>
+                  <div className="h-64 border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-black/90 backdrop-blur-sm relative z-20 flex flex-col animate-in slide-in-from-bottom-5">
+                    <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400">
+                      <Icons.TerminalSquare className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Data Processor Result Payload (JSON)
+                      <span className="ml-auto text-[10px] font-mono bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-transparent">{previewDataArray?.length || 0} Nodes Calculated</span>
                     </div>
                     <div className="flex-1 overflow-auto p-4 custom-scrollbar">
-                      <pre className="text-[12px] font-mono leading-relaxed text-indigo-300">
+                      <pre className="text-[12px] font-mono leading-relaxed text-indigo-800 dark:text-indigo-300">
                         {previewRawJson}
                       </pre>
                     </div>

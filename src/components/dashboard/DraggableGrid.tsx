@@ -89,16 +89,16 @@ export function DraggableGrid({ widget, config }: DraggableGridProps) {
           
           <div className="relative">
             <button 
-              onClick={(e) => { e.stopPropagation(); setMenuOpen(!menuOpen); setActiveWidgetMenu(null); }}
-              className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-md text-sm font-medium text-slate-300 transition-colors cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors cursor-pointer shadow-sm"
             >
               <Settings className="w-4 h-4" /> {t('settings')}
             </button>
             
             {menuOpen && (
-              <div onClick={e => e.stopPropagation()} className="absolute right-0 mt-2 w-64 bg-slate-900 border border-slate-700/50 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] z-50 overflow-hidden">
-                <div className="p-3 border-b border-slate-800 bg-slate-950/50">
-                  <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Visible Widgets</h4>
+              <div onClick={e => e.stopPropagation()} className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-xl dark:shadow-[0_10px_40px_rgba(0,0,0,0.8)] z-50 overflow-hidden">
+                <div className="p-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50">
+                  <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Available Widgets</h4>
                 </div>
                 <div className="p-2 flex flex-col gap-1">
                   {WIDGET_OPTIONS.map(opt => {
@@ -107,9 +107,9 @@ export function DraggableGrid({ widget, config }: DraggableGridProps) {
                       <button 
                         key={opt.id}
                         onClick={() => toggleVisibility(opt.id)}
-                        className="flex items-center justify-between px-3 py-2 hover:bg-slate-800 rounded-lg text-sm text-left transition-colors cursor-pointer"
+                        className="flex items-center justify-between px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm text-left transition-colors cursor-pointer"
                       >
-                        <span className={isVisible ? "text-slate-200" : "text-slate-500"}>{opt.title}</span>
+                        <span className={isVisible ? "text-slate-700 dark:text-slate-300" : "text-slate-400"}>{opt.title}</span>
                         <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${isVisible ? "bg-indigo-500 border-indigo-500" : "border-slate-600"}`}>
                           {isVisible && <Check className="w-3 h-3 text-white" />}
                         </div>
@@ -132,26 +132,25 @@ export function DraggableGrid({ widget, config }: DraggableGridProps) {
         draggableHandle=".drag-handle"
       >
         {widgetConfigs["oracle-status"].visible && (
-          <div key="oracle-status" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col">
-            <div className="drag-handle bg-slate-950 px-4 py-2 border-b border-slate-800 flex items-center justify-between cursor-grab active:cursor-grabbing">
+          <div key="oracle-status" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm dark:shadow-lg flex flex-col transition-colors">
+            <div className="drag-handle bg-slate-50 dark:bg-slate-950 px-4 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between cursor-grab active:cursor-grabbing">
               <div className="flex items-center gap-2 pointer-events-none">
                 <Server className="w-4 h-4 text-slate-400" />
-                <h3 className="font-semibold text-slate-200">{t('oracle_status')}</h3>
+                <h3 className="font-semibold text-slate-800 dark:text-slate-200">{t('oracle_status')}</h3>
               </div>
               
-              <div className="relative">
+              <div className="flex gap-1 relative">
                 <button 
-                  onMouseDown={(e) => e.stopPropagation()} 
-                  onClick={(e) => { e.stopPropagation(); setActiveWidgetMenu(activeWidgetMenu === "oracle-status" ? null : "oracle-status"); setMenuOpen(false); }}
-                  className="p-1 hover:bg-slate-800 rounded-md transition-colors cursor-pointer text-slate-400 hover:text-indigo-400"
+                  onClick={(e) => { e.stopPropagation(); setActiveWidgetMenu(activeWidgetMenu === "oracle-status" ? null : "oracle-status"); }}
+                  className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
                 >
                   <SlidersHorizontal className="w-4 h-4" />
                 </button>
                 
                 {activeWidgetMenu === "oracle-status" && (
-                  <div onMouseDown={e => e.stopPropagation()} onClick={e => e.stopPropagation()} className="absolute right-0 top-full mt-1 w-40 bg-slate-900 border border-slate-700/50 rounded-lg shadow-xl z-50 p-1 flex flex-col gap-1 overflow-hidden">
-                     <button onClick={() => toggleType("oracle-status", "pie")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["oracle-status"].type === "pie" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-300 hover:bg-slate-800"}`}><PieIcon className="w-4 h-4" /> Pie Chart</button>
-                     <button onClick={() => toggleType("oracle-status", "bar")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["oracle-status"].type === "bar" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-300 hover:bg-slate-800"}`}><BarChart2 className="w-4 h-4" /> Bar Chart</button>
+                  <div onMouseDown={e => e.stopPropagation()} onClick={e => e.stopPropagation()} className="absolute right-0 top-full mt-1 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-lg shadow-xl z-50 p-1 flex flex-col gap-1 overflow-hidden">
+                     <button onClick={() => toggleType("oracle-status", "pie")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["oracle-status"].type === "pie" ? "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}><PieIcon className="w-4 h-4" /> Pie Chart</button>
+                     <button onClick={() => toggleType("oracle-status", "bar")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["oracle-status"].type === "bar" ? "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}><BarChart2 className="w-4 h-4" /> Bar Chart</button>
                   </div>
                 )}
               </div>
@@ -168,18 +167,18 @@ export function DraggableGrid({ widget, config }: DraggableGridProps) {
                     </PieChart>
                   </ResponsiveContainer>
                   <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <span className="text-3xl font-bold text-slate-100">85%</span>
-                    <span className="text-xs text-slate-400">Sync Complete</span>
+                    <span className="text-3xl font-bold text-slate-800 dark:text-slate-100">85%</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">Sync Complete</span>
                   </div>
                 </>
               ) : (
                 <div className="h-full flex flex-col justify-end pt-4">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={PIE_DATA} layout="vertical" margin={{ top: 0, right: 30, left: 20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#1e293b" />
+                      <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
                       <XAxis type="number" hide />
                       <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} width={100} />
-                      <RechartsTooltip cursor={{fill: '#1e293b'}} contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', color: '#f1f5f9' }} />
+                      <RechartsTooltip cursor={{fill: '#f1f5f9'}} contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', color: '#1e293b' }} />
                       <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={24}>
                         {PIE_DATA.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                       </Bar>
@@ -192,54 +191,53 @@ export function DraggableGrid({ widget, config }: DraggableGridProps) {
         )}
 
         {widgetConfigs["network-health"].visible && (
-          <div key="network-health" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col">
-            <div className="drag-handle bg-slate-950 px-4 py-2 border-b border-slate-800 flex items-center gap-2 cursor-grab active:cursor-grabbing">
+          <div key="network-health" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm dark:shadow-lg flex flex-col transition-colors">
+            <div className="drag-handle bg-slate-50 dark:bg-slate-950 px-4 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2 cursor-grab active:cursor-grabbing">
               <div className="flex items-center gap-2 pointer-events-none">
                 <Network className="w-4 h-4 text-slate-400" />
-                <h3 className="font-semibold text-slate-200">{t('network')}</h3>
+                <h3 className="font-semibold text-slate-800 dark:text-slate-200">{t('network')}</h3>
               </div>
             </div>
             <div className="flex flex-1 items-center justify-center p-4">
               <div className="text-center">
-                <span className="text-4xl font-extrabold text-emerald-400">12ms</span>
-                <p className="text-sm text-slate-400 mt-1">Status: Excellent</p>
+                <span className="text-4xl font-extrabold text-emerald-500">12ms</span>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Status: Excellent</p>
               </div>
             </div>
           </div>
         )}
 
         {widgetConfigs["server-load"].visible && (
-          <div key="server-load" className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col">
-            <div className="drag-handle bg-slate-950 px-4 py-2 border-b border-slate-800 flex items-center justify-between cursor-grab active:cursor-grabbing">
+          <div key="server-load" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm dark:shadow-lg flex flex-col transition-colors">
+            <div className="drag-handle bg-slate-50 dark:bg-slate-950 px-4 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between cursor-grab active:cursor-grabbing">
               <div className="flex items-center gap-2 pointer-events-none">
                 <Activity className="w-4 h-4 text-slate-400" />
-                <h3 className="font-semibold text-slate-200">{t('server_load')}</h3>
+                <h3 className="font-semibold text-slate-800 dark:text-slate-200">{t('server_load')}</h3>
               </div>
               
-              <div className="relative">
+              <div className="flex gap-1 relative">
                 <button 
-                  onMouseDown={(e) => e.stopPropagation()} 
-                  onClick={(e) => { e.stopPropagation(); setActiveWidgetMenu(activeWidgetMenu === "server-load" ? null : "server-load"); setMenuOpen(false); }}
-                  className="p-1 hover:bg-slate-800 rounded-md transition-colors cursor-pointer text-slate-400 hover:text-indigo-400"
+                  onClick={(e) => { e.stopPropagation(); setActiveWidgetMenu(activeWidgetMenu === "server-load" ? null : "server-load"); }}
+                  className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
                 >
                   <SlidersHorizontal className="w-4 h-4" />
                 </button>
                 
                 {activeWidgetMenu === "server-load" && (
-                  <div onMouseDown={e => e.stopPropagation()} onClick={e => e.stopPropagation()} className="absolute right-0 top-full mt-1 w-48 bg-slate-900 border border-slate-700/50 rounded-lg shadow-xl z-50 p-1 flex flex-col gap-1 overflow-hidden">
-                     <button onClick={() => toggleType("server-load", "progress")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["server-load"].type === "progress" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-300 hover:bg-slate-800"}`}><BarChart2 className="w-4 h-4" /> Generic Progress</button>
-                     <button onClick={() => toggleType("server-load", "area")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["server-load"].type === "area" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-300 hover:bg-slate-800"}`}><AreaIcon className="w-4 h-4" /> Load Area Chart</button>
+                  <div onMouseDown={e => e.stopPropagation()} onClick={e => e.stopPropagation()} className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-lg shadow-xl z-50 p-1 flex flex-col gap-1 overflow-hidden">
+                     <button onClick={() => toggleType("server-load", "progress")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["server-load"].type === "progress" ? "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}><BarChart2 className="w-4 h-4" /> Generic Progress</button>
+                     <button onClick={() => toggleType("server-load", "area")} className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${widgetConfigs["server-load"].type === "area" ? "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}><AreaIcon className="w-4 h-4" /> Load Area Chart</button>
                   </div>
                 )}
               </div>
             </div>
             
             {widgetConfigs["server-load"].type === "progress" ? (
-              <div className="flex flex-1 items-center p-4 gap-4">
-                <div className="w-full bg-slate-800 rounded-full h-4 overflow-hidden relative">
-                  <div className="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded-full w-[65%]" />
+              <div className="flex-1 p-6 flex flex-col justify-center">
+                <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-4 overflow-hidden relative">
+                  <div className="bg-indigo-500 h-full rounded-full w-[65%]" />
                 </div>
-                <span className="font-bold text-slate-300 w-12 text-right">65%</span>
+                <span className="font-bold text-slate-700 dark:text-slate-300 mt-2 text-right">65%</span>
               </div>
             ) : (
               <div className="flex-1 p-4 pt-6 h-full">

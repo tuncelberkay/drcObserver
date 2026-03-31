@@ -3,7 +3,8 @@
 import { Link, usePathname, useRouter } from "@/i18n/routing"
 import { useTranslations, useLocale } from 'next-intl'
 import { useState, useEffect } from "react"
-import { ShieldAlert, ArrowRightLeft } from "lucide-react"
+import { ShieldAlert, ArrowRightLeft, Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
 import * as LucideIcons from "lucide-react"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -21,6 +22,8 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
   const switchLocale = (newLocale: string) => {
     router.replace(pathname, { locale: newLocale })
   }
+  
+  const { theme, setTheme } = useTheme()
   
   // --- STATE FOR HYDRATION SYNC ---
   const [mounted, setMounted] = useState(false)
@@ -52,7 +55,7 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
   if (!mounted) {
     // Skeleton render to perfectly match server output and bypass hydration failures
     return (
-      <nav className="sticky top-0 z-40 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-sm h-16" />
+      <nav className="sticky top-0 z-40 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm h-16" />
     )
   }
 
@@ -75,15 +78,15 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
   })
 
   return (
-    <nav className="sticky top-0 z-40 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-sm">
+    <nav className="sticky top-0 z-40 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
       <div className="flex h-16 items-center px-4 md:px-6">
         
         {/* Logo / Brand */}
         <Link href="/" className="flex items-center gap-2 mr-8 transition-transform hover:scale-105">
           <div className="bg-indigo-500/10 p-1.5 rounded-lg">
-            <ShieldAlert className="w-5 h-5 text-indigo-400" />
+            <ShieldAlert className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
           </div>
-          <span className="font-bold text-slate-100 hidden sm:inline-block tracking-tight">DRC Observer</span>
+          <span className="font-bold text-slate-900 dark:text-slate-100 hidden sm:inline-block tracking-tight">DRC Observer</span>
         </Link>
         
         {/* Navigation Links */}
@@ -98,8 +101,8 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
                 className={cn(
                   "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   isActive 
-                    ? "bg-slate-800 text-slate-100" 
-                    : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
+                    ? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100" 
+                    : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-200"
                 )}
               >
                 <Icon className="w-4 h-4" />
@@ -108,15 +111,15 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
             )
           })}
           
-          <div className="w-[1px] h-6 bg-slate-800 mx-2 hidden md:block"></div>
+          <div className="w-[1px] h-6 bg-slate-200 dark:bg-slate-800 mx-2 hidden md:block"></div>
           
           <Link
             href="/admin"
             className={cn(
               "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
               pathname.includes('/admin')
-                ? "bg-indigo-500/10 text-indigo-400" 
-                : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
+                ? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400" 
+                : "text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-200"
             )}
             title="CMS Configuration"
           >
@@ -125,26 +128,35 @@ export function TopNavBar({ navItems = [] }: { navItems?: any[] }) {
           </Link>
         </div>
 
-        {/* Right Corner: Data Center Action Status */}
+        {/* Right Corner: Data Center Action Status & Settings */}
         <div className="ml-auto flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-1 bg-slate-900 border border-slate-700 p-1 rounded-full shadow-inner mr-2">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
+            title="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
+          <div className="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-1 rounded-full shadow-inner mr-2 transition-colors">
             <button
               onClick={() => switchLocale('en')}
-              className={cn("px-2 py-1 text-xs font-bold rounded-full transition-colors", locale === 'en' ? "bg-indigo-500 text-white" : "text-slate-400 hover:text-slate-200")}
+              className={cn("px-2 py-1 text-xs font-bold rounded-full transition-colors", locale === 'en' ? "bg-indigo-500 text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200")}
             >
               EN
             </button>
             <button
               onClick={() => switchLocale('tr')}
-              className={cn("px-2 py-1 text-xs font-bold rounded-full transition-colors", locale === 'tr' ? "bg-indigo-500 text-white" : "text-slate-400 hover:text-slate-200")}
+              className={cn("px-2 py-1 text-xs font-bold rounded-full transition-colors", locale === 'tr' ? "bg-indigo-500 text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200")}
             >
               TR
             </button>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-400 bg-slate-900 border border-slate-700 transition-colors px-3 py-1.5 rounded-full shadow-inner">
-            <span className="text-slate-500 uppercase tracking-widest text-[10px]">{t('action')}</span>
-            <div className="h-3 w-[1px] bg-slate-700 mx-1" />
+          <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 transition-colors px-3 py-1.5 rounded-full shadow-inner">
+            <span className="uppercase tracking-widest text-[10px]">{t('action')}</span>
+            <div className="h-3 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1" />
             
             {currentState === "PROD" || currentState === "DRC" ? (
               <span className={cn(

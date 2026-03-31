@@ -39,9 +39,10 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`h-full antialiased dark font-sans`}
+      className={`h-full antialiased font-sans`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100">
+      <body className="min-h-full flex flex-col transition-colors duration-300">
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <TopNavBar navItems={navItems} />

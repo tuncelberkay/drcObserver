@@ -38,15 +38,15 @@ export default function AdminLaunchpad() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-950 p-6 md:p-12">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-6 md:p-12 transition-colors">
       <div className="max-w-5xl mx-auto space-y-12">
         <header className="flex flex-col items-center justify-center text-center space-y-4 py-8">
-          <div className="w-20 h-20 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl flex items-center justify-center">
-            <ShieldAlert className="w-10 h-10 text-slate-300" />
+          <div className="w-20 h-20 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex items-center justify-center">
+            <ShieldAlert className="w-10 h-10 text-slate-500 dark:text-slate-300" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-slate-100 tracking-tight">Admin & Configuration</h1>
-            <p className="text-slate-400 mt-2 max-w-xl mx-auto">
+            <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Admin & Configuration</h1>
+            <p className="text-slate-600 dark:text-slate-400 mt-2 max-w-xl mx-auto">
               Select an administrative core module to configure dynamic logic handlers, architecture endpoints, or security bindings explicitly.
             </p>
           </div>
@@ -57,24 +57,24 @@ export default function AdminLaunchpad() {
             <Link 
               key={i} 
               href={mod.href}
-              className={`group relative overflow-hidden bg-slate-900 border ${mod.border} rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 flex flex-col h-full z-10`}
+              className={`group relative overflow-hidden bg-white dark:bg-slate-900 border ${mod.border} rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 flex flex-col h-full z-10 shadow-sm`}
             >
               {mod.bgIcon}
               
-              <div className="bg-slate-950/50 w-16 h-16 rounded-xl flex items-center justify-center border border-slate-800/50 mb-6 shadow-inner z-20">
+              <div className="bg-slate-50/50 dark:bg-slate-950/50 w-16 h-16 rounded-xl flex items-center justify-center border border-slate-200/50 dark:border-slate-800/50 mb-6 shadow-sm dark:shadow-inner z-20">
                 {mod.icon}
               </div>
 
               <div className="z-20 flex-1">
-                <h2 className="text-2xl font-bold text-slate-200 tracking-tight mb-2 group-hover:text-white transition-colors">
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200 tracking-tight mb-2 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                   {mod.title}
                 </h2>
-                <p className="text-sm text-slate-400 leading-relaxed font-medium">
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
                   {mod.description}
                 </p>
               </div>
 
-              <div className="z-20 mt-8 flex items-center gap-2 text-sm font-bold text-slate-300 group-hover:text-white transition-colors">
+              <div className="z-20 mt-8 flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                 Launch Module <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>

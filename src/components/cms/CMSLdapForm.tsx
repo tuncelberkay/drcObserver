@@ -49,15 +49,15 @@ export function CMSLdapForm({ initialData }: { initialData: any }) {
     <form onSubmit={handleSubmit} className="space-y-8">
       
       {/* KILLSWITCH */}
-      <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex items-center justify-between shadow-inner">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl flex items-center justify-between shadow-sm">
         <div>
-          <h3 className="text-lg font-bold text-slate-200">Enforce LDAP Authentication</h3>
-          <p className="text-sm text-slate-400 mt-1">When enabled, Next-Auth will route all login attempts to this directory structure.</p>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Enforce LDAP Authentication</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">When enabled, Next-Auth will route all login attempts to this directory structure.</p>
         </div>
         <button 
           type="button" 
           onClick={() => handleChange('isActive', !formData.isActive)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold transition-colors ${formData.isActive ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-slate-800 text-slate-400 border border-slate-700'}`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold transition-colors ${formData.isActive ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20' : 'bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700'}`}
         >
           {formData.isActive ? <ToggleRight className="w-5 h-5" /> : <ToggleLeft className="w-5 h-5" />}
           {formData.isActive ? "ACTIVE" : "INACTIVE"}
@@ -68,58 +68,58 @@ export function CMSLdapForm({ initialData }: { initialData: any }) {
         
         {/* CONNECTION SETTINGS */}
         <div className="space-y-6">
-          <div className="flex items-center gap-3 border-b border-slate-800 pb-2">
-            <Server className="w-5 h-5 text-indigo-400" />
-            <h3 className="text-xl font-bold text-slate-200">Connection Hooks</h3>
+          <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-2">
+            <Server className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200">Connection Hooks</h3>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Server URL</label>
-            <input required type="text" value={formData.serverUrl} onChange={e => handleChange('serverUrl', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-colors shadow-inner font-mono text-sm" placeholder="ldap://dc01.corp.internal:389" />
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Server URL</label>
+            <input required type="text" value={formData.serverUrl} onChange={e => handleChange('serverUrl', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-colors shadow-inner font-mono text-sm" placeholder="ldap://dc01.corp.internal:389" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Base DN</label>
-            <input required type="text" value={formData.baseDn} onChange={e => handleChange('baseDn', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors shadow-inner font-mono text-sm" placeholder="DC=corp,DC=internal" />
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Base DN</label>
+            <input required type="text" value={formData.baseDn} onChange={e => handleChange('baseDn', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-700 dark:text-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors shadow-inner font-mono text-sm" placeholder="DC=corp,DC=internal" />
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-bold text-amber-400 mb-2">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-4">
+            <div className="flex items-center gap-2 text-sm font-bold text-amber-600 dark:text-amber-400 mb-2">
               <KeyRound className="w-4 h-4" /> Service Account Binding
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">Bind DN</label>
-              <input required type="text" value={formData.bindDn} onChange={e => handleChange('bindDn', e.target.value)} className="block w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 font-mono text-sm" placeholder="CN=admin,DC=..." />
+              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Bind DN</label>
+              <input required type="text" value={formData.bindDn} onChange={e => handleChange('bindDn', e.target.value)} className="block w-full px-3 py-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 font-mono text-sm" placeholder="CN=admin,DC=..." />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">Bind Password {initialData?.bindPassword && "(Stored Securely)"}</label>
-              <input type="password" value={formData.bindPassword} onChange={e => handleChange('bindPassword', e.target.value)} className="block w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-700 text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 font-mono text-sm" placeholder={initialData?.bindPassword ? "•••••••• (Leave blank to keep)" : "••••••••"} />
+              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Bind Password {initialData?.bindPassword && "(Stored Securely)"}</label>
+              <input type="password" value={formData.bindPassword} onChange={e => handleChange('bindPassword', e.target.value)} className="block w-full px-3 py-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 font-mono text-sm" placeholder={initialData?.bindPassword ? "•••••••• (Leave blank to keep)" : "••••••••"} />
             </div>
           </div>
         </div>
 
         {/* QUERY & PERMISSION SETTINGS */}
         <div className="space-y-6">
-          <div className="flex items-center gap-3 border-b border-slate-800 pb-2">
-            <Network className="w-5 h-5 text-purple-400" />
-            <h3 className="text-xl font-bold text-slate-200">Query & Roles</h3>
+          <div className="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-2">
+            <Network className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200">Query & Roles</h3>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1 flex justify-between">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 flex justify-between">
               Login Query Filter 
-              <span className="text-xs text-slate-500 font-mono bg-slate-900 px-2 rounded">{"{{username}}"} injected natively</span>
+              <span className="text-xs text-slate-500 font-mono bg-slate-50 dark:bg-slate-900 px-2 border border-slate-200 dark:border-slate-800 rounded">{"{{username}}"} injected natively</span>
             </label>
-            <input required type="text" value={formData.userFilter} onChange={e => handleChange('userFilter', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-950 border border-slate-700 text-indigo-300 focus:outline-none focus:ring-1 focus:ring-purple-500 transition-colors shadow-inner font-mono text-sm" placeholder="(&(objectCategory=person)(sAMAccountName={{username}}))" />
+            <input required type="text" value={formData.userFilter} onChange={e => handleChange('userFilter', e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-indigo-700 dark:text-indigo-300 focus:outline-none focus:ring-1 focus:ring-purple-500 transition-colors shadow-inner font-mono text-sm" placeholder="(&(objectCategory=person)(sAMAccountName={{username}}))" />
           </div>
         </div>
       </div>
 
-      <div className="pt-6 border-t border-slate-800 flex justify-end">
+      <div className="pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-end">
         <button 
           type="submit" 
           disabled={saving}
-          className="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-base font-bold transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/20"
+          className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-xl text-base font-bold transition-all flex items-center gap-2 shadow-sm shadow-indigo-500/20"
         >
           {saving ? "Deploying..." : saved ? <><CheckCircle2 className="w-5 h-5" /> Saved Globally</> : <><LayoutTemplate className="w-5 h-5" /> Save Configuration</>}
         </button>

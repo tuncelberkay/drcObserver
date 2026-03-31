@@ -69,12 +69,12 @@ export default async function CommandCenter() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-16 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-16 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 transition-colors">
       <div className="text-center max-w-3xl mb-12">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">
+        <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
           {t('title')}
         </h1>
-        <p className="mt-4 text-xl text-slate-400">
+        <p className="mt-4 text-xl text-slate-600 dark:text-slate-400">
           {t('desc')}
         </p>
       </div>
@@ -86,14 +86,14 @@ export default async function CommandCenter() {
           
           return (
             <Link key={card.id} href={card.href} className="group block">
-              <div className={`flex flex-col h-full bg-slate-900 border border-slate-800 rounded-2xl p-8 transition-all duration-300 ${color.border} ${color.shadow}`}>
+              <div className={`flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 transition-all duration-300 shadow-sm ${color.border} ${color.shadow}`}>
                 <div className={`rounded-xl w-14 h-14 flex items-center justify-center mb-6 transition-transform group-hover:scale-110 ${color.bg}`}>
                   <IconCmp className={`w-7 h-7 ${color.text}`} />
                 </div>
-                <h3 className={`text-2xl font-bold text-slate-200 mb-3 transition-colors ${color.hoverText}`}>
+                <h3 className={`text-2xl font-bold text-slate-800 dark:text-slate-200 mb-3 transition-colors ${color.hoverText}`}>
                   {card.title}
                 </h3>
-                <p className="text-slate-400 flex-grow leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 flex-grow leading-relaxed">
                   {card.description}
                 </p>
               </div>

@@ -22,3 +22,237 @@ https://next-auth.js.org/warnings#no_secret
  GET /api/auth/session 200 in 32ms (next.js: 19ms, application-code: 13ms)
  GET /en/admin/sources 200 in 1058ms (next.js: 996ms, proxy.ts: 6ms, application-code: 56ms)
  POST /api/cms/test-source 200 in 2.6s (next.js: 287ms, application-code: 2.3s)
+ GET /en/admin/sources 200 in 485ms (next.js: 134ms, proxy.ts: 85ms, application-code: 267ms)
+ GET /en/admin/sources 200 in 142ms (next.js: 11ms, proxy.ts: 11ms, application-code: 120ms)
+ GET /en/admin/sources 200 in 86ms (next.js: 18ms, proxy.ts: 8ms, application-code: 60ms)
+✓ Compiled in 765ms
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 540ms (next.js: 155ms, application-code: 385ms)
+ GET /en/admin/sources 200 in 1179ms (next.js: 303ms, proxy.ts: 43ms, application-code: 833ms)
+ GET /en/admin/sources 200 in 779ms (next.js: 488ms, proxy.ts: 255ms, application-code: 36ms)
+ POST /api/auth/_log 200 in 16ms (next.js: 6ms, application-code: 10ms)
+ GET /en/admin/sources 200 in 1239ms (next.js: 403ms, proxy.ts: 16ms, application-code: 820ms)
+ GET /api/auth/session 200 in 29ms (next.js: 12ms, application-code: 17ms)
+ GET /en/admin/sources 200 in 363ms (next.js: 174ms, proxy.ts: 5ms, application-code: 184ms)
+ GET /en/admin/sources 200 in 90ms (next.js: 22ms, proxy.ts: 9ms, application-code: 59ms)
+✓ Compiled in 1424ms
+ GET /en/admin/sources 200 in 661ms (next.js: 462ms, proxy.ts: 136ms, application-code: 63ms)
+ GET /en/admin/sources 200 in 1029ms (next.js: 204ms, proxy.ts: 37ms, application-code: 788ms)
+ GET /en/admin/sources 200 in 1011ms (next.js: 326ms, proxy.ts: 6ms, application-code: 679ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 122ms (next.js: 91ms, application-code: 31ms)
+✓ Compiled in 672ms
+ GET /en/admin/sources 200 in 623ms (next.js: 127ms, proxy.ts: 237ms, application-code: 258ms)
+ GET /en/admin/sources 200 in 367ms (next.js: 26ms, proxy.ts: 6ms, application-code: 336ms)
+ GET /en/admin/sources 200 in 344ms (next.js: 60ms, proxy.ts: 15ms, application-code: 270ms)
+ GET /en/admin/sources 200 in 385ms (next.js: 95ms, proxy.ts: 15ms, application-code: 274ms)
+ GET /en/admin/sources 200 in 389ms (next.js: 28ms, proxy.ts: 14ms, application-code: 348ms)
+ GET /en/admin/sources 200 in 384ms (next.js: 126ms, proxy.ts: 16ms, application-code: 243ms)
+ GET /en/admin/sources 200 in 369ms (next.js: 71ms, proxy.ts: 16ms, application-code: 281ms)
+ GET /en/admin/sources 200 in 268ms (next.js: 25ms, proxy.ts: 21ms, application-code: 222ms)
+ GET /en/admin/sources 200 in 184ms (next.js: 41ms, proxy.ts: 16ms, application-code: 128ms)
+ GET /en/admin/sources 200 in 168ms (next.js: 78ms, proxy.ts: 9ms, application-code: 81ms)
+ GET /en/admin/sources 200 in 278ms (next.js: 139ms, proxy.ts: 25ms, application-code: 115ms)
+ GET /en/admin/sources 200 in 192ms (next.js: 30ms, proxy.ts: 12ms, application-code: 150ms)
+ GET /en/admin/sources 200 in 132ms (next.js: 16ms, proxy.ts: 10ms, application-code: 106ms)
+ GET /en/admin/sources 200 in 72ms (next.js: 17ms, proxy.ts: 7ms, application-code: 48ms)
+✓ Compiled in 167ms
+✓ Compiled in 197ms
+✓ Compiled in 174ms
+✓ Compiled in 594ms
+ GET /en/admin/sources 200 in 613ms (next.js: 192ms, proxy.ts: 37ms, application-code: 384ms)
+ GET /en/admin/sources 200 in 296ms (next.js: 22ms, proxy.ts: 12ms, application-code: 262ms)
+ GET /en/admin/sources 200 in 222ms (next.js: 53ms, proxy.ts: 14ms, application-code: 155ms)
+ GET /en/admin/sources 200 in 220ms (next.js: 92ms, proxy.ts: 14ms, application-code: 114ms)
+ GET /en/admin/sources 200 in 219ms (next.js: 128ms, proxy.ts: 15ms, application-code: 76ms)
+✓ Compiled in 423ms
+ GET /en/admin/sources 200 in 433ms (next.js: 148ms, proxy.ts: 26ms, application-code: 259ms)
+ GET /en/admin/sources 200 in 327ms (next.js: 41ms, proxy.ts: 15ms, application-code: 272ms)
+ GET /en/admin/sources 200 in 195ms (next.js: 31ms, proxy.ts: 11ms, application-code: 153ms)
+ GET /en/admin/sources 200 in 194ms (next.js: 63ms, proxy.ts: 11ms, application-code: 119ms)
+ GET /en/admin/sources 200 in 193ms (next.js: 100ms, proxy.ts: 11ms, application-code: 82ms)
+✓ Compiled in 424ms
+⨯ ./src/components/cms/CMSDataSourceModal.tsx:113:9
+Expression expected
+  [90m111 |[0m           onClick={() => setIsOpen([36mtrue[0m)}
+  [90m112 |[0m           className=[32m"flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white...[0m
+[31m[1m>[0m [90m113 |[0m         <button onClick={() => setIsOpen([36mtrue[0m)} className=[32m"flex items-center gap-2 bg-ind...[0m
+  [90m    |[0m         [31m[1m^[0m
+  [90m114 |[0m           <[33mPlus[0m className=[32m"w-4 h-4"[0m /> [33mNew[0m [33mData[0m [33mSource[0m
+  [90m115 |[0m         </button>
+  [90m116 |[0m       )}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Server Component:
+    ./src/components/cms/CMSDataSourceModal.tsx
+    ./src/app/[locale]/admin/sources/page.tsx
+
+  Client Component Browser:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+
+ GET /en/admin/sources 500 in 1646ms (next.js: 1417ms, proxy.ts: 30ms, application-code: 198ms)
+⨯ ./src/components/cms/CMSDataSourceModal.tsx:113:9
+Expression expected
+  [90m111 |[0m           onClick={() => setIsOpen([36mtrue[0m)}
+  [90m112 |[0m           className=[32m"flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white...[0m
+[31m[1m>[0m [90m113 |[0m         <button onClick={() => setIsOpen([36mtrue[0m)} className=[32m"flex items-center gap-2 bg-ind...[0m
+  [90m    |[0m         [31m[1m^[0m
+  [90m114 |[0m           <[33mPlus[0m className=[32m"w-4 h-4"[0m /> [33mNew[0m [33mData[0m [33mSource[0m
+  [90m115 |[0m         </button>
+  [90m116 |[0m       )}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Server Component:
+    ./src/components/cms/CMSDataSourceModal.tsx
+    ./src/app/[locale]/admin/sources/page.tsx
+
+  Client Component Browser:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+
+⨯ ./src/components/cms/CMSDataSourceModal.tsx:113:9
+Expression expected
+  [90m111 |[0m           onClick={() => setIsOpen([36mtrue[0m)}
+  [90m112 |[0m           className=[32m"flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white...[0m
+[31m[1m>[0m [90m113 |[0m         <button onClick={() => setIsOpen([36mtrue[0m)} className=[32m"flex items-center gap-2 bg-ind...[0m
+  [90m    |[0m         [31m[1m^[0m
+  [90m114 |[0m           <[33mPlus[0m className=[32m"w-4 h-4"[0m /> [33mNew[0m [33mData[0m [33mSource[0m
+  [90m115 |[0m         </button>
+  [90m116 |[0m       )}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Server Component:
+    ./src/components/cms/CMSDataSourceModal.tsx
+    ./src/app/[locale]/admin/sources/page.tsx
+
+  Client Component Browser:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+
+ GET /en/admin/sources 500 in 56ms (next.js: 26ms, proxy.ts: 13ms, application-code: 17ms)
+ GET /en/admin/sources 500 in 55ms (next.js: 36ms, proxy.ts: 5ms, application-code: 14ms)
+⨯ ./src/components/cms/CMSDataSourceModal.tsx:113:9
+Expression expected
+  [90m111 |[0m           onClick={() => setIsOpen([36mtrue[0m)}
+  [90m112 |[0m           className=[32m"flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white...[0m
+[31m[1m>[0m [90m113 |[0m         <button onClick={() => setIsOpen([36mtrue[0m)} className=[32m"flex items-center gap-2 bg-ind...[0m
+  [90m    |[0m         [31m[1m^[0m
+  [90m114 |[0m           <[33mPlus[0m className=[32m"w-4 h-4"[0m /> [33mNew[0m [33mData[0m [33mSource[0m
+  [90m115 |[0m         </button>
+  [90m116 |[0m       )}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Server Component:
+    ./src/components/cms/CMSDataSourceModal.tsx
+    ./src/app/[locale]/admin/sources/page.tsx
+
+  Client Component Browser:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+
+[browser] Uncaught Error: ./src/components/cms/CMSDataSourceModal.tsx:113:9
+Expression expected
+  111 |           onClick={() => setIsOpen(true)}
+  112 |           className="flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white...
+> 113 |         <button onClick={() => setIsOpen(true)} className="flex items-center gap-2 bg-ind...
+      |         ^
+  114 |           <Plus className="w-4 h-4" /> New Data Source
+  115 |         </button>
+  116 |       )}
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Server Component:
+    ./src/components/cms/CMSDataSourceModal.tsx
+    ./src/app/[locale]/admin/sources/page.tsx
+
+  Client Component Browser:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component Browser]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/CMSDataSourceModal.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Client Component SSR]
+    ./src/components/cms/CMSDataSourceList.tsx [Server Component]
+    ./src/app/[locale]/admin/sources/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./src/components/cms/CMSDataSourceModal.tsx:113:9)
+    at <unknown> (Error: (./src/components/cms/CMSDataSourceModal.tsx:113:9)
+ GET /en/admin/sources 200 in 804ms (next.js: 443ms, proxy.ts: 8ms, application-code: 353ms)
+ GET /en/admin/sources 200 in 806ms (next.js: 572ms, proxy.ts: 10ms, application-code: 224ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 166ms (next.js: 120ms, application-code: 46ms)
+✓ Compiled in 177ms
+✓ Compiled in 194ms
+ GET /en/admin/sources 200 in 402ms (next.js: 178ms, proxy.ts: 39ms, application-code: 185ms)
+ GET /en 200 in 1564ms (next.js: 1423ms, proxy.ts: 10ms, application-code: 131ms)
+✓ Compiled in 195ms
+ GET /en 200 in 712ms (next.js: 24ms, proxy.ts: 6ms, application-code: 682ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 120ms (next.js: 94ms, application-code: 26ms)
+ GET /en/admin 200 in 325ms (next.js: 195ms, proxy.ts: 6ms, application-code: 124ms)
+ GET /en 200 in 78ms (next.js: 25ms, proxy.ts: 8ms, application-code: 45ms)
+✓ Compiled in 188ms
+✓ Compiled in 173ms
+✓ Compiled in 163ms

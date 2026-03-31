@@ -49,24 +49,24 @@ export function LiveSyncFooter() {
   if (!mounted) {
     // Skeleton placeholder strictly bypassing Server / Client mismatch
     return (
-      <div className="fixed bottom-0 w-full h-10 bg-slate-900 border-t border-slate-800 z-50 pointer-events-none" />
+      <div className="fixed bottom-0 w-full h-10 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 z-50 pointer-events-none transition-colors duration-300" />
     )
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-10 bg-slate-900 border-t border-slate-800 z-50 flex items-center px-4 md:px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+    <div className="fixed bottom-0 left-0 right-0 h-10 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 z-50 flex items-center px-4 md:px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.5)] transition-colors duration-300">
       <div className="flex items-center gap-3 w-48 shrink-0">
         <Activity className={cn(
           "w-4 h-4", 
           Math.min(progress, 100) === 100 ? "animate-none" : "animate-pulse",
           getTextColor(Math.min(progress, 100))
         )} />
-        <span className="text-xs font-bold text-slate-300 tracking-wider w-auto whitespace-nowrap overflow-visible">
+        <span className="text-xs font-bold text-slate-700 dark:text-slate-300 tracking-wider w-auto whitespace-nowrap overflow-visible">
           {t('global_sync')}
         </span>
       </div>
       
-      <div className="flex-1 mx-4 relative h-1.5 bg-slate-800 rounded-full overflow-hidden">
+      <div className="flex-1 mx-4 relative h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
         <div 
           className={cn(
             "h-full rounded-full transition-all duration-500 linear",
