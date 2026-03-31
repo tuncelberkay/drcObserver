@@ -256,3 +256,10 @@ https://next-auth.js.org/warnings#no_secret
 ✓ Compiled in 188ms
 ✓ Compiled in 173ms
 ✓ Compiled in 163ms
+ GET /en 200 in 494ms (next.js: 293ms, proxy.ts: 7ms, application-code: 195ms)
+✓ Compiled in 168ms
+✓ Compiled in 183ms
+ GET /en 200 in 82ms (next.js: 21ms, proxy.ts: 5ms, application-code: 56ms)
+ GET /en 200 in 598ms (next.js: 23ms, proxy.ts: 7ms, application-code: 568ms)
+ GET /api/auth/session 200 in 31ms (next.js: 16ms, application-code: 16ms)
+ GET /en/admin 200 in 304ms (next.js: 180ms, proxy.ts: 9ms, application-code: 115ms)
