@@ -68,6 +68,33 @@ setTimeout(async () => {
     await prisma.$executeRawUnsafe(`ALTER TABLE "User" ADD COLUMN "role" TEXT NOT NULL DEFAULT 'USER';`).catch(() => {});
     await prisma.$executeRawUnsafe(`ALTER TABLE "User" ADD COLUMN "password" TEXT;`).catch(() => {});
     
+    // 6. Ldap and Metrics
+    await prisma.$executeRawUnsafe(`
+      CREATE TABLE IF NOT EXISTS "LdapConfig" (
+        "id" TEXT NOT NULL PRIMARY KEY DEFAULT 'singleton',
+        "serverUrl" TEXT NOT NULL DEFAULT '',
+        "baseDn" TEXT NOT NULL DEFAULT '',
+        "bindDn" TEXT NOT NULL DEFAULT '',
+        "bindPassword" TEXT NOT NULL DEFAULT '',
+        "userFilter" TEXT NOT NULL DEFAULT '(&(objectCategory=person)(sAMAccountName={{username}}))',
+        "isActive" BOOLEAN NOT NULL DEFAULT 0,
+        "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+      );
+    `).catch(() => {});
+    await prisma.$executeRawUnsafe(`
+      CREATE TABLE IF NOT EXISTS "HostMetric" (
+        "id" TEXT NOT NULL PRIMARY KEY,
+        "hostname" TEXT NOT NULL,
+        "os" TEXT NOT NULL,
+        "agentStatus" TEXT NOT NULL,
+        "appOwner" TEXT NOT NULL,
+        "techStack" TEXT NOT NULL,
+        "syncProgress" INTEGER NOT NULL,
+        "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+      );
+    `).catch(() => {});
+    await prisma.$executeRawUnsafe(`CREATE UNIQUE INDEX IF NOT EXISTS "HostMetric_hostname_key" ON "HostMetric"("hostname");`).catch(() => {});
+    
   } catch (e) {
     console.error("Auto-sync drift handler bypassed internal warnings: ", e);
   }
