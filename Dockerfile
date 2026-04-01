@@ -41,6 +41,9 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy static assets
 COPY --from=builder /app/public ./public
+
+# Include Prisma CLI for automated schema migrations against volume data
+RUN npm install -g prisma@5.22.0
 # Copy Prisma mapping for standalone runtime and give permissions to nextjs user
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
@@ -52,5 +55,6 @@ USER nextjs
 
 EXPOSE 3000
 
-# Standalone mode exposes server.js inherently
-CMD ["node", "server.js"]
+# Standalone mode exposes server.js inherently. 
+# We first enforce the schema against the persistent volume before starting the server.
+CMD ["sh", "-c", "npx prisma db push --skip-generate && node server.js"]
