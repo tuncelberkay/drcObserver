@@ -1,9 +1,7 @@
 import { Shield, Fingerprint, Lock } from "lucide-react"
 import { Link } from "@/i18n/routing"
-import { PrismaClient } from '@prisma/client'
+import { prisma } from "@/lib/prisma"
 import { CMSRbacManager } from "@/components/cms/CMSRbacManager"
-
-const prisma = new PrismaClient()
 
 export default async function CMSAdminRoles() {
   const roles = await prisma.appRole.findMany({

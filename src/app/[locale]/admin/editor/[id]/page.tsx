@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client"
+import { prisma } from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { Server, Table, ChevronLeft, ShieldAlert, Lock, Unlock } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { WidgetStoreItem } from "@/components/cms/WidgetStoreItem"
 import { ActiveWidgetCard } from "@/components/cms/ActiveWidgetCard"
-
-const prisma = new PrismaClient()
 
 export default async function CMSLayoutEditor({
   params

@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client"
+import { prisma } from "@/lib/prisma"
 import { ShieldAlert, Plus, Layout, Layers, Link as LinkIcon } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { CMSPageModal } from "@/components/cms/CMSPageModal"
 import { NavigationOrderModal } from "@/components/cms/NavigationOrderModal"
-
-const prisma = new PrismaClient()
 
 export default async function CMSAdminPages() {
   const pages = await prisma.appPage.findMany({

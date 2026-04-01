@@ -1,9 +1,7 @@
 import { Fingerprint, Users, PowerOff, Settings2, FileWarning } from "lucide-react"
 import { Link } from "@/i18n/routing"
-import { PrismaClient } from '@prisma/client'
+import { prisma } from "@/lib/prisma"
 import { CMSLdapForm } from "@/components/cms/CMSLdapForm"
-
-const prisma = new PrismaClient()
 
 export default async function CMSAdminLDAP() {
   const ldapConfig = await prisma.ldapConfig.findUnique({

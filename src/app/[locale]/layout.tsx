@@ -6,10 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { PrismaClient } from '@prisma/client';
-import "./../globals.css";
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
 
 
 export const metadata: Metadata = {

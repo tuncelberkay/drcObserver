@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client"
-import { Database, Lock } from "lucide-react"
+import { prisma } from "@/lib/prisma"
+import { Database, Plus, RefreshCw, Key, Lock } from "lucide-react"
 import { Link } from "@/i18n/routing"
-import { CMSDataSourceModal } from "@/components/cms/CMSDataSourceModal"
 import { CMSDataSourceList } from "@/components/cms/CMSDataSourceList"
-
-const prisma = new PrismaClient()
+import { CMSDataSourceModal } from "@/components/cms/CMSDataSourceModal"
 
 export default async function CMSAdminSources() {
   // Fetch data sources

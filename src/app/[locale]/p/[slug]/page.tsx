@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation"
-import { PrismaClient } from "@prisma/client"
 import { DynamicPageRenderer } from "@/components/cms/DynamicPageRenderer"
 import { getTranslations } from "next-intl/server"
-
-const prisma = new PrismaClient()
+import { prisma } from "@/lib/prisma"
 
 export default async function CMSPage({
   params
