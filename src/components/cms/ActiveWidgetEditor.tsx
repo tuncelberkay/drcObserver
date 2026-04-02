@@ -2,12 +2,13 @@
 
 import { useState, useMemo } from "react"
 import * as Icons from "lucide-react"
+import VisualRecordBuilder from "./VisualRecordBuilder"
 import { bindWidgetDataSource } from "@/app/actions/cms"
 import { WidgetRegistry } from "./WidgetRegistry"
 
 const AVAILABLE_WIDGETS = [
   { key: "OBSERVABILITY_GRID", name: "Responsive Drag Grid", iconName: "Layout", desc: "A customizable matrix of charts." },
-  { key: "MASTER_DETAIL_TABLE", name: "Telemetry Datatable", iconName: "Table", desc: "A deep-dive data table with live logs." },
+  { key: "MASTER_DETAIL_TABLE", name: "Data Table", iconName: "Table", desc: "A deep-dive data table with live logs." },
   { key: "STAT_CARD", name: "KPI Stat Card", iconName: "Hash", desc: "A singular crucial metric indicator." },
   { key: "BAR_CHART", name: "Vertical Bar Matrix", iconName: "BarChart3", desc: "Comparative scale dataset charts." },
   { key: "PIE_CHART", name: "Distribution Pie", iconName: "PieChart", desc: "Visual dataset composition ring." },
@@ -41,6 +42,16 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   const [parentCols, setParentCols] = useState(existingConfig.parentCols || "")
   const [childCols, setChildCols] = useState(existingConfig.childCols || "")
   const [customColors, setCustomColors] = useState<string[]>(existingConfig.colors || [])
+  const [customActions, setCustomActions] = useState<any[]>(existingConfig.customActions || [])
+  const [columnStyles, setColumnStyles] = useState<Record<string, string>>(existingConfig.columnStyles || {})
+  const [lineSettings, setLineSettings] = useState<Record<string, any>>(existingConfig.lineSettings || {})
+  const [elementSettings, setElementSettings] = useState<Record<string, any>>(existingConfig.elementSettings || {})
+  const [activeConfigId, setActiveConfigId] = useState<string | null>(null)
+  
+  const [layoutLines, setLayoutLines] = useState<any[]>(existingConfig.layoutLines || [
+      { id: "line-1", name: "Main Record Line 1", cols: (existingConfig.parentCols || "").split(",").map((c: string) => c.trim()).filter(Boolean) },
+      { id: "drawer", name: "Embedded Detail Drawer", cols: (existingConfig.childCols || "").split(",").map((c: string) => c.trim()).filter(Boolean) }
+  ])
 
 
   const [gridW, setGridW] = useState<number>(widget.w ?? 6)
@@ -59,7 +70,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
         widget.id, 
         selectedSources,
         dataQuery,
-        JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors }),
+        JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings }),
         widget.x ?? 0,
         widget.y ?? 999,
         gridW,
@@ -111,8 +122,10 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     tablePrimaryKey,
     parentCols,
     childCols,
-    colors: customColors.length > 0 ? customColors : undefined
-  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors])
+    colors: customColors.length > 0 ? customColors : undefined,
+    columnStyles,
+    customActions
+  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, customActions, columnStyles])
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10 bg-slate-900/60 dark:bg-slate-950/90 backdrop-blur-md">
@@ -244,6 +257,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                                     <option value={3}>Tall (3 Rows)</option>
                                     <option value={4}>Extra Tall (4 Rows)</option>
                                     <option value={5}>Massive (5 Rows)</option>
+                                    <option value={6}>Giant (6 Rows)</option>
+                                    <option value={10}>Full Page (10 Rows)</option>
+                                    <option value={12}>Max Page (12 Rows)</option>
                                   </select>
                                </div>
                             </div>
@@ -308,25 +324,63 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                                   placeholder="id"
                                 />
                              </div>
-                             <div className="col-span-2">
-                                <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Parent Row Columns (Comma separated)</label>
-                                <input 
-                                  type="text" 
-                                  value={parentCols}
-                                  onChange={e => setParentCols(e.target.value)}
-                                  className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
-                                  placeholder="hostname, status"
-                                />
-                             </div>
-                             <div className="col-span-2">
-                                <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Child Detals Columns (Comma separated)</label>
-                                <input 
-                                  type="text" 
-                                  value={childCols}
-                                  onChange={e => setChildCols(e.target.value)}
-                                  className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
-                                  placeholder="owner, version"
-                                />
+                              <div className="col-span-2 space-y-4">
+                                  <VisualRecordBuilder 
+                                    layoutLines={layoutLines}
+                                    customActions={customActions}
+                                    columnStyles={columnStyles}
+                                    lineSettings={lineSettings}
+                                    elementSettings={elementSettings}
+                                    previewDataArray={previewDataArray}
+                                    onChange={(newState) => {
+                                       if (newState.layoutLines) setLayoutLines(newState.layoutLines)
+                                       if (newState.columnStyles) setColumnStyles(newState.columnStyles)
+                                       if (newState.lineSettings) setLineSettings(newState.lineSettings)
+                                       if (newState.elementSettings) setElementSettings(newState.elementSettings)
+                                       
+                                       // Sync legacy tracking for backward compatibility
+                                       if (newState.layoutLines) {
+                                          const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
+                                          const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
+                                          setParentCols(pCols)
+                                          setChildCols(cCols)
+                                       }
+                                    }}
+                                  />
+
+                                {/* Custom Actions Setup */}
+                                <div className="bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 p-4 rounded-xl shadow-inner mt-2">
+                                   <div className="flex items-center justify-between mb-3">
+                                      <label className="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2"><Icons.Zap className="w-3.5 h-3.5" /> API Action Buttons</label>
+                                      <button type="button" onClick={() => setCustomActions([...customActions, { name: "New Action", endpoint: "/api/path/{PrimaryID}", method: "POST" }])} className="text-[10px] px-2 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-100 dark:hover:bg-indigo-500/40 transition-colors">+ Add Action</button>
+                                   </div>
+                                   {customActions.length === 0 ? (
+                                      <p className="text-[11px] text-slate-500 italic border-t border-slate-100 dark:border-slate-800 pt-3">No custom network actions configured. Actions appear in row details.</p>
+                                   ) : (
+                                       <div className="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-2 mt-2">
+                                          {customActions.map((action, i) => (
+                                             <div key={i} className="grid grid-cols-12 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
+                                                <div className="col-span-12 font-mono text-[9px] text-slate-400 mb-1 flex items-center justify-between">
+                                                   <span>Action Setting</span>
+                                                   <button type="button" onClick={() => { const ac = [...customActions]; ac.splice(i, 1); setCustomActions(ac) }} className="text-rose-500 hover:text-rose-600 flex items-center gap-1 font-bold"><Icons.Trash2 className="w-3 h-3" /> Remove</button>
+                                                </div>
+                                                <input type="text" value={action.name} onChange={e => { const ac = [...customActions]; ac[i].name = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-4 text-xs px-2 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-bold outline-none focus:border-indigo-500 transition-colors" placeholder="Button Name" />
+                                                <select value={action.method} onChange={e => { const ac = [...customActions]; ac[i].method = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-3 text-[10px] px-1 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-bold outline-none focus:border-indigo-500 transition-colors cursor-pointer appearance-none text-center">
+                                                   <option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option><option>PATCH</option>
+                                                </select>
+                                                <input type="text" value={action.endpoint} onChange={e => { const ac = [...customActions]; ac[i].endpoint = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-5 text-xs px-2 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-mono outline-none focus:border-indigo-500 transition-colors" placeholder="/api/reboot/{id}" />
+                                                <div className="col-span-12 grid grid-cols-2 gap-2 mt-1">
+                                                  <input type="text" value={action.payloadTemplate || ""} onChange={e => { const ac = [...customActions]; ac[i].payloadTemplate = e.target.value; setCustomActions(ac) }} className="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-600 dark:text-slate-400 font-mono outline-none focus:border-indigo-500 transition-colors" placeholder='JSON Body: {"host": "{hostname}"}' />
+                                                  <select value={action.placement || "detail"} onChange={e => { const ac = [...customActions]; ac[i].placement = e.target.value; setCustomActions(ac) }} className="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-600 dark:text-slate-400 font-bold outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                                     <option value="main">Render in Main Grid as Column</option>
+                                                     <option value="detail">Show in Detail Row Drawer</option>
+                                                  </select>
+                                                </div>
+                                             </div>
+                                          ))}
+                                       </div>
+                                   )}
+                                </div>
                              </div>
                            </>
                         ) : (

@@ -31,7 +31,7 @@ export default async function CMSLayoutEditor({
   }
 
   const AVAILABLE_WIDGETS = [
-    { key: "MASTER_DETAIL_TABLE", name: "Telemetry Datatable", iconName: "Table", desc: "A deep-dive data table with live logs." },
+    { key: "MASTER_DETAIL_TABLE", name: "Data Table", iconName: "Table", desc: "A deep-dive data table with live logs and actions." },
     { key: "STAT_CARD", name: "KPI Stat Card", iconName: "Hash", desc: "A singular crucial metric indicator." },
     { key: "BAR_CHART", name: "Vertical Bar Matrix", iconName: "BarChart3", desc: "Comparative scale dataset charts." },
     { key: "PIE_CHART", name: "Distribution Pie", iconName: "PieChart", desc: "Visual dataset composition ring." },

@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react"
 import * as Icons from "lucide-react"
 import { addWidgetToPage, bindWidgetDataSource } from "@/app/actions/cms"
 import { WidgetRegistry } from "./WidgetRegistry"
+import VisualRecordBuilder from "./VisualRecordBuilder"
 
 export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, pageId: string, sources: any[] }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +20,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       case "STAT_CARD":
         return { groupBy: "agentStatus", aggType: "COUNT", dataQuery: "ds.flat().filter(d => d.agentStatus === 'Offline')", title: "Offline Agents", xAxisKey: "name", dataKey: "value", metricLabel: "Count", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 10, gridY: 0, gridW: 2, gridH: 3 }
       case "MASTER_DETAIL_TABLE":
-        return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: "Telemetry Datatable", xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "hostname, os, agentStatus", childCols: "appOwner, techStack, syncProgress, updatedAt", gridX: 0, gridY: 7, gridW: 12, gridH: 5 }
+        return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: "Data Table", xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "hostname, os, agentStatus", childCols: "appOwner, techStack, syncProgress, updatedAt", gridX: 0, gridY: 7, gridW: 12, gridH: 5 }
       default:
         return { groupBy: "", aggType: "COUNT", dataQuery: "ds.flat()", title: `${defaultName} Visual`, xAxisKey: "name", dataKey: "value", metricLabel: "Metric", tablePrimaryKey: "id", parentCols: "", childCols: "", gridX: 0, gridY: 0, gridW: 6, gridH: 3 }
     }
@@ -50,6 +51,12 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   const [gridH, setGridH] = useState(preset.gridH)
 
   const [customColors, setCustomColors] = useState<string[]>([])
+  const [layoutLines, setLayoutLines] = useState<any[]>([])
+  const [customActions, setCustomActions] = useState<any[]>([])
+  const [columnStyles, setColumnStyles] = useState<Record<string, string>>({})
+  const [lineSettings, setLineSettings] = useState<Record<string, any>>({})
+  const [elementSettings, setElementSettings] = useState<Record<string, any>>({})
+  const [activeConfigId, setActiveConfigId] = useState<string | null>(null)
   
   const [previewRawJson, setPreviewRawJson] = useState<string | null>(null)
   const [previewDataArray, setPreviewDataArray] = useState<any[] | null>(null)
@@ -66,7 +73,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
           res.widgetId, 
           selectedSources,
           dataQuery,
-          JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined })
+          JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings })
         )
       }
       setIsOpen(false)
@@ -121,8 +128,18 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
              if (xAxisKey === "name") setXAxisKey(keys[0])
              if (dataKey === "value" && keys.length > 1) setDataKey(keys[1])
              if (tablePrimaryKey === "id") setTablePrimaryKey(keys[0])
-             if (parentCols === "hostname, os, agentStatus") setParentCols(keys.slice(0, 3).join(", "))
-             if (childCols === "appOwner, techStack, syncProgress, updatedAt") setChildCols(keys.slice(3, 7).join(", "))
+             if (parentCols === "hostname, os, agentStatus") {
+                setParentCols(keys.slice(0, 3).join(", "))
+             }
+             if (childCols === "appOwner, techStack, syncProgress, updatedAt") {
+                setChildCols(keys.slice(3, 7).join(", "))
+             }
+             if (layoutLines.length === 0) {
+                setLayoutLines([
+                    { id: "line-1", name: "Main Record Line 1", cols: keys.slice(0, 3) },
+                    { id: "drawer", name: "Embedded Detail Drawer", cols: keys.slice(3, 7) }
+                ])
+             }
            }
          }
       }
@@ -165,8 +182,13 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     tablePrimaryKey,
     parentCols,
     childCols,
-    colors: customColors.length > 0 ? customColors : undefined
-  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors])
+    colors: customColors.length > 0 ? customColors : undefined,
+    layoutLines,
+    customActions,
+    columnStyles,
+    lineSettings,
+    elementSettings
+  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, layoutLines, customActions, columnStyles, lineSettings, elementSettings])
 
   return (
     <>
@@ -386,26 +408,47 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                     placeholder="id"
                                   />
                                </div>
-                               <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Parent Row Columns (Comma separated)</label>
-                                  <input 
-                                    type="text" 
-                                    value={parentCols}
-                                    onChange={e => setParentCols(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
-                                    placeholder="hostname, status"
+                                <div className="col-span-2 space-y-4">
+                                  <VisualRecordBuilder 
+                                    layoutLines={layoutLines}
+                                    customActions={customActions}
+                                    columnStyles={columnStyles}
+                                    lineSettings={lineSettings}
+                                    elementSettings={elementSettings}
+                                    previewDataArray={previewDataArray}
+                                    onChange={(newState) => {
+                                       if (newState.layoutLines) setLayoutLines(newState.layoutLines)
+                                       if (newState.columnStyles) setColumnStyles(newState.columnStyles)
+                                       if (newState.lineSettings) setLineSettings(newState.lineSettings)
+                                       if (newState.elementSettings) setElementSettings(newState.elementSettings)
+                                       
+                                       // Sync legacy tracking for backward compatibility
+                                       if (newState.layoutLines) {
+                                          const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
+                                          const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
+                                          setParentCols(pCols)
+                                          setChildCols(cCols)
+                                       }
+                                    }}
                                   />
-                               </div>
-                               <div className="col-span-2">
-                                  <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Child Detals Columns (Comma separated)</label>
-                                  <input 
-                                    type="text" 
-                                    value={childCols}
-                                    onChange={e => setChildCols(e.target.value)}
-                                    className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
-                                    placeholder="owner, version"
-                                  />
-                               </div>
+                                </div>
+
+                                <div className="col-span-2">
+                                  <div className="flex items-center justify-between mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">
+                                     <h3 className="font-bold text-sm tracking-widest uppercase text-slate-500 dark:text-slate-400">Custom Action Buttons</h3>
+                                     <button type="button" onClick={() => setCustomActions([...customActions, { name: "NewAction", endpoint: "/api/path", method: "POST" }])} className="text-[10px] px-2 py-1 bg-indigo-50 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 rounded border border-indigo-200 dark:border-indigo-500/30 font-bold">+ Add Action</button>
+                                  </div>
+                                  {customActions.map((action, i) => (
+                                     <div key={i} className="bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-2 rounded flex flex-col gap-2 mb-2">
+                                        <div className="flex gap-2">
+                                           <input type="text" value={action.name} onChange={e => { const ac = [...customActions]; ac[i].name = e.target.value.replace(/\s+/g,"_"); setCustomActions(ac) }} className="w-1/4 text-[10px] p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold" placeholder="Action_Name" />
+                                           <select value={action.method} onChange={e => { const ac = [...customActions]; ac[i].method = e.target.value; setCustomActions(ac)}} className="w-20 text-[10px] p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold"><option>POST</option><option>GET</option><option>DELETE</option></select>
+                                           <input type="text" value={action.endpoint || ""} onChange={e => { const ac = [...customActions]; ac[i].endpoint = e.target.value; setCustomActions(ac) }} className="flex-1 text-[10px] font-mono p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded" placeholder="/api/target/{id}" />
+                                           <button type="button" onClick={() => { const ac = [...customActions]; ac.splice(i, 1); setCustomActions(ac) }} className="text-rose-500 hover:text-rose-600"><Icons.Trash2 className="w-4 h-4" /></button>
+                                        </div>
+                                     </div>
+                                  ))}
+                                </div>
                              </>
                            ) : (
                              <>
