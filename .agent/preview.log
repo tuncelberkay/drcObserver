@@ -298,3 +298,1676 @@ https://next-auth.js.org/warnings#no_secret
  POST /api/cms/query 200 in 109ms (next.js: 11ms, application-code: 98ms)
  GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
  POST /api/cms/query 200 in 22ms (next.js: 3ms, application-code: 19ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 8ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 14ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 5ms)
+ POST /api/cms/query 200 in 100ms (next.js: 8ms, application-code: 92ms)
+ POST /api/cms/query 200 in 101ms (next.js: 17ms, application-code: 85ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 19ms, application-code: 4ms)
+ POST /api/cms/query 200 in 99ms (next.js: 12ms, application-code: 87ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 13ms, application-code: 4ms)
+ POST /api/cms/query 200 in 109ms (next.js: 17ms, application-code: 92ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/query 200 in 111ms (next.js: 19ms, application-code: 92ms)
+ POST /api/cms/query 200 in 120ms (next.js: 12ms, application-code: 108ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 48ms (next.js: 30ms, application-code: 18ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ POST /api/cms/query 200 in 93ms (next.js: 8ms, application-code: 84ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 10ms, application-code: 9ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 4ms)
+ POST /api/cms/query 200 in 105ms (next.js: 12ms, application-code: 93ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 13ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 22ms, application-code: 7ms)
+ POST /api/cms/query 200 in 104ms (next.js: 6ms, application-code: 98ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 24ms, application-code: 4ms)
+ POST /api/cms/query 200 in 112ms (next.js: 13ms, application-code: 99ms)
+ POST /api/cms/query 200 in 97ms (next.js: 5ms, application-code: 92ms)
+ POST /api/cms/query 200 in 106ms (next.js: 12ms, application-code: 94ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 13ms, application-code: 18ms)
+✓ Compiled in 576ms
+ GET /api/mock/telem 200 in 52ms (next.js: 45ms, application-code: 7ms)
+ POST /api/cms/query 200 in 665ms (next.js: 211ms, application-code: 454ms)
+ GET /en/p/summary 200 in 957ms (next.js: 505ms, proxy.ts: 80ms, application-code: 371ms)
+ GET /en/p/summary 200 in 293ms (next.js: 93ms, proxy.ts: 9ms, application-code: 191ms)
+ GET /en/p/summary 200 in 144ms (next.js: 28ms, proxy.ts: 8ms, application-code: 109ms)
+ GET /en/p/summary 200 in 142ms (next.js: 65ms, proxy.ts: 7ms, application-code: 70ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 11ms, application-code: 6ms)
+ POST /api/cms/query 200 in 83ms (next.js: 3ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 6ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 26ms (next.js: 20ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 34ms (next.js: 29ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 60ms (next.js: 56ms, application-code: 5ms)
+ POST /api/cms/query 200 in 130ms (next.js: 5ms, application-code: 125ms)
+ POST /api/cms/query 200 in 131ms (next.js: 17ms, application-code: 114ms)
+ POST /api/cms/query 200 in 132ms (next.js: 22ms, application-code: 110ms)
+ POST /api/cms/query 200 in 136ms (next.js: 11ms, application-code: 125ms)
+ POST /api/cms/query 200 in 140ms (next.js: 28ms, application-code: 112ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 13ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 26ms (next.js: 20ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 32ms (next.js: 27ms, application-code: 5ms)
+ POST /api/cms/query 200 in 96ms (next.js: 9ms, application-code: 87ms)
+ POST /api/cms/query 200 in 95ms (next.js: 15ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 33ms (next.js: 26ms, application-code: 6ms)
+ POST /api/cms/query 200 in 97ms (next.js: 11ms, application-code: 87ms)
+ POST /api/cms/query 200 in 101ms (next.js: 17ms, application-code: 83ms)
+ POST /api/cms/query 200 in 105ms (next.js: 23ms, application-code: 82ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 7ms, application-code: 5ms)
+ POST /api/cms/query 200 in 87ms (next.js: 5ms, application-code: 82ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 5ms, application-code: 9ms)
+ POST /api/cms/query 200 in 38ms (next.js: 5ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 40ms (next.js: 7ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 84ms (next.js: 8ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 10ms, application-code: 4ms)
+ POST /api/cms/query 200 in 82ms (next.js: 5ms, application-code: 77ms)
+ POST /api/cms/query 200 in 84ms (next.js: 11ms, application-code: 73ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 8ms, application-code: 4ms)
+ POST /api/cms/query 200 in 94ms (next.js: 19ms, application-code: 75ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 115ms (next.js: 35ms, application-code: 81ms)
+ POST /api/cms/query 200 in 118ms (next.js: 27ms, application-code: 91ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 39ms (next.js: 18ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 30ms (next.js: 25ms, application-code: 5ms)
+ POST /api/cms/query 200 in 106ms (next.js: 8ms, application-code: 99ms)
+ POST /api/cms/query 200 in 105ms (next.js: 14ms, application-code: 92ms)
+ GET /api/mock/telem 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 35ms (next.js: 30ms, application-code: 4ms)
+ POST /api/cms/query 200 in 113ms (next.js: 12ms, application-code: 101ms)
+ POST /api/cms/query 200 in 114ms (next.js: 20ms, application-code: 94ms)
+ POST /api/cms/query 200 in 108ms (next.js: 26ms, application-code: 83ms)
+ POST /api/cms/query 200 in 111ms (next.js: 20ms, application-code: 91ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 20ms (next.js: 3ms, application-code: 18ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/query 200 in 95ms (next.js: 5ms, application-code: 90ms)
+ POST /api/cms/query 200 in 89ms (next.js: 6ms, application-code: 83ms)
+ GET /api/mock/telem 200 in 21ms (next.js: 15ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/query 200 in 98ms (next.js: 5ms, application-code: 94ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 4ms)
+ POST /api/cms/query 200 in 108ms (next.js: 11ms, application-code: 98ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 122ms (next.js: 23ms, application-code: 100ms)
+ POST /api/cms/query 200 in 124ms (next.js: 31ms, application-code: 93ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 39ms (next.js: 17ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 18ms, application-code: 4ms)
+ POST /api/cms/query 200 in 105ms (next.js: 5ms, application-code: 100ms)
+ POST /api/cms/query 200 in 106ms (next.js: 14ms, application-code: 92ms)
+ POST /api/cms/query 200 in 100ms (next.js: 30ms, application-code: 70ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 7ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 13ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 21ms (next.js: 16ms, application-code: 5ms)
+ POST /api/cms/query 200 in 103ms (next.js: 22ms, application-code: 81ms)
+ POST /api/cms/query 200 in 107ms (next.js: 17ms, application-code: 90ms)
+ POST /api/cms/query 200 in 96ms (next.js: 15ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 5ms, application-code: 20ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 6ms, application-code: 6ms)
+ POST /api/cms/query 200 in 91ms (next.js: 4ms, application-code: 86ms)
+ GET /api/mock/telem 200 in 25ms (next.js: 17ms, application-code: 7ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 5ms)
+ POST /api/cms/query 200 in 112ms (next.js: 5ms, application-code: 107ms)
+ GET /api/mock/telem 200 in 21ms (next.js: 16ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 29ms (next.js: 25ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 35ms (next.js: 30ms, application-code: 4ms)
+ POST /api/cms/query 200 in 128ms (next.js: 7ms, application-code: 122ms)
+ POST /api/cms/query 200 in 121ms (next.js: 7ms, application-code: 115ms)
+ POST /api/cms/query 200 in 123ms (next.js: 12ms, application-code: 111ms)
+ POST /api/cms/query 200 in 125ms (next.js: 21ms, application-code: 104ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 6ms, application-code: 10ms)
+ POST /api/cms/query 200 in 39ms (next.js: 11ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 4ms)
+ POST /api/cms/query 200 in 93ms (next.js: 6ms, application-code: 88ms)
+ POST /api/cms/query 200 in 83ms (next.js: 5ms, application-code: 78ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 11ms, application-code: 4ms)
+ POST /api/cms/query 200 in 82ms (next.js: 5ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 7ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 13ms, application-code: 4ms)
+ POST /api/cms/query 200 in 96ms (next.js: 12ms, application-code: 85ms)
+ POST /api/cms/query 200 in 98ms (next.js: 21ms, application-code: 77ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 7ms, application-code: 4ms)
+ POST /api/cms/query 200 in 106ms (next.js: 30ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 4ms, application-code: 4ms)
+ POST /api/cms/query 200 in 79ms (next.js: 6ms, application-code: 73ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 7ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/query 200 in 83ms (next.js: 7ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 15ms, application-code: 5ms)
+ POST /api/cms/query 200 in 93ms (next.js: 13ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 14ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 20ms, application-code: 4ms)
+ POST /api/cms/query 200 in 109ms (next.js: 19ms, application-code: 90ms)
+ POST /api/cms/query 200 in 95ms (next.js: 5ms, application-code: 90ms)
+ POST /api/cms/query 200 in 97ms (next.js: 13ms, application-code: 84ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 42ms (next.js: 18ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 11ms, application-code: 8ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 21ms, application-code: 4ms)
+ POST /api/cms/query 200 in 87ms (next.js: 7ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 26ms (next.js: 22ms, application-code: 4ms)
+ POST /api/cms/query 200 in 93ms (next.js: 17ms, application-code: 76ms)
+ POST /api/cms/query 200 in 96ms (next.js: 12ms, application-code: 84ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 4ms)
+ POST /api/cms/query 200 in 96ms (next.js: 15ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 92ms (next.js: 11ms, application-code: 81ms)
+ POST /api/cms/query 200 in 87ms (next.js: 11ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 7ms, application-code: 8ms)
+ POST /api/cms/query 200 in 28ms (next.js: 3ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 4ms)
+ POST /api/cms/query 200 in 85ms (next.js: 18ms, application-code: 67ms)
+ POST /api/cms/query 200 in 89ms (next.js: 9ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 8ms, application-code: 7ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 19ms, application-code: 4ms)
+ POST /api/cms/query 200 in 98ms (next.js: 6ms, application-code: 92ms)
+ POST /api/cms/query 200 in 97ms (next.js: 10ms, application-code: 87ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 13ms, application-code: 4ms)
+ POST /api/cms/query 200 in 110ms (next.js: 16ms, application-code: 94ms)
+ POST /api/cms/query 200 in 105ms (next.js: 15ms, application-code: 91ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 46ms (next.js: 18ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 11ms, application-code: 4ms)
+ POST /api/cms/query 200 in 87ms (next.js: 4ms, application-code: 83ms)
+ POST /api/cms/query 200 in 92ms (next.js: 11ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 18ms, application-code: 5ms)
+ POST /api/cms/query 200 in 97ms (next.js: 13ms, application-code: 85ms)
+ GET /api/mock/telem 200 in 27ms (next.js: 21ms, application-code: 6ms)
+ POST /api/cms/query 200 in 110ms (next.js: 4ms, application-code: 106ms)
+ POST /api/cms/query 200 in 103ms (next.js: 11ms, application-code: 92ms)
+ POST /api/cms/query 200 in 116ms (next.js: 17ms, application-code: 99ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 65ms (next.js: 18ms, application-code: 47ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 93ms (next.js: 8ms, application-code: 85ms)
+ POST /api/cms/query 200 in 81ms (next.js: 4ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 13ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 18ms, application-code: 4ms)
+ POST /api/cms/query 200 in 90ms (next.js: 6ms, application-code: 85ms)
+ POST /api/cms/query 200 in 73ms (next.js: 6ms, application-code: 67ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 8ms, application-code: 7ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 111ms (next.js: 14ms, application-code: 97ms)
+ POST /api/cms/query 200 in 100ms (next.js: 12ms, application-code: 88ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 11ms, application-code: 18ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 16ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 26ms (next.js: 22ms, application-code: 4ms)
+ POST /api/cms/query 200 in 95ms (next.js: 10ms, application-code: 85ms)
+ POST /api/cms/query 200 in 98ms (next.js: 5ms, application-code: 94ms)
+ GET /api/mock/telem 200 in 25ms (next.js: 18ms, application-code: 7ms)
+ POST /api/cms/query 200 in 111ms (next.js: 20ms, application-code: 91ms)
+ POST /api/cms/query 200 in 90ms (next.js: 15ms, application-code: 76ms)
+ POST /api/cms/query 200 in 119ms (next.js: 28ms, application-code: 91ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 4ms)
+ POST /api/cms/query 200 in 103ms (next.js: 21ms, application-code: 82ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/query 200 in 29ms (next.js: 5ms, application-code: 24ms)
+ GET /en/p/summary 200 in 722ms (next.js: 32ms, proxy.ts: 7ms, application-code: 683ms)
+ GET /en/p/summary 200 in 132ms (next.js: 13ms, proxy.ts: 12ms, application-code: 108ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 18ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 24ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 34ms (next.js: 30ms, application-code: 4ms)
+ POST /api/cms/query 200 in 114ms (next.js: 22ms, application-code: 92ms)
+ POST /api/cms/query 200 in 122ms (next.js: 10ms, application-code: 112ms)
+ POST /api/cms/query 200 in 123ms (next.js: 17ms, application-code: 106ms)
+ POST /api/cms/query 200 in 104ms (next.js: 18ms, application-code: 87ms)
+ GET /api/mock/telem 200 in 25ms (next.js: 20ms, application-code: 5ms)
+ POST /api/cms/query 200 in 114ms (next.js: 23ms, application-code: 91ms)
+ POST /api/cms/query 200 in 139ms (next.js: 28ms, application-code: 111ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 4ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 181ms (next.js: 94ms, application-code: 87ms)
+ POST /api/cms/query 200 in 201ms (next.js: 4ms, application-code: 197ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/p/summary 200 in 333ms (next.js: 157ms, proxy.ts: 8ms, application-code: 167ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnf3cvuq000r3bdhniofur5m","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3d1bk000t3bdhz0inwkkn","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3sx8y000x3bdha1vayssv","w":4,"...":"2 items not stringified"},"... 3 items not stringified"]) in 92ms src/app/actions/cms.ts
+ GET /en/admin 200 in 145ms (next.js: 38ms, proxy.ts: 5ms, application-code: 102ms)
+ GET /en/admin/pages 200 in 147ms (next.js: 62ms, proxy.ts: 11ms, application-code: 74ms)
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 347ms (next.js: 218ms, proxy.ts: 8ms, application-code: 121ms)
+ POST /api/cms/preview 200 in 63ms (next.js: 52ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 10ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 10ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 37ms (next.js: 3ms, application-code: 34ms)
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 127ms (next.js: 19ms, proxy.ts: 6ms, application-code: 102ms)
+  └─ ƒ addWidgetToPage("cmnezrt1l000co8vdr08fhoy5", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 92ms (next.js: 9ms, proxy.ts: 5ms, application-code: 78ms)
+  └─ ƒ bindWidgetDataSource("cmnh61lns0003rispmcaep1vi", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, appOwner, techStack, syncProgress\"}") in 12ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 15ms (next.js: 5ms, application-code: 10ms)
+ GET /en/p/summary 200 in 63ms (next.js: 20ms, proxy.ts: 6ms, application-code: 37ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 17ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 30ms (next.js: 26ms, application-code: 5ms)
+ POST /api/cms/query 200 in 108ms (next.js: 6ms, application-code: 102ms)
+ GET /api/mock/telem 200 in 31ms (next.js: 26ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 37ms (next.js: 31ms, application-code: 5ms)
+ POST /api/cms/query 200 in 111ms (next.js: 20ms, application-code: 91ms)
+ POST /api/cms/query 200 in 116ms (next.js: 9ms, application-code: 107ms)
+ POST /api/cms/query 200 in 119ms (next.js: 15ms, application-code: 105ms)
+ POST /api/cms/query 200 in 120ms (next.js: 24ms, application-code: 96ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 17ms, application-code: 4ms)
+ POST /api/cms/query 200 in 104ms (next.js: 12ms, application-code: 92ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 18ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 24ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 35ms (next.js: 30ms, application-code: 5ms)
+ POST /api/cms/query 200 in 96ms (next.js: 6ms, application-code: 91ms)
+ POST /api/cms/query 200 in 99ms (next.js: 11ms, application-code: 88ms)
+ POST /api/cms/query 200 in 101ms (next.js: 19ms, application-code: 82ms)
+ POST /api/cms/query 200 in 104ms (next.js: 25ms, application-code: 79ms)
+ POST /api/cms/query 200 in 106ms (next.js: 31ms, application-code: 76ms)
+ GET /api/mock/telem 200 in 27ms (next.js: 22ms, application-code: 4ms)
+ POST /api/cms/query 200 in 87ms (next.js: 6ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 11ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 30ms (next.js: 25ms, application-code: 5ms)
+ POST /api/cms/query 200 in 108ms (next.js: 5ms, application-code: 103ms)
+ POST /api/cms/query 200 in 112ms (next.js: 11ms, application-code: 101ms)
+ POST /api/cms/query 200 in 114ms (next.js: 17ms, application-code: 97ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /api/cms/query 200 in 121ms (next.js: 23ms, application-code: 98ms)
+ POST /en/p/summary 200 in 293ms (next.js: 79ms, proxy.ts: 7ms, application-code: 207ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnf3cvuq000r3bdhniofur5m","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3d1bk000t3bdhz0inwkkn","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3sx8y000x3bdha1vayssv","w":4,"...":"2 items not stringified"},"... 4 items not stringified"]) in 159ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 191ms (next.js: 12ms, proxy.ts: 6ms, application-code: 173ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnf3cvuq000r3bdhniofur5m","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3d1bk000t3bdhz0inwkkn","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3sx8y000x3bdha1vayssv","w":4,"...":"2 items not stringified"},"... 4 items not stringified"]) in 121ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 36ms (next.js: 5ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 53ms (next.js: 14ms, application-code: 39ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/query 200 in 89ms (next.js: 7ms, application-code: 82ms)
+ POST /api/cms/query 200 in 89ms (next.js: 15ms, application-code: 74ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 8ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 4ms)
+ POST /api/cms/query 200 in 80ms (next.js: 4ms, application-code: 75ms)
+ POST /api/cms/query 200 in 82ms (next.js: 10ms, application-code: 72ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 9ms, application-code: 6ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 16ms, application-code: 6ms)
+ POST /api/cms/query 200 in 105ms (next.js: 16ms, application-code: 89ms)
+ POST /api/cms/query 200 in 108ms (next.js: 22ms, application-code: 86ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 44ms (next.js: 13ms, application-code: 32ms)
+ GET /en/p/infrastructure 200 in 64ms (next.js: 16ms, proxy.ts: 5ms, application-code: 43ms)
+ GET /en/p/summary 200 in 68ms (next.js: 21ms, proxy.ts: 9ms, application-code: 38ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 10ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 21ms (next.js: 16ms, application-code: 5ms)
+ POST /api/cms/query 200 in 87ms (next.js: 6ms, application-code: 81ms)
+ POST /api/cms/query 200 in 89ms (next.js: 19ms, application-code: 70ms)
+ POST /api/cms/query 200 in 92ms (next.js: 12ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 108ms (next.js: 26ms, application-code: 83ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 20ms, application-code: 4ms)
+ POST /api/cms/query 200 in 103ms (next.js: 14ms, application-code: 89ms)
+ POST /api/cms/query 200 in 95ms (next.js: 11ms, application-code: 84ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 18ms, application-code: 4ms)
+ POST /api/cms/query 200 in 89ms (next.js: 5ms, application-code: 84ms)
+ POST /api/cms/query 200 in 91ms (next.js: 11ms, application-code: 80ms)
+ POST /api/cms/query 200 in 92ms (next.js: 18ms, application-code: 75ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 4ms)
+ POST /api/cms/query 200 in 84ms (next.js: 9ms, application-code: 75ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 9ms, application-code: 4ms)
+ POST /api/cms/query 200 in 77ms (next.js: 6ms, application-code: 71ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 4ms)
+ POST /api/cms/query 200 in 90ms (next.js: 12ms, application-code: 77ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 17ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ POST /api/cms/query 200 in 95ms (next.js: 14ms, application-code: 81ms)
+ POST /api/cms/query 200 in 98ms (next.js: 20ms, application-code: 78ms)
+ POST /api/cms/query 200 in 102ms (next.js: 9ms, application-code: 94ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 13ms, application-code: 5ms)
+ POST /api/cms/query 200 in 89ms (next.js: 18ms, application-code: 71ms)
+ POST /en/p/summary 200 in 270ms (next.js: 90ms, proxy.ts: 26ms, application-code: 154ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnf3cvuq000r3bdhniofur5m","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3d1bk000t3bdhz0inwkkn","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3sx8y000x3bdha1vayssv","w":4,"...":"2 items not stringified"},"... 4 items not stringified"]) in 94ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 179ms (next.js: 9ms, proxy.ts: 6ms, application-code: 164ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnf3cvuq000r3bdhniofur5m","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3d1bk000t3bdhz0inwkkn","w":4,"...":"2 items not stringified"},{"h":4,"id":"cmnf3sx8y000x3bdha1vayssv","w":4,"...":"2 items not stringified"},"... 4 items not stringified"]) in 114ms src/app/actions/cms.ts
+ GET /en/admin 200 in 72ms (next.js: 19ms, proxy.ts: 8ms, application-code: 45ms)
+ GET /en/admin/pages 200 in 91ms (next.js: 20ms, proxy.ts: 5ms, application-code: 66ms)
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 92ms (next.js: 20ms, proxy.ts: 6ms, application-code: 66ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 18ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 21ms (next.js: 16ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 10ms, application-code: 6ms)
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 130ms (next.js: 30ms, proxy.ts: 10ms, application-code: 89ms)
+  └─ ƒ removeWidget("cmnf3cvuq000r3bdhniofur5m") in 11ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 113ms (next.js: 8ms, proxy.ts: 7ms, application-code: 98ms)
+  └─ ƒ removeWidget("cmnf3d1bk000t3bdhz0inwkkn") in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 123ms (next.js: 20ms, proxy.ts: 10ms, application-code: 92ms)
+  └─ ƒ removeWidget("cmnf3sx8y000x3bdha1vayssv") in 14ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 112ms (next.js: 12ms, proxy.ts: 8ms, application-code: 92ms)
+  └─ ƒ removeWidget("cmnf3rz2v000v3bdhevr0u92w") in 13ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 123ms (next.js: 22ms, proxy.ts: 11ms, application-code: 90ms)
+  └─ ƒ removeWidget("cmnf46knh000z3bdhkjp395ud") in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 111ms (next.js: 13ms, proxy.ts: 12ms, application-code: 87ms)
+  └─ ƒ removeWidget("cmnf470cl00113bdhbi6ng2dp") in 11ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 151ms (next.js: 33ms, proxy.ts: 8ms, application-code: 110ms)
+  └─ ƒ removeWidget("cmnh57mgn0001rispj122wzms") in 16ms src/app/actions/cms.ts
+ GET /en/p/summary 200 in 59ms (next.js: 17ms, proxy.ts: 5ms, application-code: 37ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 45ms (next.js: 4ms, application-code: 41ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 53ms (next.js: 8ms, application-code: 45ms)
+ POST /en/p/summary 200 in 123ms (next.js: 31ms, proxy.ts: 7ms, application-code: 85ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"}]) in 12ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 79ms (next.js: 9ms, proxy.ts: 7ms, application-code: 63ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"}]) in 11ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 3ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ POST /api/cms/query 200 in 37ms (next.js: 5ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 26ms)
+ POST /api/path/123 404 in 830ms (next.js: 706ms, application-code: 124ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/query 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 35ms (next.js: 6ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 6ms, application-code: 9ms)
+ POST /api/cms/query 200 in 35ms (next.js: 4ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 6ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 43ms (next.js: 7ms, application-code: 36ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 42ms (next.js: 9ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 4ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 36ms (next.js: 3ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 7ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 7ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 7ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 39ms (next.js: 8ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 42ms (next.js: 6ms, application-code: 36ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 37ms (next.js: 5ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 37ms (next.js: 7ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 41ms (next.js: 6ms, application-code: 35ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 5ms, application-code: 9ms)
+ POST /api/cms/query 200 in 34ms (next.js: 4ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 4ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 4ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 35ms (next.js: 6ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ POST /api/cms/query 200 in 41ms (next.js: 7ms, application-code: 34ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 22ms (next.js: 3ms, application-code: 19ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 4ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 4ms, application-code: 4ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 39ms (next.js: 6ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 6ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 5ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 38ms (next.js: 5ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 4ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ POST /api/cms/query 200 in 39ms (next.js: 6ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 35ms (next.js: 4ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 5ms, application-code: 7ms)
+ POST /api/cms/query 200 in 34ms (next.js: 4ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 3ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 35ms (next.js: 5ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 3ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 5ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 33ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 39ms (next.js: 7ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 31ms (next.js: 4ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 37ms (next.js: 5ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/query 200 in 40ms (next.js: 6ms, application-code: 34ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 5ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ POST /api/cms/query 200 in 29ms (next.js: 3ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 4ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 27ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 4ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 8ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ POST /api/cms/query 200 in 35ms (next.js: 6ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 25ms (next.js: 5ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ POST /api/cms/query 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 5ms, application-code: 10ms)
+ POST /api/cms/query 200 in 45ms (next.js: 8ms, application-code: 37ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ POST /api/cms/query 200 in 34ms (next.js: 4ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 4ms, application-code: 27ms)
+✓ Compiled in 112ms
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 34ms (next.js: 6ms, application-code: 28ms)
+✓ Compiled in 430ms
+ GET /api/mock/telem 200 in 63ms (next.js: 57ms, application-code: 7ms)
+ POST /api/cms/query 200 in 553ms (next.js: 173ms, application-code: 379ms)
+ GET /en/p/summary 200 in 802ms (next.js: 395ms, proxy.ts: 87ms, application-code: 320ms)
+ GET /en/p/summary 200 in 266ms (next.js: 84ms, proxy.ts: 7ms, application-code: 174ms)
+ GET /en/p/summary 200 in 132ms (next.js: 26ms, proxy.ts: 6ms, application-code: 100ms)
+ GET /en/p/summary 200 in 131ms (next.js: 56ms, proxy.ts: 6ms, application-code: 69ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 35ms (next.js: 5ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 6ms, application-code: 7ms)
+ POST /api/cms/query 200 in 39ms (next.js: 4ms, application-code: 36ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/query 200 in 37ms (next.js: 6ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 2ms, application-code: 6ms)
+ POST /api/cms/query 200 in 32ms (next.js: 9ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 34ms (next.js: 10ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 6ms, application-code: 6ms)
+ POST /api/cms/query 200 in 38ms (next.js: 5ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 6ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 9ms)
+ POST /api/cms/query 200 in 41ms (next.js: 6ms, application-code: 35ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 28ms (next.js: 5ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 37ms (next.js: 6ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ POST /api/cms/query 200 in 38ms (next.js: 5ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 4ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 28ms (next.js: 4ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 5ms, application-code: 7ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 6ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 28ms (next.js: 3ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 23ms (next.js: 3ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/query 200 in 34ms (next.js: 6ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 4ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ POST /api/cms/query 200 in 39ms (next.js: 5ms, application-code: 35ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 5ms, application-code: 9ms)
+ POST /api/cms/query 200 in 37ms (next.js: 5ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 25ms (next.js: 4ms, application-code: 21ms)
+ GET /en/p/summary 200 in 714ms (next.js: 26ms, proxy.ts: 7ms, application-code: 681ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 6ms, application-code: 4ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 152ms (next.js: 101ms, application-code: 51ms)
+ POST /api/cms/query 200 in 173ms (next.js: 5ms, application-code: 169ms)
+ POST /en/p/summary 200 in 128ms (next.js: 31ms, proxy.ts: 25ms, application-code: 73ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"}]) in 14ms src/app/actions/cms.ts
+ GET /en/admin 200 in 127ms (next.js: 51ms, proxy.ts: 4ms, application-code: 72ms)
+ GET /en/admin/pages 200 in 166ms (next.js: 73ms, proxy.ts: 7ms, application-code: 86ms)
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 324ms (next.js: 209ms, proxy.ts: 9ms, application-code: 106ms)
+ POST /api/cms/preview 200 in 54ms (next.js: 48ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 63ms (next.js: 57ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 18ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 11ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 37ms (next.js: 5ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 36ms (next.js: 7ms, application-code: 29ms)
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 142ms (next.js: 30ms, proxy.ts: 11ms, application-code: 100ms)
+  └─ ƒ addWidgetToPage("cmnezrt1l000co8vdr08fhoy5", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 106ms (next.js: 9ms, proxy.ts: 21ms, application-code: 76ms)
+  └─ ƒ bindWidgetDataSource("cmnh9pl8x0005rispj8heplul", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, appOwner, techStack, syncProgress\"}") in 10ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ GET /en/p/summary 200 in 71ms (next.js: 24ms, proxy.ts: 8ms, application-code: 39ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 10ms, application-code: 8ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 19ms, application-code: 4ms)
+ POST /api/cms/query 200 in 80ms (next.js: 4ms, application-code: 76ms)
+ POST /api/cms/query 200 in 81ms (next.js: 12ms, application-code: 70ms)
+ POST /api/cms/query 200 in 76ms (next.js: 16ms, application-code: 61ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 15ms, application-code: 5ms)
+ POST /api/cms/query 200 in 100ms (next.js: 22ms, application-code: 77ms)
+ POST /en/p/summary 200 in 173ms (next.js: 51ms, proxy.ts: 28ms, application-code: 94ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnh9pl8x0005rispj8heplul","w":12,"...":"2 items not stringified"}]) in 33ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 130ms (next.js: 40ms, proxy.ts: 5ms, application-code: 84ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnh9pl8x0005rispj8heplul","w":12,"...":"2 items not stringified"}]) in 21ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 105ms (next.js: 24ms, proxy.ts: 5ms, application-code: 76ms)
+  └─ ƒ updateWidgetGridPosition([{"h":7,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnh9pl8x0005rispj8heplul","w":12,"...":"2 items not stringified"}]) in 16ms src/app/actions/cms.ts
+ POST /en/p/summary 200 in 123ms (next.js: 50ms, proxy.ts: 4ms, application-code: 69ms)
+  └─ ƒ updateWidgetGridPosition([{"h":7,"id":"cmnh61lns0003rispmcaep1vi","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnh9pl8x0005rispj8heplul","w":12,"...":"2 items not stringified"}]) in 18ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 8ms, application-code: 4ms)
+ POST /api/cms/query 200 in 38ms (next.js: 10ms, application-code: 28ms)
+ POST /api/cms/query 200 in 42ms (next.js: 5ms, application-code: 37ms)
+ GET /en/admin 200 in 80ms (next.js: 22ms, proxy.ts: 6ms, application-code: 52ms)
+ GET /en/admin 200 in 154ms (next.js: 20ms, proxy.ts: 5ms, application-code: 130ms)
+ GET /api/auth/session 200 in 37ms (next.js: 23ms, application-code: 14ms)
+ GET /en/admin/pages 200 in 98ms (next.js: 15ms, proxy.ts: 9ms, application-code: 74ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 91ms (next.js: 22ms, proxy.ts: 8ms, application-code: 60ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 7ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 20ms (next.js: 8ms, application-code: 12ms)
+ POST /api/cms/preview 200 in 26ms (next.js: 21ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 33ms (next.js: 28ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 117ms (next.js: 30ms, proxy.ts: 7ms, application-code: 80ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 14ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 89ms (next.js: 7ms, proxy.ts: 5ms, application-code: 77ms)
+  └─ ƒ bindWidgetDataSource("cmnh9rege0007rispb90sk5um", [], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, appOwner, techStack, syncProgress\"}") in 10ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 15ms (next.js: 5ms, application-code: 10ms)
+ GET /en/p/infrastructure 200 in 67ms (next.js: 21ms, proxy.ts: 8ms, application-code: 38ms)
+ POST /api/cms/query 200 in 19ms (next.js: 4ms, application-code: 15ms)
+ POST /api/cms/query 200 in 19ms (next.js: 10ms, application-code: 9ms)
+ POST /en/p/infrastructure 200 in 74ms (next.js: 8ms, proxy.ts: 7ms, application-code: 58ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh9rege0007rispb90sk5um","w":12,"...":"2 items not stringified"}]) in 8ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 75ms (next.js: 8ms, proxy.ts: 4ms, application-code: 63ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnh9rege0007rispb90sk5um","w":12,"...":"2 items not stringified"}]) in 8ms src/app/actions/cms.ts
+ POST /api/cms/query 200 in 12ms (next.js: 3ms, application-code: 9ms)
+ GET /en/admin 200 in 76ms (next.js: 23ms, proxy.ts: 8ms, application-code: 45ms)
+ GET /en/admin/pages 200 in 103ms (next.js: 24ms, proxy.ts: 7ms, application-code: 71ms)
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 100ms (next.js: 29ms, proxy.ts: 8ms, application-code: 63ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 22ms (next.js: 17ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 2ms, application-code: 6ms)
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 130ms (next.js: 17ms, proxy.ts: 7ms, application-code: 105ms)
+  └─ ƒ removeWidget("cmnh61lns0003rispmcaep1vi") in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 103ms (next.js: 14ms, proxy.ts: 6ms, application-code: 83ms)
+  └─ ƒ removeWidget("cmnh9pl8x0005rispj8heplul") in 11ms src/app/actions/cms.ts
+✓ Compiled in 357ms
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 444ms (next.js: 212ms, proxy.ts: 4ms, application-code: 227ms)
+✓ Compiled in 183ms
+[browser] ./src/components/cms/ActiveWidgetEditor.tsx:325:159
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+  323 | ...
+  324 | ...ataTransfer.setData("text/plain", JSON.stringify({ key, group })) }
+> 325 | ...ring, currentList: string[], setter: any) => {
+      |                                               ^
+  326 | ...
+  327 | ...
+  328 | ...licity
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/cms/ActiveWidgetEditor.tsx [Client Component Browser]
+    ./src/components/cms/ActiveWidgetCard.tsx [Client Component Browser]
+    ./src/components/cms/ActiveWidgetCard.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/ActiveWidgetEditor.tsx [Client Component SSR]
+    ./src/components/cms/ActiveWidgetCard.tsx [Client Component SSR]
+    ./src/components/cms/ActiveWidgetCard.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component] 
+ GET /en/admin 200 in 175ms (next.js: 24ms, proxy.ts: 6ms, application-code: 144ms)
+ GET /api/auth/session 200 in 26ms (next.js: 15ms, application-code: 11ms)
+ GET /en/admin/pages 200 in 85ms (next.js: 21ms, proxy.ts: 7ms, application-code: 58ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 375ms (next.js: 226ms, proxy.ts: 10ms, application-code: 139ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 7ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 19ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 10ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 18ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 135ms (next.js: 26ms, proxy.ts: 8ms, application-code: 101ms)
+  └─ ƒ removeWidget("cmnh9rege0007rispb90sk5um") in 12ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 36ms (next.js: 7ms, application-code: 28ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 119ms (next.js: 29ms, proxy.ts: 8ms, application-code: 83ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 103ms (next.js: 8ms, proxy.ts: 8ms, application-code: 87ms)
+  └─ ƒ bindWidgetDataSource("cmnhh8ueg0009risp0bfy2u0g", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, appOwner, techStack, syncProgress\"}") in 13ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 14ms (next.js: 7ms, application-code: 7ms)
+ GET /en/p/infrastructure 200 in 300ms (next.js: 214ms, proxy.ts: 5ms, application-code: 81ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 57ms (next.js: 6ms, application-code: 51ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 21ms, application-code: 7ms)
+ POST /api/cms/query 200 in 112ms (next.js: 13ms, application-code: 99ms)
+ POST /en/p/infrastructure 200 in 180ms (next.js: 22ms, proxy.ts: 19ms, application-code: 139ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhh8ueg0009risp0bfy2u0g","w":12,"...":"2 items not stringified"}]) in 18ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 143ms (next.js: 17ms, proxy.ts: 8ms, application-code: 119ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhh8ueg0009risp0bfy2u0g","w":12,"...":"2 items not stringified"}]) in 14ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 37ms (next.js: 8ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 39ms (next.js: 6ms, application-code: 33ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 34ms (next.js: 4ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 5ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 6ms, application-code: 6ms)
+ POST /api/cms/query 200 in 41ms (next.js: 6ms, application-code: 34ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 23ms (next.js: 3ms, application-code: 20ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 5ms, application-code: 10ms)
+ POST /api/cms/query 200 in 42ms (next.js: 5ms, application-code: 36ms)
+✓ Compiled in 123ms
+✓ Compiled in 208ms
+ GET /en/p/infrastructure 200 in 81ms (next.js: 18ms, proxy.ts: 5ms, application-code: 58ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 26ms)
+✓ Compiled in 154ms
+✓ Compiled in 121ms
+ GET /api/mock/telem 200 in 15ms (next.js: 6ms, application-code: 9ms)
+ POST /api/cms/query 200 in 37ms (next.js: 3ms, application-code: 34ms)
+✓ Compiled in 179ms
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 33ms (next.js: 6ms, application-code: 28ms)
+[browser] ./src/components/cms/ActiveWidgetEditor.tsx:370:31
+Unterminated regexp literal
+  368 |                                    )}
+  369 |                                 </div>
+> 370 |                              </div>
+      |                               ^^^^^
+  371 |                            </>
+  372 |                         ) : (
+  373 |                            <>
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/cms/ActiveWidgetEditor.tsx [Client Component Browser]
+    ./src/components/cms/ActiveWidgetCard.tsx [Client Component Browser]
+    ./src/components/cms/ActiveWidgetCard.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/cms/ActiveWidgetEditor.tsx [Client Component SSR]
+    ./src/components/cms/ActiveWidgetCard.tsx [Client Component SSR]
+    ./src/components/cms/ActiveWidgetCard.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component] 
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 53ms (next.js: 4ms, application-code: 49ms)
+ GET /en/admin 200 in 90ms (next.js: 23ms, proxy.ts: 7ms, application-code: 60ms)
+ GET /en/admin/pages 200 in 99ms (next.js: 20ms, proxy.ts: 9ms, application-code: 69ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 410ms (next.js: 253ms, proxy.ts: 7ms, application-code: 150ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 8ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 20ms (next.js: 12ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 114ms (next.js: 21ms, proxy.ts: 7ms, application-code: 86ms)
+  └─ ƒ removeWidget("cmnhh8ueg0009risp0bfy2u0g") in 11ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 115ms (next.js: 21ms, proxy.ts: 10ms, application-code: 83ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 10ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 90ms (next.js: 8ms, proxy.ts: 7ms, application-code: 75ms)
+  └─ ƒ bindWidgetDataSource("cmnhhna0w000brispw5usjobf", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, appOwner, techStack, syncProgress\"}") in 13ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 17ms (next.js: 7ms, application-code: 10ms)
+ GET /en/p/infrastructure 200 in 314ms (next.js: 244ms, proxy.ts: 5ms, application-code: 65ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /api/cms/query 200 in 64ms (next.js: 3ms, application-code: 60ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 126ms (next.js: 15ms, application-code: 111ms)
+ POST /en/p/infrastructure 200 in 162ms (next.js: 52ms, proxy.ts: 6ms, application-code: 104ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 12ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 128ms (next.js: 8ms, proxy.ts: 4ms, application-code: 116ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 8ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 13ms (next.js: 5ms, application-code: 7ms)
+ POST /api/cms/query 200 in 43ms (next.js: 6ms, application-code: 37ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ POST /api/cms/query 200 in 30ms (next.js: 3ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ POST /api/cms/query 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 25ms (next.js: 4ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 31ms (next.js: 3ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 9ms, application-code: 5ms)
+ POST /api/cms/query 200 in 67ms (next.js: 4ms, application-code: 63ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 5ms, application-code: 23ms)
+ POST /en/p/infrastructure 200 in 105ms (next.js: 20ms, proxy.ts: 10ms, application-code: 75ms)
+  └─ ƒ updateWidgetGridPosition([{"h":10,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 10ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 82ms (next.js: 10ms, proxy.ts: 5ms, application-code: 67ms)
+  └─ ƒ updateWidgetGridPosition([{"h":10,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 8ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 4ms, application-code: 27ms)
+ GET /api/mock/telem 200 in 13ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/query 200 in 42ms (next.js: 5ms, application-code: 36ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 35ms (next.js: 4ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 6ms, application-code: 24ms)
+ GET /en/admin 200 in 87ms (next.js: 27ms, proxy.ts: 7ms, application-code: 53ms)
+ GET /en/admin/pages 200 in 89ms (next.js: 19ms, proxy.ts: 6ms, application-code: 64ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 94ms (next.js: 27ms, proxy.ts: 9ms, application-code: 59ms)
+ POST /api/cms/preview 200 in 14ms (next.js: 3ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 23ms (next.js: 10ms, application-code: 13ms)
+ POST /api/cms/preview 200 in 34ms (next.js: 26ms, application-code: 8ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 131ms (next.js: 26ms, proxy.ts: 12ms, application-code: 93ms)
+  └─ ƒ bindWidgetDataSource("cmnhhna0w000brispw5usjobf", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"techStack, syncProgress\",\"colors\":[],\"customActions\":[{\"name\":\"Güneclle\",\"endpoint\":\"/api/path/{PrimaryID}\",\"method\":\"POST\",\"placement\":\"main\",\"payloadTemplate\":\"deneme\"}],\"columnStyles\":{\"agentStatus\":\"badge\",\"appOwner\":\"badge\"},\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"hostname\",\"os\"]},{\"id\":\"line-1775135511917\",\"name\":\"Additional Record Line\",\"cols\":[\"appOwner\",\"agentStatus\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"techStack\",\"syncProgress\"]}]}", 0, 0, 12, 10) in 14ms src/app/actions/cms.ts
+ GET /en/p/infrastructure 200 in 74ms (next.js: 24ms, proxy.ts: 8ms, application-code: 42ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 43ms (next.js: 4ms, application-code: 39ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 13ms, application-code: 5ms)
+ POST /api/cms/query 200 in 54ms (next.js: 7ms, application-code: 47ms)
+ POST /en/p/infrastructure 200 in 116ms (next.js: 20ms, proxy.ts: 12ms, application-code: 85ms)
+  └─ ƒ updateWidgetGridPosition([{"h":10,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 16ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 76ms (next.js: 10ms, proxy.ts: 4ms, application-code: 61ms)
+  └─ ƒ updateWidgetGridPosition([{"h":10,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 9ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 31ms (next.js: 4ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 26ms (next.js: 3ms, application-code: 22ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 35ms (next.js: 7ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/query 200 in 32ms (next.js: 5ms, application-code: 28ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 5ms, application-code: 11ms)
+ POST /api/cms/query 200 in 48ms (next.js: 6ms, application-code: 42ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 25ms)
+ GET /en/p/infrastructure 200 in 732ms (next.js: 18ms, proxy.ts: 10ms, application-code: 704ms)
+ GET /api/auth/session 200 in 31ms (next.js: 18ms, application-code: 14ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 60ms (next.js: 4ms, application-code: 56ms)
+ POST /en/p/infrastructure 200 in 97ms (next.js: 21ms, proxy.ts: 9ms, application-code: 67ms)
+  └─ ƒ updateWidgetGridPosition([{"h":10,"id":"cmnhhna0w000brispw5usjobf","w":12,"...":"2 items not stringified"}]) in 12ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 12ms (next.js: 2ms, application-code: 10ms)
+ POST /api/cms/query 200 in 38ms (next.js: 7ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 30ms (next.js: 4ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 40ms (next.js: 6ms, application-code: 34ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ POST /api/cms/query 200 in 36ms (next.js: 5ms, application-code: 31ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 28ms (next.js: 6ms, application-code: 23ms)
+ GET /en/admin 200 in 91ms (next.js: 25ms, proxy.ts: 10ms, application-code: 56ms)
+ GET /en/admin/pages 200 in 92ms (next.js: 20ms, proxy.ts: 5ms, application-code: 68ms)
+ GET /en/admin/editor/cmnezrt1l000co8vdr08fhoy5 200 in 102ms (next.js: 20ms, proxy.ts: 9ms, application-code: 73ms)
+ POST /api/cms/preview 200 in 12ms (next.js: 6ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 18ms (next.js: 13ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 19ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 7ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 14ms (next.js: 9ms, application-code: 5ms)
+ GET /en/admin 200 in 78ms (next.js: 30ms, proxy.ts: 5ms, application-code: 42ms)
+ GET /en/admin/pages 200 in 93ms (next.js: 24ms, proxy.ts: 9ms, application-code: 60ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 91ms (next.js: 21ms, proxy.ts: 9ms, application-code: 61ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 9ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 18ms, application-code: 6ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 108ms (next.js: 20ms, proxy.ts: 6ms, application-code: 83ms)
+  └─ ƒ removeWidget("cmnhhna0w000brispw5usjobf") in 14ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 33ms (next.js: 7ms, application-code: 26ms)
+✓ Compiled in 168ms
+ POST /api/cms/preview 200 in 11ms (next.js: 6ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 9ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 21ms (next.js: 16ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 27ms (next.js: 4ms, application-code: 23ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 456ms (next.js: 237ms, proxy.ts: 5ms, application-code: 215ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 95ms (next.js: 8ms, proxy.ts: 6ms, application-code: 82ms)
+  └─ ƒ bindWidgetDataSource("cmnhi8547000drisp5ep7xgas", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"syncProgress\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"hostname\",\"os\"]},{\"id\":\"line-1775136060846\",\"name\":\"Additional Record Line\",\"cols\":[\"techStack\",\"appOwner\"]},{\"id\":\"line-1775136077995\",\"name\":\"Additional Record Line\",\"cols\":[\"__action_Güncelleme\",\"updatedAt\",\"agentStatus\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"syncProgress\"]}],\"customActions\":[{\"name\":\"Güncelleme\",\"endpoint\":\"/api/path\",\"method\":\"POST\"}],\"columnStyles\":{}}") in 12ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ GET /en/p/infrastructure 200 in 73ms (next.js: 24ms, proxy.ts: 9ms, application-code: 41ms)
+ GET /api/mock/telem 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/query 200 in 50ms (next.js: 4ms, application-code: 46ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 11ms, application-code: 4ms)
+ POST /api/cms/query 200 in 68ms (next.js: 10ms, application-code: 58ms)
+ POST /en/p/infrastructure 200 in 106ms (next.js: 27ms, proxy.ts: 12ms, application-code: 67ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhi8547000drisp5ep7xgas","w":12,"...":"2 items not stringified"}]) in 11ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 78ms (next.js: 8ms, proxy.ts: 5ms, application-code: 66ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhi8547000drisp5ep7xgas","w":12,"...":"2 items not stringified"}]) in 13ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 14ms (next.js: 5ms, application-code: 10ms)
+ POST /api/cms/query 200 in 43ms (next.js: 6ms, application-code: 37ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 28ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 5ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 28ms (next.js: 6ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 32ms (next.js: 6ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 26ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 30ms (next.js: 7ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 6ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 35ms (next.js: 5ms, application-code: 30ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 37ms (next.js: 6ms, application-code: 31ms)
+✓ Compiled in 181ms
+ GET /api/mock/telem 200 in 12ms (next.js: 5ms, application-code: 8ms)
+ POST /api/cms/query 200 in 38ms (next.js: 6ms, application-code: 31ms)
+✓ Compiled in 181ms
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 25ms (next.js: 4ms, application-code: 20ms)
+✓ Compiled in 107ms
+✓ Compiled in 134ms
+ GET /api/mock/telem 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/query 200 in 34ms (next.js: 6ms, application-code: 28ms)
+✓ Compiled in 187ms
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 31ms (next.js: 6ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 4ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 6ms, application-code: 9ms)
+ POST /api/cms/query 200 in 159ms (next.js: 7ms, application-code: 153ms)
+ GET /en/p/infrastructure 200 in 1021ms (next.js: 247ms, proxy.ts: 6ms, application-code: 768ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 58ms (next.js: 3ms, application-code: 55ms)
+ GET /api/auth/session 200 in 48ms (next.js: 28ms, application-code: 20ms)
+ POST /en/p/infrastructure 200 in 111ms (next.js: 19ms, proxy.ts: 9ms, application-code: 83ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhi8547000drisp5ep7xgas","w":12,"...":"2 items not stringified"}]) in 21ms src/app/actions/cms.ts
+ GET /en/admin 200 in 95ms (next.js: 21ms, proxy.ts: 8ms, application-code: 66ms)
+ GET /en/admin/pages 200 in 111ms (next.js: 21ms, proxy.ts: 9ms, application-code: 81ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 364ms (next.js: 235ms, proxy.ts: 9ms, application-code: 120ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 23ms (next.js: 17ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 14ms (next.js: 9ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 132ms (next.js: 28ms, proxy.ts: 9ms, application-code: 95ms)
+  └─ ƒ removeWidget("cmnhi8547000drisp5ep7xgas") in 18ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 12ms (next.js: 5ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 46ms (next.js: 6ms, application-code: 40ms)
+✓ Compiled in 358ms
+✓ Compiled in 350ms
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 599ms (next.js: 226ms, proxy.ts: 107ms, application-code: 266ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 184ms (next.js: 32ms, proxy.ts: 6ms, application-code: 146ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 111ms (next.js: 23ms, proxy.ts: 17ms, application-code: 71ms)
+✓ Compiled in 125ms
+✓ Compiled in 255ms
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 469ms (next.js: 232ms, proxy.ts: 36ms, application-code: 201ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 383ms (next.js: 166ms, proxy.ts: 19ms, application-code: 198ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 175ms (next.js: 27ms, proxy.ts: 6ms, application-code: 141ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 105ms (next.js: 19ms, proxy.ts: 24ms, application-code: 61ms)
+[browser] ./src/components/cms/WidgetStoreItem.tsx:433:40
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  431 |                                        }
+  432 |                                     }}
+> 433 |                                   />)()}
+      |                                        ^
+  434 |                                 </div>
+  435 |
+  436 |                                 <div className="col-span-2">
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./src/components/cms/WidgetStoreItem.tsx
+    ./src/app/[locale]/admin/editor/[id]/page.tsx 
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 748ms (next.js: 23ms, proxy.ts: 6ms, application-code: 719ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 169ms (next.js: 101ms, application-code: 68ms)
+ POST /api/cms/preview 200 in 190ms (next.js: 183ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 196ms (next.js: 191ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 23ms (next.js: 17ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 22ms (next.js: 17ms, application-code: 5ms)
+ GET /bg-grid.png 404 in 390ms (next.js: 218ms, application-code: 171ms)
+ GET /api/mock/telem 200 in 41ms (next.js: 35ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 66ms (next.js: 3ms, application-code: 63ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 121ms (next.js: 24ms, proxy.ts: 6ms, application-code: 91ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 92ms (next.js: 9ms, proxy.ts: 6ms, application-code: 78ms)
+  └─ ƒ bindWidgetDataSource("cmnhiyfhl000frisp4tq7prup", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, hostname, os\",\"childCols\":\"agentStatus, syncProgress, appOwner, techStack\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"hostname\",\"os\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"agentStatus\",\"syncProgress\",\"appOwner\",\"techStack\"]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{\"drawer\":{\"justify\":\"between\"}},\"elementSettings\":{}}") in 11ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 16ms (next.js: 7ms, application-code: 9ms)
+ GET /en/p/infrastructure 200 in 118ms (next.js: 66ms, proxy.ts: 8ms, application-code: 44ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 96ms (next.js: 39ms, application-code: 57ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 91ms (next.js: 11ms, application-code: 80ms)
+ POST /en/p/infrastructure 200 in 111ms (next.js: 28ms, proxy.ts: 10ms, application-code: 73ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhiyfhl000frisp4tq7prup","w":12,"...":"2 items not stringified"}]) in 16ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 73ms (next.js: 8ms, proxy.ts: 4ms, application-code: 61ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhiyfhl000frisp4tq7prup","w":12,"...":"2 items not stringified"}]) in 9ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 12ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/query 200 in 33ms (next.js: 4ms, application-code: 29ms)
+ GET /en/admin 200 in 114ms (next.js: 45ms, proxy.ts: 6ms, application-code: 62ms)
+ GET /en/admin/pages 200 in 145ms (next.js: 55ms, proxy.ts: 4ms, application-code: 86ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 77ms (next.js: 18ms, proxy.ts: 9ms, application-code: 50ms)
+ POST /api/cms/preview 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 18ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 20ms (next.js: 14ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 21ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 36ms (next.js: 31ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 124ms (next.js: 21ms, proxy.ts: 10ms, application-code: 93ms)
+  └─ ƒ bindWidgetDataSource("cmnhiyfhl000frisp4tq7prup", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, os, hostname\",\"childCols\":\"agentStatus, syncProgress, appOwner, techStack\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"os\",\"hostname\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"agentStatus\",\"syncProgress\",\"appOwner\",\"techStack\"]}],\"customActions\":[],\"columnStyles\":{\"os\":\"badge\"},\"lineSettings\":{\"drawer\":{\"justify\":\"between\"}},\"elementSettings\":{\"os\":{\"width\":\"1/2\",\"labelPos\":\"inline\",\"renderType\":\"badge\"}}}", 0, 0, 12, 5) in 13ms src/app/actions/cms.ts
+ GET /en/p/infrastructure 200 in 58ms (next.js: 17ms, proxy.ts: 6ms, application-code: 34ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 48ms (next.js: 5ms, application-code: 44ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/query 200 in 51ms (next.js: 7ms, application-code: 44ms)
+ POST /en/p/infrastructure 200 in 142ms (next.js: 32ms, proxy.ts: 6ms, application-code: 103ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhiyfhl000frisp4tq7prup","w":12,"...":"2 items not stringified"}]) in 16ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 87ms (next.js: 13ms, proxy.ts: 5ms, application-code: 70ms)
+  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnhiyfhl000frisp4tq7prup","w":12,"...":"2 items not stringified"}]) in 9ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 30ms (next.js: 4ms, application-code: 26ms)
+ GET /en/admin 200 in 81ms (next.js: 22ms, proxy.ts: 8ms, application-code: 50ms)
+ GET /en/admin/pages 200 in 100ms (next.js: 37ms, proxy.ts: 5ms, application-code: 58ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 93ms (next.js: 20ms, proxy.ts: 9ms, application-code: 64ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 13ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 26ms (next.js: 20ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 25ms (next.js: 20ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 180ms (next.js: 18ms, proxy.ts: 7ms, application-code: 154ms)
+  └─ ƒ removeWidget("cmnhiyfhl000frisp4tq7prup") in 13ms src/app/actions/cms.ts
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 4ms, application-code: 25ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 104ms (next.js: 21ms, proxy.ts: 13ms, application-code: 70ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "PIE_CHART", 0, 999, 6, 4) in 10ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 85ms (next.js: 9ms, proxy.ts: 4ms, application-code: 72ms)
+  └─ ƒ bindWidgetDataSource("cmnhj1pfr000hrisp5xeajzyl", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"agentStatus\",\"aggType\":\"COUNT\",\"title\":\"Özel\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"Toplam: {total}\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Total Agents\",\"tablePrimaryKey\":\"name\",\"parentCols\":\"\",\"childCols\":\"\",\"colors\":[\"#ba3b9e\"],\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"name\",\"value\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{}}") in 13ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 11ms (next.js: 4ms, application-code: 8ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 12ms (next.js: 6ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 34ms (next.js: 6ms, application-code: 28ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 101ms (next.js: 18ms, proxy.ts: 6ms, application-code: 78ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "PIE_CHART", 0, 999, 3, 4) in 9ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 101ms (next.js: 15ms, proxy.ts: 5ms, application-code: 81ms)
+  └─ ƒ bindWidgetDataSource("cmnhj22di000jrisp4q2h78zv", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"agentStatus\",\"aggType\":\"COUNT\",\"title\":\"Agent Status Distribution\",\"showTitle\":true,\"showSubText\":false,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Total Agents\",\"tablePrimaryKey\":\"name\",\"parentCols\":\"\",\"childCols\":\"\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"name\",\"value\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{}}") in 10ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 14ms (next.js: 6ms, application-code: 8ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 14ms (next.js: 7ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 37ms (next.js: 4ms, application-code: 33ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 108ms (next.js: 19ms, proxy.ts: 11ms, application-code: 78ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "PIE_CHART", 0, 999, 3, 4) in 12ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 96ms (next.js: 11ms, proxy.ts: 5ms, application-code: 81ms)
+  └─ ƒ bindWidgetDataSource("cmnhj2kc6000lrispvuwobc1r", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"agentStatus\",\"aggType\":\"COUNT\",\"title\":\"Agent Status Distribution\",\"showTitle\":true,\"showSubText\":false,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Total Agents\",\"tablePrimaryKey\":\"name\",\"parentCols\":\"\",\"childCols\":\"\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"name\",\"value\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{}}") in 10ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 14ms (next.js: 6ms, application-code: 9ms)
+ GET /en/p/infrastructure 200 in 66ms (next.js: 22ms, proxy.ts: 8ms, application-code: 36ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 15ms (next.js: 11ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 21ms (next.js: 17ms, application-code: 5ms)
+ POST /api/cms/query 200 in 78ms (next.js: 17ms, application-code: 61ms)
+ POST /api/cms/query 200 in 84ms (next.js: 5ms, application-code: 79ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 19ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 28ms (next.js: 24ms, application-code: 4ms)
+ POST /api/cms/query 200 in 101ms (next.js: 11ms, application-code: 90ms)
+ GET /api/mock/telem 200 in 32ms (next.js: 27ms, application-code: 5ms)
+ POST /api/cms/query 200 in 117ms (next.js: 22ms, application-code: 95ms)
+ POST /api/cms/query 200 in 105ms (next.js: 17ms, application-code: 88ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /api/cms/query 200 in 97ms (next.js: 12ms, application-code: 86ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/p/infrastructure 200 in 117ms (next.js: 11ms, proxy.ts: 23ms, application-code: 83ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 35ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 134ms (next.js: 40ms, proxy.ts: 5ms, application-code: 89ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 39ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 119ms (next.js: 24ms, proxy.ts: 10ms, application-code: 84ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 33ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 112ms (next.js: 22ms, proxy.ts: 5ms, application-code: 85ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 34ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 122ms (next.js: 32ms, proxy.ts: 9ms, application-code: 81ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 25ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 96ms (next.js: 8ms, proxy.ts: 5ms, application-code: 83ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 23ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ POST /api/cms/query 200 in 57ms (next.js: 7ms, application-code: 50ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ POST /api/cms/query 200 in 51ms (next.js: 3ms, application-code: 48ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 10ms, application-code: 7ms)
+ POST /api/cms/query 200 in 63ms (next.js: 9ms, application-code: 55ms)
+ POST /en/p/infrastructure 200 in 110ms (next.js: 28ms, proxy.ts: 5ms, application-code: 76ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 30ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 104ms (next.js: 7ms, proxy.ts: 5ms, application-code: 91ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 43ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 26ms (next.js: 3ms, application-code: 23ms)
+ POST /en/p/infrastructure 200 in 125ms (next.js: 7ms, proxy.ts: 5ms, application-code: 113ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"}]) in 54ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 204ms (next.js: 36ms, proxy.ts: 12ms, application-code: 156ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"}]) in 58ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 210ms (next.js: 129ms, proxy.ts: 7ms, application-code: 73ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"}]) in 22ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 12ms (next.js: 3ms, application-code: 8ms)
+ POST /api/cms/query 200 in 33ms (next.js: 4ms, application-code: 29ms)
+ POST /en/p/infrastructure 200 in 105ms (next.js: 8ms, proxy.ts: 7ms, application-code: 89ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 36ms src/app/actions/cms.ts
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/query 200 in 35ms (next.js: 6ms, application-code: 29ms)
+ GET /en/admin 200 in 75ms (next.js: 21ms, proxy.ts: 11ms, application-code: 43ms)
+ GET /en/admin/pages 200 in 91ms (next.js: 21ms, proxy.ts: 4ms, application-code: 65ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 83ms (next.js: 25ms, proxy.ts: 7ms, application-code: 51ms)
+ POST /api/cms/preview 200 in 14ms (next.js: 5ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 6ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 11ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 22ms (next.js: 17ms, application-code: 5ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 116ms (next.js: 21ms, proxy.ts: 8ms, application-code: 87ms)
+  └─ ƒ <inline action>({"reason":{"count":180,"fork":false},"status":"fulfilled","value":"nBsfZzyRNrWw2NPH37n4gHDnpMN9hu8CYLNQhF2D+GxIHnv+bDHhMxUsrMIE0AmsvypftbSDH7N2mTyamfTL2jOD54cVVsgTCQUo4haAIIQyPrc8DpxWxl7xcs9UWPixQnqw9T5jJ1niPN3O71pqEXfxSbv32WQfgLxlLbeEwm3+4r3KXw=="}) in 14ms src/app/[locale]/admin/editor/[id]/page.tsx
+ GET /en/p/infrastructure 200 in 72ms (next.js: 26ms, proxy.ts: 7ms, application-code: 38ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 18ms, application-code: 4ms)
+ POST /api/cms/query 200 in 88ms (next.js: 5ms, application-code: 83ms)
+ GET /api/mock/telem 200 in 25ms (next.js: 19ms, application-code: 6ms)
+ POST /api/cms/query 200 in 88ms (next.js: 6ms, application-code: 83ms)
+ POST /api/cms/query 200 in 91ms (next.js: 12ms, application-code: 80ms)
+ GET /api/mock/telem 200 in 26ms (next.js: 20ms, application-code: 7ms)
+ POST /api/cms/query 200 in 106ms (next.js: 17ms, application-code: 89ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 19ms, application-code: 5ms)
+ POST /api/cms/query 200 in 119ms (next.js: 23ms, application-code: 96ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /api/cms/query 200 in 96ms (next.js: 6ms, application-code: 90ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/p/infrastructure 200 in 138ms (next.js: 26ms, proxy.ts: 18ms, application-code: 95ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 34ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 96ms (next.js: 14ms, proxy.ts: 5ms, application-code: 77ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 25ms src/app/actions/cms.ts
+ GET /en/admin 200 in 103ms (next.js: 21ms, proxy.ts: 5ms, application-code: 76ms)
+ GET /en/admin/roles 200 in 2.7s (next.js: 2.6s, proxy.ts: 7ms, application-code: 54ms)
+ GET /en/admin/roles 200 in 65ms (next.js: 18ms, proxy.ts: 5ms, application-code: 43ms)
+ POST /en/admin/roles 200 in 97ms (next.js: 28ms, proxy.ts: 5ms, application-code: 64ms)
+  └─ ƒ createAppRole("dgsfdsgdf", "", "[]") in 9ms src/app/actions/rbac.ts
+ GET /en/admin 200 in 100ms (next.js: 43ms, proxy.ts: 9ms, application-code: 49ms)
+ GET /en/admin/pages 200 in 100ms (next.js: 22ms, proxy.ts: 9ms, application-code: 70ms)
+ GET /en/admin 200 in 88ms (next.js: 29ms, proxy.ts: 8ms, application-code: 51ms)
+ GET /en/admin/sources 200 in 1060ms (next.js: 994ms, proxy.ts: 8ms, application-code: 58ms)
+ GET /tr/admin/sources 200 in 98ms (next.js: 20ms, proxy.ts: 6ms, application-code: 72ms)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+ GET /api/auth/session 200 in 24ms (next.js: 12ms, application-code: 12ms)
+ GET /api/auth/session 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET /en/admin/sources 200 in 95ms (next.js: 22ms, proxy.ts: 8ms, application-code: 65ms)
+ GET /api/auth/session 200 in 30ms (next.js: 14ms, application-code: 16ms)
+ GET /api/auth/session 200 in 17ms (next.js: 3ms, application-code: 14ms)
+ GET /tr/admin/sources 200 in 87ms (next.js: 25ms, proxy.ts: 9ms, application-code: 53ms)
+ GET /api/auth/session 200 in 22ms (next.js: 13ms, application-code: 9ms)
+ GET /api/auth/session 200 in 12ms (next.js: 3ms, application-code: 9ms)
+ GET /en/admin/sources 200 in 99ms (next.js: 39ms, proxy.ts: 8ms, application-code: 52ms)
+ GET /api/auth/session 200 in 26ms (next.js: 16ms, application-code: 10ms)
+ GET /api/auth/session 200 in 18ms (next.js: 5ms, application-code: 13ms)
+ GET /en/p/infrastructure 200 in 75ms (next.js: 24ms, proxy.ts: 7ms, application-code: 44ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 5ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 82ms (next.js: 5ms, application-code: 77ms)
+ POST /api/cms/query 200 in 86ms (next.js: 12ms, application-code: 73ms)
+ GET /api/mock/telem 200 in 12ms (next.js: 7ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 14ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 25ms (next.js: 21ms, application-code: 5ms)
+ POST /api/cms/query 200 in 99ms (next.js: 6ms, application-code: 93ms)
+ POST /api/cms/query 200 in 101ms (next.js: 12ms, application-code: 90ms)
+ GET /api/mock/telem 200 in 19ms (next.js: 15ms, application-code: 5ms)
+ POST /api/cms/query 200 in 110ms (next.js: 17ms, application-code: 93ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /api/cms/query 200 in 113ms (next.js: 23ms, application-code: 90ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/p/infrastructure 200 in 176ms (next.js: 56ms, proxy.ts: 7ms, application-code: 113ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 27ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 97ms (next.js: 7ms, proxy.ts: 6ms, application-code: 84ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 24ms src/app/actions/cms.ts
+ GET /en/p/summary 200 in 79ms (next.js: 26ms, proxy.ts: 5ms, application-code: 48ms)
+ GET /en/p/infrastructure 200 in 74ms (next.js: 18ms, proxy.ts: 4ms, application-code: 51ms)
+ GET /api/mock/telem 200 in 18ms (next.js: 6ms, application-code: 12ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 18ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 35ms (next.js: 31ms, application-code: 5ms)
+ POST /api/cms/query 200 in 96ms (next.js: 4ms, application-code: 91ms)
+ POST /api/cms/query 200 in 98ms (next.js: 16ms, application-code: 81ms)
+ POST /api/cms/query 200 in 102ms (next.js: 12ms, application-code: 90ms)
+ POST /api/cms/query 200 in 102ms (next.js: 23ms, application-code: 79ms)
+ GET /api/mock/telem 200 in 17ms (next.js: 13ms, application-code: 4ms)
+ GET /api/mock/telem 200 in 24ms (next.js: 20ms, application-code: 4ms)
+ POST /api/cms/query 200 in 120ms (next.js: 29ms, application-code: 90ms)
+ POST /api/cms/query 200 in 102ms (next.js: 18ms, application-code: 84ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ POST /en/p/infrastructure 200 in 247ms (next.js: 15ms, proxy.ts: 12ms, application-code: 220ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 52ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 192ms (next.js: 53ms, proxy.ts: 8ms, application-code: 130ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 41ms src/app/actions/cms.ts
+ GET /en/admin 200 in 91ms (next.js: 23ms, proxy.ts: 4ms, application-code: 63ms)
+ GET /en/admin/pages 200 in 138ms (next.js: 34ms, proxy.ts: 4ms, application-code: 100ms)
+ GET /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 136ms (next.js: 26ms, proxy.ts: 11ms, application-code: 99ms)
+ POST /api/cms/preview 200 in 105ms (next.js: 94ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 113ms (next.js: 106ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 157ms (next.js: 148ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 168ms (next.js: 159ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 176ms (next.js: 170ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 135ms (next.js: 25ms, proxy.ts: 11ms, application-code: 99ms)
+  └─ ƒ addWidgetToPage("cmnezsh7t000fo8vd1ovgk8ws", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 11ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 105ms (next.js: 8ms, proxy.ts: 6ms, application-code: 91ms)
+  └─ ƒ bindWidgetDataSource("cmnhj77hc000orispvuwppvxj", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, os, hostname\",\"childCols\":\"appOwner, techStack, syncProgress\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"os\",\"hostname\"]},{\"id\":\"line-1775137713053\",\"name\":\"Record Line\",\"cols\":[\"agentStatus\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"appOwner\",\"techStack\",\"syncProgress\"]}],\"customActions\":[{\"name\":\"G\",\"endpoint\":\"/api/path\",\"method\":\"POST\"}],\"columnStyles\":{\"os\":\"badge\"},\"lineSettings\":{},\"elementSettings\":{\"os\":{\"width\":\"1/4\",\"labelPos\":\"hidden\",\"renderType\":\"badge\"}}}") in 10ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 13ms (next.js: 5ms, application-code: 9ms)
+ POST /en/admin/editor/cmnezsh7t000fo8vd1ovgk8ws 200 in 152ms (next.js: 23ms, proxy.ts: 5ms, application-code: 124ms)
+  └─ ƒ bindWidgetDataSource("cmnhj77hc000orispvuwppvxj", ["cmnc0vcga000112rhqpevrv8o"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, os, hostname\",\"childCols\":\"appOwner, techStack, syncProgress, __action_G\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"os\",\"hostname\"]},{\"id\":\"line-1775137713053\",\"name\":\"Record Line\",\"cols\":[\"agentStatus\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"appOwner\",\"techStack\",\"syncProgress\",\"__action_G\"]}],\"customActions\":[{\"name\":\"G\",\"endpoint\":\"/api/path\",\"method\":\"POST\"}],\"columnStyles\":{\"os\":\"badge\"},\"lineSettings\":{},\"elementSettings\":{\"os\":{\"width\":\"1/4\",\"labelPos\":\"hidden\",\"renderType\":\"badge\"},\"__action_G\":{\"width\":\"full\"}}}", 0, 999, 12, 5) in 38ms src/app/actions/cms.ts
+ GET /en/p/infrastructure 200 in 86ms (next.js: 29ms, proxy.ts: 5ms, application-code: 52ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 9ms, application-code: 11ms)
+ GET /api/mock/telem 200 in 27ms (next.js: 22ms, application-code: 5ms)
+ POST /api/cms/query 200 in 103ms (next.js: 5ms, application-code: 98ms)
+ POST /api/cms/query 200 in 104ms (next.js: 12ms, application-code: 93ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 5ms)
+ POST /api/cms/query 200 in 98ms (next.js: 5ms, application-code: 93ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 14ms, application-code: 8ms)
+ GET /api/mock/telem 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ POST /api/cms/query 200 in 122ms (next.js: 18ms, application-code: 104ms)
+ POST /api/cms/query 200 in 125ms (next.js: 11ms, application-code: 114ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 27ms (next.js: 17ms, application-code: 10ms)
+ POST /api/cms/query 200 in 162ms (next.js: 28ms, application-code: 134ms)
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+[browser] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(10) or minHeight(10) or use aspect(undefined) to control the
+       height and width.
+ GET /api/mock/telem 200 in 15ms (next.js: 10ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 23ms (next.js: 16ms, application-code: 6ms)
+ POST /api/cms/query 200 in 87ms (next.js: 20ms, application-code: 67ms)
+ POST /api/cms/query 200 in 90ms (next.js: 29ms, application-code: 61ms)
+ POST /en/p/infrastructure 200 in 266ms (next.js: 73ms, proxy.ts: 12ms, application-code: 182ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 100ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 167ms (next.js: 30ms, proxy.ts: 6ms, application-code: 131ms)
+  └─ ƒ updateWidgetGridPosition([{"h":4,"id":"cmnhj1pfr000hrisp5xeajzyl","w":6,"...":"2 items not stringified"},{"h":4,"id":"cmnhj22di000jrisp4q2h78zv","w":3,"...":"2 items not stringified"},{"h":4,"id":"cmnhj2kc6000lrispvuwobc1r","w":3,"...":"2 items not stringified"}]) in 76ms src/app/actions/cms.ts
+ POST /api/path 404 in 114ms (next.js: 28ms, application-code: 85ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 26ms (next.js: 3ms, application-code: 23ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 57ms (next.js: 7ms, application-code: 50ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/query 200 in 58ms (next.js: 18ms, application-code: 40ms)
+ GET /api/mock/telem 200 in 20ms (next.js: 16ms, application-code: 5ms)
+ POST /api/cms/query 200 in 76ms (next.js: 10ms, application-code: 66ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 25ms (next.js: 4ms, application-code: 21ms)
+ GET /api/mock/telem 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/query 200 in 63ms (next.js: 7ms, application-code: 57ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 6ms, application-code: 8ms)
+ POST /api/cms/query 200 in 62ms (next.js: 6ms, application-code: 56ms)
+ GET /api/mock/telem 200 in 10ms (next.js: 6ms, application-code: 4ms)
+ POST /api/cms/query 200 in 78ms (next.js: 12ms, application-code: 65ms)
+ GET /api/mock/telem 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ POST /api/cms/query 200 in 86ms (next.js: 18ms, application-code: 68ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 4ms)
+ POST /api/cms/query 200 in 29ms (next.js: 4ms, application-code: 25ms)
+ GET /api/mock/telem 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ GET /api/mock/telem 200 in 14ms (next.js: 10ms, application-code: 4ms)
+ POST /api/cms/query 200 in 52ms (next.js: 3ms, application-code: 49ms)
+ GET /api/mock/telem 200 in 22ms (next.js: 14ms, application-code: 9ms)
+ POST /api/cms/query 200 in 68ms (next.js: 12ms, application-code: 56ms)
+ POST /api/cms/query 200 in 66ms (next.js: 10ms, application-code: 56ms)
+ GET /api/mock/telem 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/query 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /en 200 in 94ms (next.js: 27ms, proxy.ts: 6ms, application-code: 61ms)
+ GET /en/admin 200 in 94ms (next.js: 31ms, proxy.ts: 5ms, application-code: 58ms)
+ GET /en/admin/pages 200 in 111ms (next.js: 26ms, proxy.ts: 4ms, application-code: 81ms)
+ GET /en/admin 200 in 76ms (next.js: 17ms, proxy.ts: 5ms, application-code: 54ms)
+ GET /en 200 in 71ms (next.js: 26ms, proxy.ts: 6ms, application-code: 38ms)
