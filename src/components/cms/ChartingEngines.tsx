@@ -126,7 +126,7 @@ export function CMSBarChart({ widget, config, previewData, rowSync }: { widget: 
               <XAxis dataKey={xKey} tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
               <RechartsTooltip cursor={{ fill: "currentColor", opacity: 0.05 }} content={<CustomThemeTooltip />} />
-              <Bar dataKey={barKey} name={metricName} fill={config.colors?.[0] || "#6366f1"} radius={[4, 4, 0, 0]}>
+              <Bar isAnimationActive={false} dataKey={barKey} name={metricName} fill={config.colors?.[0] || "#6366f1"} radius={[4, 4, 0, 0]}>
                 {data.map((_, index) => <Cell key={`cell-${index}`} fill={config.colors?.[index] || ['#3b82f6', '#e5e7eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'][index % 6]} />)}
                 <LabelList dataKey={barKey} position="top" fill="#64748b" fontSize={11} fontWeight={"bold"} />
               </Bar>
@@ -164,6 +164,7 @@ export function CMSPieChart({ widget, config, previewData, rowSync }: { widget: 
          <ResponsiveContainer width="100%" height="100%" minWidth={10} minHeight={10}>
            <PieChart>
              <Pie 
+                isAnimationActive={false}
                 data={data} innerRadius={55} outerRadius={75} dataKey={valKey} nameKey={nameKey} name={metricName} cx="50%" cy="50%" stroke="none"
                 label={({ cx, cy, midAngle, innerRadius, outerRadius, value }) => {
                   const RADIAN = Math.PI / 180;
@@ -234,7 +235,7 @@ export function CMSLineGraph({ widget, config, previewData, rowSync }: { widget:
               <XAxis dataKey={xKey} tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
               <RechartsTooltip content={<CustomThemeTooltip />} />
-              <Area type="monotone" dataKey={lineKey} name={metricName} stroke={config.colors?.[0] || "#10b981"} strokeWidth={2} fillOpacity={1} fill={`url(#colorGradient-${widget?.id || "default"})`} />
+              <Area isAnimationActive={false} type="monotone" dataKey={lineKey} name={metricName} stroke={config.colors?.[0] || "#10b981"} strokeWidth={2} fillOpacity={1} fill={`url(#colorGradient-${widget?.id || "default"})`} />
             </AreaChart>
          </ResponsiveContainer>
        </div>

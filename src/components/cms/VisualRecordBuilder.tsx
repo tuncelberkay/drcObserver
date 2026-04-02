@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import * as Icons from 'lucide-react'
+import { ActionWizardModal } from './ActionWizardModal'
 
 type VisualRecordBuilderProps = {
   layoutLines: any[]
@@ -23,6 +24,7 @@ export default function VisualRecordBuilder({
   onChange
 }: VisualRecordBuilderProps) {
   const [activeConfigId, setActiveConfigId] = useState<string | null>(null)
+  const [showActionWizard, setShowActionWizard] = useState(false)
 
   const rawKeys = previewDataArray?.[0] ? Object.keys(previewDataArray[0]).filter(k => typeof previewDataArray[0][k] !== "object" || Array.isArray(previewDataArray[0][k])) : []
   const actionKeys = customActions.map(a => `__action_${a.name}`)
@@ -93,20 +95,37 @@ export default function VisualRecordBuilder({
     })
   }
 
+  const addDrawer = () => {
+    if (!layoutLines.find((l: any) => l.id === "drawer")) {
+       updateState({ layoutLines: [
+          ...layoutLines,
+          { id: "drawer", name: "Embedded Detail Drawer", cols: [] }
+       ]})
+    }
+  }
+
   return (
-    <div className="bg-slate-50 dark:bg-slate-900 shadow-inner rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+    <div className="bg-slate-50 dark:bg-slate-900 shadow-inner rounded-xl border border-slate-200 dark:border-slate-800">
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
         <div className="flex items-center gap-2">
            <Icons.LayoutTemplate className="w-4 h-4 text-indigo-500" />
            <h3 className="font-bold text-slate-800 dark:text-slate-200 text-sm tracking-widest">WYSIWYG Record Builder</h3>
         </div>
-        <button type="button" onClick={addLine} className="px-2 py-1 text-[10px] bg-slate-100 dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-indigo-400 transition-colors">
-          + Add Row Track
-        </button>
+        <div className="flex items-center gap-2">
+          <button type="button" disabled={!!layoutLines.find((l: any) => l.id === "drawer")} onClick={addDrawer} className="px-2 py-1 text-[10px] bg-slate-100 dark:bg-slate-900 text-sky-600 dark:text-sky-400 font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-sky-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            + Add Child Drawer
+          </button>
+          <button type="button" onClick={addLine} className="px-2 py-1 text-[10px] bg-slate-100 dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 font-bold border border-slate-200 dark:border-slate-700 rounded hover:border-indigo-400 transition-colors">
+            + Add Row Track
+          </button>
+        </div>
       </div>
 
-      <div className="p-4 bg-[url('/bg-grid.png')] bg-opacity-20">
+      <div className="p-4 pb-56 relative min-h-[500px]">
+        {/* CSS Canvas Grid Pattern */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+        <div className="relative z-10 w-full h-full">
         {poolKeys.length === 0 && <span className="text-xs text-slate-500 italic block mb-4 text-center">Map a dataset to visualize...</span>}
 
         {/* Live Canvas Area */}
@@ -134,8 +153,8 @@ export default function VisualRecordBuilder({
                     <button type="button" onClick={() => setActiveConfigId(activeConfigId === line.id ? null : line.id)} className="p-1 rounded bg-white dark:bg-slate-800 shadow-sm text-slate-500 hover:text-indigo-500 border border-slate-200 dark:border-slate-700">
                        <Icons.Settings className="w-3 h-3" />
                     </button>
-                    {!isDrawer && line.id !== "line-1" && (
-                       <button type="button" onClick={() => updateState({ layoutLines: layoutLines.filter(l => l.id !== line.id) })} className="p-1 rounded bg-white dark:bg-slate-800 shadow-sm text-rose-500 hover:text-rose-600 border border-slate-200 dark:border-slate-700">
+                    {line.id !== "line-1" && (
+                       <button type="button" onClick={() => updateState({ layoutLines: layoutLines.filter((l: any) => l.id !== line.id) })} className="p-1 rounded bg-white dark:bg-slate-800 shadow-sm text-rose-500 hover:text-rose-600 border border-slate-200 dark:border-slate-700 transition">
                           <Icons.Trash className="w-3 h-3" />
                        </button>
                     )}
@@ -202,7 +221,7 @@ export default function VisualRecordBuilder({
 
                               {/* Element Config Popover */}
                               {activeConfigId === k && (
-                                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-30 w-56 p-3 bg-slate-800 border border-slate-700 rounded-lg shadow-2xl animate-in fade-in zoom-in-95 flex flex-col gap-3">
+                                  <div className={`absolute ${isDrawer ? 'bottom-full mb-2 origin-bottom' : 'top-full mt-2 origin-top'} left-0 z-50 w-56 p-3 bg-slate-800 border border-slate-700 rounded-lg shadow-2xl animate-in fade-in zoom-in-95 flex flex-col gap-3`}>
                                      <div className="flex justify-between items-center border-b border-slate-700 pb-1 mb-1">
                                         <span className="text-[10px] font-bold text-white uppercase tracking-widest leading-none">Element Details</span>
                                         <button type="button" onClick={(e) => { e.stopPropagation(); setActiveConfigId(null) }} className="text-slate-400 hover:text-white"><Icons.X className="w-3 h-3" /></button>
@@ -252,6 +271,7 @@ export default function VisualRecordBuilder({
              )
           })}
         </div>
+        </div>
 
         {/* Unmapped Properties Deck */}
         {poolKeys.length > 0 && (
@@ -272,6 +292,42 @@ export default function VisualRecordBuilder({
               </div>
            </div>
         )}
+
+        {/* Dynamic API Callback Manager */}
+        <div className="bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 p-4 rounded-xl shadow-inner mt-4 relative z-0">
+           <div className="flex items-center justify-between mb-3">
+              <label className="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2"><Icons.Zap className="w-3.5 h-3.5" /> Bound Action Logic Controllers</label>
+              <button type="button" onClick={() => setShowActionWizard(true)} className="text-[10px] px-2 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-100 dark:hover:bg-indigo-500/40 transition-colors flex items-center gap-1"><Icons.Plus className="w-3 h-3" /> Add Action Endpoint</button>
+           </div>
+           {customActions.length === 0 ? (
+              <p className="text-[11px] text-slate-500 italic border-t border-slate-100 dark:border-slate-800 pt-3">No actions configured. Drag mapped actions onto UI elements.</p>
+           ) : (
+               <div className="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-2 mt-2 border-t border-slate-100 dark:border-slate-800 pt-3">
+                  {customActions.map((action, i) => (
+                     <div key={i} className="flex items-center justify-between bg-slate-50 dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div className="flex flex-col">
+                           <span className="font-bold text-slate-800 dark:text-slate-200 text-sm flex items-center gap-1.5"><Icons.Zap className="w-4 h-4 text-amber-500" /> {action.name}</span>
+                           <div className="flex items-center gap-2 mt-1">
+                              <span className="text-[9px] font-mono px-1.5 bg-slate-200 dark:bg-slate-800 rounded font-bold">{action.type || "API"}</span>
+                              <span className="text-[9px] font-mono text-slate-500 truncate max-w-[200px]" title={action.endpoint || action.payloadTemplate}>{action.method === "DB_EXECUTE" ? 'System Exec' : action.endpoint}</span>
+                           </div>
+                        </div>
+                        <button type="button" onClick={() => { const ac = [...customActions]; ac.splice(i, 1); updateState({ customActions: ac }) }} className="text-rose-500 hover:text-rose-600 p-1.5 transition-colors"><Icons.Trash2 className="w-4 h-4" /></button>
+                     </div>
+                  ))}
+               </div>
+           )}
+       </div>
+       
+       {showActionWizard && (
+         <ActionWizardModal 
+           onClose={() => setShowActionWizard(false)}
+           onFinish={(actionPayload) => {
+             updateState({ customActions: [...customActions, actionPayload] })
+             setShowActionWizard(false)
+           }}
+         />
+       )}
       </div>
     </div>
   )

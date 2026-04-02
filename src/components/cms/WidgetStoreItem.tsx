@@ -136,8 +136,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
              }
              if (layoutLines.length === 0) {
                 setLayoutLines([
-                    { id: "line-1", name: "Main Record Line 1", cols: keys.slice(0, 3) },
-                    { id: "drawer", name: "Embedded Detail Drawer", cols: keys.slice(3, 7) }
+                    { id: "line-1", name: "Main Record Start", cols: keys.slice(0, 3) }
                 ])
              }
            }
@@ -408,47 +407,13 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                                     placeholder="id"
                                   />
                                </div>
-                                <div className="col-span-2 space-y-4">
-                                  <VisualRecordBuilder 
-                                    layoutLines={layoutLines}
-                                    customActions={customActions}
-                                    columnStyles={columnStyles}
-                                    lineSettings={lineSettings}
-                                    elementSettings={elementSettings}
-                                    previewDataArray={previewDataArray}
-                                    onChange={(newState) => {
-                                       if (newState.layoutLines) setLayoutLines(newState.layoutLines)
-                                       if (newState.columnStyles) setColumnStyles(newState.columnStyles)
-                                       if (newState.lineSettings) setLineSettings(newState.lineSettings)
-                                       if (newState.elementSettings) setElementSettings(newState.elementSettings)
-                                       
-                                       // Sync legacy tracking for backward compatibility
-                                       if (newState.layoutLines) {
-                                          const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
-                                          const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
-                                          setParentCols(pCols)
-                                          setChildCols(cCols)
-                                       }
-                                    }}
-                                  />
+                                <div className="col-span-2 hidden">
+                                  {/* Builder moved to right canvas */}
                                 </div>
 
-                                <div className="col-span-2">
-                                  <div className="flex items-center justify-between mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">
-                                     <h3 className="font-bold text-sm tracking-widest uppercase text-slate-500 dark:text-slate-400">Custom Action Buttons</h3>
-                                     <button type="button" onClick={() => setCustomActions([...customActions, { name: "NewAction", endpoint: "/api/path", method: "POST" }])} className="text-[10px] px-2 py-1 bg-indigo-50 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 rounded border border-indigo-200 dark:border-indigo-500/30 font-bold">+ Add Action</button>
-                                  </div>
-                                  {customActions.map((action, i) => (
-                                     <div key={i} className="bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-2 rounded flex flex-col gap-2 mb-2">
-                                        <div className="flex gap-2">
-                                           <input type="text" value={action.name} onChange={e => { const ac = [...customActions]; ac[i].name = e.target.value.replace(/\s+/g,"_"); setCustomActions(ac) }} className="w-1/4 text-[10px] p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold" placeholder="Action_Name" />
-                                           <select value={action.method} onChange={e => { const ac = [...customActions]; ac[i].method = e.target.value; setCustomActions(ac)}} className="w-20 text-[10px] p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold"><option>POST</option><option>GET</option><option>DELETE</option></select>
-                                           <input type="text" value={action.endpoint || ""} onChange={e => { const ac = [...customActions]; ac[i].endpoint = e.target.value; setCustomActions(ac) }} className="flex-1 text-[10px] font-mono p-1 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded" placeholder="/api/target/{id}" />
-                                           <button type="button" onClick={() => { const ac = [...customActions]; ac.splice(i, 1); setCustomActions(ac) }} className="text-rose-500 hover:text-rose-600"><Icons.Trash2 className="w-4 h-4" /></button>
-                                        </div>
-                                     </div>
-                                  ))}
-                                </div>
+                               <div className="col-span-2 hidden">
+                                  {/* Action Configuration moved to right canvas sandbox */}
+                               </div>
                              </>
                            ) : (
                              <>
@@ -581,6 +546,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                 {previewDataArray && ChartComponent && (
                    <div className="flex-1 flex items-center justify-center p-8 lg:p-16 relative z-10 animate-in zoom-in-[0.98] duration-500">
                      <div className={`w-full ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                           widget.key === "MASTER_DETAIL_TABLE" ? 'max-w-[1200px] w-[95%]' :
                            gridW === 12 ? 'max-w-4xl' :
                            gridW === 6 ? 'max-w-2xl' :
                            gridW === 4 ? 'max-w-md' :
@@ -596,9 +562,37 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                            <div className="flex-1 text-center font-mono text-[10px] text-slate-500 dark:text-slate-600 font-bold uppercase tracking-widest">Live Execution Sandbox</div>
                         </div>
                         {/* Actual Component Mount */}
-                        <div className="p-6 w-full h-[400px] flex flex-col">
-                           <ChartComponent widget={transientWidget} config={transientConfig} previewData={previewDataArray} />
-                        </div>
+                         <div className={`p-6 w-full flex flex-col ${widget.key === "MASTER_DETAIL_TABLE" ? 'h-[600px] lg:h-[750px] p-0' : 'h-[400px]'}`}>
+                           {widget.key === "MASTER_DETAIL_TABLE" ? (
+                              <div className="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4">
+                                <VisualRecordBuilder 
+                                   layoutLines={layoutLines}
+                                   customActions={customActions}
+                                   columnStyles={columnStyles}
+                                   lineSettings={lineSettings}
+                                   elementSettings={elementSettings}
+                                   previewDataArray={previewDataArray}
+                                   onChange={(newState) => {
+                                      if (newState.layoutLines) setLayoutLines(newState.layoutLines)
+                                      if (newState.columnStyles) setColumnStyles(newState.columnStyles)
+                                      if (newState.lineSettings) setLineSettings(newState.lineSettings)
+                                      if (newState.elementSettings) setElementSettings(newState.elementSettings)
+                                      if (newState.customActions) setCustomActions(newState.customActions)
+                                      
+                                      // Sync legacy tracking for backward compatibility
+                                      if (newState.layoutLines) {
+                                         const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
+                                         const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
+                                         setParentCols(pCols)
+                                         setChildCols(cCols)
+                                      }
+                                   }}
+                                 />
+                              </div>
+                           ) : (
+                               <ChartComponent widget={transientWidget} config={transientConfig} previewData={previewDataArray} />
+                           )}
+                         </div>
                      </div>
                    </div>
                 )}

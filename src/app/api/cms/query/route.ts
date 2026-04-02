@@ -104,8 +104,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ 
       data: finalData,
       meta: {
-        refreshInterval: widget.dataSources[0]?.refreshInterval || 10,
-        mappingJson: widget.dataSources[0]?.mappingJson || "{}"
+        refreshInterval: widget.dataSources[0]?.refreshInterval || 10
       }
     })
 

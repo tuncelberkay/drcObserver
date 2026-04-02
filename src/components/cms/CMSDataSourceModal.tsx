@@ -27,6 +27,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
   const [formData, setFormData] = useState({
     name: editSource?.name || "",
     type: editSource?.type || "REST_API",
+    usageType: editSource?.usageType || "WIDGET",
     endpointURI: editSource?.endpointURI || "",
     credentialsJson: editSource?.credentialsJson || "{\n  \"headers\": {\n    \"Authorization\": \"Bearer TOKEN\"\n  }\n}",
     dbHost: editSource ? parseCreds(editSource.credentialsJson, "host") : "",
@@ -35,13 +36,17 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
     dbUser: editSource ? parseCreds(editSource.credentialsJson, "user") : "",
     dbPassword: editSource ? parseCreds(editSource.credentialsJson, "password") : "",
     queryPayload: editSource?.queryPayload || "",
-    refreshInterval: editSource?.refreshInterval || 10
+    refreshInterval: editSource?.refreshInterval || 10,
+    vaultMode: editSource ? (parseCreds(editSource.credentialsJson, "cyberArk") ? "cyberark" : "local") : "local",
+    caAppId: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.appId || "" : "",
+    caSafe: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.safe || "" : "",
+    caObject: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.objectName || "" : ""
   })
 
-  // Treat all of these as generic SQL databases for the new logic
   const isDb = ["POSTGRESQL", "MYSQL", "MARIADB", "ORACLE", "postgres", "mysql", "oracle"].includes(formData.type)
+  const totalSteps = formData.usageType === "ACTION" ? 2 : 4
 
-  const handleNext = () => setStep(s => Math.min(s + 1, 4))
+  const handleNext = () => setStep(s => Math.min(s + 1, totalSteps))
   const handlePrev = () => setStep(s => Math.max(s - 1, 1))
 
   const handleFieldChange = (field: string, value: string | number) => {
@@ -50,21 +55,36 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (step !== 4) return handleNext()
+    if (step !== totalSteps) return handleNext()
 
     setIsSubmitting(true)
     let finalURI = formData.endpointURI
     let finalCreds = formData.credentialsJson
 
-    if (isDb) {
-      finalURI = `${formData.dbHost}:${formData.dbPort}/${formData.dbName}`
-      finalCreds = JSON.stringify({
-        host: formData.dbHost,
-        port: formData.dbPort,
-        database: formData.dbName,
-        user: formData.dbUser,
-        password: formData.dbPassword
-      }, null, 2)
+    if (formData.vaultMode === "cyberark") {
+      if (isDb) {
+        finalCreds = JSON.stringify({
+          host: formData.dbHost,
+          port: formData.dbPort,
+          database: formData.dbName,
+          cyberArk: { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+        }, null, 2)
+      } else {
+        let existing: any = {}
+        try { existing = JSON.parse(finalCreds) } catch(e) {}
+        existing.cyberArk = { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+        finalCreds = JSON.stringify(existing, null, 2)
+      }
+    } else {
+      if (isDb) {
+        finalCreds = JSON.stringify({
+          host: formData.dbHost,
+          port: formData.dbPort,
+          database: formData.dbName,
+          user: formData.dbUser,
+          password: formData.dbPassword
+        }, null, 2)
+      }
     }
 
     try {
@@ -76,7 +96,8 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
           finalURI,
           finalCreds,
           formData.queryPayload,
-          Number(formData.refreshInterval)
+          Number(formData.refreshInterval),
+          formData.usageType
         )
       } else {
         await createAppDataSource(
@@ -85,7 +106,8 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
           finalURI,
           finalCreds,
           formData.queryPayload,
-          Number(formData.refreshInterval)
+          Number(formData.refreshInterval),
+          formData.usageType
         )
       }
       setIsOpen(false)
@@ -133,7 +155,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
             </div>
 
             <div className="flex h-1 bg-slate-100 dark:bg-slate-800 w-full flex-shrink-0">
-              <div className="bg-indigo-600 h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }} />
+              <div className="bg-indigo-600 h-full transition-all duration-300" style={{ width: `${(step / totalSteps) * 100}%` }} />
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 flex-1 overflow-y-auto space-y-6">
@@ -167,6 +189,30 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                       ))}
                     </div>
                   </div>
+
+                  <div className="pt-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Usage Type</label>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div 
+                        onClick={() => handleFieldChange("usageType", "WIDGET")}
+                        className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${formData.usageType === "WIDGET" ? 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-500' : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-700 hover:border-slate-400'}`}
+                      >
+                         <span className="font-bold text-xs text-slate-800 dark:text-slate-200">Telemetry Widget (Read)</span>
+                         <div className={`w-3 h-3 rounded-full border flex flex-shrink-0 items-center justify-center ${formData.usageType === "WIDGET" ? 'border-indigo-500' : 'border-slate-300 dark:border-slate-600'}`}>
+                            {formData.usageType === "WIDGET" && <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
+                          </div>
+                      </div>
+                      <div 
+                        onClick={() => handleFieldChange("usageType", "ACTION")}
+                        className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${formData.usageType === "ACTION" ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-500' : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-700 hover:border-slate-400'}`}
+                      >
+                         <span className="font-bold text-xs text-slate-800 dark:text-slate-200">Action Controller (Write)</span>
+                         <div className={`w-3 h-3 rounded-full border flex flex-shrink-0 items-center justify-center ${formData.usageType === "ACTION" ? 'border-rose-500' : 'border-slate-300 dark:border-slate-600'}`}>
+                            {formData.usageType === "ACTION" && <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />}
+                          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -177,6 +223,15 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                     <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Target Hooks & Credentials</h3>
                   </div>
 
+                  <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-fit">
+                    <button type="button" onClick={() => handleFieldChange("vaultMode", "local")} className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${formData.vaultMode === "local" ? "bg-white dark:bg-slate-700 shadow text-slate-800 dark:text-slate-100" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}>
+                       Local Architecture
+                    </button>
+                    <button type="button" onClick={() => handleFieldChange("vaultMode", "cyberark")} className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${formData.vaultMode === "cyberark" ? "bg-indigo-600 shadow text-white" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}>
+                       CyberArk Vault
+                    </button>
+                  </div>
+
                   {!isDb ? (
                     <>
                       <div>
@@ -184,12 +239,35 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                         <input required type="text" value={formData.endpointURI} onChange={e => handleFieldChange("endpointURI", e.target.value)} className="block w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm transition-colors shadow-inner" placeholder="https://api.internal.corp/production/v1" />
                       </div>
 
-                      <div>
+                      {formData.vaultMode === "cyberark" && (
+                        <div className="space-y-4 p-4 rounded-xl border border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 mt-4">
+                           <div>
+                             <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">CyberArk AppID</label>
+                             <input required type="text" value={formData.caAppId} onChange={e => handleFieldChange("caAppId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="App_DRC_Auth" />
+                           </div>
+                           <div className="grid grid-cols-2 gap-4">
+                             <div>
+                               <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target SafeName</label>
+                               <input required type="text" value={formData.caSafe} onChange={e => handleFieldChange("caSafe", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="DRC-PROD-APIS" />
+                             </div>
+                             <div>
+                               <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target Object ID</label>
+                               <input required type="text" value={formData.caObject} onChange={e => handleFieldChange("caObject", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="rest-api-token-01" />
+                             </div>
+                           </div>
+                        </div>
+                      )}
+
+                      <div className="mt-4">
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center justify-between">
                           Authentication Schema (JSON)
-                          <span className="text-[10px] bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500 dark:text-slate-400 font-mono border border-slate-200 dark:border-slate-700">Backend Secure</span>
+                          <div className="flex gap-2 items-center">
+                            {formData.vaultMode === "cyberark" && <span className="text-[10px] bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded font-mono border border-indigo-200 dark:border-indigo-500/30">Inject Vault: {'{{VAULT_TOKEN}}'}</span>}
+                            <span className="text-[10px] bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500 dark:text-slate-400 font-mono border border-slate-200 dark:border-slate-700">Backend Secure</span>
+                          </div>
                         </label>
                         <textarea value={formData.credentialsJson} onChange={e => handleFieldChange("credentialsJson", e.target.value)} rows={5} className="block w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm shadow-inner transition-colors leading-relaxed" spellCheck={false}></textarea>
+                        {formData.vaultMode === "cyberark" && <p className="text-[11px] text-slate-500 mt-2">Use <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-indigo-500 font-bold">{`{{VAULT_TOKEN}}`}</code> anywhere inside the JSON to dynamically inject the retrieved CyberArk token!</p>}
                       </div>
                     </>
                   ) : (
@@ -207,21 +285,43 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                         <input required type="text" value={formData.dbName} onChange={e => handleFieldChange("dbName", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="production_metrics" />
                       </div>
                       <div className="col-span-2 border-t border-slate-100 dark:border-slate-800 pt-3 mt-1 grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Username</label>
-                          <input required type="text" value={formData.dbUser} onChange={e => handleFieldChange("dbUser", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="readonly_admin" />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Password</label>
-                          <input required type="password" value={formData.dbPassword} onChange={e => handleFieldChange("dbPassword", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="••••••••" />
-                        </div>
+                        {formData.vaultMode === "cyberark" ? (
+                          <div className="col-span-2 space-y-4 p-4 rounded-xl border border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 mt-2">
+                             <div>
+                               <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">CyberArk AppID</label>
+                               <input required type="text" value={formData.caAppId} onChange={e => handleFieldChange("caAppId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="App_DRC_Auth" />
+                             </div>
+                             <div className="grid grid-cols-2 gap-4">
+                               <div>
+                                 <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target SafeName</label>
+                                 <input required type="text" value={formData.caSafe} onChange={e => handleFieldChange("caSafe", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="DRC-PROD-DB" />
+                               </div>
+                               <div>
+                                 <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target Object ID</label>
+                                 <input required type="text" value={formData.caObject} onChange={e => handleFieldChange("caObject", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="db-account-01" />
+                               </div>
+                             </div>
+                             <p className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold leading-tight">Zero-Trust dynamically retrieves the Vault password mapping milliseconds prior seamlessly to executing the physical payload.</p>
+                          </div>
+                        ) : (
+                          <>
+                            <div>
+                              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Username</label>
+                              <input required type="text" value={formData.dbUser} onChange={e => handleFieldChange("dbUser", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="readonly_admin" />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Password</label>
+                              <input required type="password" value={formData.dbPassword} onChange={e => handleFieldChange("dbPassword", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="••••••••" />
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   )}
                 </div>
               )}
 
-              {step === 3 && (
+              {step === 3 && formData.usageType !== "ACTION" && (
                 <div className="space-y-6 animate-in slide-in-from-right-4 duration-300">
                   <div className="flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-2">
                     <Database className="w-5 h-5 text-slate-400" />
@@ -247,7 +347,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                 </div>
               )}
 
-              {step === 4 && (
+              {step === 4 && formData.usageType !== "ACTION" && (
                 <div className="space-y-6 animate-in slide-in-from-right-4 duration-300">
                   <div className="flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-2">
                     <TimerReset className="w-5 h-5 text-slate-400" />
@@ -275,15 +375,30 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                           let finalURI = formData.endpointURI
                           let finalCreds = formData.credentialsJson
 
-                          if (isDb) {
-                            finalURI = `${formData.dbHost}:${formData.dbPort}/${formData.dbName}`
-                            finalCreds = JSON.stringify({
-                              host: formData.dbHost,
-                              port: formData.dbPort,
-                              database: formData.dbName,
-                              user: formData.dbUser,
-                              password: formData.dbPassword
-                            })
+                          if (formData.vaultMode === "cyberark") {
+                            if (isDb) {
+                              finalCreds = JSON.stringify({
+                                host: formData.dbHost,
+                                port: formData.dbPort,
+                                database: formData.dbName,
+                                cyberArk: { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+                              })
+                            } else {
+                              let existing: any = {}
+                              try { existing = JSON.parse(finalCreds) } catch(e) {}
+                              existing.cyberArk = { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+                              finalCreds = JSON.stringify(existing)
+                            }
+                          } else {
+                            if (isDb) {
+                              finalCreds = JSON.stringify({
+                                host: formData.dbHost,
+                                port: formData.dbPort,
+                                database: formData.dbName,
+                                user: formData.dbUser,
+                                password: formData.dbPassword
+                              })
+                            }
                           }
 
                           const res = await fetch("/api/cms/test-source", {
@@ -335,7 +450,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                   disabled={isSubmitting || (step === 1 && !formData.name) || (step === 2 && !isDb && !formData.endpointURI) || (step === 2 && isDb && (!formData.dbHost || !formData.dbUser || !formData.dbPassword || !formData.dbName))}
                   className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg text-sm font-bold transition-colors flex items-center gap-1 shadow-md shadow-indigo-600/20 dark:shadow-indigo-500/20"
                 >
-                  {isSubmitting ? "Finalizing Mappings..." : step === 4 ? "Build Data Source" : <>Next Step <ChevronRight className="w-4 h-4" /></>}
+                  {isSubmitting ? "Finalizing Mappings..." : step === totalSteps ? "Build Data Source" : <>Next Step <ChevronRight className="w-4 h-4" /></>}
                 </button>
               </div>
 

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { applyDataReduction } from '@/utils/dataProcessor'
 import { executeRawDbQuery } from '@/utils/dbConnectors'
+import { getCyberArkCredentials } from '@/lib/cyberark'
 
 export async function POST(request: Request) {
   try {
@@ -12,14 +13,37 @@ export async function POST(request: Request) {
 
     let headers: Record<string, string> = { "Content-Type": "application/json" }
     
+    let parsedCreds: any = {}
     try {
       if (credentialsJson && credentialsJson.trim() !== "{}") {
-        const parsedCreds = JSON.parse(credentialsJson)
-        if (parsedCreds.headers) headers = { ...headers, ...parsedCreds.headers }
+        parsedCreds = JSON.parse(credentialsJson)
       }
     } catch (e) {
       console.warn("Invalid credentials payload provided during test")
     }
+
+    if (parsedCreds.cyberArk && parsedCreds.cyberArk.appId) {
+       try {
+         const vaultResp = await getCyberArkCredentials(parsedCreds.cyberArk)
+         if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
+           parsedCreds.password = vaultResp.Content
+           if (vaultResp.UserName) parsedCreds.user = vaultResp.UserName
+           if (vaultResp.Address) parsedCreds.host = vaultResp.Address
+         } else {
+           let credStr = JSON.stringify(parsedCreds)
+           if (credStr.includes("{{VAULT_TOKEN}}")) {
+             credStr = credStr.replace(/\{\{VAULT_TOKEN\}\}/g, vaultResp.Content)
+             parsedCreds = JSON.parse(credStr)
+           } else {
+             parsedCreds.headers = { ...parsedCreds.headers, Authorization: `Bearer ${vaultResp.Content}` }
+           }
+         }
+       } catch (err: any) {
+         return NextResponse.json({ error: "Vault Simulation Interception Failed: " + err.message }, { status: 403 })
+       }
+    }
+
+    if (parsedCreds.headers) headers = { ...headers, ...parsedCreds.headers }
 
     let finalData: any = null;
 
@@ -41,9 +65,6 @@ export async function POST(request: Request) {
       }
     } else if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
       try {
-        let parsedCreds: any = {}
-        try { parsedCreds = JSON.parse(credentialsJson) } catch (e) {}
-
         const host = parsedCreds.host || (endpointURI ? endpointURI.split(':')[0] : "localhost")
         const port = Number(parsedCreds.port) || (type === "POSTGRESQL" ? 5432 : (type === "ORACLE" ? 1521 : 3306))
         const database = parsedCreds.database || ""

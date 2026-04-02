@@ -1,11 +1,16 @@
 import { prisma } from "@/lib/prisma"
-import { ShieldAlert, Plus, Layout, Layers, Link as LinkIcon } from "lucide-react"
+import { ShieldAlert, Plus, Layout, Layers, Link as LinkIcon, Lock } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { CMSPageModal } from "@/components/cms/CMSPageModal"
 import { NavigationOrderModal } from "@/components/cms/NavigationOrderModal"
+import { getScopedRowLevelQueryFilter, getCmsUserSession } from "@/lib/cms-auth"
 
 export default async function CMSAdminPages() {
+  const isolationFilter = await getScopedRowLevelQueryFilter()
+  const session = await getCmsUserSession()
+
   const pages = await prisma.appPage.findMany({
+    where: isolationFilter,
     include: {
       widgets: true,
       Navigation: true
@@ -32,8 +37,13 @@ export default async function CMSAdminPages() {
               <ShieldAlert className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">CMS Configuration</h1>
-              <p className="text-slate-500 dark:text-slate-400 mt-1">Manage dynamic payload interfaces & navigables</p>
+              <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2">
+                CMS Configuration
+              </h1>
+              <p className="text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5">
+                Manage dynamic payload interfaces
+                {session?.role !== "ADMIN" && <span className="px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] uppercase font-bold border border-rose-200 dark:border-rose-500/20 flex items-center gap-1"><Lock className="w-3 h-3" /> Sandboxed Mode Active</span>}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">

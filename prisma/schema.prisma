@@ -1,6 +1,6 @@
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url = env("DATABASE_URL")
 }
 
 generator client {
@@ -76,6 +76,7 @@ model AppPage {
   title       String      // Stores translation map: {"en": "Dashboard", "tr": "Panel"}
   layoutType  String      @default("GRID") // "GRID" (Legacy/Ignore), "LIST", "FULL"
   isLocked    Boolean     @default(false) // Admin Layout Editor Lock
+  ownerId     String?     // RBAC Row-Level Ownership Linkage
   widgets     AppWidget[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -93,6 +94,8 @@ model AppWidget {
   y             Int      @default(0)
   w             Int      @default(6)
   h             Int      @default(4)
+
+  ownerId       String?  // RBAC Component Level Ownership
 
   // External Payload Bindings
   dataSources   AppDataSource[]
@@ -120,11 +123,13 @@ model AppDataSource {
   id              String   @id @default(cuid())
   name            String   @unique  // E.g. "Production Prometheus", "Primary Node API"
   type            String   // Enum "REST_API", "POSTGRES", "HTTP_JSON"
+  usageType       String   @default("WIDGET") // "WIDGET" or "ACTION"
   endpointURI     String   // The URL mapping location to proxy
   credentialsJson String   // Stores secure auth tokens `{"headers": {"Authorization": "Bearer XYZ"}}` natively
   queryPayload    String   @default("") // E.g. SQL Query explicitly bound
 
   refreshInterval Int      @default(10) // Polling frequency
+  ownerId         String?  // RBAC Row-Level Controller Linkage
 
   widgets         AppWidget[]
   createdAt       DateTime @default(now())

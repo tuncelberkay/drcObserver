@@ -7,6 +7,8 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { prisma } from '@/lib/prisma';
+import { getSystemConfig } from '@/lib/drc-config';
+import { AppSetupWizard } from '@/components/system/AppSetupWizard';
 import "../globals.css";
 
 
@@ -28,6 +30,19 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
+
+  const systemConfig = getSystemConfig();
+  if (!systemConfig.setupCompleted) {
+    return (
+      <html lang={locale} className={`h-full antialiased font-sans`} suppressHydrationWarning>
+        <body className="min-h-full flex flex-col bg-slate-950 transition-colors duration-300">
+           <NextIntlClientProvider messages={messages}>
+              <AppSetupWizard />
+           </NextIntlClientProvider>
+        </body>
+      </html>
+    )
+  }
 
   // Fetch navigation payload asynchronously without blocking first byte rendering excessively via Promise parallel resolving
   const navItemsRaw = await prisma.appNavigation.findMany({

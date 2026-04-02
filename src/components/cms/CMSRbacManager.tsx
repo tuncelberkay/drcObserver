@@ -8,7 +8,10 @@ const SYSTEM_MODULES = [
   { id: "ADMIN_MODULE_PAGES", label: "CMS Route Configuration", icon: <Layout className="w-3.5 h-3.5" /> },
   { id: "ADMIN_MODULE_SOURCES", label: "Data Source Control Engine", icon: <Database className="w-3.5 h-3.5" /> },
   { id: "ADMIN_MODULE_LDAP", label: "LDAP Architecture Hook", icon: <Fingerprint className="w-3.5 h-3.5" /> },
-  { id: "ADMIN_MODULE_ROLES", label: "Enterprise RBAC Bounds", icon: <ShieldAlert className="w-3.5 h-3.5" /> }
+  { id: "ADMIN_MODULE_ROLES", label: "Enterprise RBAC Bounds", icon: <ShieldAlert className="w-3.5 h-3.5" /> },
+  { id: "MANAGE_PAGES", label: "Permission: Create / Edit Personal Pages", icon: <Layout className="w-3.5 h-3.5 text-blue-500" /> },
+  { id: "MANAGE_SOURCES", label: "Permission: Create / Edit Personal Data Sources", icon: <Database className="w-3.5 h-3.5 text-blue-500" /> },
+  { id: "MANAGE_WIDGETS", label: "Permission: Create / Edit Personal Widgets", icon: <Layout className="w-3.5 h-3.5 text-blue-500" /> }
 ]
 
 export function CMSRbacManager({ roles, pages }: { roles: any[], pages: any[] }) {

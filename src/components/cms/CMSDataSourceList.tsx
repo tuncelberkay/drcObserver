@@ -2,7 +2,7 @@
 
 import { Server, Trash2, KeyRound, Pencil } from "lucide-react"
 import { deleteAppDataSource } from "@/app/actions/cms"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { CMSDataSourceModal } from "./CMSDataSourceModal"
 
@@ -10,7 +10,12 @@ export function CMSDataSourceList({ initialSources }: { initialSources: any[] })
   const [sources, setSources] = useState(initialSources)
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const [editingSource, setEditingSource] = useState<any | null>(null)
+  const [activeTab, setActiveTab] = useState<"WIDGET" | "ACTION">("WIDGET")
   const router = useRouter()
+
+  useEffect(() => {
+    setSources(initialSources)
+  }, [initialSources])
 
   const handleDelete = async (id: string) => {
     setDeletingId(id)
@@ -25,9 +30,27 @@ export function CMSDataSourceList({ initialSources }: { initialSources: any[] })
     }
   }
 
+  const filteredSources = sources.filter(s => s.usageType === activeTab || (!s.usageType && activeTab === "WIDGET"))
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {sources.map(s => (
+    <div className="space-y-6">
+      <div className="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl w-fit">
+        <button 
+          onClick={() => setActiveTab("WIDGET")} 
+          className={`px-4 py-2 text-sm font-bold rounded-lg transition-all ${activeTab === "WIDGET" ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+        >
+          Telemetry Sources (Read)
+        </button>
+        <button 
+          onClick={() => setActiveTab("ACTION")} 
+          className={`px-4 py-2 text-sm font-bold rounded-lg transition-all ${activeTab === "ACTION" ? "bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 shadow-sm" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+        >
+          Action Controllers (Write)
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {filteredSources.map(s => (
         <div key={s.id} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-slate-300 dark:hover:border-slate-700 transition-colors flex flex-col justify-between shadow-sm">
           <div>
             <div className="flex items-center justify-between mb-3">
@@ -95,11 +118,11 @@ export function CMSDataSourceList({ initialSources }: { initialSources: any[] })
         </div>
       ))}
 
-      {sources.length === 0 && (
+      {filteredSources.length === 0 && (
         <div className="md:col-span-2 text-center py-20 bg-slate-50 dark:bg-slate-900/50 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl">
           <Server className="w-12 h-12 text-slate-400 dark:text-slate-600 mx-auto mb-4 opacity-50" />
-          <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">No Data Endpoints Mapped</h3>
-          <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">Click "New Data Source" to securely bind your REST APIs or Databases into the generic visual architecture.</p>
+          <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">No {activeTab} Endpoints Mapped</h3>
+          <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">Click "New Data Source" to securely bind a new {activeTab.toLowerCase()} connection.</p>
         </div>
       )}
 
@@ -109,6 +132,7 @@ export function CMSDataSourceList({ initialSources }: { initialSources: any[] })
            onClose={() => setEditingSource(null)} 
          />
       )}
+      </div>
     </div>
   )
 }

@@ -1,0 +1,5 @@
+{
+  "setupCompleted": true,
+  "dbProvider": "sqlite",
+  "connectionUrl": "file:./dev.db"
+}

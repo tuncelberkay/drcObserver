@@ -1,9 +1,15 @@
 "use server"
 
+import { z } from "zod"
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
+import { requireRbacPermission, enforceRowLevelSecurity, getCmsUserSession } from "@/lib/cms-auth"
+import { encryptString } from '@/lib/encryption'
 
 export async function createAppPage(formData: FormData) {
+  await requireRbacPermission("MANAGE_PAGES")
+  const session = await getCmsUserSession()
+
   const slug = formData.get("slug") as string
   const titleEn = formData.get("titleEn") as string
   const titleTr = formData.get("titleTr") as string
@@ -20,6 +26,7 @@ export async function createAppPage(formData: FormData) {
       slug,
       title: titleJson,
       layoutType: "GRID",
+      ownerId: session?.id || null
     }
   })
 
@@ -42,6 +49,9 @@ export async function createAppPage(formData: FormData) {
 }
 
 export async function deleteAppPage(pageId: string) {
+  const page = await prisma.appPage.findUnique({ where: { id: pageId } })
+  if (page) await enforceRowLevelSecurity(page.ownerId)
+
   await prisma.appPage.delete({
     where: { id: pageId }
   })
@@ -53,6 +63,9 @@ export async function deleteAppPage(pageId: string) {
 }
 
 export async function addWidgetToPage(pageId: string, componentKey: string, x: number = 0, y: number = 0, w: number = 6, h: number = 4) {
+  await requireRbacPermission("MANAGE_WIDGETS")
+  const session = await getCmsUserSession()
+
   const wRecord = await prisma.appWidget.create({
     data: {
       pageId,
@@ -61,7 +74,8 @@ export async function addWidgetToPage(pageId: string, componentKey: string, x: n
       x,
       y,
       w,
-      h
+      h,
+      ownerId: session?.id || null
     }
   })
   
@@ -71,23 +85,40 @@ export async function addWidgetToPage(pageId: string, componentKey: string, x: n
 }
 
 export async function removeWidget(widgetId: string) {
-  await prisma.appWidget.delete({
-    where: { id: widgetId }
-  })
-  
-  revalidatePath(`/[locale]/admin/editor/[id]`, "page")
-  return { success: true }
+  try {
+    const wRecord = await prisma.appWidget.findUnique({ where: { id: widgetId } })
+    if (wRecord) await enforceRowLevelSecurity(wRecord.ownerId)
+
+    if (!widgetId || typeof widgetId !== "string") {
+      throw new Error(`Invalid widgetId passed to removeWidget: ${JSON.stringify(widgetId)}`);
+    }
+
+    await prisma.appWidget.delete({
+      where: { id: widgetId }
+    })
+    
+    revalidatePath(`/[locale]/admin/editor/[id]`, "page")
+    return { success: true }
+  } catch (error: any) {
+    console.error("[SERVER ACTION] removeWidget Error:", error.message || error);
+    throw error;
+  }
 }
 
-export async function createAppDataSource(name: string, type: string, endpointURI: string, credentialsJson: string, queryPayload: string, refreshInterval: number) {
+export async function createAppDataSource(name: string, type: string, endpointURI: string, credentialsJson: string, queryPayload: string, refreshInterval: number, usageType: string = "WIDGET") {
+  await requireRbacPermission("MANAGE_SOURCES")
+  const session = await getCmsUserSession()
+
   await prisma.appDataSource.create({
     data: {
       name,
       type,
+      usageType,
       endpointURI,
-      credentialsJson,
+      credentialsJson: encryptString(credentialsJson),
       queryPayload,
-      refreshInterval
+      refreshInterval,
+      ownerId: session?.id || null
     }
   })
   revalidatePath("/[locale]/admin/sources", "page")
@@ -100,23 +131,39 @@ export async function updateAppDataSource(
   endpointURI: string, 
   credentialsJson: string,
   queryPayload: string,
-  refreshInterval: number
+  refreshInterval: number,
+  usageType: string = "WIDGET"
 ) {
+  const item = await prisma.appDataSource.findUnique({ where: { id } })
+  if (item) await enforceRowLevelSecurity(item.ownerId)
+
   const result = await prisma.appDataSource.update({
     where: { id },
-    data: { name, type, endpointURI, credentialsJson, queryPayload, refreshInterval }
+    data: { name, type, endpointURI, credentialsJson: encryptString(credentialsJson), queryPayload, refreshInterval, usageType }
   })
   revalidatePath("/[locale]/admin/sources", "page")
   return result
 }
 export async function deleteAppDataSource(id: string) {
+  const item = await prisma.appDataSource.findUnique({ where: { id } })
+  if (item) await enforceRowLevelSecurity(item.ownerId)
+
   await prisma.appDataSource.delete({ where: { id } })
   revalidatePath("/[locale]/admin/sources", "page")
   return { success: true }
 }
 
+export async function getActionDataSources() {
+  return await prisma.appDataSource.findMany({
+    where: { usageType: "ACTION" },
+    orderBy: { name: 'asc' }
+  })
+}
+
 export async function bindWidgetDataSource(widgetId: string, dataSourceIds: string[], dataQuery: string, configJson: string, x?: number, y?: number, w?: number, h?: number) {
-  
+  const wRecord = await prisma.appWidget.findUnique({ where: { id: widgetId } })
+  if (wRecord) await enforceRowLevelSecurity(wRecord.ownerId)
+
   const updateData: any = {
       dataQuery,
       configJson,

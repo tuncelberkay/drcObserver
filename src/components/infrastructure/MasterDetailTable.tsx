@@ -27,38 +27,10 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
   const [rowsPerPage, setRowsPerPage] = useState(config?.paginationOptions === "ALL" ? 1000 : 10)
   const [actionLoading, setActionLoading] = useState<string | null>(null)
 
-  // Live frontend customization states
-  const [showSettings, setShowSettings] = useState(false)
-  const [localParentCols, setLocalParentCols] = useState<string[]>(parentCols)
-  const [localChildCols, setLocalChildCols] = useState<string[]>(childCols)
-  const [localActions, setLocalActions] = useState<any[]>(customActions)
-  const [localColumnStyles, setLocalColumnStyles] = useState<Record<string, string>>(columnStyles)
-
-  useEffect(() => {
-     setLocalParentCols(parentCols)
-     setLocalChildCols(childCols)
-     setLocalActions(customActions)
-     setLocalColumnStyles(columnStyles)
-  }, [config?.parentCols, config?.childCols, config?.customActions, config?.columnStyles])
-
   const availableKeys = useMemo(() => {
      if (metrics.length > 0) return Object.keys(metrics[0]).filter(k => typeof metrics[0][k] !== "object" || Array.isArray(metrics[0][k]))
      return []
   }, [metrics])
-
-  const handleDragStart = (e: React.DragEvent, key: string, group: string) => { e.dataTransfer.setData("text/plain", JSON.stringify({ key, group })) }
-  const handleDrop = (e: React.DragEvent, targetKey: string, group: string, state: string[], setter: any) => {
-      e.preventDefault()
-      const data = JSON.parse(e.dataTransfer.getData("text/plain"))
-      if (data.group !== group) return
-      const current = [...state]
-      const fromIdx = current.indexOf(data.key)
-      const toIdx = current.indexOf(targetKey)
-      if (fromIdx < 0 || toIdx < 0) return
-      current.splice(fromIdx, 1)
-      current.splice(toIdx, 0, data.key)
-      setter(current)
-  }
 
   // Reset page when data size drastically changes
   useEffect(() => {
@@ -81,8 +53,8 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
 
     let intervalId: NodeJS.Timeout
     
-    async function initData() {
-      setLoading(true)
+    async function initData(isBackground = false) {
+      if (!isBackground) setLoading(true)
       try {
         const res = await fetch('/api/cms/query', {
           method: 'POST',
@@ -99,13 +71,13 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
       } catch (err) {
         console.error("Failed to map widget dataset", err)
       } finally {
-        setLoading(false)
+        if (!isBackground) setLoading(false)
       }
     }
 
-    initData()
+    initData(false)
     // Constant polling fallback map
-    intervalId = setInterval(initData, 10000)
+    intervalId = setInterval(() => initData(true), 10000)
 
     return () => clearInterval(intervalId)
   }, [widget?.id, previewData])
@@ -113,23 +85,32 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
   const executeAction = async (action: any, rowData: any) => {
      try {
         setActionLoading(`${action.name}-${rowData[primaryKey]}`)
-        let url = action.endpoint || ""
-        Object.keys(rowData).forEach(k => { url = url.replace(new RegExp(`{${k}}`, 'g'), String(rowData[k])) })
+        
+        let hydratedEndpoint = action.endpoint || ""
+        Object.keys(rowData).forEach(k => { hydratedEndpoint = hydratedEndpoint.replace(new RegExp(`{${k}}`, 'g'), String(rowData[k])) })
 
-        let body: any = undefined
-        if (action.method !== "GET" && action.method !== "DELETE" && action.payloadTemplate) {
-           let hydratedPayload = action.payloadTemplate
+        let hydratedPayload = ""
+        if (action.payloadTemplate) {
+           hydratedPayload = action.payloadTemplate
            Object.keys(rowData).forEach(k => { hydratedPayload = hydratedPayload.replace(new RegExp(`{${k}}`, 'g'), String(rowData[k])) })
-           body = hydratedPayload
         }
 
-        const res = await fetch(url, {
-           method: action.method || "POST",
+        const res = await fetch('/api/cms/execute', {
+           method: "POST",
            headers: { "Content-Type": "application/json" },
-           body
+           body: JSON.stringify({
+              dataSourceId: action.dataSourceId,
+              type: action.type,
+              method: action.method,
+              endpoint: hydratedEndpoint,
+              payload: hydratedPayload
+           })
         })
 
-        if (!res.ok) throw new Error(await res.text())
+        if (!res.ok) {
+           const errJson = await res.json().catch(() => ({}))
+           throw new Error(errJson.error || await res.text())
+        }
      } catch (e: any) {
         alert(`Action "${action.name}" failed: ${e.message}`)
      } finally {
@@ -158,12 +139,6 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
            </h3>
          ) : <div />}
          <div className="flex items-center gap-2">
-            <button 
-              onClick={() => setShowSettings(!showSettings)} 
-              className="px-2 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded border border-slate-300 dark:border-slate-700 text-[10px] uppercase font-bold flex items-center gap-1 transition-colors"
-            >
-               <Settings className="w-3.5 h-3.5" /> Configure
-            </button>
             <div className="px-3 py-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-400 font-mono tracking-widest uppercase flex items-center gap-2">
                <Search className="w-3 h-3 text-slate-500" />
                {metrics.length} Rows Synced
@@ -336,10 +311,10 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
           <thead>
             <tr className="bg-slate-50/90 dark:bg-slate-950/80 text-slate-600 dark:text-slate-400 text-[11px] uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 backdrop-blur-md">
               <th className="p-4 font-semibold w-12 text-center">+/-</th>
-              {localParentCols.map((col: string) => (
+              {parentCols.map((col: string) => (
                 <th key={col} className="p-4 font-semibold whitespace-nowrap">{col}</th>
               ))}
-              {localActions.some(a => a.placement === "main") && (
+              {customActions.some((a: any) => a.placement === "main") && (
                 <th className="p-4 font-semibold whitespace-nowrap text-right"><Terminal className="inline w-3 h-3 text-indigo-400 mr-1" /> Actions</th>
               )}
             </tr>
@@ -347,7 +322,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800/50">
              {paginatedMetrics.length === 0 && (
                 <tr>
-                  <td colSpan={localParentCols.length + 1} className="p-8 text-center text-slate-500 text-sm font-medium">
+                  <td colSpan={parentCols.length + 1} className="p-8 text-center text-slate-500 text-sm font-medium">
                     No generic array mappings found. Verify your JSON arrays.
                   </td>
                 </tr>
@@ -366,7 +341,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                         {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                       </button>
                     </td>
-                    {localParentCols.map((col: string) => {
+                    {parentCols.map((col: string) => {
                        const val = row[col]
                        const text = val !== null && val !== undefined ? String(val) : "-"
                        
@@ -374,7 +349,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                        let colorStyle = "text-slate-600 dark:text-slate-300"
                        let wrapperClass = ""
 
-                       const renderType = localColumnStyles[col] || "text"
+                       const renderType = columnStyles[col] || "text"
                        
                        if (typeof val === "string") {
                          const lower = val.toLowerCase()
@@ -396,9 +371,9 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                          </td>
                        )
                     })}
-                    {localActions.some(a => a.placement === "main") && (
+                    {customActions.some((a: any) => a.placement === "main") && (
                        <td className="p-4 text-right flex items-center justify-end gap-2">
-                          {localActions.filter(a => a.placement === "main").map((action: any, idx: number) => {
+                          {customActions.filter((a: any) => a.placement === "main").map((action: any, idx: number) => {
                              const isLoading = actionLoading === `${action.name}-${rowId}`
                              return (
                                 <button
@@ -418,7 +393,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                   
                   {isExpanded && (
                     <tr className="bg-slate-50/80 dark:bg-slate-950/80 border-b border-indigo-200 dark:border-indigo-500/20">
-                      <td colSpan={localParentCols.length + 1} className="p-0">
+                      <td colSpan={parentCols.length + 1} className="p-0">
                         <div className="p-6 animate-in slide-in-from-top-2 duration-300">
                           <div className="space-y-4 col-span-full">
                             <h4 className="flex items-center gap-2 font-bold text-slate-800 dark:text-slate-200 text-sm">
@@ -428,7 +403,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                                
                                {/* Render Flat Properties */}
                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
-                                 {localChildCols.filter(col => !Array.isArray(row[col])).map((col: string) => {
+                                 {childCols.filter((col: string) => !Array.isArray(row[col])).map((col: string) => {
                                     const val = row[col]
                                     const renderVal = val !== null && val !== undefined 
                                       ? (typeof val === 'object' ? JSON.stringify(val) : String(val)) 
@@ -444,7 +419,7 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                                </div>
 
                                {/* Render Recursive Array Objects */}
-                               {localChildCols.filter(col => Array.isArray(row[col])).map((col: string) => {
+                               {childCols.filter((col: string) => Array.isArray(row[col])).map((col: string) => {
                                   const arr = row[col] as any[]
                                   if (arr.length === 0) return null
                                   const innerCols = Object.keys(arr[0]).filter(k => typeof arr[0][k] !== "object")
@@ -472,15 +447,15 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
                                   )
                                })}
 
-                               {localChildCols.length === 0 && <p className="text-slate-500 italic text-xs">No detail columns specified.</p>}
+                               {childCols.length === 0 && <p className="text-slate-500 italic text-xs">No detail columns specified.</p>}
                             </div>
                             
                             {/* Action Buttons Panel */}
-                            {localActions.some(a => !a.placement || a.placement === "detail") && (
+                            {customActions.some((a: any) => !a.placement || a.placement === "detail") && (
                                <div className="pt-4 mt-2 border-t border-slate-200 dark:border-slate-800">
                                   <h4 className="flex items-center gap-2 font-bold text-slate-800 dark:text-slate-200 text-xs mb-3 uppercase tracking-widest"><Terminal className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" /> Embedded Actions</h4>
                                   <div className="flex flex-wrap gap-3">
-                                     {localActions.filter(a => !a.placement || a.placement === "detail").map((action: any, idx: number) => {
+                                     {customActions.filter((a: any) => !a.placement || a.placement === "detail").map((action: any, idx: number) => {
                                         const isLoading = actionLoading === `${action.name}-${rowId}`;
                                         return (
                                            <button 
@@ -555,88 +530,6 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
          </div>
       </div>
 
-      {showSettings && (
-        <div className="absolute inset-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm p-6 overflow-y-auto custom-scrollbar flex flex-col transition-all">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
-             <h2 className="text-lg font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2"><Settings className="w-5 h-5 text-indigo-500" /> DataTable Live Configuration</h2>
-             <button onClick={() => setShowSettings(false)} className="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-400"><X className="w-4 h-4" /></button>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-             <div className="space-y-6">
-                <div>
-                   <h3 className="font-bold text-sm tracking-widest uppercase mb-3 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-2">Visible Main Columns</h3>
-                   <div className="flex flex-wrap gap-2 mb-3">
-                      {availableKeys.map(k => {
-                         const isActive = localParentCols.includes(k)
-                         return (
-                            <button key={k} onClick={() => setLocalParentCols(isActive ? localParentCols.filter(c => c !== k) : [...localParentCols, k])} className={`px-2 py-1 text-xs font-mono rounded border transition-colors ${isActive ? 'bg-indigo-600 text-white border-indigo-600 shadow' : 'bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'}`}>{k} {isActive && "✓"}</button>
-                         )
-                      })}
-                   </div>
-                   <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 space-y-1">
-                      {localParentCols.map((k, i) => (
-                         <div key={k} draggable onDragStart={e => handleDragStart(e, k, "parent")} onDragOver={e => e.preventDefault()} onDrop={e => handleDrop(e, k, "parent", localParentCols, setLocalParentCols)} className="flex flex-row items-center justify-between text-xs font-mono bg-white dark:bg-black border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded cursor-grab active:cursor-grabbing border-b-2 hover:border-b-indigo-400 transition-colors">
-                            <span className="text-slate-700 dark:text-slate-300 font-bold flex items-center gap-2"><ArrowUp className="w-3 h-3 text-slate-400 cursor-ns-resize" /> {i+1}. {k}</span>
-                            <div className="flex gap-2 items-center">
-                               <select className="bg-slate-100 dark:bg-slate-800 border-none rounded px-1 outline-none font-bold text-indigo-600 dark:text-indigo-400" value={localColumnStyles[k] || "text"} onChange={e => setLocalColumnStyles({...localColumnStyles, [k]: e.target.value})}>
-                                  <option value="text">Text</option>
-                                  <option value="badge">Badge</option>
-                               </select>
-                            </div>
-                         </div>
-                      ))}
-                   </div>
-                </div>
-
-                <div>
-                   <h3 className="font-bold text-sm tracking-widest uppercase mb-3 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-2">Detail Profile Columns</h3>
-                   <div className="flex flex-wrap gap-2 mb-3">
-                      {availableKeys.map(k => {
-                         const isActive = localChildCols.includes(k)
-                         return (
-                            <button key={k} onClick={() => setLocalChildCols(isActive ? localChildCols.filter(c => c !== k) : [...localChildCols, k])} className={`px-2 py-1 text-xs font-mono rounded border transition-colors ${isActive ? 'bg-sky-600 text-white border-sky-600 shadow' : 'bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'}`}>{k} {isActive && "✓"}</button>
-                         )
-                      })}
-                   </div>
-                   <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-2 space-y-1">
-                      {localChildCols.map((k, i) => (
-                         <div key={k} draggable onDragStart={e => handleDragStart(e, k, "child")} onDragOver={e => e.preventDefault()} onDrop={e => handleDrop(e, k, "child", localChildCols, setLocalChildCols)} className="flex flex-row items-center justify-between text-xs font-mono bg-white dark:bg-black border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded cursor-grab active:cursor-grabbing border-b-2 hover:border-b-sky-400 transition-colors">
-                            <span className="text-slate-700 dark:text-slate-300 font-bold flex items-center gap-2"><ArrowUp className="w-3 h-3 text-slate-400 cursor-ns-resize" /> {i+1}. {k}</span>
-                         </div>
-                      ))}
-                   </div>
-                </div>
-             </div>
-
-             <div>
-                <div className="flex items-center justify-between mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">
-                   <h3 className="font-bold text-sm tracking-widest uppercase text-slate-500 dark:text-slate-400">Custom Action Buttons</h3>
-                   <button onClick={() => setLocalActions([...localActions, { name: "New Action", endpoint: "/api/path/{id}", method: "POST" }])} className="text-xs px-2 py-1 bg-indigo-50 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 rounded border border-indigo-200 dark:border-indigo-500/30 flex items-center gap-1 font-bold"><Plus className="w-3 h-3" /> Add Action</button>
-                </div>
-                {localActions.length === 0 ? (
-                  <p className="text-xs text-slate-500 italic">No custom actions configured for this view.</p>
-                ) : (
-                   <div className="space-y-4">
-                      {localActions.map((action, i) => (
-                         <div key={i} className="bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-3 rounded-lg flex flex-col gap-2">
-                            <div className="flex gap-2">
-                               <input type="text" value={action.name} onChange={e => { const ac = [...localActions]; ac[i].name = e.target.value; setLocalActions(ac)}} className="w-1/3 text-xs p-1.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold" placeholder="Action Name" />
-                               <select value={action.method} onChange={e => { const ac = [...localActions]; ac[i].method = e.target.value; setLocalActions(ac)}} className="w-24 text-xs p-1.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded font-bold">
-                                  <option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option>
-                               </select>
-                               <input type="text" value={action.endpoint} onChange={e => { const ac = [...localActions]; ac[i].endpoint = e.target.value; setLocalActions(ac)}} className="flex-1 text-xs font-mono p-1.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded" placeholder="/api/target/{id}" />
-                               <button onClick={() => { const ac = [...localActions]; ac.splice(i, 1); setLocalActions(ac) }} className="text-rose-500 hover:text-rose-600 p-1.5"><Trash2 className="w-4 h-4" /></button>
-                            </div>
-                            <input type="text" value={action.payloadTemplate || ""} onChange={e => { const ac = [...localActions]; ac[i].payloadTemplate = e.target.value; setLocalActions(ac)}} className="w-full text-[10px] font-mono p-1.5 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded" placeholder='{"hostname": "{hostname}"}' title="Optional JSON Payload Template" />
-                         </div>
-                      ))}
-                   </div>
-                )}
-             </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

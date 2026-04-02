@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import * as Icons from "lucide-react"
 import VisualRecordBuilder from "./VisualRecordBuilder"
 import { bindWidgetDataSource } from "@/app/actions/cms"
@@ -33,6 +33,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   const [groupBy, setGroupBy] = useState(existingConfig.groupBy || "")
   const [aggType, setAggType] = useState(existingConfig.aggType || "COUNT")
   const [configTitle, setConfigTitle] = useState(existingConfig.title || `${widgetMeta.name} Visual`)
+  const [showTitle, setShowTitle] = useState(existingConfig.showTitle ?? true)
+  const [showSubText, setShowSubText] = useState(existingConfig.showSubText ?? false)
+  const [subText, setSubText] = useState(existingConfig.subText ?? "")
   
   const [xAxisKey, setXAxisKey] = useState(existingConfig.xAxisKey || "name")
   const [dataKey, setDataKey] = useState(existingConfig.dataKey || "value")
@@ -50,8 +53,8 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   
   const [layoutLines, setLayoutLines] = useState<any[]>(existingConfig.layoutLines || [
       { id: "line-1", name: "Main Record Line 1", cols: (existingConfig.parentCols || "").split(",").map((c: string) => c.trim()).filter(Boolean) },
-      { id: "drawer", name: "Embedded Detail Drawer", cols: (existingConfig.childCols || "").split(",").map((c: string) => c.trim()).filter(Boolean) }
-  ])
+      existingConfig.childCols ? { id: "drawer", name: "Embedded Detail Drawer", cols: existingConfig.childCols.split(",").map((c: string) => c.trim()).filter(Boolean) } : null
+  ].filter(Boolean))
 
 
   const [gridW, setGridW] = useState<number>(widget.w ?? 6)
@@ -70,7 +73,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
         widget.id, 
         selectedSources,
         dataQuery,
-        JSON.stringify({ groupBy, aggType, title: configTitle, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings }),
+        JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings }),
         widget.x ?? 0,
         widget.y ?? 999,
         gridW,
@@ -110,10 +113,21 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     }
   }
 
+  useEffect(() => {
+    const tid = setTimeout(() => {
+      handlePreview()
+    }, 600)
+    return () => clearTimeout(tid)
+  }, [selectedSources, dataQuery, groupBy, aggType])
+
+
   const ChartComponent = WidgetRegistry[widget.componentKey]
 
   const transientConfig = useMemo(() => ({
     title: configTitle,
+    showTitle,
+    showSubText,
+    subText,
     groupBy,
     aggType,
     xAxisKey,
@@ -124,8 +138,11 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     childCols,
     colors: customColors.length > 0 ? customColors : undefined,
     columnStyles,
-    customActions
-  }), [configTitle, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, customActions, columnStyles])
+    customActions,
+    layoutLines,
+    lineSettings,
+    elementSettings
+  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, customActions, columnStyles, layoutLines, lineSettings, elementSettings])
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10 bg-slate-900/60 dark:bg-slate-950/90 backdrop-blur-md">
@@ -303,13 +320,48 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                         <Icons.Paintbrush className="w-4 h-4 text-sky-600 dark:text-sky-400" /> UI Configurations
                       </label>
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Display Title</label>
+                         <div className="flex items-center justify-between mb-2">
+                            <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Display Title</label>
+                            <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                               <input 
+                                  type="checkbox" 
+                                  checked={showTitle} 
+                                  onChange={e => setShowTitle(e.target.checked)}
+                                  className="rounded text-sky-500 focus:ring-sky-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                               />
+                               <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Show Title</span>
+                            </label>
+                         </div>
                         <input 
                           type="text" 
                           value={configTitle}
+                          disabled={!showTitle}
                           onChange={e => setConfigTitle(e.target.value)}
-                          className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none" 
+                          className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900" 
                         />
+                      </div>
+                      <div>
+                         <div className="flex items-center justify-between mb-2">
+                            <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Summary Template</label>
+                            <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                               <input 
+                                  type="checkbox" 
+                                  checked={showSubText} 
+                                  onChange={e => setShowSubText(e.target.checked)}
+                                  className="rounded text-sky-500 focus:ring-sky-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                               />
+                               <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Show Summary</span>
+                            </label>
+                         </div>
+                         <input 
+                           type="text" 
+                           value={subText}
+                           disabled={!showSubText}
+                           onChange={e => setSubText(e.target.value)}
+                           placeholder="{name} / Total: {value} / {total}"
+                           className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm focus:ring-1 focus:ring-sky-500 outline-none disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900 font-mono text-xs" 
+                         />
+                         <p className="mt-1.5 text-[10px] text-slate-500">Variables automatically map dynamic math: <code className="text-sky-500 font-bold">&#123;name&#125;</code>, <code className="text-sky-500 font-bold">&#123;value&#125;</code>, <code className="text-sky-500 font-bold">&#123;total&#125;</code>.</p>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         {widget.componentKey === "MASTER_DETAIL_TABLE" ? (
@@ -324,63 +376,11 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                                   placeholder="id"
                                 />
                              </div>
-                              <div className="col-span-2 space-y-4">
-                                  <VisualRecordBuilder 
-                                    layoutLines={layoutLines}
-                                    customActions={customActions}
-                                    columnStyles={columnStyles}
-                                    lineSettings={lineSettings}
-                                    elementSettings={elementSettings}
-                                    previewDataArray={previewDataArray}
-                                    onChange={(newState) => {
-                                       if (newState.layoutLines) setLayoutLines(newState.layoutLines)
-                                       if (newState.columnStyles) setColumnStyles(newState.columnStyles)
-                                       if (newState.lineSettings) setLineSettings(newState.lineSettings)
-                                       if (newState.elementSettings) setElementSettings(newState.elementSettings)
-                                       
-                                       // Sync legacy tracking for backward compatibility
-                                       if (newState.layoutLines) {
-                                          const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
-                                          const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
-                                          setParentCols(pCols)
-                                          setChildCols(cCols)
-                                       }
-                                    }}
-                                  />
-
-                                {/* Custom Actions Setup */}
-                                <div className="bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 p-4 rounded-xl shadow-inner mt-2">
-                                   <div className="flex items-center justify-between mb-3">
-                                      <label className="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2"><Icons.Zap className="w-3.5 h-3.5" /> API Action Buttons</label>
-                                      <button type="button" onClick={() => setCustomActions([...customActions, { name: "New Action", endpoint: "/api/path/{PrimaryID}", method: "POST" }])} className="text-[10px] px-2 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold rounded border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-100 dark:hover:bg-indigo-500/40 transition-colors">+ Add Action</button>
-                                   </div>
-                                   {customActions.length === 0 ? (
-                                      <p className="text-[11px] text-slate-500 italic border-t border-slate-100 dark:border-slate-800 pt-3">No custom network actions configured. Actions appear in row details.</p>
-                                   ) : (
-                                       <div className="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-2 mt-2">
-                                          {customActions.map((action, i) => (
-                                             <div key={i} className="grid grid-cols-12 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
-                                                <div className="col-span-12 font-mono text-[9px] text-slate-400 mb-1 flex items-center justify-between">
-                                                   <span>Action Setting</span>
-                                                   <button type="button" onClick={() => { const ac = [...customActions]; ac.splice(i, 1); setCustomActions(ac) }} className="text-rose-500 hover:text-rose-600 flex items-center gap-1 font-bold"><Icons.Trash2 className="w-3 h-3" /> Remove</button>
-                                                </div>
-                                                <input type="text" value={action.name} onChange={e => { const ac = [...customActions]; ac[i].name = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-4 text-xs px-2 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-bold outline-none focus:border-indigo-500 transition-colors" placeholder="Button Name" />
-                                                <select value={action.method} onChange={e => { const ac = [...customActions]; ac[i].method = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-3 text-[10px] px-1 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-bold outline-none focus:border-indigo-500 transition-colors cursor-pointer appearance-none text-center">
-                                                   <option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option><option>PATCH</option>
-                                                </select>
-                                                <input type="text" value={action.endpoint} onChange={e => { const ac = [...customActions]; ac[i].endpoint = e.target.value; setCustomActions(ac) }} className="col-span-12 sm:col-span-5 text-xs px-2 py-1.5 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-slate-800 dark:text-slate-200 font-mono outline-none focus:border-indigo-500 transition-colors" placeholder="/api/reboot/{id}" />
-                                                <div className="col-span-12 grid grid-cols-2 gap-2 mt-1">
-                                                  <input type="text" value={action.payloadTemplate || ""} onChange={e => { const ac = [...customActions]; ac[i].payloadTemplate = e.target.value; setCustomActions(ac) }} className="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-600 dark:text-slate-400 font-mono outline-none focus:border-indigo-500 transition-colors" placeholder='JSON Body: {"host": "{hostname}"}' />
-                                                  <select value={action.placement || "detail"} onChange={e => { const ac = [...customActions]; ac[i].placement = e.target.value; setCustomActions(ac) }} className="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-600 dark:text-slate-400 font-bold outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                                     <option value="main">Render in Main Grid as Column</option>
-                                                     <option value="detail">Show in Detail Row Drawer</option>
-                                                  </select>
-                                                </div>
-                                             </div>
-                                          ))}
-                                       </div>
-                                   )}
-                                </div>
+                              <div className="col-span-2">
+                                 {/* Builder moved to right canvas */}
+                                <div className="col-span-2 hidden">
+                                  {/* Action Configuration moved to right canvas sandbox */}
+                               </div>
                              </div>
                            </>
                         ) : (
@@ -462,6 +462,28 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
 
                 </div>
               )}
+
+              {/* Variable Dictionary Injector Tracker */}
+              {previewDataArray && previewDataArray.length > 0 && (
+                <div className="bg-emerald-50 dark:bg-emerald-500/10 p-4 rounded-xl border border-emerald-200 dark:border-emerald-500/30 shadow-inner mt-6">
+                   <div className="flex items-center gap-2 mb-3">
+                      <Icons.Braces className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                      <h4 className="text-[10px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest">Available Row Variables</h4>
+                   </div>
+                   <p className="text-[10px] text-emerald-600 dark:text-emerald-400/80 mb-3 leading-relaxed">
+                     You can wrap the following data columns in bracket notation (e.g. <code>&#123;id&#125;</code>) in your titles, tooltips, or action templates!
+                   </p>
+                   <div className="flex flex-wrap gap-1.5">
+                      {Object.keys(previewDataArray[0])
+                        .filter(k => typeof previewDataArray[0][k] !== "object")
+                        .map(key => (
+                          <span key={key} className="px-2 py-1 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700/50 rounded shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)] dark:shadow-none text-[10px] font-mono text-emerald-700 dark:text-emerald-300 font-bold tracking-tight">
+                             &#123;{key}&#125;
+                          </span>
+                      ))}
+                   </div>
+                </div>
+              )}
             </form>
             
             {/* Left Panel Footer */}
@@ -490,7 +512,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
 
             {previewDataArray && ChartComponent && (
                 <div className="flex-1 flex items-center justify-center p-8 lg:p-16 relative z-10 animate-in zoom-in-[0.98] duration-500">
-                  <div className="w-full max-w-4xl ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120]">
+                  <div className={`w-full ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120] ${widget.componentKey === "MASTER_DETAIL_TABLE" ? 'max-w-[1200px] w-[95%]' : 'max-w-4xl'}`}>
                     {/* Fake Browser TopBar */}
                     <div className="bg-slate-50 dark:bg-slate-950 flex items-center px-4 py-2 border-b border-slate-200 dark:border-slate-800 gap-2">
                         <div className="flex gap-1.5">
@@ -501,9 +523,43 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                         <div className="flex-1 text-center font-mono text-[10px] text-slate-500 dark:text-slate-600 font-bold uppercase tracking-widest">Live Execution Sandbox</div>
                     </div>
                     {/* Actual Component Mount */}
-                    <div className="p-6">
-                        <ChartComponent widget={widget} config={transientConfig} previewData={previewDataArray} />
-                    </div>
+                     <div className={`p-6 w-full flex flex-col ${widget.componentKey === "MASTER_DETAIL_TABLE" ? 'h-[600px] lg:h-[750px] p-0' : 'h-[400px]'}`}>
+                        {widget.componentKey === "MASTER_DETAIL_TABLE" ? (
+                           <div className="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4">
+                             <VisualRecordBuilder 
+                                layoutLines={layoutLines}
+                                customActions={customActions}
+                                columnStyles={columnStyles}
+                                lineSettings={lineSettings}
+                                elementSettings={elementSettings}
+                                previewDataArray={previewDataArray}
+                                onChange={(newState) => {
+                                   if (newState.layoutLines) setLayoutLines(newState.layoutLines)
+                                   if (newState.columnStyles) setColumnStyles(newState.columnStyles)
+                                   if (newState.lineSettings) setLineSettings(newState.lineSettings)
+                                   if (newState.elementSettings) setElementSettings(newState.elementSettings)
+                                   if (newState.customActions) setCustomActions(newState.customActions)
+                                   
+                                   // Sync legacy tracking for backward compatibility
+                                   if (newState.layoutLines) {
+                                      const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
+                                      const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
+                                      setParentCols(pCols)
+                                      setChildCols(cCols)
+                                   }
+                                }}
+                              />
+                            </div>
+                        ) : (
+                           <div className="w-full h-full p-4 overflow-x-auto min-h-[300px]">
+                               <ChartComponent
+                                   widget={widget}
+                                   config={transientConfig}
+                                   previewData={previewDataArray}
+                               />
+                           </div>
+                        )}
+                     </div>
                   </div>
                 </div>
             )}

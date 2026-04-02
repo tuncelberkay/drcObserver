@@ -1,14 +1,25 @@
 import { prisma } from "@/lib/prisma"
-import { Database, Plus, RefreshCw, Key, Lock } from "lucide-react"
+import { Database, Plus, RefreshCw, Key, Lock, ShieldAlert } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { CMSDataSourceList } from "@/components/cms/CMSDataSourceList"
 import { CMSDataSourceModal } from "@/components/cms/CMSDataSourceModal"
+import { getScopedRowLevelQueryFilter, getCmsUserSession } from "@/lib/cms-auth"
+import { decryptString } from "@/lib/encryption"
 
 export default async function CMSAdminSources() {
-  // Fetch data sources
-  const sources = await prisma.appDataSource.findMany({
+  const isolationFilter = await getScopedRowLevelQueryFilter()
+  const session = await getCmsUserSession()
+
+  // Fetch data sources securely
+  const rawSources = await prisma.appDataSource.findMany({
+    where: isolationFilter,
     orderBy: { createdAt: 'desc' }
   })
+
+  const sources = rawSources.map(s => ({
+    ...s,
+    credentialsJson: decryptString(s.credentialsJson)
+  }))
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-6 md:p-12 transition-colors">
@@ -21,8 +32,13 @@ export default async function CMSAdminSources() {
               <Database className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Data Connections</h2>
-              <p className="text-slate-500 dark:text-slate-400 mt-1">Bind securely managed system endpoints natively securely.</p>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2">
+                Data Connections
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5">
+                Bind securely managed system endpoints natively securely.
+                {session?.role !== "ADMIN" && <span className="px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] uppercase font-bold border border-rose-200 dark:border-rose-500/20 flex items-center gap-1"><ShieldAlert className="w-3 h-3" /> Sandboxed Elements</span>}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
