@@ -74,10 +74,10 @@ export function MasterDetailTable({ widget, config, previewData }: MasterDetailT
     return () => clearInterval(intervalId)
   }, [widget?.id, previewData])
 
-  if (loading) return <div className="p-8 text-center text-slate-400 animate-pulse font-mono tracking-widest text-xs">AWAITING MATRIX DATA...</div>
+  if (loading) return <div className="w-full h-full flex items-center justify-center text-center text-slate-400 animate-pulse font-mono tracking-widest text-xs">AWAITING MATRIX DATA...</div>
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col overflow-hidden max-h-[800px] transition-colors">
+    <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col overflow-hidden transition-colors">
       {/* Title block */}
       <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50">
          {config?.showTitle !== false ? (

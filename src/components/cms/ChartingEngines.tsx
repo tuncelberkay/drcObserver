@@ -83,13 +83,13 @@ const CustomThemeTooltip = ({ active, payload, label }: any) => {
 export function CMSStatCard({ widget, config, previewData, rowSync }: { widget: any, config: any, previewData?: any[], rowSync?: { hasTitle: boolean, hasSubText: boolean } }) {
   const { data, loading, error } = useWidgetData(widget, previewData)
   
-  if (loading) return <div className="h-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
-  if (error) return <div className="h-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
+  if (loading) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
+  if (error) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
 
   const primaryValue = data[0] ? (Object.values(data[0])[0] as string | number) : "N/A"
   
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xl flex flex-col justify-center items-center h-full min-h-0 transition-colors">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xl flex flex-col justify-center items-center w-full h-full min-h-0 transition-colors">
       {config.showTitle === false && rowSync?.hasTitle && <h4 className="text-sm font-bold opacity-0 uppercase tracking-widest mb-2 pointer-events-none select-none">Title Sync Placeholder</h4>}
       {config.showTitle !== false && <h4 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">{config.title || widget?.componentKey}</h4>}
       <span className="text-5xl font-black text-indigo-500 dark:text-indigo-400 drop-shadow-sm">{primaryValue}</span>
@@ -106,8 +106,8 @@ export function CMSStatCard({ widget, config, previewData, rowSync }: { widget: 
 export function CMSBarChart({ widget, config, previewData, rowSync }: { widget: any, config: any, previewData?: any[], rowSync?: { hasTitle: boolean, hasSubText: boolean } }) {
   const { data, loading, error } = useWidgetData(widget, previewData)
   
-  if (loading) return <div className="h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
-  if (error) return <div className="h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
+  if (loading) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
+  if (error) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
 
   // Guess the keys dynamically if not provided by config
   const keys = data.length > 0 ? Object.keys(data[0]) : []
@@ -143,8 +143,8 @@ export function CMSBarChart({ widget, config, previewData, rowSync }: { widget: 
 export function CMSPieChart({ widget, config, previewData, rowSync }: { widget: any, config: any, previewData?: any[], rowSync?: { hasTitle: boolean, hasSubText: boolean } }) {
   const { data, loading, error } = useWidgetData(widget, previewData)
   
-  if (loading) return <div className="min-h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
-  if (error) return <div className="min-h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
+  if (loading) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
+  if (error) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
 
   const keys = data.length > 0 ? Object.keys(data[0]) : []
   const nameKey = config.xAxisKey || config.nameKey || keys[0] || "name"
@@ -209,8 +209,8 @@ export function CMSPieChart({ widget, config, previewData, rowSync }: { widget: 
 export function CMSLineGraph({ widget, config, previewData, rowSync }: { widget: any, config: any, previewData?: any[], rowSync?: { hasTitle: boolean, hasSubText: boolean } }) {
   const { data, loading, error } = useWidgetData(widget, previewData)
   
-  if (loading) return <div className="h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
-  if (error) return <div className="h-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
+  if (loading) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-500" /></div>
+  if (error) return <div className="w-full h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2 items-center justify-center text-red-500"><AlertCircle /> {error}</div>
 
   const keys = data.length > 0 ? Object.keys(data[0]) : []
   const xKey = config.xAxisKey || keys[0] || "time"
