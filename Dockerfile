@@ -46,6 +46,8 @@ COPY --from=builder /app/public ./public
 RUN npm install -g prisma@5.22.0
 # Copy Prisma mapping for standalone runtime and give permissions to nextjs user
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+# Save a fresh copy of the schema OUTSIDE the volume so it isn't eclipsed by the named volume mount
+COPY --from=builder --chown=nextjs:nodejs /app/prisma/schema.prisma /app/schema.prisma.fresh
 
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
@@ -56,5 +58,5 @@ USER nextjs
 EXPOSE 3000
 
 # Standalone mode exposes server.js inherently. 
-# We first enforce the schema against the persistent volume before starting the server.
-CMD ["sh", "-c", "npx prisma db push --skip-generate && node server.js"]
+# We copy the fresh schema back into the volume to override any old trapped schema, then push.
+CMD ["sh", "-c", "cp /app/schema.prisma.fresh /app/prisma/schema.prisma && npx prisma db push --accept-data-loss --skip-generate && node server.js"]
