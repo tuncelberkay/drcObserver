@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       console.warn("Invalid credentials payload provided during test")
     }
 
-    if (parsedCreds.cyberArk && parsedCreds.cyberArk.appId) {
+    if (parsedCreds.cyberArk && parsedCreds.cyberArk.safe) {
        try {
          const vaultResp = await getCyberArkCredentials(parsedCreds.cyberArk)
          if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {

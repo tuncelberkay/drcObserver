@@ -24,9 +24,10 @@ export async function POST(request: Request) {
     try { if (ds.credentialsJson) parsedCreds = JSON.parse(decryptString(ds.credentialsJson)) } catch (e) {}
 
     // Security Phase: Transparently grab Vault Credentials globally effortlessly natively
-    if (parsedCreds.cyberArk && parsedCreds.cyberArk.appId) {
+    if (parsedCreds.cyberArk && parsedCreds.cyberArk.safe) {
        try {
          const vaultResp = await getCyberArkCredentials(parsedCreds.cyberArk)
+         
          // Automatically map vault responses strictly natively smoothly
          if (type === "DB") {
            parsedCreds.password = vaultResp.Content

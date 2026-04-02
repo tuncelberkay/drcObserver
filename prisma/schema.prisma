@@ -149,6 +149,26 @@ model LdapConfig {
   updatedAt       DateTime @updatedAt
 }
 
+// True Global Operational Configuration (Singleton Model)
+model SystemSettings {
+  id              String   @id @default("singleton")
+  updatedAt       DateTime @updatedAt
+}
+
+// Multi-Tenant CyberArk Vault Integrations
+model VaultIntegration {
+  id              String   @id @default(uuid())
+  name            String   @default("Primary Vault")
+  
+  cyberarkApiUrl  String   @default("")
+  vaultAppId      String   @default("")
+  vaultUsername   String   @default("")
+  vaultPassword   String   @default("")
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
 // Enterprise Role-Based Access Control Structure
 model AppRole {
   id              String   @id @default(cuid())

@@ -1,5 +1,8 @@
+import { prisma } from '@/lib/prisma'
+import { decryptString } from '@/lib/encryption'
+
 export interface CyberArkConfig {
-  appId: string
+  vaultId: string
   safe: string
   objectName: string
 }
@@ -16,10 +19,11 @@ export interface CyberArkResponse {
  * Securely grabs passwords at runtime utilizing zero-trust architectures.
  */
 export async function getCyberArkCredentials(config: CyberArkConfig): Promise<CyberArkResponse> {
-  const baseUrl = process.env.CYBERARK_API_URL
+  const settings = prisma.vaultIntegration ? await prisma.vaultIntegration.findUnique({ where: { id: config.vaultId } }).catch(()=>null) : null
+  const baseUrl = settings?.cyberarkApiUrl || process.env.CYBERARK_API_URL
 
   // 1. Mock Development Fallback Logic
-  if (!baseUrl || process.env.NODE_ENV === "development") {
+  if (!baseUrl || baseUrl === "mock") {
     console.log(`[CYBERARK MOCK] Intercepting CCP call for Safe: ${config.safe}, Object: ${config.objectName}`)
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -34,15 +38,23 @@ export async function getCyberArkCredentials(config: CyberArkConfig): Promise<Cy
 
   // 2. Production Native REST Gateway execution natively
   try {
-    const targetUrl = `${baseUrl}/AIMWebService/api/Accounts?AppID=${encodeURIComponent(config.appId)}&Safe=${encodeURIComponent(config.safe)}&Object=${encodeURIComponent(config.objectName)}`
+    const targetUrl = `${baseUrl}/AIMWebService/api/Accounts?AppID=${encodeURIComponent(settings?.vaultAppId || "App_Mock")}&Safe=${encodeURIComponent(config.safe)}&Object=${encodeURIComponent(config.objectName)}`
     
     // CCP typically uses Client Certificates mapped globally on the host infrastructure natively. 
     // In advanced setups natively, additional headers could be mapped here natively.
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json'
+    }
+
+    if (settings?.vaultUsername && settings?.vaultPassword) {
+      const livePass = decryptString(settings.vaultPassword)
+      const b64 = Buffer.from(`${settings.vaultUsername}:${livePass}`).toString('base64')
+      headers['Authorization'] = `Basic ${b64}`
+    }
+
     const res = await fetch(targetUrl, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers,
       cache: 'no-store' // Never statically cache passwords explicitly globally
     })
 

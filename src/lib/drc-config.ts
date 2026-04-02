@@ -5,6 +5,7 @@ export interface DrcSystemConfig {
   setupCompleted: boolean
   dbProvider: 'sqlite' | 'mysql' | 'postgresql' | 'oracle'
   connectionUrl: string
+  cyberarkApiUrl?: string
 }
 
 const CONFIG_PATH = path.join(process.cwd(), 'drc-system.json')

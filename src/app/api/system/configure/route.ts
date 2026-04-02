@@ -43,7 +43,9 @@ export async function POST(req: Request) {
         accounts: await prisma.account.findMany(),
         sessions: await prisma.session.findMany(),
         ldap: await prisma.ldapConfig.findMany(),
-        hosts: await prisma.hostMetric.findMany()
+        hosts: await prisma.hostMetric.findMany(),
+        settings: prisma.systemSettings ? await prisma.systemSettings.findMany() : [],
+        vaults: prisma.vaultIntegration ? await prisma.vaultIntegration.findMany() : []
       }
       fs.writeFileSync(path.join(process.cwd(), 'drc-migration-dump.json'), JSON.stringify(dump))
     } catch(err) {

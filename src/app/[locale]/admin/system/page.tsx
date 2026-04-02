@@ -66,6 +66,8 @@ export default async function SystemArchitecturePage() {
                 if (dump.sessions) await prisma.session.createMany({ data: dump.sessions }).catch(()=>null)
                 if (dump.ldap) await prisma.ldapConfig.createMany({ data: dump.ldap }).catch(()=>null)
                 if (dump.hosts) await prisma.hostMetric.createMany({ data: dump.hosts }).catch(()=>null)
+                if (dump.settings && prisma.systemSettings) await prisma.systemSettings.createMany({ data: dump.settings }).catch(()=>null)
+                if (dump.vaults && prisma.vaultIntegration) await prisma.vaultIntegration.createMany({ data: dump.vaults }).catch(()=>null)
 
                 fs.unlinkSync(dumpPath) // Purge safely
               } catch(e) {
@@ -91,6 +93,8 @@ export default async function SystemArchitecturePage() {
             <AppSetupWizard embedded={true} />
           </div>
         </div>
+
+
 
       </div>
     </div>

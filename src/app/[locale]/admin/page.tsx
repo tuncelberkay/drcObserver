@@ -1,4 +1,4 @@
-import { ShieldAlert, Database, Fingerprint, Layers, ChevronRight, LayoutTemplate, Server } from "lucide-react"
+import { ShieldAlert, Database, Fingerprint, Layers, ChevronRight, LayoutTemplate, Server, Key } from "lucide-react"
 import { Link } from "@/i18n/routing"
 
 export default function AdminLaunchpad() {
@@ -42,6 +42,14 @@ export default function AdminLaunchpad() {
       icon: <Server className="w-8 h-8 text-blue-400" />,
       bgIcon: <Server className="w-32 h-32 absolute -right-6 -bottom-6 text-blue-500/5 group-hover:text-blue-500/10 transition-colors" />,
       border: "border-blue-500/20 hover:border-blue-500/50"
+    },
+    {
+      title: "CyberArk Vault Integration",
+      description: "Manage physical Enterprise Central Credential logic bypassing environment variables securely globally.",
+      href: "/admin/vault",
+      icon: <Key className="w-8 h-8 text-rose-400" />,
+      bgIcon: <Key className="w-32 h-32 absolute -right-6 -bottom-6 text-rose-500/5 group-hover:text-rose-500/10 transition-colors" />,
+      border: "border-rose-500/20 hover:border-rose-500/50"
     }
   ]
 

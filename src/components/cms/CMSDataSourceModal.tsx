@@ -11,7 +11,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, onClose?: () => void }) {
+export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vaults?: any[], editSource?: any, onClose?: () => void }) {
   const [isOpen, setIsOpen] = useState(!!editSource)
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -38,7 +38,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
     queryPayload: editSource?.queryPayload || "",
     refreshInterval: editSource?.refreshInterval || 10,
     vaultMode: editSource ? (parseCreds(editSource.credentialsJson, "cyberArk") ? "cyberark" : "local") : "local",
-    caAppId: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.appId || "" : "",
+    caVaultId: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.vaultId || "" : "",
     caSafe: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.safe || "" : "",
     caObject: editSource ? parseCreds(editSource.credentialsJson, "cyberArk")?.objectName || "" : ""
   })
@@ -67,12 +67,12 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
           host: formData.dbHost,
           port: formData.dbPort,
           database: formData.dbName,
-          cyberArk: { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+          cyberArk: { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
         }, null, 2)
       } else {
         let existing: any = {}
         try { existing = JSON.parse(finalCreds) } catch(e) {}
-        existing.cyberArk = { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+        existing.cyberArk = { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
         finalCreds = JSON.stringify(existing, null, 2)
       }
     } else {
@@ -242,8 +242,11 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                       {formData.vaultMode === "cyberark" && (
                         <div className="space-y-4 p-4 rounded-xl border border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 mt-4">
                            <div>
-                             <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">CyberArk AppID</label>
-                             <input required type="text" value={formData.caAppId} onChange={e => handleFieldChange("caAppId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="App_DRC_Auth" />
+                             <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target Vault Infrastructure</label>
+                             <select required value={formData.caVaultId} onChange={e => handleFieldChange("caVaultId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm">
+                               <option value="" disabled>-- Select Corporate Vault --</option>
+                               {vaults.map((v: any) => <option key={v.id} value={v.id}>{v.name} ({v.vaultAppId})</option>)}
+                             </select>
                            </div>
                            <div className="grid grid-cols-2 gap-4">
                              <div>
@@ -288,8 +291,11 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                         {formData.vaultMode === "cyberark" ? (
                           <div className="col-span-2 space-y-4 p-4 rounded-xl border border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 mt-2">
                              <div>
-                               <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">CyberArk AppID</label>
-                               <input required type="text" value={formData.caAppId} onChange={e => handleFieldChange("caAppId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="App_DRC_Auth" />
+                               <label className="block text-xs font-medium text-indigo-800 dark:text-indigo-300 mb-1">Target Vault Infrastructure</label>
+                               <select required value={formData.caVaultId} onChange={e => handleFieldChange("caVaultId", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-indigo-200 dark:border-indigo-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm">
+                                 <option value="" disabled>-- Select Corporate Vault --</option>
+                                 {vaults.map((v: any) => <option key={v.id} value={v.id}>{v.name} ({v.vaultAppId})</option>)}
+                               </select>
                              </div>
                              <div className="grid grid-cols-2 gap-4">
                                <div>
@@ -367,7 +373,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
                     <button 
                       type="button" 
-                      disabled={isTesting || (!isDb && !formData.endpointURI) || (isDb && (!formData.dbHost || !formData.dbUser || !formData.dbPassword || !formData.dbName))}
+                      disabled={isTesting || (!isDb && !formData.endpointURI) || (isDb && (!formData.dbHost || !formData.dbName || (formData.vaultMode !== "cyberark" && (!formData.dbUser || !formData.dbPassword)) || (formData.vaultMode === "cyberark" && (!formData.caVaultId || !formData.caSafe || !formData.caObject))))}
                       onClick={async () => {
                         setIsTesting(true);
                         setTestResult(null);
@@ -381,12 +387,12 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                                 host: formData.dbHost,
                                 port: formData.dbPort,
                                 database: formData.dbName,
-                                cyberArk: { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+                                cyberArk: { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
                               })
                             } else {
                               let existing: any = {}
                               try { existing = JSON.parse(finalCreds) } catch(e) {}
-                              existing.cyberArk = { appId: formData.caAppId, safe: formData.caSafe, objectName: formData.caObject }
+                              existing.cyberArk = { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
                               finalCreds = JSON.stringify(existing)
                             }
                           } else {
@@ -447,7 +453,7 @@ export function CMSDataSourceModal({ editSource, onClose }: { editSource?: any, 
                 
                 <button 
                   type="submit" 
-                  disabled={isSubmitting || (step === 1 && !formData.name) || (step === 2 && !isDb && !formData.endpointURI) || (step === 2 && isDb && (!formData.dbHost || !formData.dbUser || !formData.dbPassword || !formData.dbName))}
+                  disabled={isSubmitting || (step === 1 && !formData.name) || (step === 2 && !isDb && !formData.endpointURI) || (step === 2 && isDb && (!formData.dbHost || !formData.dbName || (formData.vaultMode !== "cyberark" && (!formData.dbUser || !formData.dbPassword)) || (formData.vaultMode === "cyberark" && (!formData.caVaultId || !formData.caSafe || !formData.caObject))))}
                   className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg text-sm font-bold transition-colors flex items-center gap-1 shadow-md shadow-indigo-600/20 dark:shadow-indigo-500/20"
                 >
                   {isSubmitting ? "Finalizing Mappings..." : step === totalSteps ? "Build Data Source" : <>Next Step <ChevronRight className="w-4 h-4" /></>}

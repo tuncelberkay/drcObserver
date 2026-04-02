@@ -21,6 +21,8 @@ export default async function CMSAdminSources() {
     credentialsJson: decryptString(s.credentialsJson)
   }))
 
+  const vaults = prisma.vaultIntegration ? await prisma.vaultIntegration.findMany({ orderBy: { name: 'asc' } }) : []
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-6 md:p-12 transition-colors">
       <div className="max-w-5xl mx-auto space-y-8">
@@ -45,7 +47,7 @@ export default async function CMSAdminSources() {
             <Link href="/admin" className="px-4 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm text-slate-600 dark:text-slate-300 font-medium transition-colors shadow-sm">
               Back to Admin
             </Link>
-            <CMSDataSourceModal />
+            <CMSDataSourceModal vaults={vaults} />
           </div>
         </header>
 
