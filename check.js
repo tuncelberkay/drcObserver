@@ -1,0 +1,1 @@
+const { PrismaClient } = require('@prisma/client'); const prisma = new PrismaClient(); async function m() { console.log('users', await prisma.user.findMany()); console.log('bindings', await prisma.appRoleBinding.findMany({include: {role: true}})); console.log('pages', await prisma.appPage.findMany()); } m().finally(() => prisma.$disconnect());
