@@ -22,5 +22,18 @@ services:
       - NEXTAUTH_SECRET=my-super-secret-production-key
     restart: unless-stopped
 
+  mock-db:
+    image: postgres:15-alpine
+    container_name: drc_mock_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mockuser
+      POSTGRES_PASSWORD: mockpassword
+      POSTGRES_DB: mockdb
+    volumes:
+      - ./mock-db-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
 volumes:
   prisma_data:

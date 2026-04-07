@@ -26,10 +26,11 @@ export default function VisualRecordBuilder({
   const [activeConfigId, setActiveConfigId] = useState<string | null>(null)
   const [showActionWizard, setShowActionWizard] = useState(false)
 
-  const rawKeys = previewDataArray?.[0] ? Object.keys(previewDataArray[0]).filter(k => typeof previewDataArray[0][k] !== "object" || Array.isArray(previewDataArray[0][k])) : []
+  const firstRowObj = Array.isArray(previewDataArray?.[0]) ? previewDataArray[0][0] : previewDataArray?.[0];
+  const rawKeys = firstRowObj ? Object.keys(firstRowObj).filter(k => typeof firstRowObj[k] !== "object" || Array.isArray(firstRowObj[k])) : []
   const actionKeys = customActions.map(a => `__action_${a.name}`)
   const poolKeys = [...rawKeys, ...actionKeys]
-  const mockRow = previewDataArray?.[0] || {}
+  const mockRow = firstRowObj || {}
 
   const updateState = (updates: any) => {
     onChange({ layoutLines, columnStyles, lineSettings, elementSettings, ...updates })

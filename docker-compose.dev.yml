@@ -24,3 +24,16 @@ services:
     # On start: install linux-native dependencies, sync sqlite schema, generate Prisma, and run the Next.js dev server
     command: sh -c "apk add --no-cache libc6-compat openssl python3 make g++ && npm install && npx prisma db push && npx prisma generate && npm run dev"
     restart: unless-stopped
+
+  mock-db:
+    image: postgres:15-alpine
+    container_name: drc_mock_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mockuser
+      POSTGRES_PASSWORD: mockpassword
+      POSTGRES_DB: mockdb
+    volumes:
+      - ./mock-db-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped

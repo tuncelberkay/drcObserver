@@ -43,9 +43,9 @@ def get_start_command(root):
     
     scripts = data.get("scripts", {})
     if "dev" in scripts:
-        return ["npm", "run", "dev"]
+        return "npm run dev"
     elif "start" in scripts:
-        return ["npm", "start"]
+        return "npm start"
     return None
 
 def start_server(port=3000):
@@ -68,6 +68,13 @@ def start_server(port=3000):
     # Add port env var if needed (simple heuristic)
     env = os.environ.copy()
     env["PORT"] = str(port)
+    
+    # ensure npm from nvm is in PATH
+    nvm_dir = os.path.expanduser("~/.nvm/versions/node")
+    if os.path.exists(nvm_dir):
+        versions = os.listdir(nvm_dir)
+        if versions:
+            env["PATH"] = f"{nvm_dir}/{versions[0]}/bin{os.pathsep}{env.get('PATH', '')}"
     
     print(f"🚀 Starting preview on port {port}...")
     

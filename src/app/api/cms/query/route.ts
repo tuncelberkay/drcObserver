@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { prisma } from "@/lib/prisma"
 import { applyDataReduction } from '@/utils/dataProcessor'
 import { executeRawDbQuery } from '@/utils/dbConnectors'
+import { decryptString } from '@/lib/encryption'
+import { getCyberArkCredentials } from '@/lib/cyberark'
 
 export async function POST(request: Request) {
   try {
@@ -37,15 +39,43 @@ export async function POST(request: Request) {
       const { endpointURI, credentialsJson, type, queryPayload } = source
       let headers: Record<string, string> = { "Content-Type": "application/json" }
       
+      let parsedCreds: any = {}
       try {
-        const parsedCreds = JSON.parse(credentialsJson)
+        if (credentialsJson && credentialsJson.trim() !== "{}") {
+          parsedCreds = JSON.parse(decryptString(credentialsJson))
+        }
         if (parsedCreds.headers) headers = { ...headers, ...parsedCreds.headers }
       } catch (e) {
         console.warn("Invalid credentials payload configured on Data Source", source.id)
       }
 
+      const rawType = type || "";
+      const normType = rawType.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : rawType.toUpperCase();
+
+      if (parsedCreds.cyberArk && parsedCreds.cyberArk.safe) {
+         try {
+           const vaultResp = await getCyberArkCredentials(parsedCreds.cyberArk)
+           if (normType === "POSTGRESQL" || normType === "MYSQL" || normType === "MARIADB" || normType === "ORACLE") {
+             parsedCreds.password = vaultResp.Content
+             if (vaultResp.UserName) parsedCreds.user = vaultResp.UserName
+             if (vaultResp.Address) parsedCreds.host = vaultResp.Address
+           } else {
+             let credStr = JSON.stringify(parsedCreds)
+             if (credStr.includes("{{VAULT_TOKEN}}")) {
+               credStr = credStr.replace(/\{\{VAULT_TOKEN\}\}/g, vaultResp.Content)
+               parsedCreds = JSON.parse(credStr)
+             } else {
+               parsedCreds.headers = { ...parsedCreds.headers, Authorization: `Bearer ${vaultResp.Content}` }
+               headers = { ...headers, ...parsedCreds.headers }
+             }
+           }
+         } catch (err: any) {
+           return { error: "Vault Interception Failed: " + err.message, __source: source.name }
+         }
+      }
+
       // REST / PROMETHEUS Proxy
-      if (type === "REST_API" || type === "PROMETHEUS" || type === "HTTP_JSON") {
+      if (normType === "REST_API" || normType === "PROMETHEUS" || normType === "HTTP_JSON") {
         const targetUrl = queryPayload && queryPayload.trim() !== "" 
             ? `${endpointURI}${queryPayload}` 
             : endpointURI
@@ -60,19 +90,16 @@ export async function POST(request: Request) {
       }
 
       // POSTGRES / MYSQL / ORACLE Real DB Query
-      if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
+      if (normType === "POSTGRESQL" || normType === "MYSQL" || normType === "MARIADB" || normType === "ORACLE") {
          try {
-           let parsedCreds: any = {}
-           try { parsedCreds = JSON.parse(credentialsJson) } catch (e) {}
-   
            const host = parsedCreds.host || (endpointURI ? endpointURI.split(':')[0] : "localhost")
-           const port = Number(parsedCreds.port) || (type === "POSTGRESQL" ? 5432 : (type === "ORACLE" ? 1521 : 3306))
-           const database = parsedCreds.database || ""
-           const user = parsedCreds.user || ""
-           const password = parsedCreds.password || ""
+           const port = Number(parsedCreds.port) || (normType === "POSTGRESQL" ? 5432 : (normType === "ORACLE" ? 1521 : 3306))
+           const database = String(parsedCreds.database || "")
+           const user = String(parsedCreds.user || "")
+           const password = String(parsedCreds.password || "")
            
-           const qp = queryPayload?.trim() || "SELECT 1 as connected;"
-           return await executeRawDbQuery(type, host, port, user, password, database, qp)
+           let qp = queryPayload?.trim() || "SELECT 1 as connected;"
+           return await executeRawDbQuery(normType, host, port, user, password, database, qp)
          } catch(e: any) {
            return { error: e.message, __source: source.name }
          }

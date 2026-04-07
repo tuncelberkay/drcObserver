@@ -7,7 +7,10 @@ export async function POST(request: Request) {
   try {
     const { type, endpointURI, credentialsJson, queryPayload } = await request.json()
 
-    if (!endpointURI && type !== "POSTGRESQL" && type !== "MYSQL") {
+    const rawType = type || "";
+    const normType = rawType.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : rawType.toUpperCase();
+
+    if (!endpointURI && normType !== "POSTGRESQL" && normType !== "MYSQL" && normType !== "MARIADB" && normType !== "ORACLE") {
       return NextResponse.json({ error: "Endpoint URI is required for this connection type." }, { status: 400 })
     }
 
@@ -25,7 +28,7 @@ export async function POST(request: Request) {
     if (parsedCreds.cyberArk && parsedCreds.cyberArk.safe) {
        try {
          const vaultResp = await getCyberArkCredentials(parsedCreds.cyberArk)
-         if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
+         if (normType === "POSTGRESQL" || normType === "MYSQL" || normType === "MARIADB" || normType === "ORACLE") {
            parsedCreds.password = vaultResp.Content
            if (vaultResp.UserName) parsedCreds.user = vaultResp.UserName
            if (vaultResp.Address) parsedCreds.host = vaultResp.Address
@@ -48,7 +51,7 @@ export async function POST(request: Request) {
     let finalData: any = null;
 
     // REST / PROMETHEUS Proxy
-    if (type === "REST_API" || type === "PROMETHEUS" || type === "HTTP_JSON") {
+    if (normType === "REST_API" || normType === "PROMETHEUS" || normType === "HTTP_JSON") {
       const targetUrl = queryPayload && queryPayload.trim() !== "" 
           ? `${endpointURI}${queryPayload}` 
           : endpointURI
@@ -63,21 +66,21 @@ export async function POST(request: Request) {
       } catch(e: any) {
         finalData = { error: e.message }
       }
-    } else if (type === "POSTGRESQL" || type === "MYSQL" || type === "MARIADB" || type === "ORACLE") {
+    } else if (normType === "POSTGRESQL" || normType === "MYSQL" || normType === "MARIADB" || normType === "ORACLE") {
       try {
         const host = parsedCreds.host || (endpointURI ? endpointURI.split(':')[0] : "localhost")
-        const port = Number(parsedCreds.port) || (type === "POSTGRESQL" ? 5432 : (type === "ORACLE" ? 1521 : 3306))
+        const port = Number(parsedCreds.port) || (normType === "POSTGRESQL" ? 5432 : (normType === "ORACLE" ? 1521 : 3306))
         const database = parsedCreds.database || ""
         const user = parsedCreds.user || ""
         const password = parsedCreds.password || ""
         
         const qp = queryPayload?.trim() || "SELECT 1 as connected;"
-        finalData = await executeRawDbQuery(type, host, port, user, password, database, qp)
+        finalData = await executeRawDbQuery(normType, host, port, user, password, database, qp)
       } catch (err: any) {
         finalData = { error: err.message, details: "Database Connection Failed." }
       }
     } else {
-      finalData = { error: `Architecture '${type}' not supported natively yet. Only POSTGRESQL, MYSQL, REST_API, and PROMETHEUS are active.` }
+      finalData = { error: `Architecture '${normType}' not supported natively yet. Only POSTGRESQL, MYSQL, REST_API, and PROMETHEUS are active.` }
     }
 
     return NextResponse.json({ 

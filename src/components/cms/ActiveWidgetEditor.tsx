@@ -30,6 +30,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   const [selectedSources, setSelectedSources] = useState<string[]>(initialSources)
   const [dataQuery, setDataQuery] = useState(widget.dataQuery || "ds.flat()")
 
+  const [enableAgg, setEnableAgg] = useState(!!existingConfig.groupBy)
   const [groupBy, setGroupBy] = useState(existingConfig.groupBy || "")
   const [aggType, setAggType] = useState(existingConfig.aggType || "COUNT")
   const [configTitle, setConfigTitle] = useState(existingConfig.title || `${widgetMeta.name} Visual`)
@@ -99,7 +100,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
       const res = await fetch("/api/cms/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sourceIds: selectedSources, dataQuery, configJsonStr: JSON.stringify({ groupBy, aggType }) })
+        body: JSON.stringify({ sourceIds: selectedSources, dataQuery, configJsonStr: JSON.stringify({ groupBy: enableAgg ? groupBy : "", aggType }) })
       })
       const json = await res.json()
       setPreviewRawJson(JSON.stringify(json, null, 2))
@@ -203,13 +204,28 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                   {/* Step 2: Post Processing Block */}
                   <div className="p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm dark:shadow-[inset_0_2px_10px_rgba(0,0,0,0.2)]">
                       <div>
-                        <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
-                          <Icons.Filter className="w-4 h-4 text-orange-500 dark:text-orange-400" /> Auto-Aggregator
+                        <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                             <Icons.Filter className="w-4 h-4 text-orange-500 dark:text-orange-400" /> Auto-Aggregator
+                          </div>
+                          <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                             <input 
+                                type="checkbox" 
+                                checked={enableAgg} 
+                                onChange={e => {
+                                   setEnableAgg(e.target.checked);
+                                   setPreviewRawJson(null);
+                                   setPreviewDataArray(null);
+                                }}
+                                className="rounded text-orange-500 focus:ring-orange-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                             />
+                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enable Pivot</span>
+                          </label>
                         </label>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively instead of writing Javascript arrays.</p>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively (Not recommended for flat Data Tables).</p>
                       </div>
                       
-                      <div className="space-y-4">
+                      <div className={`space-y-4 transition-all duration-300 ${!enableAgg ? 'opacity-30 pointer-events-none grayscale' : ''}`}>
                         <div>
                           <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Group By Identifier</label>
                           <div className="relative">
@@ -474,13 +490,17 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                      You can wrap the following data columns in bracket notation (e.g. <code>&#123;id&#125;</code>) in your titles, tooltips, or action templates!
                    </p>
                    <div className="flex flex-wrap gap-1.5">
-                      {Object.keys(previewDataArray[0])
-                        .filter(k => typeof previewDataArray[0][k] !== "object")
-                        .map(key => (
-                          <span key={key} className="px-2 py-1 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700/50 rounded shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)] dark:shadow-none text-[10px] font-mono text-emerald-700 dark:text-emerald-300 font-bold tracking-tight">
-                             &#123;{key}&#125;
-                          </span>
-                      ))}
+                      {(() => {
+                        const targetObj = Array.isArray(previewDataArray[0]) ? previewDataArray[0][0] : previewDataArray[0];
+                        if (!targetObj) return null;
+                        return Object.keys(targetObj)
+                          .filter(k => typeof targetObj[k] !== "object")
+                          .map(key => (
+                            <span key={key} className="px-2 py-1 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700/50 rounded shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)] dark:shadow-none text-[10px] font-mono text-emerald-700 dark:text-emerald-300 font-bold tracking-tight">
+                               &#123;{key}&#125;
+                            </span>
+                          ))
+                      })()}
                    </div>
                 </div>
               )}

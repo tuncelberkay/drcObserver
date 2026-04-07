@@ -32,6 +32,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
   const [selectedSources, setSelectedSources] = useState<string[]>([])
   const [dataQuery, setDataQuery] = useState(preset.dataQuery)
 
+  const [enableAgg, setEnableAgg] = useState(!!preset.groupBy)
   const [groupBy, setGroupBy] = useState(preset.groupBy)
   const [aggType, setAggType] = useState(preset.aggType)
   const [configTitle, setConfigTitle] = useState(preset.title)
@@ -73,7 +74,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
           res.widgetId, 
           selectedSources,
           dataQuery,
-          JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings })
+          JSON.stringify({ groupBy: enableAgg ? groupBy : "", aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings })
         )
       }
       setIsOpen(false)
@@ -113,7 +114,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       const res = await fetch("/api/cms/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sourceIds: selectedSources, dataQuery, configJsonStr: JSON.stringify({ groupBy, aggType }) })
+        body: JSON.stringify({ sourceIds: selectedSources, dataQuery, configJsonStr: JSON.stringify({ groupBy: enableAgg ? groupBy : "", aggType }) })
       })
       const json = await res.json()
       setPreviewRawJson(JSON.stringify(json, null, 2))
@@ -157,7 +158,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
       handlePreview()
     }, 600)
     return () => clearTimeout(tid)
-  }, [selectedSources, dataQuery, groupBy, aggType])
+  }, [selectedSources, dataQuery, groupBy, aggType, enableAgg])
 
   const ChartComponent = WidgetRegistry[widget.key]
   
@@ -173,7 +174,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     showTitle,
     showSubText,
     subText,
-    groupBy,
+    groupBy: enableAgg ? groupBy : "",
     aggType,
     xAxisKey,
     dataKey,
@@ -187,7 +188,7 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
     columnStyles,
     lineSettings,
     elementSettings
-  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, layoutLines, customActions, columnStyles, lineSettings, elementSettings])
+  }), [configTitle, showTitle, showSubText, subText, groupBy, aggType, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, customColors, layoutLines, customActions, columnStyles, lineSettings, elementSettings, enableAgg])
 
   return (
     <>
@@ -265,13 +266,28 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
                       {/* Step 2: Post Processing Block */}
                       <div className="p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm dark:shadow-[inset_0_2px_10px_rgba(0,0,0,0.2)]">
                          <div>
-                           <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center gap-2">
-                              <Icons.Filter className="w-4 h-4 text-orange-500 dark:text-orange-400" /> Auto-Aggregator
+                           <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-1 flex items-center justify-between gap-2">
+                             <div className="flex items-center gap-2">
+                                <Icons.Filter className="w-4 h-4 text-orange-500 dark:text-orange-400" /> Auto-Aggregator
+                             </div>
+                             <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                                <input 
+                                   type="checkbox" 
+                                   checked={enableAgg} 
+                                   onChange={e => {
+                                      setEnableAgg(e.target.checked);
+                                      setPreviewRawJson(null);
+                                      setPreviewDataArray(null);
+                                   }}
+                                   className="rounded text-orange-500 focus:ring-orange-500 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700"
+                                />
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enable Pivot</span>
+                             </label>
                            </label>
-                           <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively instead of writing Javascript arrays.</p>
+                           <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">Optional. Visually group and aggregate data natively (Not recommended for flat Data Tables).</p>
                          </div>
                          
-                         <div className="space-y-4">
+                         <div className={`space-y-4 transition-all duration-300 ${!enableAgg ? 'opacity-30 pointer-events-none grayscale' : ''}`}>
                            <div>
                               <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Group By Identifier</label>
                               <div className="relative">

@@ -50,8 +50,11 @@ export async function POST(request: Request) {
 
     // Handle Native DB Executions
     if (type === "DB") {
+       const rawDsType = ds.type || "";
+       const normDsType = rawDsType.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : rawDsType.toUpperCase();
+
        const host = parsedCreds.host || (ds.endpointURI ? ds.endpointURI.split(':')[0] : "localhost")
-       const port = Number(parsedCreds.port) || (ds.type === "POSTGRESQL" ? 5432 : (ds.type === "ORACLE" ? 1521 : 3306))
+       const port = Number(parsedCreds.port) || (normDsType === "POSTGRESQL" ? 5432 : (normDsType === "ORACLE" ? 1521 : 3306))
        const database = parsedCreds.database || ""
        const user = parsedCreds.user || ""
        const password = parsedCreds.password || ""
@@ -61,7 +64,7 @@ export async function POST(request: Request) {
        }
 
        try {
-         const result = await executeRawDbQuery(ds.type, host, port, user, password, database, payload)
+         const result = await executeRawDbQuery(normDsType, host, port, user, password, database, payload)
          return NextResponse.json({ success: true, data: result })
        } catch(e: any) {
          return NextResponse.json({ error: e.message }, { status: 500 })

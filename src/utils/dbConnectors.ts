@@ -6,14 +6,17 @@ import oracledb from 'oracledb';
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
 export async function executeRawDbQuery(type: string, host: string, port: number, user: string, password: string, database: string, queryPayload: string) {
-  if (type === "POSTGRESQL") {
+  const normType = type.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : type.toUpperCase();
+  
+  if (normType === "POSTGRESQL") {
     const client = new Client({
-      host,
-      port,
-      user,
-      password,
-      database
-    });
+      host: host ? String(host) : "localhost",
+      port: Number(port) || 5432,
+      user: user ? String(user) : undefined,
+      password: () => (password === null || password === undefined ? "" : String(password)),
+      database: database ? String(database) : undefined,
+      ssl: host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : undefined
+    } as any);
 
     try {
       await client.connect();
@@ -24,32 +27,32 @@ export async function executeRawDbQuery(type: string, host: string, port: number
     }
   }
 
-  if (type === "MYSQL" || type === "MARIADB") {
+  if (normType === "MYSQL" || normType === "MARIADB") {
     let connection;
     try {
       connection = await mysql.createConnection({
-        host,
-        port,
-        user,
-        password,
-        database
+        host: host ? String(host) : undefined,
+        port: Number(port),
+        user: user ? String(user) : undefined,
+        password: password ? String(password) : undefined,
+        database: database ? String(database) : undefined
       });
-      const [rows] = await connection.execute(queryPayload);
+      const [rows] = await connection.execute(String(queryPayload));
       return rows;
     } finally {
       if (connection) await connection.end().catch(console.error);
     }
   }
 
-  if (type === "ORACLE") {
+  if (normType === "ORACLE") {
     let connection;
     try {
       connection = await oracledb.getConnection({
-        user,
-        password,
+        user: user ? String(user) : undefined,
+        password: password ? String(password) : undefined,
         connectString: `${host}:${port}/${database}` // Easy Connect Syntax
       });
-      const result = await connection.execute(queryPayload);
+      const result = await connection.execute(String(queryPayload));
       return result.rows || [];
     } finally {
       if (connection) {
@@ -58,5 +61,5 @@ export async function executeRawDbQuery(type: string, host: string, port: number
     }
   }
 
-  throw new Error(`Execution environment for ${type} is not properly installed or supported.`);
+  throw new Error(`Execution environment for ${normType} is not properly installed or supported.`);
 }
