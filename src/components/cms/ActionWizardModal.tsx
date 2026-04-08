@@ -6,10 +6,12 @@ import { getActionDataSources } from "@/app/actions/cms"
 
 export function ActionWizardModal({ 
   onClose, 
-  onFinish
+  onFinish,
+  initialState
 }: { 
   onClose: () => void, 
-  onFinish: (action: any) => void
+  onFinish: (action: any) => void,
+  initialState?: any
 }) {
   const [step, setStep] = useState(1)
   const [availableDataSources, setAvailableDataSources] = useState<any[]>([])
@@ -19,19 +21,19 @@ export function ActionWizardModal({
   }, [])
   
   // State for Wizard
-  const [actionType, setActionType] = useState<"API" | "DB">("API")
-  const [actionName, setActionName] = useState("")
+  const [actionType, setActionType] = useState<"API" | "DB">(initialState?.type || "API")
+  const [actionName, setActionName] = useState(initialState?.name || "")
   
   // Unified Action State
-  const [dataSourceId, setDataSourceId] = useState("")
+  const [dataSourceId, setDataSourceId] = useState(initialState?.dataSourceId || "")
 
   // API Protocol Properties 
-  const [apiMethod, setApiMethod] = useState("POST")
-  const [apiEndpoint, setApiEndpoint] = useState("")
-  const [apiPayload, setApiPayload] = useState("")
+  const [apiMethod, setApiMethod] = useState(initialState?.method && initialState?.method !== "DB_EXECUTE" ? initialState.method : "POST")
+  const [apiEndpoint, setApiEndpoint] = useState(initialState?.endpoint || "")
+  const [apiPayload, setApiPayload] = useState(initialState?.type === "API" ? (initialState?.payloadTemplate || "") : "")
 
   // DB Protocol Properties
-  const [dbQueryTemplate, setDbQueryTemplate] = useState("")
+  const [dbQueryTemplate, setDbQueryTemplate] = useState(initialState?.type === "DB" ? (initialState?.payloadTemplate || "") : "")
 
   const handleNext = () => setStep(s => Math.min(s + 1, 3))
   const handlePrev = () => setStep(s => Math.max(s - 1, 1))
@@ -69,7 +71,7 @@ export function ActionWizardModal({
               <Code className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Add Action Endpoint</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">{initialState ? "Edit Action Configuration" : "Add Action Endpoint"}</h2>
               <p className="text-sm text-slate-500 dark:text-slate-400">Step {step} of 3</p>
             </div>
           </div>
@@ -231,7 +233,7 @@ export function ActionWizardModal({
                 onClick={handleSubmit}
                 className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-bold transition-all flex items-center gap-1 shadow-md shadow-emerald-500/20 active:scale-95"
              >
-               Finish & Bind
+               {initialState ? "Save Changes & Bind" : "Finish & Bind"}
              </button>
           )}
         </div>

@@ -32,7 +32,13 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
     const rowHeights: Record<number, number> = {}
     const rowMeta: Record<number, { hasTitle: boolean, hasSubText: boolean }> = {}
 
-    widgets.forEach((w: any) => {
+    const sanitizedWidgets = widgets.map((w: any) => ({
+        ...w,
+        x: w.x || 0,
+        y: w.y >= 900 ? 0 : (w.y || 0)
+    }))
+
+    sanitizedWidgets.forEach((w: any) => {
       let config: any = {}
       try { config = JSON.parse(w.configJson) } catch (e) { }
 
@@ -51,7 +57,7 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
       if (hasVisibleSummary) rowMeta[w.y].hasSubText = true
     })
 
-    return widgets.map((w: any) => ({
+    return sanitizedWidgets.map((w: any) => ({
       ...w,
       rowSync: rowMeta[w.y]
     }))
@@ -71,22 +77,54 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
     await updateWidgetGridPosition(mapped)
   }
 
+  const isFullScreenOverride = synchronizedWidgets.length === 1 && synchronizedWidgets[0].h >= 99;
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-4 md:p-12 transition-colors">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className={`min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors flex flex-col ${isFullScreenOverride ? 'p-0 h-screen overflow-hidden' : 'p-4 md:p-12'}`}>
+      <div className={`${isFullScreenOverride ? 'w-full flex-1 flex flex-col' : 'max-w-7xl mx-auto space-y-8'}`}>
 
-        <header className="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h1>
-          </div>
-        </header>
+        {!isFullScreenOverride ? (
+          <header className="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h1>
+            </div>
+          </header>
+        ) : (
+          <header className="flex shrink-0 items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-white dark:bg-slate-950 shadow-sm z-10">
+            <div>
+              <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h1>
+            </div>
+            <div className="flex gap-2">
+               <span className="text-[10px] font-bold tracking-widest uppercase bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 px-2 py-1 rounded border border-indigo-200 dark:border-indigo-500/30">Expanded Mode</span>
+            </div>
+          </header>
+        )}
 
-        <div className="w-full relative">
+        <div className={`w-full relative ${isFullScreenOverride ? 'flex-1 overflow-hidden' : ''}`}>
+          {isFullScreenOverride ? (
+             <div className="w-full h-full bg-slate-100 dark:bg-slate-900/50 p-4 lg:p-6">
+                {(() => {
+                   const widget = synchronizedWidgets[0];
+                   const WidgetComponent = WidgetRegistry[widget.componentKey]
+                   if (!WidgetComponent) return null
+                   let config = {}
+                   try { config = JSON.parse(widget.configJson) } catch (e) { }
+                   // Inject rendering cleanly
+                   return (
+                      <div className="w-full h-full bg-white dark:bg-slate-950 rounded-xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden">
+                         <WidgetComponent config={config} widget={widget} rowSync={widget.rowSync} />
+                      </div>
+                   )
+                })()}
+             </div>
+          ) : (
           <ResponsiveGridLayout
             className="layout"
             breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
             cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
             rowHeight={80}
+            compactType={null}
+            preventCollision={false}
             draggableHandle=".drag-handle"
             onLayoutChange={onLayoutChange}
             isDraggable={!isLocked}
@@ -121,6 +159,7 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
               )
             })}
           </ResponsiveGridLayout>
+          )}
         </div>
       </div>
     </div>

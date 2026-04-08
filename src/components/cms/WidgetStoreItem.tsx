@@ -122,24 +122,10 @@ export function WidgetStoreItem({ widget, pageId, sources }: { widget: any, page
          const arr = Array.isArray(json.data) ? json.data : [json.data];
          setPreviewDataArray(arr)
          
-         // Smart inference of columns if baseline is untouched
+         // Set an empty starting track for the user to manually build their layout without assumptions
          if (arr.length > 0) {
-           const keys = Object.keys(arr[0])
-           if (keys.length > 0) {
-             if (xAxisKey === "name") setXAxisKey(keys[0])
-             if (dataKey === "value" && keys.length > 1) setDataKey(keys[1])
-             if (tablePrimaryKey === "id") setTablePrimaryKey(keys[0])
-             if (parentCols === "hostname, os, agentStatus") {
-                setParentCols(keys.slice(0, 3).join(", "))
-             }
-             if (childCols === "appOwner, techStack, syncProgress, updatedAt") {
-                setChildCols(keys.slice(3, 7).join(", "))
-             }
-             if (layoutLines.length === 0) {
-                setLayoutLines([
-                    { id: "line-1", name: "Main Record Start", cols: keys.slice(0, 3) }
-                ])
-             }
+           if (layoutLines.length === 0) {
+               setLayoutLines([{ id: "line-1", name: "Main Record Line 1", cols: [] }])
            }
          }
       }

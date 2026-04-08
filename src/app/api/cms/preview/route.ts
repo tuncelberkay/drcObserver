@@ -12,13 +12,8 @@ export async function POST(request: Request) {
     let dsPayloads: any[] = []
 
     if (!sourceIds || !Array.isArray(sourceIds) || sourceIds.length === 0) {
-      // Inject synthetic fallback array payload if no remote DB is linked so local development tables don't render empty
-      dsPayloads = [[
-        { id: "mock-01", hostname: "prod-core-web-01", os: "Ubuntu 22.04", agentStatus: "Running", appOwner: "Payments", techStack: "Node.js / Next", syncProgress: 100, updatedAt: new Date().toISOString() },
-        { id: "mock-02", hostname: "prod-core-db-main", os: "RHEL 9", agentStatus: "Warning", appOwner: "Data Platform", techStack: "PostgreSQL 15", syncProgress: 45, updatedAt: new Date().toISOString() },
-        { id: "mock-03", hostname: "drc-core-web-01", os: "Ubuntu 22.04", agentStatus: "Offline", appOwner: "Payments", techStack: "Node.js / Next", syncProgress: 0, updatedAt: new Date().toISOString() },
-        { id: "mock-04", hostname: "prod-auth-redis", os: "Alpine Linux", agentStatus: "Running", appOwner: "Identity", techStack: "Redis 7", syncProgress: 100, updatedAt: new Date().toISOString() },
-      ]]
+      // Intentionally leave dsPayloads empty. We no longer inject synthetic fallback arrays per user architectural requirements.
+      dsPayloads = []
     } else {
       const dataSources = await prisma.appDataSource.findMany({
         where: { id: { in: sourceIds } }

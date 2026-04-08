@@ -43,6 +43,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
   const [metricLabel, setMetricLabel] = useState(existingConfig.metricLabel || "Metric")
 
   const [tablePrimaryKey, setTablePrimaryKey] = useState(existingConfig.tablePrimaryKey || "id")
+  const [pageSize, setPageSize] = useState(Number(existingConfig.pageSize) || 10)
   const [parentCols, setParentCols] = useState(existingConfig.parentCols || "")
   const [childCols, setChildCols] = useState(existingConfig.childCols || "")
   const [customColors, setCustomColors] = useState<string[]>(existingConfig.colors || [])
@@ -74,9 +75,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
         widget.id, 
         selectedSources,
         dataQuery,
-        JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings }),
+        JSON.stringify({ groupBy, aggType, title: configTitle, showTitle, showSubText, subText, xAxisKey, dataKey, metricLabel, tablePrimaryKey, pageSize, parentCols, childCols, colors: customColors.length > 0 ? customColors : undefined, layoutLines, customActions, columnStyles, lineSettings, elementSettings }),
         widget.x ?? 0,
-        widget.y ?? 999,
+        widget.y ?? 0,
         gridW,
         gridH
       )
@@ -96,6 +97,12 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     setIsPreviewing(true)
     setPreviewRawJson(null)
     setPreviewDataArray(null)
+    
+    if (selectedSources.length === 0) {
+        setIsPreviewing(false)
+        return
+    }
+
     try {
       const res = await fetch("/api/cms/preview", {
         method: "POST",
@@ -135,6 +142,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
     dataKey,
     metricLabel,
     tablePrimaryKey,
+    pageSize,
     parentCols,
     childCols,
     colors: customColors.length > 0 ? customColors : undefined,
@@ -264,40 +272,42 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                                 <Icons.ChevronDown className="w-4 h-4" />
                             </div>
                             
-                            {/* Explicit Grid Sizing Parameters */}
-                            <div className="col-span-2 grid grid-cols-2 gap-4 mt-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl">
-                               <div className="col-span-2 mb-1">
-                                  <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2">
-                                     <Icons.LayoutGrid className="w-3.5 h-3.5" /> Canvas Allocation Size
-                                  </label>
-                               </div>
-                               <div>
-                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (Span)</label>
-                                  <select value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
-                                    <option value={12}>Full Span (100%)</option>
-                                    <option value={8}>Two-Thirds (66%)</option>
-                                    <option value={6}>Half Span (50%)</option>
-                                    <option value={4}>One-Third (33%)</option>
-                                    <option value={3}>Quarter (25%)</option>
-                                    <option value={2}>Compact (16%)</option>
-                                  </select>
-                               </div>
-                               <div>
-                                  <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Height (Rows)</label>
-                                  <select value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
-                                    <option value={1}>Compact (1 Row)</option>
-                                    <option value={2}>Standard (2 Rows)</option>
-                                    <option value={3}>Tall (3 Rows)</option>
-                                    <option value={4}>Extra Tall (4 Rows)</option>
-                                    <option value={5}>Massive (5 Rows)</option>
-                                    <option value={6}>Giant (6 Rows)</option>
-                                    <option value={10}>Full Page (10 Rows)</option>
-                                    <option value={12}>Max Page (12 Rows)</option>
-                                  </select>
-                               </div>
-                            </div>
                           </div>
                         </div>
+                      </div>
+                      
+                      {/* Explicit Grid Sizing Parameters */}
+                      <div className="grid grid-cols-2 gap-4 mt-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-inner">
+                         <div className="col-span-2 mb-1">
+                            <label className="block text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest flex items-center gap-2">
+                               <Icons.LayoutGrid className="w-3.5 h-3.5" /> Canvas Allocation Size
+                            </label>
+                         </div>
+                         <div>
+                            <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Width (Span)</label>
+                            <select value={gridW} onChange={e => setGridW(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
+                              <option value={12}>Full Span (100%)</option>
+                              <option value={8}>Two-Thirds (66%)</option>
+                              <option value={6}>Half Span (50%)</option>
+                              <option value={4}>One-Third (33%)</option>
+                              <option value={3}>Quarter (25%)</option>
+                              <option value={2}>Compact (16%)</option>
+                            </select>
+                         </div>
+                         <div>
+                            <label className="block text-[9px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5 focus-within:text-sky-600 dark:focus-within:text-sky-400 transition-colors">Height (Rows)</label>
+                            <select value={gridH} onChange={e => setGridH(Number(e.target.value))} className="block w-full px-2 py-1.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs focus:ring-1 focus:ring-sky-500 outline-none text-center font-mono appearance-none">
+                              <option value={1}>Compact (1 Row)</option>
+                              <option value={2}>Standard (2 Rows)</option>
+                              <option value={3}>Tall (3 Rows)</option>
+                              <option value={4}>Extra Tall (4 Rows)</option>
+                              <option value={5}>Massive (5 Rows)</option>
+                              <option value={6}>Giant (6 Rows)</option>
+                              <option value={10}>Full Page (10 Rows)</option>
+                              <option value={12}>Max Page (12 Rows)</option>
+                              <option value={100}>Full Viewport Override (100vh)</option>
+                            </select>
+                         </div>
                       </div>
                   </div>
 
@@ -391,6 +401,21 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                                   className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
                                   placeholder="id"
                                 />
+                             </div>
+                             <div className="col-span-2">
+                                <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Default Rows Per Page</label>
+                                <select 
+                                  value={pageSize}
+                                  onChange={e => setPageSize(Number(e.target.value))}
+                                  className="block w-full px-3 py-2 rounded-lg bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs focus:ring-1 focus:ring-sky-500 outline-none" 
+                                >
+                                  <option value={5}>5 Rows</option>
+                                  <option value={10}>10 Rows</option>
+                                  <option value={20}>20 Rows</option>
+                                  <option value={50}>50 Rows</option>
+                                  <option value={100}>100 Rows</option>
+                                  <option value={250}>250 Rows</option>
+                                </select>
                              </div>
                               <div className="col-span-2">
                                  {/* Builder moved to right canvas */}
@@ -532,9 +557,9 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
 
             {previewDataArray && ChartComponent && (
                 <div className="flex-1 flex items-center justify-center p-8 lg:p-16 relative z-10 animate-in zoom-in-[0.98] duration-500">
-                  <div className={`w-full ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-white dark:bg-[#0b1120] ${widget.componentKey === "MASTER_DETAIL_TABLE" ? 'max-w-[1200px] w-[95%]' : 'max-w-4xl'}`}>
+                  <div className={`w-full ring-1 ring-slate-200 dark:ring-slate-800/50 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-white dark:bg-[#0b1120] ${widget.componentKey === "MASTER_DETAIL_TABLE" ? 'max-w-[1200px] w-[95%]' : 'max-w-4xl'}`}>
                     {/* Fake Browser TopBar */}
-                    <div className="bg-slate-50 dark:bg-slate-950 flex items-center px-4 py-2 border-b border-slate-200 dark:border-slate-800 gap-2">
+                    <div className="rounded-t-2xl bg-slate-50 dark:bg-slate-950 flex items-center px-4 py-2 border-b border-slate-200 dark:border-slate-800 gap-2">
                         <div className="flex gap-1.5">
                           <div className="w-3 h-3 rounded-full bg-red-400/80 dark:bg-red-500/80"></div>
                           <div className="w-3 h-3 rounded-full bg-amber-400/80 dark:bg-amber-500/80"></div>
@@ -545,30 +570,42 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                     {/* Actual Component Mount */}
                      <div className={`p-6 w-full flex flex-col ${widget.componentKey === "MASTER_DETAIL_TABLE" ? 'h-[600px] lg:h-[750px] p-0' : 'h-[400px]'}`}>
                         {widget.componentKey === "MASTER_DETAIL_TABLE" ? (
-                           <div className="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4">
-                             <VisualRecordBuilder 
-                                layoutLines={layoutLines}
-                                customActions={customActions}
-                                columnStyles={columnStyles}
-                                lineSettings={lineSettings}
-                                elementSettings={elementSettings}
-                                previewDataArray={previewDataArray}
-                                onChange={(newState) => {
-                                   if (newState.layoutLines) setLayoutLines(newState.layoutLines)
-                                   if (newState.columnStyles) setColumnStyles(newState.columnStyles)
-                                   if (newState.lineSettings) setLineSettings(newState.lineSettings)
-                                   if (newState.elementSettings) setElementSettings(newState.elementSettings)
-                                   if (newState.customActions) setCustomActions(newState.customActions)
-                                   
-                                   // Sync legacy tracking for backward compatibility
-                                   if (newState.layoutLines) {
-                                      const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
-                                      const cCols = newState.layoutLines.find((l: any) => l.id === "drawer")?.cols.join(", ") || ""
-                                      setParentCols(pCols)
-                                      setChildCols(cCols)
-                                   }
-                                }}
-                              />
+                           <div className="w-full h-full overflow-auto custom-scrollbar bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-48 flex flex-col gap-6 relative">
+                             <div className="shrink-0 relative z-10 w-full rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] ring-1 ring-slate-200/50 dark:ring-slate-700/50">
+                               <VisualRecordBuilder 
+                                  layoutLines={layoutLines}
+                                  customActions={customActions}
+                                  columnStyles={columnStyles}
+                                  lineSettings={lineSettings}
+                                  elementSettings={elementSettings}
+                                  previewDataArray={previewDataArray}
+                                  onChange={(newState) => {
+                                     if (newState.layoutLines) setLayoutLines(newState.layoutLines)
+                                     if (newState.columnStyles) setColumnStyles(newState.columnStyles)
+                                     if (newState.lineSettings) setLineSettings(newState.lineSettings)
+                                     if (newState.elementSettings) setElementSettings(newState.elementSettings)
+                                     if (newState.customActions) setCustomActions(newState.customActions)
+                                     
+                                     // Sync legacy tracking for backward compatibility
+                                     if (newState.layoutLines) {
+                                        const pCols = newState.layoutLines.find((l: any) => l.id === "line-1")?.cols.join(", ") || ""
+                                        const cCols = newState.layoutLines.filter((l: any) => l.id.startsWith("drawer")).flatMap((l: any) => l.cols).join(", ") || ""
+                                        setParentCols(pCols)
+                                        setChildCols(cCols)
+                                     }
+                                  }}
+                                />
+                              </div>
+                              <div className="flex-1 w-full relative z-0 mt-4 border-t-4 border-dashed border-slate-200 dark:border-slate-800 pt-8">
+                                <label className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-100 dark:bg-slate-900 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase tracking-widest border border-dashed border-slate-300 dark:border-slate-700">Live Preview Output</label>
+                                <div className="h-[500px] w-full rounded-xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-xl bg-white dark:bg-slate-950 flex flex-col">
+                                   <ChartComponent
+                                      widget={widget}
+                                      config={transientConfig}
+                                      previewData={previewDataArray}
+                                   />
+                                </div>
+                              </div>
                             </div>
                         ) : (
                            <div className="w-full h-full p-4 overflow-x-auto min-h-[300px]">

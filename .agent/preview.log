@@ -6,95 +6,1029 @@
 - Local:         http://localhost:3000
 - Network:       http://172.20.10.2:3000
 - Environments: .env
-✓ Ready in 912ms
+✓ Ready in 834ms
 ⚠ `eslint` configuration in next.config.ts is no longer supported. See more info here: https://nextjs.org/docs/app/api-reference/cli/next#next-lint-options
 ⚠ Invalid next.config.ts options detected: 
 ⚠     Unrecognized key(s) in object: 'eslint'
 ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
 
+○ Compiling /api/cms/query ...
+ POST /api/cms/query 200 in 4.7s (next.js: 3.9s, application-code: 804ms)
+ POST /api/cms/query 200 in 94ms (next.js: 6ms, application-code: 88ms)
+ POST /api/cms/query 200 in 107ms (next.js: 5ms, application-code: 102ms)
+ POST /api/cms/query 200 in 179ms (next.js: 9ms, application-code: 170ms)
+ GET /en/admin 200 in 30.6s (next.js: 29.7s, proxy.ts: 151ms, application-code: 753ms)
+ GET /en/admin 200 in 9.1s (next.js: 8.3s, proxy.ts: 12ms, application-code: 756ms)
+ POST /api/cms/query 200 in 193ms (next.js: 28ms, application-code: 166ms)
+ POST /api/cms/query 200 in 105ms (next.js: 4ms, application-code: 101ms)
+ GET /en 200 in 17.4s (next.js: 17.1s, proxy.ts: 17ms, application-code: 252ms)
+ GET /en/p/test 200 in 617ms (next.js: 234ms, proxy.ts: 10ms, application-code: 374ms)
+○ Compiling /api/auth/[...nextauth] ...
+ POST /api/cms/query 200 in 5.0s (next.js: 4.1s, application-code: 948ms)
+ POST /api/cms/query 200 in 5.2s (next.js: 4.0s, application-code: 1132ms)
+ POST /api/cms/query 200 in 372ms (next.js: 76ms, application-code: 296ms)
+✓ Finished writing to filesystem cache in 22.4s
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 22.7s (next.js: 22.7s, application-code: 36ms)
+ GET /en/admin 200 in 453ms (next.js: 158ms, proxy.ts: 22ms, application-code: 273ms)
+ POST /api/cms/query 200 in 491ms (next.js: 3ms, application-code: 488ms)
+ GET /en/p/test 200 in 114ms (next.js: 42ms, proxy.ts: 11ms, application-code: 61ms)
+ POST /api/cms/query 200 in 1083ms (next.js: 10ms, application-code: 1072ms)
+ POST /api/cms/query 200 in 1086ms (next.js: 6ms, application-code: 1080ms)
+ POST /api/cms/query 200 in 183ms (next.js: 2ms, application-code: 181ms)
+ POST /api/cms/query 200 in 76ms (next.js: 3ms, application-code: 73ms)
+ POST /api/cms/query 200 in 490ms (next.js: 3ms, application-code: 487ms)
+ POST /api/cms/query 200 in 106ms (next.js: 3ms, application-code: 103ms)
+ POST /api/cms/query 200 in 90ms (next.js: 3ms, application-code: 87ms)
+ POST /api/cms/query 200 in 147ms (next.js: 13ms, application-code: 134ms)
+ POST /api/cms/execute 200 in 2.5s (next.js: 2.2s, application-code: 290ms)
+ POST /api/cms/query 200 in 149ms (next.js: 15ms, application-code: 134ms)
+ POST /api/cms/query 200 in 112ms (next.js: 6ms, application-code: 105ms)
+✓ Compiled in 977ms
+ POST /api/cms/query 200 in 112ms (next.js: 5ms, application-code: 107ms)
+ GET /en/admin 200 in 373ms (next.js: 65ms, proxy.ts: 34ms, application-code: 274ms)
+○ Compiling /[locale]/admin/pages ...
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /en/admin/pages 200 in 9.2s (next.js: 8.9s, proxy.ts: 15ms, application-code: 315ms)
 ○ Compiling /[locale]/admin/editor/[id] ...
- GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 26.9s (next.js: 18.3s, proxy.ts: 1085ms, application-code: 7.5s)
- POST /api/cms/preview 200 in 806ms (next.js: 770ms, application-code: 36ms)
- POST /api/cms/preview 200 in 820ms (next.js: 809ms, application-code: 12ms)
- POST /api/cms/preview 200 in 832ms (next.js: 822ms, application-code: 10ms)
- POST /api/cms/preview 200 in 880ms (next.js: 835ms, application-code: 44ms)
- POST /api/cms/preview 200 in 967ms (next.js: 937ms, application-code: 30ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 9.5s (next.js: 9.3s, proxy.ts: 17ms, application-code: 168ms)
+ POST /api/cms/preview 200 in 2.4s (next.js: 2.4s, application-code: 9ms)
+ POST /api/cms/preview 200 in 2.5s (next.js: 2.4s, application-code: 4ms)
+ POST /api/cms/preview 200 in 2.5s (next.js: 2.5s, application-code: 5ms)
+ POST /api/cms/preview 200 in 2.5s (next.js: 2.5s, application-code: 8ms)
+ POST /api/cms/preview 200 in 2.5s (next.js: 2.5s, application-code: 28ms)
+ POST /api/cms/preview 200 in 606ms (next.js: 220ms, application-code: 387ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 183ms (next.js: 30ms, proxy.ts: 83ms, application-code: 70ms)
+  └─ ƒ getActionDataSources() in 7ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 248ms (next.js: 213ms, proxy.ts: 10ms, application-code: 25ms)
+  └─ ƒ getActionDataSources() in 3ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 335ms (next.js: 18ms, proxy.ts: 7ms, application-code: 311ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, status, __action_lklklklkl\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"status\",\"__action_lklklklkl\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'knklnknlkn' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":5},\"status\":{\"startCol\":8},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":11}}}", 0, 0, 12, 100) in 51ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 122ms (next.js: 31ms, proxy.ts: 5ms, application-code: 85ms)
+ POST /api/cms/query 200 in 715ms (next.js: 23ms, application-code: 692ms)
+ POST /api/cms/query 200 in 724ms (next.js: 8ms, application-code: 716ms)
+ POST /api/cms/execute 200 in 110ms (next.js: 6ms, application-code: 104ms)
+ POST /api/cms/query 200 in 90ms (next.js: 6ms, application-code: 84ms)
+ POST /api/cms/execute 200 in 141ms (next.js: 1965µs, application-code: 139ms)
+ POST /api/cms/query 200 in 81ms (next.js: 3ms, application-code: 78ms)
+ POST /api/cms/execute 200 in 99ms (next.js: 5ms, application-code: 94ms)
+ POST /api/cms/query 200 in 89ms (next.js: 2ms, application-code: 87ms)
+✓ Finished filesystem cache database compaction in 10.4s
+ POST /api/cms/query 200 in 91ms (next.js: 16ms, application-code: 75ms)
+ POST /api/cms/query 200 in 80ms (next.js: 3ms, application-code: 76ms)
+ POST /api/cms/query 200 in 169ms (next.js: 6ms, application-code: 163ms)
+ POST /api/cms/query 200 in 103ms (next.js: 3ms, application-code: 100ms)
+ POST /api/cms/query 200 in 170ms (next.js: 4ms, application-code: 166ms)
+ POST /api/cms/query 200 in 78ms (next.js: 3ms, application-code: 75ms)
+ POST /api/cms/query 200 in 77ms (next.js: 3ms, application-code: 74ms)
+✓ Compiled in 1107ms
+ POST /api/cms/query 200 in 176ms (next.js: 6ms, application-code: 170ms)
+ POST /api/cms/query 200 in 84ms (next.js: 4ms, application-code: 80ms)
+ POST /api/cms/query 200 in 108ms (next.js: 10ms, application-code: 98ms)
+ POST /api/cms/query 200 in 76ms (next.js: 1874µs, application-code: 75ms)
+✓ Compiled in 278ms
+ POST /api/cms/query 200 in 84ms (next.js: 1595µs, application-code: 82ms)
+ POST /api/cms/query 200 in 82ms (next.js: 2ms, application-code: 80ms)
+ POST /api/cms/query 200 in 204ms (next.js: 6ms, application-code: 199ms)
+ POST /api/cms/query 200 in 88ms (next.js: 3ms, application-code: 85ms)
+ POST /api/cms/query 200 in 342ms (next.js: 3ms, application-code: 339ms)
+ GET /en/admin 200 in 200ms (next.js: 29ms, proxy.ts: 9ms, application-code: 162ms)
+ GET /en/p/test 200 in 155ms (next.js: 24ms, proxy.ts: 4ms, application-code: 126ms)
+ POST /api/cms/query 200 in 360ms (next.js: 1938µs, application-code: 358ms)
+ POST /api/cms/query 200 in 259ms (next.js: 15ms, application-code: 244ms)
+ GET /en/admin 200 in 315ms (next.js: 20ms, proxy.ts: 3ms, application-code: 293ms)
+ GET /en/admin/pages 200 in 149ms (next.js: 20ms, proxy.ts: 5ms, application-code: 124ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 265ms (next.js: 41ms, proxy.ts: 11ms, application-code: 213ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 15ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 30ms (next.js: 24ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 35ms (next.js: 31ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 5ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 10ms, application-code: 3ms)
+ POST /api/cms/preview 200 in 370ms (next.js: 1583µs, application-code: 369ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 391ms (next.js: 16ms, proxy.ts: 5ms, application-code: 370ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, status, __action_lklklklkl\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"status\",\"__action_lklklklkl\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'knklnknlkn' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":5},\"status\":{\"startCol\":8},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":10}}}", 0, 0, 12, 100) in 15ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 97ms (next.js: 8ms, proxy.ts: 10ms, application-code: 78ms)
+ POST /api/cms/query 200 in 498ms (next.js: 4ms, application-code: 494ms)
+ POST /api/cms/query 200 in 506ms (next.js: 12ms, application-code: 494ms)
+ POST /api/cms/query 200 in 93ms (next.js: 6ms, application-code: 87ms)
+ POST /api/cms/query 200 in 79ms (next.js: 5ms, application-code: 74ms)
+ POST /api/cms/query 200 in 71ms (next.js: 3ms, application-code: 68ms)
+ POST /api/cms/query 200 in 68ms (next.js: 2ms, application-code: 65ms)
+ POST /api/cms/query 200 in 78ms (next.js: 1538µs, application-code: 76ms)
+ POST /api/cms/query 200 in 79ms (next.js: 2ms, application-code: 77ms)
+ POST /api/cms/query 200 in 295ms (next.js: 2ms, application-code: 293ms)
+ POST /api/cms/execute 200 in 92ms (next.js: 3ms, application-code: 89ms)
+ POST /api/cms/query 200 in 192ms (next.js: 9ms, application-code: 183ms)
+ POST /api/cms/execute 200 in 96ms (next.js: 11ms, application-code: 86ms)
+ POST /api/cms/query 200 in 79ms (next.js: 3ms, application-code: 76ms)
+ POST /api/cms/query 200 in 103ms (next.js: 11ms, application-code: 92ms)
+ POST /api/cms/query 200 in 81ms (next.js: 3ms, application-code: 78ms)
+ POST /api/cms/query 200 in 99ms (next.js: 3ms, application-code: 96ms)
+ POST /api/cms/query 200 in 99ms (next.js: 2ms, application-code: 97ms)
+ POST /api/cms/query 200 in 105ms (next.js: 8ms, application-code: 97ms)
+ GET /en/p/test 200 in 1251ms (next.js: 31ms, proxy.ts: 29ms, application-code: 1191ms)
+ GET /api/auth/session 200 in 54ms (next.js: 31ms, application-code: 22ms)
+ POST /api/cms/query 200 in 241ms (next.js: 8ms, application-code: 233ms)
+ POST /api/cms/query 200 in 103ms (next.js: 4ms, application-code: 99ms)
+ POST /api/cms/query 200 in 88ms (next.js: 4ms, application-code: 84ms)
+✓ Compiled in 830ms
+[browser] Uncaught ReferenceError: col is not defined
+    at eval (src/components/infrastructure/MasterDetailTable.tsx:307:156)
+    at Array.map (<anonymous>)
+    at eval (src/components/infrastructure/MasterDetailTable.tsx:272:94)
+    at Array.map (<anonymous>)
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:175:30)
+    at Set.forEach (<anonymous>)
+    at MASTER_DETAIL_TABLE (src/components/cms/ChartingEngines.tsx:248:26)
+    at <unknown> (src/components/cms/DynamicPageRenderer.tsx:95:100)
+    at DynamicPageRenderer (src/components/cms/DynamicPageRenderer.tsx:98:223)
+    at CMSPage (src/app/[locale]/p/[slug]/page.tsx:29:10)
+  305 | ...enter gap-3' : 'flex-col gap-1.5'} bg-white dark:bg-slate-950 p-3 rounded-lg border bo...
+  306 | ...
+> 307 | ... dark:text-indigo-300 font-bold shrink-0">{col}</span>
+      |                                               ^
+  308 | ...
+  309 | ...nt-mono ${renderType === 'badge' ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700...
+  310 | ...
+✓ Compiled in 1323ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /api/auth/session 200 in 669ms (next.js: 484ms, application-code: 185ms)
+ POST /api/cms/query 200 in 1687ms (next.js: 12ms, application-code: 1675ms)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+    at Set.forEach (<anonymous>) (<anonymous>)
+ GET /api/auth/session 200 in 614ms (next.js: 378ms, application-code: 236ms)
+ POST /api/auth/_log 200 in 24ms (next.js: 3ms, application-code: 21ms)
+ GET /en/p/test 200 in 3.1s (next.js: 1372ms, proxy.ts: 27ms, application-code: 1714ms)
+ GET /api/auth/session 200 in 14ms (next.js: 4ms, application-code: 11ms)
+ POST /api/cms/query 200 in 533ms (next.js: 14ms, application-code: 519ms)
+[browser] Uncaught ReferenceError: col is not defined
+    at <unknown> (src/components/infrastructure/MasterDetailTable.tsx:289:156)
+    at Array.map (<anonymous>)
+    at <unknown> (src/components/infrastructure/MasterDetailTable.tsx:254:94)
+    at Array.map (<anonymous>)
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:175:30)
+    at MASTER_DETAIL_TABLE (src/components/cms/WidgetRegistry.tsx:10:70)
+    at <unknown> (src/components/cms/DynamicPageRenderer.tsx:115:26)
+    at DynamicPageRenderer (src/components/cms/DynamicPageRenderer.tsx:118:18)
+    at CMSPage (src/app/[locale]/p/[slug]/page.tsx:29:10)
+  287 | ...enter gap-3' : 'flex-col gap-1.5'} bg-white dark:bg-slate-950 p-3 rounded-lg border bo...
+  288 | ...
+> 289 | ... dark:text-indigo-300 font-bold shrink-0">{col}</span>
+      |                                               ^
+  290 | ...
+  291 | ...nt-mono ${renderType === 'badge' ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700...
+  292 | ...
+✓ Compiled in 473ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /en/p/test 200 in 2.9s (next.js: 89ms, proxy.ts: 43ms, application-code: 2.7s)
+ GET /api/auth/session 200 in 43ms (next.js: 17ms, application-code: 26ms)
+✓ Finished filesystem cache database compaction in 16.3s
+ POST /api/cms/query 200 in 956ms (next.js: 5ms, application-code: 951ms)
+[browser] Uncaught ReferenceError: col is not defined
+    at <unknown> (src/components/infrastructure/MasterDetailTable.tsx:289:156)
+    at Array.map (<anonymous>)
+    at <unknown> (src/components/infrastructure/MasterDetailTable.tsx:254:94)
+    at Array.map (<anonymous>)
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:175:30)
+    at MASTER_DETAIL_TABLE (src/components/cms/WidgetRegistry.tsx:10:70)
+    at <unknown> (src/components/cms/DynamicPageRenderer.tsx:115:26)
+    at DynamicPageRenderer (src/components/cms/DynamicPageRenderer.tsx:118:18)
+    at CMSPage (src/app/[locale]/p/[slug]/page.tsx:29:10)
+  287 | ...enter gap-3' : 'flex-col gap-1.5'} bg-white dark:bg-slate-950 p-3 rounded-lg border bo...
+  288 | ...
+> 289 | ... dark:text-indigo-300 font-bold shrink-0">{col}</span>
+      |                                               ^
+  290 | ...
+  291 | ...nt-mono ${renderType === 'badge' ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700...
+  292 | ...
+✓ Compiled in 370ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /en/p/test 200 in 851ms (next.js: 69ms, proxy.ts: 97ms, application-code: 685ms)
+ GET /api/auth/session 200 in 102ms (next.js: 90ms, application-code: 12ms)
+ POST /api/cms/query 200 in 133ms (next.js: 3ms, application-code: 130ms)
+ POST /api/cms/query 200 in 91ms (next.js: 4ms, application-code: 87ms)
+ POST /api/cms/query 200 in 80ms (next.js: 3ms, application-code: 77ms)
+ POST /api/cms/execute 200 in 119ms (next.js: 7ms, application-code: 112ms)
+ POST /api/cms/query 200 in 97ms (next.js: 4ms, application-code: 93ms)
+ POST /api/cms/query 200 in 124ms (next.js: 4ms, application-code: 121ms)
+ POST /api/cms/query 200 in 72ms (next.js: 3ms, application-code: 70ms)
+ GET /en/admin 200 in 561ms (next.js: 38ms, proxy.ts: 14ms, application-code: 509ms)
+ POST /api/cms/query 200 in 392ms (next.js: 2ms, application-code: 390ms)
+ GET /en/admin/pages 200 in 774ms (next.js: 39ms, proxy.ts: 7ms, application-code: 729ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 139ms (next.js: 28ms, proxy.ts: 7ms, application-code: 104ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 4ms, application-code: 12ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 16ms (next.js: 12ms, application-code: 3ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 2ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 133ms (next.js: 3ms, application-code: 130ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 350ms (next.js: 58ms, proxy.ts: 35ms, application-code: 257ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, __action_lklklklkl, status\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"__action_lklklklkl\",\"status\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'knklnknlkn' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":4},\"status\":{\"startCol\":7},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":11}}}", 0, 0, 12, 100) in 35ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 115ms (next.js: 14ms, proxy.ts: 7ms, application-code: 94ms)
+ POST /api/cms/query 200 in 299ms (next.js: 8ms, application-code: 291ms)
+ POST /api/cms/query 200 in 314ms (next.js: 15ms, application-code: 299ms)
+ POST /api/cms/query 200 in 76ms (next.js: 1512µs, application-code: 74ms)
+ POST /api/cms/query 200 in 100ms (next.js: 1907µs, application-code: 98ms)
+ POST /api/cms/query 200 in 169ms (next.js: 1615µs, application-code: 167ms)
+ POST /api/cms/query 200 in 171ms (next.js: 12ms, application-code: 158ms)
+ POST /api/cms/query 200 in 236ms (next.js: 4ms, application-code: 232ms)
+✓ Compiled in 719ms
+ POST /api/cms/query 200 in 119ms (next.js: 4ms, application-code: 114ms)
+ POST /api/cms/query 200 in 240ms (next.js: 9ms, application-code: 231ms)
+ POST /api/cms/execute 200 in 118ms (next.js: 3ms, application-code: 115ms)
+ POST /api/cms/query 200 in 112ms (next.js: 29ms, application-code: 84ms)
+ POST /api/cms/query 200 in 76ms (next.js: 3ms, application-code: 73ms)
+ POST /api/cms/query 200 in 66ms (next.js: 1954µs, application-code: 64ms)
+ POST /api/cms/query 200 in 67ms (next.js: 4ms, application-code: 63ms)
+ POST /api/cms/query 200 in 71ms (next.js: 2ms, application-code: 69ms)
+ POST /api/cms/query 200 in 77ms (next.js: 1860µs, application-code: 76ms)
+ POST /api/cms/query 200 in 84ms (next.js: 3ms, application-code: 82ms)
+ POST /api/cms/query 200 in 75ms (next.js: 7ms, application-code: 68ms)
+ POST /api/cms/query 200 in 80ms (next.js: 4ms, application-code: 75ms)
+ POST /api/cms/query 200 in 237ms (next.js: 4ms, application-code: 233ms)
+ POST /api/cms/query 200 in 77ms (next.js: 4ms, application-code: 73ms)
+ GET /en/admin 200 in 295ms (next.js: 33ms, proxy.ts: 19ms, application-code: 243ms)
+ GET /en/admin/pages 200 in 391ms (next.js: 11ms, proxy.ts: 17ms, application-code: 362ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 135ms (next.js: 34ms, proxy.ts: 10ms, application-code: 91ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 9ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 30ms (next.js: 20ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 56ms (next.js: 35ms, application-code: 22ms)
+ POST /api/cms/preview 200 in 83ms (next.js: 63ms, application-code: 20ms)
+ POST /api/cms/preview 200 in 91ms (next.js: 83ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 165ms (next.js: 4ms, application-code: 161ms)
+ GET /en/p/test 200 in 327ms (next.js: 44ms, proxy.ts: 9ms, application-code: 274ms)
+ POST /api/cms/query 200 in 283ms (next.js: 6ms, application-code: 277ms)
+ POST /api/cms/query 200 in 331ms (next.js: 15ms, application-code: 316ms)
+ POST /api/cms/query 200 in 83ms (next.js: 4ms, application-code: 79ms)
+ POST /api/cms/query 200 in 71ms (next.js: 4ms, application-code: 67ms)
+ POST /api/cms/query 200 in 63ms (next.js: 2ms, application-code: 61ms)
+ POST /api/cms/query 200 in 66ms (next.js: 1912µs, application-code: 64ms)
+ POST /api/cms/query 200 in 64ms (next.js: 5ms, application-code: 59ms)
+ POST /api/cms/query 200 in 99ms (next.js: 1997µs, application-code: 97ms)
+ POST /api/cms/query 200 in 72ms (next.js: 3ms, application-code: 69ms)
+ POST /api/cms/query 200 in 296ms (next.js: 7ms, application-code: 289ms)
+ POST /api/cms/execute 200 in 102ms (next.js: 7ms, application-code: 95ms)
+ POST /api/cms/query 200 in 79ms (next.js: 3ms, application-code: 76ms)
+ POST /api/cms/query 200 in 66ms (next.js: 1606µs, application-code: 64ms)
+ POST /api/cms/execute 200 in 106ms (next.js: 2ms, application-code: 104ms)
+ POST /api/cms/query 200 in 81ms (next.js: 3ms, application-code: 78ms)
+ GET /en/admin 200 in 230ms (next.js: 29ms, proxy.ts: 17ms, application-code: 184ms)
+ GET /en/admin/pages 200 in 468ms (next.js: 19ms, proxy.ts: 6ms, application-code: 443ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 92ms (next.js: 12ms, proxy.ts: 6ms, application-code: 74ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 26ms (next.js: 16ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 42ms (next.js: 28ms, application-code: 14ms)
+ POST /api/cms/preview 200 in 12ms (next.js: 4ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 27ms (next.js: 17ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 139ms (next.js: 3ms, application-code: 136ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 114ms (next.js: 56ms, proxy.ts: 43ms, application-code: 16ms)
+  └─ ƒ getActionDataSources() in 2ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 121ms (next.js: 28ms, proxy.ts: 5ms, application-code: 88ms)
+  └─ ƒ getActionDataSources() in 10ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 578ms (next.js: 13ms, proxy.ts: 37ms, application-code: 528ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, __action_lklklklkl, status\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"__action_lklklklkl\",\"status\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'ananaaaaa' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":4},\"status\":{\"startCol\":7},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":11}}}", 0, 0, 12, 100) in 17ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 130ms (next.js: 22ms, proxy.ts: 5ms, application-code: 103ms)
+ POST /api/cms/query 200 in 370ms (next.js: 6ms, application-code: 364ms)
+ POST /api/cms/query 200 in 187ms (next.js: 12ms, application-code: 175ms)
+✓ Compiled in 824ms
+ POST /api/cms/query 200 in 85ms (next.js: 3ms, application-code: 82ms)
+ POST /api/cms/query 200 in 69ms (next.js: 2ms, application-code: 66ms)
+ POST /api/cms/query 200 in 155ms (next.js: 3ms, application-code: 152ms)
+✓ Compiled in 1314ms
+ POST /api/cms/query 200 in 97ms (next.js: 12ms, application-code: 84ms)
+ POST /api/cms/query 200 in 144ms (next.js: 3ms, application-code: 141ms)
+ POST /api/cms/query 200 in 109ms (next.js: 4ms, application-code: 105ms)
+ POST /api/cms/query 200 in 71ms (next.js: 3ms, application-code: 68ms)
+✓ Compiled in 4.4s
+✓ Compiled in 382ms
+ GET /en/p/test 200 in 1417ms (next.js: 754ms, proxy.ts: 274ms, application-code: 388ms)
+ GET /en/p/test 200 in 357ms (next.js: 40ms, proxy.ts: 33ms, application-code: 284ms)
+ GET /en/p/test 200 in 350ms (next.js: 30ms, proxy.ts: 11ms, application-code: 308ms)
+ GET /en/p/test 200 in 260ms (next.js: 85ms, proxy.ts: 22ms, application-code: 152ms)
+ POST /api/cms/query 200 in 845ms (next.js: 326ms, application-code: 519ms)
+ POST /api/cms/execute 200 in 3.1s (next.js: 2.3s, application-code: 851ms)
+ POST /api/cms/query 200 in 155ms (next.js: 3ms, application-code: 152ms)
+ POST /api/cms/query 200 in 86ms (next.js: 6ms, application-code: 80ms)
+ POST /api/cms/execute 200 in 202ms (next.js: 22ms, application-code: 180ms)
+ POST /api/cms/query 200 in 102ms (next.js: 5ms, application-code: 97ms)
+ POST /api/cms/query 200 in 106ms (next.js: 9ms, application-code: 97ms)
+✓ Compiled in 1173ms
+ POST /api/cms/query 200 in 105ms (next.js: 9ms, application-code: 96ms)
+ POST /api/cms/execute 200 in 297ms (next.js: 137ms, application-code: 160ms)
+ POST /api/cms/query 200 in 155ms (next.js: 1929µs, application-code: 153ms)
+ POST /api/cms/query 200 in 101ms (next.js: 3ms, application-code: 98ms)
+ POST /api/cms/query 200 in 121ms (next.js: 5ms, application-code: 116ms)
+ POST /api/cms/query 200 in 92ms (next.js: 7ms, application-code: 85ms)
+ GET /en/admin 200 in 1249ms (next.js: 301ms, proxy.ts: 32ms, application-code: 917ms)
+ GET /en/p/test 200 in 144ms (next.js: 37ms, proxy.ts: 9ms, application-code: 98ms)
+ POST /api/cms/query 200 in 98ms (next.js: 3ms, application-code: 95ms)
+ POST /api/cms/query 200 in 503ms (next.js: 3ms, application-code: 500ms)
+ POST /api/cms/execute 200 in 225ms (next.js: 5ms, application-code: 220ms)
+ POST /api/cms/query 200 in 137ms (next.js: 3ms, application-code: 134ms)
+✓ Compiled in 569ms
+ POST /api/cms/query 200 in 161ms (next.js: 13ms, application-code: 149ms)
+ POST /api/cms/query 200 in 89ms (next.js: 5ms, application-code: 84ms)
+ POST /api/cms/execute 200 in 131ms (next.js: 9ms, application-code: 122ms)
+ POST /api/cms/query 200 in 102ms (next.js: 4ms, application-code: 98ms)
+ POST /api/cms/query 200 in 110ms (next.js: 4ms, application-code: 106ms)
+ POST /api/cms/query 200 in 299ms (next.js: 17ms, application-code: 282ms)
+ POST /api/cms/execute 200 in 217ms (next.js: 3ms, application-code: 214ms)
+ POST /api/cms/query 200 in 120ms (next.js: 14ms, application-code: 105ms)
+ POST /api/cms/query 200 in 121ms (next.js: 4ms, application-code: 118ms)
+ POST /api/cms/query 200 in 91ms (next.js: 6ms, application-code: 85ms)
+ POST /api/cms/query 200 in 104ms (next.js: 11ms, application-code: 93ms)
+ POST /api/cms/query 200 in 88ms (next.js: 7ms, application-code: 81ms)
+ POST /api/cms/query 200 in 76ms (next.js: 8ms, application-code: 69ms)
+ POST /api/cms/execute 200 in 136ms (next.js: 6ms, application-code: 130ms)
+ POST /api/cms/query 200 in 125ms (next.js: 4ms, application-code: 121ms)
+ GET /en/admin 200 in 380ms (next.js: 33ms, proxy.ts: 97ms, application-code: 251ms)
+ GET /en/p/test 200 in 130ms (next.js: 27ms, proxy.ts: 9ms, application-code: 93ms)
+ POST /api/cms/query 200 in 280ms (next.js: 16ms, application-code: 264ms)
+ POST /api/cms/query 200 in 287ms (next.js: 22ms, application-code: 265ms)
+ POST /api/cms/execute 200 in 117ms (next.js: 11ms, application-code: 106ms)
+ POST /api/cms/query 200 in 117ms (next.js: 29ms, application-code: 88ms)
+ POST /api/cms/query 200 in 70ms (next.js: 5ms, application-code: 65ms)
+ POST /api/cms/query 200 in 95ms (next.js: 5ms, application-code: 90ms)
+ GET /en/p/summary 200 in 145ms (next.js: 16ms, proxy.ts: 11ms, application-code: 119ms)
+ POST /en/p/summary 200 in 481ms (next.js: 30ms, proxy.ts: 26ms, application-code: 425ms)
+  └─ ƒ updateWidgetGridPosition([]) in 4ms src/app/actions/cms.ts
+ GET /en/p/infrastructure 200 in 93ms (next.js: 15ms, proxy.ts: 12ms, application-code: 66ms)
+ POST /en/p/infrastructure 200 in 1738ms (next.js: 52ms, proxy.ts: 5ms, application-code: 1681ms)
+  └─ ƒ updateWidgetGridPosition([{"h":12,"id":"cmnhyammo0009iyxunect0dg3","w":12,"...":"2 items not stringified"}]) in 98ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 1077ms (next.js: 168ms, proxy.ts: 330ms, application-code: 579ms)
+  └─ ƒ updateWidgetGridPosition([{"h":12,"id":"cmnhyammo0009iyxunect0dg3","w":12,"...":"2 items not stringified"}]) in 9ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 478ms (next.js: 75ms, proxy.ts: 121ms, application-code: 282ms)
+  └─ ƒ updateWidgetGridPosition([{"h":12,"id":"cmnhyammo0009iyxunect0dg3","w":2,"...":"2 items not stringified"}]) in 5ms src/app/actions/cms.ts
+ POST /en/p/infrastructure 200 in 416ms (next.js: 180ms, proxy.ts: 4ms, application-code: 232ms)
+  └─ ƒ updateWidgetGridPosition([{"h":12,"id":"cmnhyammo0009iyxunect0dg3","w":2,"...":"2 items not stringified"}]) in 6ms src/app/actions/cms.ts
+○ Compiling /api/mock/telem ...
+ GET /api/mock/telem 200 in 3.4s (next.js: 3.4s, application-code: 9ms)
+ GET /api/mock/telem 200 in 4.1s (next.js: 4.1s, application-code: 3ms)
+ POST /api/cms/query 200 in 4.3s (next.js: 15ms, application-code: 4.3s)
+ POST /api/cms/query 200 in 4.3s (next.js: 4ms, application-code: 4.3s)
+ GET /en/p/test 200 in 239ms (next.js: 11ms, proxy.ts: 5ms, application-code: 223ms)
+ POST /api/cms/query 200 in 879ms (next.js: 5ms, application-code: 874ms)
+ POST /api/cms/query 200 in 1008ms (next.js: 31ms, application-code: 977ms)
+ POST /api/cms/execute 200 in 241ms (next.js: 9ms, application-code: 232ms)
+ POST /api/cms/query 200 in 133ms (next.js: 8ms, application-code: 125ms)
+ POST /api/cms/query 200 in 143ms (next.js: 5ms, application-code: 138ms)
+ POST /api/cms/query 200 in 82ms (next.js: 3ms, application-code: 79ms)
+ POST /api/cms/query 200 in 82ms (next.js: 7ms, application-code: 75ms)
+ POST /api/cms/query 200 in 95ms (next.js: 4ms, application-code: 91ms)
+ POST /api/cms/query 200 in 108ms (next.js: 3ms, application-code: 105ms)
+ POST /api/cms/query 200 in 94ms (next.js: 4ms, application-code: 90ms)
+ POST /api/cms/query 200 in 83ms (next.js: 1991µs, application-code: 81ms)
+ POST /api/cms/query 200 in 149ms (next.js: 4ms, application-code: 145ms)
+ POST /api/cms/execute 200 in 148ms (next.js: 9ms, application-code: 139ms)
+ POST /api/cms/query 200 in 111ms (next.js: 4ms, application-code: 107ms)
+ POST /api/cms/query 200 in 86ms (next.js: 6ms, application-code: 80ms)
+ POST /api/cms/query 200 in 150ms (next.js: 7ms, application-code: 144ms)
+ POST /api/cms/query 200 in 116ms (next.js: 1615µs, application-code: 114ms)
+ POST /api/cms/query 200 in 75ms (next.js: 1650µs, application-code: 73ms)
+✓ Compiled in 608ms
+ POST /api/cms/query 200 in 373ms (next.js: 6ms, application-code: 368ms)
+ POST /api/cms/query 200 in 87ms (next.js: 9ms, application-code: 79ms)
+✓ Compiled in 150ms
+ POST /api/cms/query 200 in 175ms (next.js: 19ms, application-code: 156ms)
+✓ Compiled in 166ms
+ POST /api/cms/query 200 in 84ms (next.js: 13ms, application-code: 70ms)
+ POST /api/cms/query 200 in 120ms (next.js: 4ms, application-code: 116ms)
+ POST /api/cms/execute 200 in 607ms (next.js: 6ms, application-code: 602ms)
+ POST /api/cms/query 200 in 120ms (next.js: 4ms, application-code: 116ms)
+ POST /api/cms/execute 200 in 159ms (next.js: 6ms, application-code: 152ms)
+ POST /api/cms/query 200 in 113ms (next.js: 7ms, application-code: 105ms)
+ POST /api/cms/query 200 in 281ms (next.js: 90ms, application-code: 191ms)
+ POST /api/cms/query 200 in 249ms (next.js: 13ms, application-code: 236ms)
+ POST /api/cms/execute 500 in 415ms (next.js: 18ms, application-code: 397ms)
+ POST /api/cms/query 200 in 179ms (next.js: 17ms, application-code: 162ms)
+ POST /api/cms/execute 500 in 106ms (next.js: 7ms, application-code: 100ms)
+ POST /api/cms/query 200 in 382ms (next.js: 103ms, application-code: 279ms)
+ POST /api/cms/execute 200 in 284ms (next.js: 18ms, application-code: 266ms)
+ POST /api/cms/query 200 in 88ms (next.js: 4ms, application-code: 85ms)
+ POST /api/cms/query 200 in 91ms (next.js: 3ms, application-code: 88ms)
+ GET /en/admin 200 in 1203ms (next.js: 66ms, proxy.ts: 53ms, application-code: 1084ms)
+ POST /api/cms/query 200 in 266ms (next.js: 12ms, application-code: 253ms)
 [next-auth][warn][NEXTAUTH_URL] 
 https://next-auth.js.org/warnings#nextauth_url
 [next-auth][warn][NO_SECRET] 
 https://next-auth.js.org/warnings#no_secret
- GET /api/auth/session 200 in 4.0s (next.js: 4.0s, application-code: 19ms)
- GET /api/auth/session 200 in 53ms (next.js: 8ms, application-code: 45ms)
- GET /en/admin 200 in 2.7s (next.js: 2.2s, proxy.ts: 7ms, application-code: 434ms)
+ GET /en/admin/pages 200 in 1105ms (next.js: 510ms, proxy.ts: 12ms, application-code: 583ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 646ms (next.js: 194ms, proxy.ts: 6ms, application-code: 447ms)
+ POST /api/cms/preview 200 in 88ms (next.js: 80ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 102ms (next.js: 88ms, application-code: 14ms)
+ POST /api/cms/preview 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 13ms (next.js: 8ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 14ms, application-code: 3ms)
+ POST /api/cms/preview 200 in 152ms (next.js: 1558µs, application-code: 151ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 96ms (next.js: 30ms, proxy.ts: 18ms, application-code: 48ms)
+  └─ ƒ getActionDataSources() in 10ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 107ms (next.js: 12ms, proxy.ts: 76ms, application-code: 19ms)
+  └─ ƒ getActionDataSources() in 4ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 403ms (next.js: 13ms, proxy.ts: 4ms, application-code: 387ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, __action_lklklklkl, status\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"__action_lklklklkl\",\"status\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'nvjnbmn' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":4},\"status\":{\"startCol\":7},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":11}}}", 0, 0, 12, 100) in 19ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 194ms (next.js: 65ms, proxy.ts: 24ms, application-code: 105ms)
+ POST /api/cms/query 200 in 612ms (next.js: 3ms, application-code: 609ms)
+ POST /api/cms/query 200 in 289ms (next.js: 9ms, application-code: 280ms)
+ POST /api/cms/execute 200 in 134ms (next.js: 3ms, application-code: 131ms)
+ POST /api/cms/query 200 in 102ms (next.js: 3ms, application-code: 100ms)
+ POST /api/cms/execute 200 in 123ms (next.js: 1681µs, application-code: 121ms)
+ POST /api/cms/query 200 in 95ms (next.js: 6ms, application-code: 89ms)
+ POST /api/cms/query 200 in 94ms (next.js: 4ms, application-code: 90ms)
+ POST /api/cms/query 200 in 66ms (next.js: 3ms, application-code: 63ms)
+ POST /api/cms/query 200 in 102ms (next.js: 8ms, application-code: 94ms)
+ POST /api/cms/query 200 in 72ms (next.js: 3ms, application-code: 70ms)
+ POST /api/cms/query 200 in 83ms (next.js: 4ms, application-code: 79ms)
+ POST /api/cms/query 200 in 100ms (next.js: 4ms, application-code: 96ms)
+ POST /api/cms/query 200 in 86ms (next.js: 5ms, application-code: 80ms)
+ POST /api/cms/query 200 in 275ms (next.js: 8ms, application-code: 267ms)
+ POST /api/cms/query 200 in 87ms (next.js: 4ms, application-code: 83ms)
+ POST /api/cms/query 200 in 97ms (next.js: 8ms, application-code: 90ms)
+ POST /api/cms/query 200 in 72ms (next.js: 2ms, application-code: 70ms)
+ POST /api/cms/query 200 in 74ms (next.js: 1924µs, application-code: 72ms)
+ POST /api/cms/query 200 in 89ms (next.js: 8ms, application-code: 82ms)
+ POST /api/cms/execute 200 in 307ms (next.js: 6ms, application-code: 300ms)
+ POST /api/cms/query 200 in 112ms (next.js: 5ms, application-code: 107ms)
+ POST /api/cms/query 200 in 98ms (next.js: 4ms, application-code: 95ms)
+ POST /api/cms/query 200 in 84ms (next.js: 1893µs, application-code: 83ms)
+ GET /en/admin 200 in 380ms (next.js: 35ms, proxy.ts: 22ms, application-code: 324ms)
+ GET /en/admin/pages 200 in 220ms (next.js: 44ms, proxy.ts: 22ms, application-code: 154ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 154ms (next.js: 23ms, proxy.ts: 6ms, application-code: 126ms)
+ POST /api/cms/preview 200 in 44ms (next.js: 16ms, application-code: 28ms)
+ POST /api/cms/preview 200 in 67ms (next.js: 47ms, application-code: 20ms)
+ POST /api/cms/preview 200 in 73ms (next.js: 68ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 4ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 156ms (next.js: 4ms, application-code: 152ms)
+ GET /en/admin 200 in 160ms (next.js: 14ms, proxy.ts: 4ms, application-code: 141ms)
+✓ Compiled in 1695ms
+ GET /en/p/test 200 in 212ms (next.js: 44ms, proxy.ts: 31ms, application-code: 138ms)
+ POST /api/cms/query 200 in 565ms (next.js: 33ms, application-code: 532ms)
+ POST /api/cms/query 200 in 561ms (next.js: 35ms, application-code: 525ms)
+ POST /api/cms/query 200 in 89ms (next.js: 3ms, application-code: 86ms)
+✓ Compiled in 992ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: Cannot access 'elementSettings' before initialization
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:96:47)
+  94 |      
+  95 |      return result
+> 96 |   }, [metrics, globalSearchQuery, sortConfig, elementSettings])
+     |                                               ^
+  97 |
+  98 |   const paginatedMetrics = useMemo(() => {
+  99 |     const startIndex = (currentPage - 1) * rowsPerPage {
+  digest: '2920732880'
+}
+ GET /en/p/test 500 in 6.4s (next.js: 1138ms, proxy.ts: 595ms, application-code: 4.7s)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+[browser] Uncaught ReferenceError: Cannot access 'elementSettings' before initialization
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:96:47)
+    at MASTER_DETAIL_TABLE (src/components/cms/WidgetRegistry.tsx:10:70)
+    at <unknown> (src/components/cms/DynamicPageRenderer.tsx:115:26)
+    at DynamicPageRenderer (src/components/cms/DynamicPageRenderer.tsx:118:18)
+    at CMSPage (src/app/[locale]/p/[slug]/page.tsx:29:10)
+  94 |      
+  95 |      return result
+> 96 |   }, [metrics, globalSearchQuery, sortConfig, elementSettings])
+     |                                               ^
+  97 |
+  98 |   const paginatedMetrics = useMemo(() => {
+  99 |     const startIndex = (currentPage - 1) * rowsPerPage
+✓ Finished writing to filesystem cache in 11.8s
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+✓ Compiled in 6.5s
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: Cannot access 'elementSettings' before initialization
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:96:16)
+  94 |      
+  95 |      return result
+> 96 |   }, [metrics, globalSearchQuery, sortConfig, elementSettings])
+     |                ^
+  97 |
+  98 |   const paginatedMetrics = useMemo(() => {
+  99 |     const startIndex = (currentPage - 1) * rowsPerPage {
+  digest: '2920732880'
+}
+ GET /en/p/test 500 in 13.6s (next.js: 3.5s, proxy.ts: 256ms, application-code: 9.8s)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+[browser] Uncaught ReferenceError: Cannot access 'elementSettings' before initialization
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:96:47)
+    at MASTER_DETAIL_TABLE (src/components/cms/WidgetRegistry.tsx:10:70)
+    at <unknown> (src/components/cms/DynamicPageRenderer.tsx:115:26)
+    at DynamicPageRenderer (src/components/cms/DynamicPageRenderer.tsx:118:18)
+    at CMSPage (src/app/[locale]/p/[slug]/page.tsx:29:10)
+  94 |      
+  95 |      return result
+> 96 |   }, [metrics, globalSearchQuery, sortConfig, elementSettings])
+     |                                               ^
+  97 |
+  98 |   const paginatedMetrics = useMemo(() => {
+  99 |     const startIndex = (currentPage - 1) * rowsPerPage
+✓ Finished writing to filesystem cache in 15.8s
+ GET /en 200 in 3.0s (next.js: 840ms, proxy.ts: 13ms, application-code: 2.1s)
 [next-auth][warn][NEXTAUTH_URL] 
 https://next-auth.js.org/warnings#nextauth_url
 [next-auth][warn][NO_SECRET] 
 https://next-auth.js.org/warnings#no_secret
- GET /en/admin/pages 200 in 2.5s (next.js: 1548ms, proxy.ts: 31ms, application-code: 944ms)
- GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 267ms (next.js: 35ms, proxy.ts: 16ms, application-code: 216ms)
- POST /api/cms/preview 200 in 23ms (next.js: 14ms, application-code: 9ms)
- POST /api/cms/preview 200 in 32ms (next.js: 24ms, application-code: 8ms)
- POST /api/cms/preview 200 in 11ms (next.js: 3ms, application-code: 8ms)
- POST /api/cms/preview 200 in 25ms (next.js: 13ms, application-code: 12ms)
- POST /api/cms/preview 200 in 46ms (next.js: 27ms, application-code: 20ms)
-Invalid credentials payload configured on Data Source cmnp0mwjt0000wl9zvf6ev2pp
- POST /api/cms/preview 200 in 84ms (next.js: 5ms, application-code: 79ms)
- POST /api/cms/preview 200 in 162ms (next.js: 89ms, application-code: 73ms)
-Invalid credentials payload configured on Data Source cmnp0mwjt0000wl9zvf6ev2pp
- POST /api/cms/preview 200 in 41ms (next.js: 3ms, application-code: 38ms)
-✓ Compiled in 2.7s
- POST /api/cms/preview 200 in 37ms (next.js: 19ms, application-code: 18ms)
- POST /api/cms/preview 200 in 40ms (next.js: 35ms, application-code: 5ms)
- POST /api/cms/preview 200 in 63ms (next.js: 38ms, application-code: 25ms)
- POST /api/cms/preview 200 in 72ms (next.js: 66ms, application-code: 6ms)
- POST /api/cms/preview 200 in 71ms (next.js: 64ms, application-code: 7ms)
-Invalid credentials payload configured on Data Source cmnp0mwjt0000wl9zvf6ev2pp
- POST /api/cms/preview 200 in 602ms (next.js: 305ms, application-code: 297ms)
- GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 1076ms (next.js: 48ms, proxy.ts: 33ms, application-code: 994ms)
- GET /api/auth/session 200 in 25ms (next.js: 8ms, application-code: 17ms)
- POST /api/cms/preview 200 in 230ms (next.js: 222ms, application-code: 9ms)
- POST /api/cms/preview 200 in 219ms (next.js: 3ms, application-code: 215ms)
- POST /api/cms/preview 200 in 262ms (next.js: 219ms, application-code: 43ms)
- POST /api/cms/preview 200 in 14ms (next.js: 6ms, application-code: 7ms)
- POST /api/cms/preview 200 in 22ms (next.js: 14ms, application-code: 8ms)
-Invalid credentials payload configured on Data Source cmnp0mwjt0000wl9zvf6ev2pp
- POST /api/cms/preview 200 in 111ms (next.js: 9ms, application-code: 102ms)
-Invalid credentials payload configured on Data Source cmnp0mwjt0000wl9zvf6ev2pp
- POST /api/cms/preview 200 in 33ms (next.js: 12ms, application-code: 21ms)
- GET /en/admin 200 in 650ms (next.js: 32ms, proxy.ts: 75ms, application-code: 544ms)
- GET /en/admin/pages 200 in 186ms (next.js: 22ms, proxy.ts: 12ms, application-code: 152ms)
+ GET /api/auth/session 200 in 493ms (next.js: 428ms, application-code: 65ms)
+ GET /en/admin 200 in 591ms (next.js: 90ms, proxy.ts: 6ms, application-code: 495ms)
 [next-auth][warn][NEXTAUTH_URL] 
 https://next-auth.js.org/warnings#nextauth_url
 [next-auth][warn][NO_SECRET] 
 https://next-auth.js.org/warnings#no_secret
- GET /en/admin/pages 200 in 982ms (next.js: 259ms, proxy.ts: 130ms, application-code: 593ms)
- GET /en/admin/pages 200 in 372ms (next.js: 74ms, proxy.ts: 36ms, application-code: 262ms)
+ GET /en/admin/pages 200 in 718ms (next.js: 310ms, proxy.ts: 34ms, application-code: 374ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 749ms (next.js: 451ms, proxy.ts: 4ms, application-code: 293ms)
+ POST /api/cms/preview 200 in 314ms (next.js: 304ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 18ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 37ms (next.js: 32ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 46ms (next.js: 40ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 55ms (next.js: 48ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 162ms (next.js: 1570µs, application-code: 160ms)
+[browser] Uncaught ReferenceError: Cannot access 'elementSettings' before initialization
+    at MasterDetailTable (src/components/infrastructure/MasterDetailTable.tsx:96:47)
+    at MASTER_DETAIL_TABLE (src/components/cms/WidgetRegistry.tsx:10:70)
+    at ActiveWidgetEditor (src/components/cms/ActiveWidgetEditor.tsx:585:36)
+    at ActiveWidgetCard (src/components/cms/ActiveWidgetCard.tsx:56:9)
+    at <anonymous> (src/app/[locale]/admin/editor/[id]/page.tsx:93:19)
+    at Array.map (<anonymous>:1:18)
+    at CMSLayoutEditor (src/app/[locale]/admin/editor/[id]/page.tsx:92:30)
+  94 |      
+  95 |      return result
+> 96 |   }, [metrics, globalSearchQuery, sortConfig, elementSettings])
+     |                                               ^
+  97 |
+  98 |   const paginatedMetrics = useMemo(() => {
+  99 |     const startIndex = (currentPage - 1) * rowsPerPage
+ GET /en 200 in 293ms (next.js: 57ms, proxy.ts: 7ms, application-code: 229ms)
+ GET /api/auth/session 200 in 26ms (next.js: 10ms, application-code: 17ms)
+ GET /en/admin 200 in 395ms (next.js: 10ms, proxy.ts: 10ms, application-code: 375ms)
+ GET /en/admin/pages 200 in 826ms (next.js: 62ms, proxy.ts: 10ms, application-code: 754ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 724ms (next.js: 99ms, proxy.ts: 5ms, application-code: 620ms)
+ POST /api/cms/preview 200 in 15ms (next.js: 5ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 25ms (next.js: 19ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 7ms (next.js: 1929µs, application-code: 5ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 1711µs, application-code: 7ms)
+ POST /api/cms/preview 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ POST /api/cms/preview 200 in 168ms (next.js: 1955µs, application-code: 166ms)
+✓ Compiled in 1517ms
+ GET /en/p/test 200 in 967ms (next.js: 551ms, proxy.ts: 64ms, application-code: 353ms)
+ POST /api/cms/query 200 in 1627ms (next.js: 114ms, application-code: 1513ms)
+ POST /api/cms/query 200 in 1637ms (next.js: 93ms, application-code: 1544ms)
+ POST /api/cms/query 200 in 105ms (next.js: 8ms, application-code: 97ms)
+ POST /api/cms/query 200 in 94ms (next.js: 6ms, application-code: 88ms)
+ GET /en/admin 200 in 161ms (next.js: 27ms, proxy.ts: 15ms, application-code: 119ms)
+ GET /en/admin/pages 200 in 120ms (next.js: 41ms, proxy.ts: 7ms, application-code: 72ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 182ms (next.js: 47ms, proxy.ts: 14ms, application-code: 121ms)
+ POST /api/cms/preview 200 in 27ms (next.js: 12ms, application-code: 15ms)
+ POST /api/cms/preview 200 in 43ms (next.js: 33ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 57ms (next.js: 47ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 66ms (next.js: 62ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 73ms (next.js: 67ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 117ms (next.js: 1563µs, application-code: 116ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 178ms (next.js: 16ms, proxy.ts: 7ms, application-code: 155ms)
+  └─ ƒ bindWidgetDataSource("cmnqhpphf000demukvv5cleh2", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"amount, gateway, created_at\",\"childCols\":\"id, currency, __action_lklklklkl, status\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"amount\",\"gateway\",\"created_at\"]},{\"id\":\"drawer\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"id\",\"currency\",\"__action_lklklklkl\",\"status\"]}],\"customActions\":[{\"name\":\"lklklklkl\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'nvjnbmn' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":1,\"isSearchable\":true},\"gateway\":{\"startCol\":4},\"created_at\":{\"startCol\":10,\"width\":\"1/3\"},\"currency\":{\"startCol\":4},\"status\":{\"startCol\":7,\"isSearchable\":true,\"isSortable\":true},\"__action_hghj\":{\"startCol\":3,\"width\":\"1/3\"},\"__action_lklklklkl\":{\"startCol\":11}}}", 0, 0, 12, 100) in 30ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 127ms (next.js: 26ms, proxy.ts: 4ms, application-code: 97ms)
+ POST /api/cms/query 200 in 537ms (next.js: 15ms, application-code: 523ms)
+ POST /api/cms/query 200 in 527ms (next.js: 286ms, application-code: 241ms)
+ POST /api/cms/query 200 in 93ms (next.js: 3ms, application-code: 91ms)
+ POST /api/cms/query 200 in 95ms (next.js: 1802µs, application-code: 93ms)
+ POST /api/cms/query 200 in 129ms (next.js: 4ms, application-code: 126ms)
+ POST /api/cms/execute 200 in 470ms (next.js: 223ms, application-code: 247ms)
+ POST /api/cms/query 200 in 134ms (next.js: 4ms, application-code: 130ms)
+ POST /api/cms/query 200 in 84ms (next.js: 2ms, application-code: 81ms)
+ POST /api/cms/query 200 in 103ms (next.js: 5ms, application-code: 98ms)
+ POST /api/cms/query 200 in 112ms (next.js: 5ms, application-code: 107ms)
+ POST /api/cms/query 200 in 87ms (next.js: 4ms, application-code: 82ms)
+ POST /api/cms/query 200 in 73ms (next.js: 4ms, application-code: 68ms)
+ POST /api/cms/query 200 in 73ms (next.js: 3ms, application-code: 70ms)
+ POST /api/cms/query 200 in 70ms (next.js: 3ms, application-code: 66ms)
+ POST /api/cms/query 200 in 82ms (next.js: 3ms, application-code: 79ms)
+ POST /api/cms/query 200 in 452ms (next.js: 7ms, application-code: 445ms)
+ GET /en/admin 200 in 208ms (next.js: 19ms, proxy.ts: 21ms, application-code: 169ms)
+ GET /en/admin/pages 200 in 152ms (next.js: 17ms, proxy.ts: 9ms, application-code: 126ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 133ms (next.js: 25ms, proxy.ts: 6ms, application-code: 102ms)
+ POST /api/cms/preview 200 in 18ms (next.js: 12ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 7ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 26ms (next.js: 11ms, application-code: 15ms)
+ POST /api/cms/preview 200 in 17ms (next.js: 12ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 36ms (next.js: 24ms, application-code: 11ms)
+○ Compiling /api/mock/rest ...
+ GET /api/mock/rest?context=user 200 in 3.1s (next.js: 3.1s, application-code: 15ms)
+ POST /api/cms/preview 200 in 3.6s (next.js: 20ms, application-code: 3.6s)
+✓ Compiled in 916ms
+ POST /api/cms/preview 200 in 202ms (next.js: 25ms, application-code: 177ms)
+✓ Compiled in 702ms
+✓ Compiled in 5.4s
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 3.3s (next.js: 925ms, proxy.ts: 398ms, application-code: 1932ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 10.3s (next.js: 8.4s, proxy.ts: 458ms, application-code: 1413ms)
+✓ Finished writing to filesystem cache in 10.6s
+✓ Compiled in 971ms
+✓ Compiled in 3.8s
+ POST /api/cms/preview 200 in 2.1s (next.js: 1566ms, application-code: 494ms)
+✓ Compiled in 1197ms
+✓ Compiled in 2.4s
+✓ Compiled in 913ms
+ POST /api/cms/preview 200 in 745ms (next.js: 84ms, application-code: 661ms)
+✓ Compiled in 2.5s
+✓ Compiled in 708ms
+[browser] Uncaught ReferenceError: anchorClass is not defined
+    at eval (src/components/cms/VisualRecordBuilder.tsx:243:77)
+    at Array.map (<anonymous>)
+    at eval (src/components/cms/VisualRecordBuilder.tsx:199:32)
+    at Array.map (<anonymous>)
+    at VisualRecordBuilder (src/components/cms/VisualRecordBuilder.tsx:148:24)
+    at Set.forEach (<anonymous>)
+    at ActiveWidgetEditor (src/components/cms/ActiveWidgetEditor.tsx:558:32)
+    at ActiveWidgetCard (src/components/cms/ActiveWidgetCard.tsx:33:104)
+    at <anonymous> (src/app/[locale]/admin/editor/[id]/page.tsx:93:19)
+    at Array.map (<anonymous>:1:18)
+    at CMSLayoutEditor (src/app/[locale]/admin/editor/[id]/page.tsx:92:30)
+  241 | ... Element Config Popover */}
+  242 | ...tiveConfigId === k && (
+> 243 | ... <div className={`absolute top-full mt-2 ${anchorClass} z-[200] w-64 p-3 bg-slate-800 ...
+      |                                               ^
+  244 | ...    <div className="flex justify-between items-center border-b border-slate-700 pb-1.5...
+  245 | ...       <span className="text-[10px] font-bold text-white uppercase tracking-widest lea...
+  246 | ...       <button type="button" onClick={(e) => { e.stopPropagation(); setActiveConfigId(...
+✓ Finished filesystem cache database compaction in 10.4s
+✓ Compiled in 1284ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
 [next-auth][warn][NEXTAUTH_URL] 
 https://next-auth.js.org/warnings#nextauth_url
 [next-auth][warn][NO_SECRET] 
 https://next-auth.js.org/warnings#no_secret
- GET /en/admin/pages 200 in 840ms (next.js: 299ms, proxy.ts: 71ms, application-code: 470ms)
- GET /en/admin/pages 200 in 263ms (next.js: 52ms, proxy.ts: 37ms, application-code: 175ms)
- GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 589ms (next.js: 231ms, proxy.ts: 8ms, application-code: 351ms)
- POST /api/cms/preview 200 in 162ms (next.js: 154ms, application-code: 7ms)
+ GET /api/auth/session 200 in 2.9s (next.js: 1825ms, application-code: 1062ms)
+ POST /api/cms/preview 200 in 33ms (next.js: 25ms, application-code: 9ms)
+ POST /api/cms/preview 200 in 40ms (next.js: 33ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 24ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 20ms (next.js: 14ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 27ms (next.js: 22ms, application-code: 5ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 6.9s (next.js: 492ms, proxy.ts: 887ms, application-code: 5.5s)
+ GET /api/auth/session 200 in 22ms (next.js: 11ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 54ms (next.js: 50ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 61ms (next.js: 56ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 1908µs, application-code: 6ms)
+ POST /api/cms/preview 200 in 12ms (next.js: 9ms, application-code: 3ms)
+ POST /api/cms/preview 200 in 243ms (next.js: 10ms, application-code: 233ms)
+✓ Finished filesystem cache database compaction in 16.7s
+ GET /en/p/test 200 in 1413ms (next.js: 869ms, proxy.ts: 50ms, application-code: 494ms)
+ POST /api/cms/query 200 in 1545ms (next.js: 90ms, application-code: 1455ms)
+ POST /api/cms/query 200 in 927ms (next.js: 6ms, application-code: 921ms)
+ POST /api/cms/query 200 in 130ms (next.js: 29ms, application-code: 101ms)
+ POST /api/cms/query 200 in 300ms (next.js: 9ms, application-code: 291ms)
+ GET /en/admin 200 in 497ms (next.js: 124ms, proxy.ts: 7ms, application-code: 367ms)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /en/admin/pages 200 in 2.7s (next.js: 546ms, proxy.ts: 38ms, application-code: 2.2s)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 310ms (next.js: 39ms, proxy.ts: 6ms, application-code: 265ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 5ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 12ms (next.js: 8ms, application-code: 4ms)
+ POST /api/cms/preview 200 in 6ms (next.js: 1816µs, application-code: 4ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 3ms, application-code: 5ms)
+ POST /api/cms/preview 200 in 178ms (next.js: 3ms, application-code: 176ms)
+✓ Compiled in 598ms
+ POST /api/cms/preview 200 in 298ms (next.js: 63ms, application-code: 236ms)
+ POST /api/cms/preview 200 in 201ms (next.js: 11ms, application-code: 190ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 2.1s (next.js: 80ms, proxy.ts: 39ms, application-code: 1943ms)
+  └─ ƒ addWidgetToPage("cmniv1lkp0000d04mg404ugfo", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 218ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 1177ms (next.js: 173ms, proxy.ts: 7ms, application-code: 997ms)
+  └─ ƒ bindWidgetDataSource("cmnqkqpla0001t3f9bbbm2sv1", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, amount\",\"childCols\":\"\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"amount\"]},{\"id\":\"drawer-1775684544546\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"currency\"]},{\"id\":\"drawer-1775684546615\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"gateway\"]},{\"id\":\"line-1775684554021\",\"name\":\"Record Line\",\"cols\":[\"status\"]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":4},\"currency\":{\"startCol\":2},\"status\":{\"startCol\":2},\"gateway\":{\"startCol\":2}}}") in 21ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 37ms (next.js: 12ms, application-code: 25ms)
+✓ Compiled in 2.5s
+ GET /en/p/test 200 in 1054ms (next.js: 606ms, proxy.ts: 16ms, application-code: 432ms)
+ POST /api/cms/query 200 in 1380ms (next.js: 5ms, application-code: 1375ms)
+ POST /api/cms/query 200 in 1376ms (next.js: 4ms, application-code: 1372ms)
+ POST /api/cms/query 200 in 1378ms (next.js: 21ms, application-code: 1357ms)
+ POST /api/cms/query 200 in 1383ms (next.js: 431ms, application-code: 951ms)
+ POST /en/p/test 200 in 1410ms (next.js: 976ms, proxy.ts: 6ms, application-code: 428ms)
+  └─ ƒ updateWidgetGridPosition([{"h":100,"id":"cmnqhpphf000demukvv5cleh2","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnqkqpla0001t3f9bbbm2sv1","w":12,"...":"2 items not stringified"}]) in 18ms src/app/actions/cms.ts
+ POST /en/p/test 200 in 276ms (next.js: 37ms, proxy.ts: 12ms, application-code: 228ms)
+  └─ ƒ updateWidgetGridPosition([{"h":100,"id":"cmnqhpphf000demukvv5cleh2","w":12,"...":"2 items not stringified"},{"h":5,"id":"cmnqkqpla0001t3f9bbbm2sv1","w":12,"...":"2 items not stringified"}]) in 5ms src/app/actions/cms.ts
+ POST /en/p/test 200 in 270ms (next.js: 9ms, proxy.ts: 23ms, application-code: 238ms)
+  └─ ƒ updateWidgetGridPosition([{"h":100,"id":"cmnqhpphf000demukvv5cleh2","w":2,"...":"2 items not stringified"},{"h":5,"id":"cmnqkqpla0001t3f9bbbm2sv1","w":2,"...":"2 items not stringified"}]) in 8ms src/app/actions/cms.ts
+ POST /en/p/test 200 in 268ms (next.js: 21ms, proxy.ts: 9ms, application-code: 239ms)
+  └─ ƒ updateWidgetGridPosition([{"h":100,"id":"cmnqhpphf000demukvv5cleh2","w":2,"...":"2 items not stringified"},{"h":5,"id":"cmnqkqpla0001t3f9bbbm2sv1","w":2,"...":"2 items not stringified"}]) in 9ms src/app/actions/cms.ts
+ GET /en/admin 200 in 354ms (next.js: 26ms, proxy.ts: 5ms, application-code: 323ms)
+ GET /en/admin/pages 200 in 87ms (next.js: 13ms, proxy.ts: 4ms, application-code: 70ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 304ms (next.js: 20ms, proxy.ts: 7ms, application-code: 277ms)
+ POST /api/cms/preview 200 in 21ms (next.js: 6ms, application-code: 15ms)
  POST /api/cms/preview 200 in 33ms (next.js: 19ms, application-code: 14ms)
- POST /api/cms/preview 200 in 59ms (next.js: 40ms, application-code: 20ms)
- POST /api/cms/preview 200 in 65ms (next.js: 57ms, application-code: 8ms)
- POST /api/cms/preview 200 in 100ms (next.js: 66ms, application-code: 34ms)
- POST /api/cms/preview 200 in 201ms (next.js: 6ms, application-code: 195ms)
- POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 348ms (next.js: 33ms, proxy.ts: 16ms, application-code: 299ms)
-  └─ ƒ addWidgetToPage("cmniv1lkp0000d04mg404ugfo", "MASTER_DETAIL_TABLE", 0, 999, 12, 5) in 41ms src/app/actions/cms.ts
- POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 315ms (next.js: 15ms, proxy.ts: 5ms, application-code: 294ms)
-  └─ ƒ bindWidgetDataSource("cmnp17eoy0001emukrpp5bq0n", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"id\",\"dataKey\":\"hostname\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, amount, currency, gateway, status, created_at\",\"childCols\":\"\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Start\",\"cols\":[\"id\",\"amount\",\"currency\",\"gateway\",\"status\",\"created_at\"]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{}}") in 20ms src/app/actions/cms.ts
- POST /api/cms/preview 200 in 6ms (next.js: 1642µs, application-code: 4ms)
- GET /en/p/test 200 in 1170ms (next.js: 1076ms, proxy.ts: 14ms, application-code: 81ms)
- POST /api/cms/query 200 in 945ms (next.js: 141ms, application-code: 804ms)
- POST /en/p/test 200 in 798ms (next.js: 256ms, proxy.ts: 72ms, application-code: 470ms)
-  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnp17eoy0001emukrpp5bq0n","w":12,"...":"2 items not stringified"}]) in 5ms src/app/actions/cms.ts
- POST /api/cms/query 200 in 731ms (next.js: 6ms, application-code: 725ms)
- POST /en/p/test 200 in 366ms (next.js: 7ms, proxy.ts: 6ms, application-code: 352ms)
-  └─ ƒ updateWidgetGridPosition([{"h":5,"id":"cmnp17eoy0001emukrpp5bq0n","w":12,"...":"2 items not stringified"}]) in 4ms src/app/actions/cms.ts
- POST /api/cms/query 200 in 183ms (next.js: 3ms, application-code: 180ms)
- POST /api/cms/query 200 in 67ms (next.js: 2ms, application-code: 65ms)
- POST /api/cms/query 200 in 74ms (next.js: 1900µs, application-code: 72ms)
+ POST /api/cms/preview 200 in 41ms (next.js: 33ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 69ms (next.js: 45ms, application-code: 24ms)
+ POST /api/cms/preview 200 in 74ms (next.js: 70ms, application-code: 4ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 232ms (next.js: 10ms, proxy.ts: 7ms, application-code: 216ms)
+  └─ ƒ removeWidget("cmnqhpphf000demukvv5cleh2") in 14ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 87ms (next.js: 1575µs, application-code: 85ms)
+✓ Compiled in 491ms
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 326ms (next.js: 51ms, proxy.ts: 7ms, application-code: 267ms)
+  └─ ƒ bindWidgetDataSource("cmnqkqpla0001t3f9bbbm2sv1", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"parentCols\":\"id, amount\",\"childCols\":\"\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"amount\"]},{\"id\":\"drawer-1775684544546\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"currency\"]},{\"id\":\"drawer-1775684546615\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"gateway\"]},{\"id\":\"line-1775684554021\",\"name\":\"Record Line\",\"cols\":[\"status\"]}],\"customActions\":[],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":4},\"currency\":{\"startCol\":2},\"status\":{\"startCol\":2},\"gateway\":{\"startCol\":2}}}", 0, 0, 12, 100) in 13ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 495ms (next.js: 10ms, proxy.ts: 3ms, application-code: 482ms)
+ POST /api/cms/query 200 in 1115ms (next.js: 29ms, application-code: 1086ms)
+ POST /api/cms/query 200 in 1092ms (next.js: 527ms, application-code: 565ms)
+ GET /en/admin 200 in 957ms (next.js: 35ms, proxy.ts: 36ms, application-code: 885ms)
+ POST /api/cms/query 200 in 282ms (next.js: 11ms, application-code: 271ms)
+ GET /en/admin/pages 200 in 144ms (next.js: 20ms, proxy.ts: 9ms, application-code: 114ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 150ms (next.js: 20ms, proxy.ts: 9ms, application-code: 121ms)
+ POST /api/cms/preview 200 in 11ms (next.js: 4ms, application-code: 8ms)
+ POST /api/cms/preview 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 8ms (next.js: 1965µs, application-code: 6ms)
+ POST /api/cms/preview 200 in 29ms (next.js: 16ms, application-code: 13ms)
+ POST /api/cms/preview 200 in 24ms (next.js: 18ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 141ms (next.js: 7ms, application-code: 134ms)
+ POST /api/cms/preview 200 in 298ms (next.js: 62ms, application-code: 236ms)
+✓ Compiled in 619ms
+ POST /api/cms/preview 200 in 595ms (next.js: 49ms, application-code: 546ms)
+ GET /en/p/test 200 in 1456ms (next.js: 495ms, proxy.ts: 475ms, application-code: 487ms)
+ POST /api/cms/query 200 in 847ms (next.js: 9ms, application-code: 838ms)
+ POST /api/cms/query 200 in 864ms (next.js: 64ms, application-code: 800ms)
+ GET /en/admin 200 in 619ms (next.js: 119ms, proxy.ts: 15ms, application-code: 485ms)
+ GET /en/admin/pages 200 in 628ms (next.js: 119ms, proxy.ts: 15ms, application-code: 493ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 321ms (next.js: 173ms, proxy.ts: 3ms, application-code: 145ms)
+ POST /api/cms/preview 200 in 22ms (next.js: 13ms, application-code: 10ms)
+ POST /api/cms/preview 200 in 35ms (next.js: 28ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 78ms (next.js: 24ms, application-code: 54ms)
+ POST /api/cms/preview 200 in 78ms (next.js: 66ms, application-code: 12ms)
+ POST /api/cms/preview 200 in 144ms (next.js: 30ms, application-code: 114ms)
+ POST /api/cms/preview 200 in 136ms (next.js: 2ms, application-code: 134ms)
+✓ Compiled in 1625ms
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 1709ms (next.js: 1656ms, proxy.ts: 6ms, application-code: 48ms)
+  └─ ƒ getActionDataSources() in 20ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 253ms (next.js: 7ms, proxy.ts: 5ms, application-code: 241ms)
+  └─ ƒ getActionDataSources() in 16ms src/app/actions/cms.ts
+ POST /api/cms/preview 200 in 87ms (next.js: 3ms, application-code: 85ms)
+ POST /api/cms/preview 200 in 820ms (next.js: 27ms, application-code: 794ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 956ms (next.js: 756ms, proxy.ts: 132ms, application-code: 68ms)
+  └─ ƒ getActionDataSources() in 8ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 575ms (next.js: 67ms, proxy.ts: 284ms, application-code: 223ms)
+  └─ ƒ getActionDataSources() in 185ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 781ms (next.js: 232ms, proxy.ts: 199ms, application-code: 351ms)
+  └─ ƒ getActionDataSources() in 112ms src/app/actions/cms.ts
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 192ms (next.js: 27ms, proxy.ts: 18ms, application-code: 148ms)
+  └─ ƒ getActionDataSources() in 6ms src/app/actions/cms.ts
+✓ Compiled in 1188ms
+✓ Compiled in 4.5s
+✓ Compiled in 634ms
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 3.4s (next.js: 500ms, proxy.ts: 165ms, application-code: 2.7s)
+  └─ ƒ bindWidgetDataSource("cmnqkqpla0001t3f9bbbm2sv1", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"pageSize\":10,\"parentCols\":\"id, amount\",\"childCols\":\"currency, __action_Başka Güncelle, gateway\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\",\"amount\"]},{\"id\":\"drawer-1775684544546\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"currency\",\"__action_Başka Güncelle\"]},{\"id\":\"drawer-1775684546615\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"gateway\"]},{\"id\":\"line-1775684554021\",\"name\":\"Record Line\",\"cols\":[\"status\",\"__action_Güncelle\"]}],\"customActions\":[{\"name\":\"Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'babanzaaa' where id = {id}\"},{\"name\":\"Başka Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'ananzaaa' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":4},\"currency\":{\"startCol\":2},\"status\":{\"startCol\":2},\"gateway\":{\"startCol\":2},\"__action_Güncelle\":{\"startCol\":5},\"__action_Başka Güncelle\":{\"startCol\":5}}}", 0, 0, 12, 100) in 816ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 555ms (next.js: 105ms, proxy.ts: 13ms, application-code: 437ms)
+ POST /api/cms/query 200 in 1672ms (next.js: 27ms, application-code: 1645ms)
+ POST /api/cms/query 200 in 1687ms (next.js: 1006ms, application-code: 681ms)
+ POST /api/cms/query 200 in 1500ms (next.js: 51ms, application-code: 1448ms)
+ GET /en/admin 200 in 1838ms (next.js: 163ms, proxy.ts: 48ms, application-code: 1627ms)
+○ Compiling /_error ...
+ GET /en/admin 500 in 15.4s (next.js: 10.8s, proxy.ts: 1436ms, application-code: 3.1s)
+ GET /en/admin/pages 500 in 8.6s (next.js: 8.5s, proxy.ts: 24ms, application-code: 81ms)
+ GET /en/admin 500 in 15.6s (next.js: 15.1s, proxy.ts: 176ms, application-code: 349ms)
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component] 
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component] 
+[browser] Uncaught Error: ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./src/components/infrastructure/MasterDetailTable.tsx:306:15)
+    at <unknown> (Error: (./src/components/infrastructure/MasterDetailTable.tsx:306:15)
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component] 
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/WidgetStoreItem.tsx [Client Component Browser]
+    ./src/components/cms/WidgetStoreItem.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/WidgetStoreItem.tsx [Client Component SSR]
+    ./src/components/cms/WidgetStoreItem.tsx [Server Component]
+    ./src/app/[locale]/admin/editor/[id]/page.tsx [Server Component] 
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component] 
+[browser] ./src/components/infrastructure/MasterDetailTable.tsx:306:15
+Expected '</', got ':'
+  304 |                   />
+  305 |                </div>
+> 306 |             ) : <div />}
+      |               ^
+  307 |
+  308 |             {/* Sort Pipeline */}
+  309 |             {Object.values(elementSettings).som...
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component Browser]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component Browser]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/infrastructure/MasterDetailTable.tsx [Client Component SSR]
+    ./src/components/cms/WidgetRegistry.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Client Component SSR]
+    ./src/components/cms/DynamicPageRenderer.tsx [Server Component]
+    ./src/app/[locale]/p/[slug]/page.tsx [Server Component] 
+✓ Finished writing to filesystem cache in 23.9s
+✓ Compiled in 1592ms
+ GET /en/admin 200 in 12.8s (next.js: 1426ms, proxy.ts: 606ms, application-code: 10.8s)
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /api/auth/session 200 in 2.2s (next.js: 1495ms, application-code: 729ms)
+✓ Finished filesystem cache database compaction in 24.5s
+[next-auth][warn][NEXTAUTH_URL] 
+https://next-auth.js.org/warnings#nextauth_url
+[next-auth][warn][NO_SECRET] 
+https://next-auth.js.org/warnings#no_secret
+ GET /en/admin/pages 200 in 4.7s (next.js: 3.5s, proxy.ts: 38ms, application-code: 1176ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 3.5s (next.js: 1495ms, proxy.ts: 25ms, application-code: 1943ms)
+ POST /api/cms/preview 200 in 2.6s (next.js: 2.6s, application-code: 23ms)
+ POST /api/cms/preview 200 in 2.6s (next.js: 2.6s, application-code: 19ms)
+ POST /api/cms/preview 200 in 2.6s (next.js: 2.6s, application-code: 11ms)
+ POST /api/cms/preview 200 in 2.6s (next.js: 2.6s, application-code: 14ms)
+ POST /api/cms/preview 200 in 3.0s (next.js: 3.0s, application-code: 22ms)
+ POST /api/cms/preview 200 in 543ms (next.js: 7ms, application-code: 536ms)
+✓ Finished filesystem cache database compaction in 29.1s
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 3.2s (next.js: 817ms, proxy.ts: 588ms, application-code: 1784ms)
+  └─ ƒ bindWidgetDataSource("cmnqkqpla0001t3f9bbbm2sv1", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"pageSize\":10,\"parentCols\":\"id\",\"childCols\":\"currency, __action_Güncelle, gateway, __action_Başka Güncelle\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\"]},{\"id\":\"line-1775684554021\",\"name\":\"Record Line\",\"cols\":[\"status\"]},{\"id\":\"line-1775685273158\",\"name\":\"Record Line\",\"cols\":[\"amount\"]},{\"id\":\"drawer-1775684544546\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"currency\",\"__action_Güncelle\"]},{\"id\":\"drawer-1775684546615\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"gateway\",\"__action_Başka Güncelle\"]}],\"customActions\":[{\"name\":\"Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'babanzaaa' where id = {id}\"},{\"name\":\"Başka Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'ananzaaa' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":9},\"currency\":{\"startCol\":2},\"status\":{\"startCol\":2},\"gateway\":{\"startCol\":2},\"__action_Güncelle\":{\"startCol\":6},\"__action_Başka Güncelle\":{\"startCol\":5}}}", 0, 0, 12, 100) in 344ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 6.3s (next.js: 4.8s, proxy.ts: 842ms, application-code: 659ms)
+ POST /api/cms/query 200 in 2.9s (next.js: 455ms, application-code: 2.5s)
+ POST /api/cms/query 200 in 3.1s (next.js: 463ms, application-code: 2.6s)
+ POST /api/cms/query 200 in 125ms (next.js: 8ms, application-code: 118ms)
+ POST /api/cms/execute 200 in 396ms (next.js: 269ms, application-code: 127ms)
+ POST /api/cms/query 200 in 136ms (next.js: 8ms, application-code: 128ms)
+ POST /api/cms/execute 200 in 131ms (next.js: 7ms, application-code: 124ms)
+ POST /api/cms/query 200 in 111ms (next.js: 9ms, application-code: 102ms)
+ POST /api/cms/execute 200 in 402ms (next.js: 16ms, application-code: 386ms)
+ POST /api/cms/query 200 in 150ms (next.js: 8ms, application-code: 142ms)
+ POST /api/cms/query 200 in 99ms (next.js: 5ms, application-code: 94ms)
+ GET /en/admin 200 in 298ms (next.js: 63ms, proxy.ts: 19ms, application-code: 216ms)
+ GET /en/admin/pages 200 in 365ms (next.js: 26ms, proxy.ts: 9ms, application-code: 330ms)
+ GET /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 265ms (next.js: 27ms, proxy.ts: 6ms, application-code: 232ms)
+ POST /api/cms/preview 200 in 19ms (next.js: 5ms, application-code: 15ms)
+ POST /api/cms/preview 200 in 41ms (next.js: 35ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 59ms (next.js: 46ms, application-code: 13ms)
+ POST /api/cms/preview 200 in 82ms (next.js: 71ms, application-code: 11ms)
+ POST /api/cms/preview 200 in 90ms (next.js: 83ms, application-code: 6ms)
+ POST /api/cms/preview 200 in 164ms (next.js: 6ms, application-code: 158ms)
+ POST /en/admin/editor/cmniv1lkp0000d04mg404ugfo 200 in 3.1s (next.js: 565ms, proxy.ts: 675ms, application-code: 1897ms)
+  └─ ƒ bindWidgetDataSource("cmnqkqpla0001t3f9bbbm2sv1", ["cmnp0mwjt0000wl9zvf6ev2pp"], "ds.flat()", "{\"groupBy\":\"\",\"aggType\":\"COUNT\",\"title\":\"Data Table\",\"showTitle\":true,\"showSubText\":true,\"subText\":\"\",\"xAxisKey\":\"name\",\"dataKey\":\"value\",\"metricLabel\":\"Metric\",\"tablePrimaryKey\":\"id\",\"pageSize\":250,\"parentCols\":\"id\",\"childCols\":\"currency, __action_Güncelle, gateway, __action_Başka Güncelle\",\"layoutLines\":[{\"id\":\"line-1\",\"name\":\"Main Record Line 1\",\"cols\":[\"id\"]},{\"id\":\"line-1775684554021\",\"name\":\"Record Line\",\"cols\":[\"status\"]},{\"id\":\"line-1775685273158\",\"name\":\"Record Line\",\"cols\":[\"amount\"]},{\"id\":\"drawer-1775684544546\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"currency\",\"__action_Güncelle\"]},{\"id\":\"drawer-1775684546615\",\"name\":\"Embedded Detail Drawer\",\"cols\":[\"gateway\",\"__action_Başka Güncelle\"]}],\"customActions\":[{\"name\":\"Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'babanzaaa' where id = {id}\"},{\"name\":\"Başka Güncelle\",\"type\":\"DB\",\"dataSourceId\":\"cmnqhma1w000bemuks97tdr2q\",\"method\":\"DB_EXECUTE\",\"payloadTemplate\":\"update mock_transactions set status = 'ananzaaa' where id = {id}\"}],\"columnStyles\":{},\"lineSettings\":{},\"elementSettings\":{\"id\":{\"startCol\":1},\"amount\":{\"startCol\":9},\"currency\":{\"startCol\":2},\"status\":{\"startCol\":2,\"isFilterable\":true,\"isSearchable\":true,\"isSortable\":true},\"gateway\":{\"startCol\":2,\"isFilterable\":true},\"__action_Güncelle\":{\"startCol\":6},\"__action_Başka Güncelle\":{\"startCol\":5}}}", 0, 0, 12, 100) in 320ms src/app/actions/cms.ts
+ GET /en/p/test 200 in 143ms (next.js: 51ms, proxy.ts: 8ms, application-code: 84ms)
+ POST /api/cms/query 200 in 446ms (next.js: 15ms, application-code: 432ms)
+ POST /api/cms/query 200 in 449ms (next.js: 6ms, application-code: 444ms)
+ POST /api/cms/query 200 in 91ms (next.js: 8ms, application-code: 83ms)
+ POST /api/cms/execute 200 in 132ms (next.js: 7ms, application-code: 125ms)
+ POST /api/cms/query 200 in 96ms (next.js: 4ms, application-code: 91ms)
+ POST /api/cms/execute 200 in 116ms (next.js: 4ms, application-code: 112ms)
+ POST /api/cms/query 200 in 114ms (next.js: 10ms, application-code: 104ms)
+ POST /api/cms/query 200 in 119ms (next.js: 5ms, application-code: 114ms)
+ POST /api/cms/query 200 in 104ms (next.js: 10ms, application-code: 94ms)
+ POST /api/cms/query 200 in 112ms (next.js: 5ms, application-code: 107ms)
