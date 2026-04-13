@@ -9,14 +9,20 @@ export async function executeRawDbQuery(type: string, host: string, port: number
   const normType = type.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : type.toUpperCase();
   
   if (normType === "POSTGRESQL") {
-    const client = new Client({
+    const clientConfig: any = {
       host: host ? String(host) : "localhost",
       port: Number(port) || 5432,
       user: user ? String(user) : undefined,
       password: () => (password === null || password === undefined ? "" : String(password)),
-      database: database ? String(database) : undefined,
-      ssl: ssl !== undefined ? (ssl ? { rejectUnauthorized: false } : false) : (host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : false)
-    } as any);
+      database: database ? String(database) : undefined
+    };
+
+    const useSsl = ssl !== undefined ? ssl : (host && host !== "localhost" && host !== "127.0.0.1");
+    if (useSsl) {
+      clientConfig.ssl = { rejectUnauthorized: false };
+    }
+
+    const client = new Client(clientConfig);
 
     try {
       await client.connect();
