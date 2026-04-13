@@ -52,7 +52,7 @@ export async function executeRawDbQuery(type: string, host: string, port: number
         password: password ? String(password) : undefined,
         connectString: `${host}:${port}/${database}` // Easy Connect Syntax
       });
-      const result = await connection.execute(String(queryPayload));
+      const result = await connection.execute(String(queryPayload), [], { autoCommit: true });
       return result.rows || [];
     } finally {
       if (connection) {
