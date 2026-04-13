@@ -28,7 +28,7 @@ export default function VisualRecordBuilder({
   const [editingActionIndex, setEditingActionIndex] = useState<number | null>(null)
 
   const firstRowObj = Array.isArray(previewDataArray?.[0]) ? previewDataArray[0][0] : previewDataArray?.[0];
-  const rawKeys = firstRowObj ? Object.keys(firstRowObj).filter(k => typeof firstRowObj[k] !== "object" || Array.isArray(firstRowObj[k])) : []
+  const rawKeys = firstRowObj ? Object.keys(firstRowObj).filter(k => typeof firstRowObj[k] !== "object" || firstRowObj[k] === null || Array.isArray(firstRowObj[k])) : []
   const actionKeys = customActions.map(a => `__action_${a.name}`)
   const poolKeys = [...rawKeys, ...actionKeys]
   const mockRow = firstRowObj || {}

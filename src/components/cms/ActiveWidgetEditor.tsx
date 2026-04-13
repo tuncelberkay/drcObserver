@@ -519,7 +519,7 @@ export function ActiveWidgetEditor({ widget, sources, onClose }: { widget: any, 
                         const targetObj = Array.isArray(previewDataArray[0]) ? previewDataArray[0][0] : previewDataArray[0];
                         if (!targetObj) return null;
                         return Object.keys(targetObj)
-                          .filter(k => typeof targetObj[k] !== "object")
+                          .filter(k => typeof targetObj[k] !== "object" || targetObj[k] === null || Array.isArray(targetObj[k]))
                           .map(key => (
                             <span key={key} className="px-2 py-1 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700/50 rounded shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)] dark:shadow-none text-[10px] font-mono text-emerald-700 dark:text-emerald-300 font-bold tracking-tight">
                                &#123;{key}&#125;
