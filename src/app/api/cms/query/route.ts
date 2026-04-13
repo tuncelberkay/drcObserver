@@ -97,9 +97,10 @@ export async function POST(request: Request) {
            const database = String(parsedCreds.database || "")
            const user = String(parsedCreds.user || "")
            const password = String(parsedCreds.password || "")
+           const ssl = parsedCreds.ssl !== false
            
            let qp = queryPayload?.trim() || "SELECT 1 as connected;"
-           return await executeRawDbQuery(normType, host, port, user, password, database, qp)
+           return await executeRawDbQuery(normType, host, port, user, password, database, qp, ssl)
          } catch(e: any) {
            return { error: e.message, __source: source.name }
          }

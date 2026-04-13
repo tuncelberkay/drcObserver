@@ -5,7 +5,7 @@ import oracledb from 'oracledb';
 // Enable Oracle Thin Mode (Default in 6.0+)
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-export async function executeRawDbQuery(type: string, host: string, port: number, user: string, password: string, database: string, queryPayload: string) {
+export async function executeRawDbQuery(type: string, host: string, port: number, user: string, password: string, database: string, queryPayload: string, ssl?: boolean) {
   const normType = type.toUpperCase() === "POSTGRES" ? "POSTGRESQL" : type.toUpperCase();
   
   if (normType === "POSTGRESQL") {
@@ -15,7 +15,7 @@ export async function executeRawDbQuery(type: string, host: string, port: number
       user: user ? String(user) : undefined,
       password: () => (password === null || password === undefined ? "" : String(password)),
       database: database ? String(database) : undefined,
-      ssl: host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : undefined
+      ssl: ssl !== undefined ? (ssl ? { rejectUnauthorized: false } : undefined) : (host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : undefined)
     } as any);
 
     try {

@@ -33,6 +33,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
     dbHost: editSource ? parseCreds(editSource.credentialsJson, "host") : "",
     dbPort: editSource ? parseCreds(editSource.credentialsJson, "port") : "",
     dbName: editSource ? parseCreds(editSource.credentialsJson, "database") : "",
+    dbSsl: editSource ? (parseCreds(editSource.credentialsJson, "ssl") ?? true) : true,
     dbUser: editSource ? parseCreds(editSource.credentialsJson, "user") : "",
     dbPassword: editSource ? parseCreds(editSource.credentialsJson, "password") : "",
     queryPayload: editSource?.queryPayload || "",
@@ -67,6 +68,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
           host: formData.dbHost,
           port: formData.dbPort,
           database: formData.dbName,
+          ssl: formData.dbSsl,
           cyberArk: { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
         }, null, 2)
       } else {
@@ -81,6 +83,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
           host: formData.dbHost,
           port: formData.dbPort,
           database: formData.dbName,
+          ssl: formData.dbSsl,
           user: formData.dbUser,
           password: formData.dbPassword
         }, null, 2)
@@ -286,6 +289,12 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
                       <div className="col-span-2">
                         <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Database Name / ORACLE SID</label>
                         <input required type="text" value={formData.dbName} onChange={e => handleFieldChange("dbName", e.target.value)} className="block w-full px-3 py-2 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm" placeholder="production_metrics" />
+                      </div>
+                      <div className="col-span-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3 mt-1">
+                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300">Require SSL Verification</span>
+                        <button type="button" onClick={() => handleFieldChange("dbSsl", !formData.dbSsl)} className={`w-10 h-5 rounded-full relative transition-colors ${formData.dbSsl ? 'bg-indigo-500' : 'bg-slate-300 dark:bg-slate-700'}`}>
+                           <div className={`w-3 h-3 rounded-full bg-white absolute top-1 transition-all ${formData.dbSsl ? 'left-6' : 'left-1'}`} />
+                        </button>
                       </div>
                       <div className="col-span-2 border-t border-slate-100 dark:border-slate-800 pt-3 mt-1 grid grid-cols-2 gap-4">
                         {formData.vaultMode === "cyberark" ? (

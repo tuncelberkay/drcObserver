@@ -73,9 +73,10 @@ export async function POST(request: Request) {
         const database = parsedCreds.database || ""
         const user = parsedCreds.user || ""
         const password = parsedCreds.password || ""
+        const ssl = parsedCreds.ssl !== false
         
         const qp = queryPayload?.trim() || "SELECT 1 as connected;"
-        finalData = await executeRawDbQuery(normType, host, port, user, password, database, qp)
+        finalData = await executeRawDbQuery(normType, host, port, user, password, database, qp, ssl)
       } catch (err: any) {
         finalData = { error: err.message, details: "Database Connection Failed." }
       }

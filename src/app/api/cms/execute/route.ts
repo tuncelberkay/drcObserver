@@ -58,13 +58,14 @@ export async function POST(request: Request) {
        const database = parsedCreds.database || ""
        const user = parsedCreds.user || ""
        const password = parsedCreds.password || ""
+       const ssl = parsedCreds.ssl !== false
        
        if (!payload || payload.trim() === "") {
           return NextResponse.json({ error: "No executable DB query provided." }, { status: 400 })
        }
 
        try {
-         const result = await executeRawDbQuery(normDsType, host, port, user, password, database, payload)
+         const result = await executeRawDbQuery(normDsType, host, port, user, password, database, payload, ssl)
          return NextResponse.json({ success: true, data: result })
        } catch(e: any) {
          return NextResponse.json({ error: e.message }, { status: 500 })
