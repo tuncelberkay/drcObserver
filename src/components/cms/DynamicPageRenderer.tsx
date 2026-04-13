@@ -100,9 +100,9 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
           </header>
         )}
 
-        <div className={`w-full relative ${isFullScreenOverride ? 'flex-1 overflow-hidden' : ''}`}>
+        <div className={`w-full relative ${isFullScreenOverride ? 'flex-1 overflow-hidden flex flex-col' : ''}`}>
           {isFullScreenOverride ? (
-             <div className="w-full h-full bg-slate-100 dark:bg-slate-900/50 p-4 lg:p-6">
+             <div className="w-full flex-1 flex flex-col bg-slate-100 dark:bg-slate-900/50 p-4 lg:p-6 overflow-hidden">
                 {(() => {
                    const widget = synchronizedWidgets[0];
                    const WidgetComponent = WidgetRegistry[widget.componentKey]
@@ -111,7 +111,7 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
                    try { config = JSON.parse(widget.configJson) } catch (e) { }
                    // Inject rendering cleanly
                    return (
-                      <div className="w-full h-full bg-white dark:bg-slate-950 rounded-xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden">
+                      <div className="w-full flex-1 flex flex-col bg-white dark:bg-slate-950 rounded-xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden min-h-0">
                          <WidgetComponent config={config} widget={widget} rowSync={widget.rowSync} />
                       </div>
                    )
@@ -152,7 +152,7 @@ export function DynamicPageRenderer({ pageData }: { pageData: any }) {
                     </div>
                   )}
 
-                  <div className="w-full h-full pointer-events-auto">
+                  <div className="w-full h-full flex flex-col min-h-0 pointer-events-auto">
                     <WidgetComponent config={config} widget={widget} rowSync={widget.rowSync} />
                   </div>
                 </div>

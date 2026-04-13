@@ -15,7 +15,7 @@ export async function executeRawDbQuery(type: string, host: string, port: number
       user: user ? String(user) : undefined,
       password: () => (password === null || password === undefined ? "" : String(password)),
       database: database ? String(database) : undefined,
-      ssl: ssl !== undefined ? (ssl ? { rejectUnauthorized: false } : undefined) : (host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : undefined)
+      ssl: ssl !== undefined ? (ssl ? { rejectUnauthorized: false } : false) : (host && host !== "localhost" && host !== "127.0.0.1" ? { rejectUnauthorized: false } : false)
     } as any);
 
     try {
