@@ -50,7 +50,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
   const handleNext = () => setStep(s => Math.min(s + 1, totalSteps))
   const handlePrev = () => setStep(s => Math.max(s - 1, 1))
 
-  const handleFieldChange = (field: string, value: string | number) => {
+  const handleFieldChange = (field: string, value: string | number | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
@@ -396,6 +396,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
                                 host: formData.dbHost,
                                 port: formData.dbPort,
                                 database: formData.dbName,
+                                ssl: formData.dbSsl,
                                 cyberArk: { vaultId: formData.caVaultId, safe: formData.caSafe, objectName: formData.caObject }
                               })
                             } else {
@@ -410,6 +411,7 @@ export function CMSDataSourceModal({ vaults = [], editSource, onClose }: { vault
                                 host: formData.dbHost,
                                 port: formData.dbPort,
                                 database: formData.dbName,
+                                ssl: formData.dbSsl,
                                 user: formData.dbUser,
                                 password: formData.dbPassword
                               })
